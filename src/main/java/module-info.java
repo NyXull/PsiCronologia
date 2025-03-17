@@ -3,6 +3,6 @@ module com.example.psiorganize {
     requires javafx.fxml;
 
 
-    opens com.example.psiorganize to javafx.fxml;
-    exports com.example.psiorganize;
+    opens view to javafx.fxml;
+    exports view;
 }
