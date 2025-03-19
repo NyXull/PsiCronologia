@@ -1,0 +1,13 @@
+#182052 um azul escuro roxo
+#9E3AFC	rosa indo pra roxo, um roxo fraco 
+#5F3AFC um azul indo pra roxo
+#3A91FC com certeza azul
+#DE3AFC com certeza rosa
+#A38EFC um lilas eu acho
+
+FONTES:
+Títulos ou elementos de destaque:
+Comfortaa
+
+Corpo do texto:
+Nunito

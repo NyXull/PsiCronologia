@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="rootPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Rectangle fx:id="retanguloFundo" x="250" width="350" height="600" fill="#A38EFC"/>
+
+    <Text fx:id="psiOrganize" x="50" y="400" text="PsiOrganize" styleClass="titulo"/>
+
+    <Text fx:id="cadastro" x="375" y="150" text="CADASTRO" styleClass="subtitulo"/>
+
+    <Text fx:id="nome" x="300" y="200" text="NOME" styleClass="label"/>
+    <Text fx:id="nomeFicticio" x="300" y="250" text="Maria de Padilha Santos" styleClass="valor"/>
+
+    <Line fx:id="linha1" startX="300" endX="550" startY="260" endY="260" stroke="black" strokeWidth="2"/>
+
+    <Text fx:id="email" x="300" y="300" text="EMAIL" styleClass="label"/>
+    <Text fx:id="emailFicticio" x="300" y="350" text="maria@gmail.com" styleClass="valor"/>
+
+    <Line fx:id="linha2" startX="300" endX="550" startY="360" endY="360" stroke="black" strokeWidth="2"/>
+
+    <Text fx:id="senha" x="300" y="400" text="SENHA" styleClass="label"/>
+    <Text fx:id="senhaFicticia" x="300" y="450" text="**********" styleClass="valor"/>
+
+    <Line fx:id="linha3" startX="300" endX="550" startY="460" endY="460" stroke="black" strokeWidth="2"/>
+
+    <ImageView fx:id="imageView" x="75" y="250">
+        <Image url="@../img/clipboard_resized.png"/>
+    </ImageView>
+
+</Pane>

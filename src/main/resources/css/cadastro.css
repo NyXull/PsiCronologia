@@ -1,0 +1,23 @@
+.titulo {
+    -fx-font-size: 24.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: white;
+}
+
+.subtitulo {
+    -fx-font-size: 19.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: black;
+}
+
+.label {
+    -fx-font-size: 16.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: black;
+}
+
+.valor {
+    -fx-font-size: 14.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: black;
+}
