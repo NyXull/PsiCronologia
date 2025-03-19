@@ -1,9 +1,11 @@
-#182052 um azul escuro roxo
-#9E3AFC	rosa indo pra roxo, um roxo fraco 
-#5F3AFC um azul indo pra roxo
-#3A91FC com certeza azul
-#DE3AFC com certeza rosa
-#A38EFC um lilas eu acho
+#182052 Roxo não tão forte nos subtitulos e fundo mais escuro
+#9E3AFC Cor do botão
+#5F3AFC Cor das palavras que fazem links
+#3A91FC Azul mais encorpado
+#DE3AFC Rosa um pouco roxo
+#A38EFC Roxo forte
+#C5BAF4 Cor do fundo mais claro
+#000000 Preto
 
 FONTES:
 Títulos ou elementos de destaque:

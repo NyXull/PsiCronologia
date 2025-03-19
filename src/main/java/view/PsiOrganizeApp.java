@@ -17,7 +17,7 @@ public class PsiOrganizeApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/cadastro.fxml"));
-        Scene scene = new Scene(loader.load(), 600, 600, javafx.scene.paint.Color.rgb(24, 32, 82));
+        Scene scene = new Scene(loader.load(), 1150, 600, javafx.scene.paint.Color.rgb(24, 32, 82));
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/cadastro.css")).toExternalForm());
 
         stage.setResizable(false);

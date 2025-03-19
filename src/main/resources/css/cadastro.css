@@ -1,23 +1,32 @@
 .titulo {
-    -fx-font-size: 24.5pt;
+    -fx-font-size: 42.5pt;
     -fx-font-family: "Comfortaa";
     -fx-fill: white;
 }
 
 .subtitulo {
-    -fx-font-size: 19.5pt;
+    -fx-font-size: 34.5pt;
     -fx-font-family: "Comfortaa";
-    -fx-fill: black;
+    -fx-fill: #182052;
 }
 
 .label {
-    -fx-font-size: 16.5pt;
+    -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
-    -fx-fill: black;
+    -fx-fill: #182052;
 }
 
 .valor {
-    -fx-font-size: 14.5pt;
+    -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
-    -fx-fill: black;
+    -fx-fill: #182052;
+}
+
+#botaoCadastrar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
 }
