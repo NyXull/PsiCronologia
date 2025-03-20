@@ -30,3 +30,14 @@
     -fx-background-radius: 30px;
     -fx-padding: 10px 40px;
 }
+
+.TextField, .PasswordField {
+    -fx-background-color: transparent;
+    -fx-text-fill: #182052;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 11.5pt;
+    -fx-font-family: "Nunito";
+    -fx-pref-width: 325;
+    -fx-prompt-text-fill: #182052;
+}
