@@ -1,0 +1,45 @@
+.titulo {
+    -fx-font-size: 42.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: white;
+}
+
+.subtitulo {
+    -fx-font-size: 34.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+.label {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+
+#botaoEntrar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
+}
+
+.TextField, .PasswordField {
+    -fx-background-color: transparent;
+    -fx-text-fill: #182052;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 11.5pt;
+    -fx-font-family: "Nunito";
+    -fx-pref-width: 325;
+    -fx-prompt-text-fill: #182052;
+}
+
+#botaoCadastrar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #5F3AFC;
+    -fx-background-color: transparent;
+}
