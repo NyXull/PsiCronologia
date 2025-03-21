@@ -16,12 +16,6 @@
     -fx-fill: #182052;
 }
 
-.valor {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
 #botaoCadastrar {
     -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
