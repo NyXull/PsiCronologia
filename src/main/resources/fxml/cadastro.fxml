@@ -8,26 +8,25 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
-
+<?import javafx.scene.text.*?>
 <Pane fx:id="rootPane" style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
-      xmlns:fx="http://javafx.com/fxml/1">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SceneController">
     <Rectangle fx:id="retanguloFundo" fill="#C5BAF4" height="600" width="675" x="475"/>
 
     <Text fx:id="cadastro" styleClass="subtitulo" text="CADASTRO" x="700" y="125"/>
 
     <Text fx:id="nome" styleClass="label" text="NOME" x="665" y="200"/>
-    <TextField layoutX="655" layoutY="215" styleClass="TextField" promptText="Nome"/>
+    <TextField layoutX="655" layoutY="215" promptText="Nome" styleClass="TextField"/>
 
     <Line fx:id="linha1" endX="1000" endY="250" startX="665" startY="250" stroke="#182052" strokeWidth="1.5"/>
 
     <Text fx:id="email" styleClass="label" text="EMAIL" x="665" y="285"/>
-    <TextField layoutX="655" layoutY="300" styleClass="TextField" promptText="Email"/>
+    <TextField layoutX="655" layoutY="300" promptText="Email" styleClass="TextField"/>
 
     <Line fx:id="linha2" endX="1000" endY="335" startX="665" startY="335" stroke="#182052" strokeWidth="1.5"/>
 
     <Text fx:id="senha" styleClass="label" text="SENHA" x="665" y="370"/>
-    <PasswordField layoutX="655" layoutY="385" styleClass="PasswordField" promptText="Senha"/>
+    <PasswordField layoutX="655" layoutY="385" promptText="Senha" styleClass="PasswordField"/>
 
     <Line fx:id="linha3" endX="1000" endY="420" startX="665" startY="420" stroke="#182052" strokeWidth="1.5"/>
 
@@ -41,5 +40,6 @@
 
     <Text fx:id="psiOrganize" fill="WHITE" styleClass="titulo" text="PsiOrganize" x="85" y="350"/>
 
-    <Button id="botaoCadastrar" layoutX="740.0" layoutY="476.0" mnemonicParsing="false" text="CADASTRAR"/>
+    <Button id="botaoCadastrar" layoutX="740.0" layoutY="476.0" mnemonicParsing="false" onAction="#trocarParaSceneLogin"
+            text="CADASTRAR"/>
 </Pane>
