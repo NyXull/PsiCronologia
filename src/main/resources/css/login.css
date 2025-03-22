@@ -43,3 +43,25 @@
     -fx-text-fill: #5F3AFC;
     -fx-background-color: transparent;
 }
+
+#labelPopup {
+    -fx-background-color: #c38ebc;
+    -fx-background-radius: 25px;
+    -fx-padding: 18px 150px;
+}
+
+#textPopup {
+    -fx-font-size: 11.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+#botaoPopup {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #c38ebc;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
+}
+
