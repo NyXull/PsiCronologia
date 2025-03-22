@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.*?>
 <Pane fx:id="rootPane" style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SceneController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
     <Rectangle fx:id="retanguloFundo" fill="#C5BAF4" height="600" width="675" x="475"/>
 
-    <Text fx:id="cadastro" styleClass="subtitulo" text="LOGIN" x="750" y="125"/>
+    <Text fx:id="login" styleClass="subtitulo" text="LOGIN" x="750" y="100.0"/>
 
-    <Text fx:id="email" styleClass="label" text="EMAIL" x="665" y="200"/>
-    <TextField layoutX="655" layoutY="215" promptText="Email" styleClass="TextField"/>
+    <Text fx:id="email" styleClass="label" text="EMAIL" x="665" y="215"/>
+    <TextField layoutX="655" layoutY="230" promptText="Email" styleClass="TextField"/>
 
-    <Line fx:id="linha1" endX="1000" endY="250" startX="665" startY="250" stroke="#182052" strokeWidth="1.5"/>
+    <Line fx:id="linha1" endX="1000" endY="265" startX="665" startY="265" stroke="#182052" strokeWidth="1.5"/>
 
-    <Text fx:id="senha" styleClass="label" text="SENHA" x="665" y="285"/>
-    <PasswordField layoutX="655" layoutY="300" promptText="Senha" styleClass="PasswordField"/>
+    <Text fx:id="senha" styleClass="label" text="SENHA" x="665" y="300"/>
+    <PasswordField layoutX="655" layoutY="315" promptText="Senha" styleClass="PasswordField"/>
 
-    <Line fx:id="linha2" endX="1000" endY="335" startX="665" startY="335" stroke="#182052" strokeWidth="1.5"/>
+    <Line fx:id="linha2" endX="1000" endY="350" startX="665" startY="350" stroke="#182052" strokeWidth="1.5"/>
 
     <ImageView fx:id="imageView" x="165" y="200">
         <Image url="@../img/clipboard_resized.png"/>
@@ -35,8 +32,19 @@
 
     <Text fx:id="psiOrganize" fill="WHITE" styleClass="titulo" text="PsiOrganize" x="85" y="350"/>
 
-    <Button id="botaoEntrar" layoutX="740.0" layoutY="400" mnemonicParsing="false" text="ENTRAR"/>
+    <Button id="botaoEntrar" layoutX="740.0" layoutY="435" mnemonicParsing="false" text="ENTRAR"/>
 
-    <Button id="botaoCadastrar" layoutX="650" layoutY="340" mnemonicParsing="false" onAction="#trocarParaSceneCadastro"
+    <Button id="botaoCadastrar" layoutX="650" layoutY="355" mnemonicParsing="false" onAction="#navegarParaCadastro"
             text="CADASTRE-SE AGORA"/>
+    <Button id="botaoPopup" layoutX="500" layoutY="25.0" mnemonicParsing="false" onAction="#alternarVisibilidadePopup" text="Pop-up"/>
+
+    <Label fx:id="labelPopup" layoutX="655.0" layoutY="120.0"/>
+
+    <Text fx:id="textPopup1" layoutX="735" layoutY="145" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="E-mail ou senha incorretos." wrappingWidth="200.0"/>
+    <Text fx:id="textPopup2" layoutX="735" layoutY="165" strokeType="OUTSIDE" strokeWidth="0.0" text="Tente novamente."
+          underline="true" wrappingWidth="200.0"/>
+    <ImageView fx:id="imageViewPopup" layoutX="685" layoutY="140">
+        <Image url="@../img/Duke.png"/>
+    </ImageView>
 </Pane>
