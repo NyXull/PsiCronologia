@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
 <Pane fx:id="rootPane" style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SceneController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
     <Rectangle fx:id="retanguloFundo" fill="#C5BAF4" height="600" width="675" x="475"/>
 
     <Text fx:id="cadastro" styleClass="subtitulo" text="CADASTRO" x="700" y="125"/>
@@ -40,6 +40,6 @@
 
     <Text fx:id="psiOrganize" fill="WHITE" styleClass="titulo" text="PsiOrganize" x="85" y="350"/>
 
-    <Button id="botaoCadastrar" layoutX="740.0" layoutY="476.0" mnemonicParsing="false" onAction="#trocarParaSceneLogin"
+    <Button id="botaoCadastrar" layoutX="740.0" layoutY="476.0" mnemonicParsing="false" onAction="#navegarParaLogin"
             text="CADASTRAR"/>
 </Pane>
