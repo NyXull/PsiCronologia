@@ -6,6 +6,7 @@
 #A38EFC Roxo forte
 #C5BAF4 Cor do fundo mais claro
 #000000 Preto
+#c38ebc Cor do popup
 
 FONTES:
 Títulos ou elementos de destaque:
