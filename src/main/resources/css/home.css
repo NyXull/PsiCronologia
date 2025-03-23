@@ -1,0 +1,99 @@
+.titulo {
+    -fx-font-size: 31.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: white;
+}
+
+.subtitulo {
+    -fx-font-size: 22.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+Button {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 9px 10px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+}
+
+#botaoSair {
+    -fx-background-color: rgba(255, 0, 0, 0.35);
+}
+
+#botaoEditarImagem {
+    -fx-padding: 2px 0px;
+}
+
+.painelPesquisa {
+    -fx-background-color: transparent;
+    -fx-border-color: #c38ebc;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+TextField {
+    -fx-background-color: transparent;
+    -fx-text-fill: #182052;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 15.5pt;
+    -fx-font-family: "Nunito";
+    -fx-pref-width: 250;
+    -fx-prompt-text-fill: #182052;
+}
+
+#bordaInterna {
+    -fx-border-radius: 20;
+}
+
+.botaoIcone {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-padding: 0px 0px;
+}
+
+ListView {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #5F3AFC;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12.5pt;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #182052;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #5F3AFC;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+    -fx-cursor: default;
+}
+
+.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
+    -fx-scale-x: 0;
+    -fx-scale-y: 0;
+}
+
+Text {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
