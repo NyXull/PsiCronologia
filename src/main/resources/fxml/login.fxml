@@ -6,37 +6,39 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<Pane fx:id="rootPane" style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-    <Rectangle fx:id="retanguloFundo" fill="#C5BAF4" height="600" width="675" x="475"/>
+    <Rectangle fill="#C5BAF4" height="600" width="675" x="475"/>
 
-    <Text fx:id="login" styleClass="subtitulo" text="LOGIN" x="750" y="100.0"/>
+    <Text styleClass="subtitulo" text="LOGIN" x="750" y="100.0"/>
 
-    <Text fx:id="email" styleClass="label" text="EMAIL" x="665" y="215"/>
-    <TextField layoutX="655" layoutY="230" promptText="Email" styleClass="TextField"/>
+    <Text styleClass="label" text="EMAIL" x="665" y="215"/>
+    <TextField layoutX="655" layoutY="230" promptText="Email"/>
 
-    <Line fx:id="linha1" endX="1000" endY="265" startX="665" startY="265" stroke="#182052" strokeWidth="1.5"/>
+    <Line endX="1000" endY="265" startX="665" startY="265" stroke="#182052" strokeWidth="1.5"/>
 
-    <Text fx:id="senha" styleClass="label" text="SENHA" x="665" y="300"/>
-    <PasswordField layoutX="655" layoutY="315" promptText="Senha" styleClass="PasswordField"/>
+    <Text styleClass="label" text="SENHA" x="665" y="300"/>
+    <PasswordField layoutX="655" layoutY="315" promptText="Senha"/>
 
-    <Line fx:id="linha2" endX="1000" endY="350" startX="665" startY="350" stroke="#182052" strokeWidth="1.5"/>
+    <Line endX="1000" endY="350" startX="665" startY="350" stroke="#182052" strokeWidth="1.5"/>
 
-    <ImageView fx:id="imageView" x="165" y="200">
+    <ImageView x="165" y="200">
         <Image url="@../img/clipboard_resized.png"/>
     </ImageView>
 
-    <ImageView fx:id="imageViewFundo">
+    <ImageView>
         <Image url="@../img/efeito-fundo-roxo.png"/>
     </ImageView>
 
-    <Text fx:id="psiOrganize" fill="WHITE" styleClass="titulo" text="PsiOrganize" x="85" y="350"/>
+    <Text fill="WHITE" styleClass="titulo" text="PsiOrganize" x="65" y="350"/>
 
-    <Button id="botaoEntrar" layoutX="740.0" layoutY="435" mnemonicParsing="false" text="ENTRAR"/>
+    <Button id="botaoEntrar" layoutX="740.0" layoutY="435" mnemonicParsing="false" text="ENTRAR"
+            onAction="#navegarParaHome"/>
 
     <Button id="botaoCadastrar" layoutX="650" layoutY="355" mnemonicParsing="false" onAction="#navegarParaCadastro"
             text="CADASTRE-SE AGORA"/>
-    <Button id="botaoPopup" layoutX="500" layoutY="25.0" mnemonicParsing="false" onAction="#alternarVisibilidadePopup" text="Pop-up"/>
+    <Button id="botaoPopup" layoutX="500" layoutY="25.0" mnemonicParsing="false" onAction="#alternarVisibilidadePopup"
+            text="Pop-up"/>
 
     <Label fx:id="labelPopup" layoutX="655.0" layoutY="120.0"/>
 
