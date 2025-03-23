@@ -17,12 +17,13 @@ public class PsiOrganizeApp extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
 
             Scene sceneCadastro = new Scene(root, 1150, 600, javafx.scene.paint.Color.rgb(24, 32, 82));
             sceneCadastro.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/login.css")).toExternalForm());
+            sceneCadastro.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/fonts.css")).toExternalForm());
 
             stage.setResizable(false);
             stage.setTitle("PsiOrganize");
