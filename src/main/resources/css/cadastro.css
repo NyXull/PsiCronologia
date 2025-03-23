@@ -25,7 +25,7 @@
     -fx-padding: 10px 40px;
 }
 
-.TextField, .PasswordField {
+TextField, PasswordField {
     -fx-background-color: transparent;
     -fx-text-fill: #182052;
     -fx-border-color: transparent;
