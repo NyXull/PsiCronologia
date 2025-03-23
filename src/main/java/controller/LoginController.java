@@ -30,6 +30,11 @@ public class LoginController {
     }
 
     @FXML
+    private void navegarParaHome(ActionEvent evento) throws IOException {
+        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", evento);
+    }
+
+    @FXML
     private void alternarVisibilidadePopup() {
         if (isPopupVisivel) {
             ocultarPopup();
