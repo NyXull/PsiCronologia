@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroPacienteController">
+
+    <Rectangle fill="#C5BAF4" height="600" width="675" x="475"/>
+
+    <Text id="titulo" text="CADASTRO DE PACIENTE" x="550" y="50"/>
+
+    <Text styleClass="label" text="NOME" x="665" y="100"/>
+    <TextField layoutX="655" layoutY="115" promptText="Nome"/>
+
+    <Line endX="1000" endY="150" startX="665" startY="150" stroke="#182052" strokeWidth="1.5"/>
+
+    <Text styleClass="label" text="EMAIL" x="665" y="185"/>
+    <TextField layoutX="655" layoutY="200" promptText="Email"/>
+
+    <Line endX="1000" endY="235" startX="665" startY="235" stroke="#182052" strokeWidth="1.5"/>
+
+    <Text styleClass="label" text="DATA DE NASCIMENTO" x="665" y="270"/>
+    <TextField layoutX="655" layoutY="285" promptText="Data de Nascimento"/>
+
+    <Line endX="1000" endY="320" startX="665" startY="320" stroke="#182052" strokeWidth="1.5"/>
+
+    <Text styleClass="label" text="CPF" x="665" y="355"/>
+    <TextField layoutX="655" layoutY="370" promptText="CPF"/>
+
+    <Line endX="1000" endY="405" startX="665" startY="405" stroke="#182052" strokeWidth="1.5"/>
+
+    <Text styleClass="label" text="TELEFONE" x="665" y="440"/>
+    <TextField layoutX="655" layoutY="455" promptText="Telefone"/>
+
+    <Line endX="1000" endY="490" startX="665" startY="490" stroke="#182052" strokeWidth="1.5"/>
+
+    <ImageView x="75" y="150" fitWidth="300" fitHeight="300">
+        <Image url="@../img/java_logo_256-256.png"/>
+    </ImageView>
+
+    <ImageView>
+        <Image url="@../img/efeito-fundo-roxo.png"/>
+    </ImageView>
+
+    <Button id="botaoCadastrar" layoutX="740" layoutY="525" mnemonicParsing="false"
+            onAction="#navegarParaCadastroFinalizado"
+            text="CADASTRAR"/>
+
+    <Button layoutX="375" layoutY="45" mnemonicParsing="false" id="botaoHome" onAction="#navegarParaHome">
+        <graphic>
+            <ImageView fitHeight="35" fitWidth="40">
+                <Image url="@../img/Duke.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+</Pane>

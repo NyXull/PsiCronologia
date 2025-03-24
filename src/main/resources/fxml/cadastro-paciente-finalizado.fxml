@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroPacienteFinalizadoController">
+
+    <Rectangle fill="#C5BAF4" height="600" width="675" x="475"/>
+
+    <Text id="titulo" text="CADASTRO FINALIZADO!" x="590" y="100"/>
+
+    <ImageView x="75" y="150" fitWidth="300" fitHeight="300">
+        <Image url="@../img/java_logo_256-256.png"/>
+    </ImageView>
+
+    <ImageView>
+        <Image url="@../img/efeito-fundo-roxo.png"/>
+    </ImageView>
+
+    <Button layoutX="375" layoutY="45" mnemonicParsing="false" onAction="#navegarParaHome">
+        <graphic>
+            <ImageView fitHeight="35" fitWidth="40">
+                <Image url="@../img/Duke.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="625" layoutY="200" mnemonicParsing="false" prefHeight="15" prefWidth="40"
+            onAction="#navegarParaCadastroPaciente">
+        <graphic>
+            <ImageView fitHeight="150" fitWidth="150">
+                <Image url="@../img/java_logo_256-256.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text text="NOVO PACIENTE" x="635" y="375"/>
+
+    <Button layoutX="875" layoutY="200" mnemonicParsing="false" prefHeight="15" prefWidth="40"
+            onAction="#navegarParaHomePaciente">
+        <graphic>
+            <ImageView fitHeight="150" fitWidth="150">
+                <Image url="@../img/Duke.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text text="EDITAR PACIENTE" x="880" y="375"/>
+
+</Pane>
