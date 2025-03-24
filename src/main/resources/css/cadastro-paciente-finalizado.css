@@ -1,0 +1,18 @@
+Text {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+Button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-padding: 0px 0px;
+}
+
+#titulo {
+    -fx-font-size: 26.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
