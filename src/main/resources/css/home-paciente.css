@@ -1,0 +1,17 @@
+Button {
+    -fx-background-color: transparent;
+    -fx-border-color: #c38ebc;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: #182052;
+    -fx-padding: 8px 10px;
+    -fx-font-size: 13.5pt;
+    -fx-font-family: "Nunito";
+    -fx-border-radius: 10px;
+}
+
+.titulo {
+    -fx-font-size: 15.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
