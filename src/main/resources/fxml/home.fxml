@@ -52,7 +52,8 @@
         </graphic>
     </Button>
 
-    <Button layoutX="900" layoutY="150" mnemonicParsing="false" prefHeight="15" prefWidth="40" styleClass="botaoIcone">
+    <Button layoutX="900" layoutY="150" mnemonicParsing="false" prefHeight="15" prefWidth="40" styleClass="botaoIcone"
+            onAction="#navegarParaCadastroPaciente">
         <graphic>
             <ImageView fitHeight="150" fitWidth="150">
                 <Image url="@../img/java_logo_256-256.png"/>
