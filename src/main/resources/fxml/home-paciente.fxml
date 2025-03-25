@@ -12,7 +12,7 @@
 
     <Rectangle fill="#C5BAF4" height="600" width="475"/>
 
-    <ImageView x="475" fitWidth="675">
+    <ImageView x="475">
         <Image url="@../img/efeito-fundo-roxo-675-largura.png"/>
     </ImageView>
 
@@ -25,7 +25,8 @@
 
     <Line endX="440" endY="125" startX="35" startY="125" stroke="#182052" strokeWidth="1.25"/>
 
-    <Button layoutX="75" layoutY="175" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="PRONTUÁRIO"/>
+    <Button layoutX="75" layoutY="175" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="PRONTUÁRIO"
+            onAction="#navegarParaProntuarioLista"/>
 
     <Button layoutX="75" layoutY="250" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="AGENDA"/>
 
