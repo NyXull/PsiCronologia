@@ -84,12 +84,8 @@ Text {
     -fx-background-color: white;
     -fx-background-radius: 6;
     -fx-border-color: #182052;
-    -fx-border-width: 1;
+    -fx-border-width: 2;
     -fx-border-radius: 6;
-}
-
-#bordaInterna {
-    -fx-border-radius: 20;
 }
 
 .fundoRosa {
@@ -97,6 +93,17 @@ Text {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 10;
+}
+
+
+#bordaInterna {
+    -fx-border-radius: 20;
+}
+.botaoOpcoesTexto {
+    -fx-text-fill: #182052;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
 }
 
 #textoData {
@@ -116,4 +123,8 @@ Text {
 
 #fundoRosaClaro {
     -fx-background-color: rgba(222, 58, 252, 0.3);
+}
+
+#sublinhado {
+    -fx-underline: true;
 }

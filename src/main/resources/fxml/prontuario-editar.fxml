@@ -65,4 +65,9 @@
     <Pane styleClass="fundoOpcoes" layoutX="785" layoutY="235" prefHeight="25" prefWidth="120"/>
     <Pane styleClass="fundoOpcoes" layoutX="935" layoutY="235" prefHeight="25" prefWidth="120"/>
 
+    <Button styleClass="botaoOpcoesTexto" layoutX="345" layoutY="237" prefHeight="20" prefWidth="20" text="B"/>
+    <Button styleClass="botaoOpcoesTexto" layoutX="370" layoutY="237" prefHeight="20" prefWidth="20" text="𝙄"/>
+    <Button id="sublinhado" styleClass="botaoOpcoesTexto" layoutX="395" layoutY="237" prefHeight="20" prefWidth="20" text="U"/>
+    <Button styleClass="botaoOpcoesTexto" layoutX="420" layoutY="237" prefHeight="20" prefWidth="20" text="̶S̶"/>
+
 </Pane>
