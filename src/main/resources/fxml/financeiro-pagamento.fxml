@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
+<?import java.lang.*?>
 <Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controller.FinanceiroPagamentoController">
 
@@ -35,10 +35,10 @@
     <Pane styleClass="fundoRosa" layoutX="275" layoutY="75" prefHeight="35" prefWidth="850"/>
     <Text styleClass="subtitulo" text="Informações" x="295" y="100"/>
 
-    <Button id="botaoSalvar" layoutX="600" layoutY="350" mnemonicParsing="false" text="SALVAR"/>
+    <Button id="botaoSalvar" layoutX="600" layoutY="300" mnemonicParsing="false" text="SALVAR"/>
 
     <Button styleClass="botoesEsquerda" layoutX="30" layoutY="250" mnemonicParsing="false" prefHeight="20"
-            prefWidth="175" text="FINANCEIRO"/>
+            prefWidth="175" text="FINANCEIRO" onAction="#navegarParaFinanceiroStatus"/>
 
     <Button styleClass="botoesEsquerda" layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20"
             prefWidth="175" text="RELATÓRIOS"/>
@@ -65,10 +65,40 @@
         </items>
     </ComboBox>
 
-    <ImageView x="620" y="425" fitHeight="100" fitWidth="100">
-        <Image url="@../img/java_logo_256-256.png"/>
-    </ImageView>
+    <Text text="Quantidade por mês:" layoutX="600" layoutY="150"/>
+    <TextField layoutX="775" layoutY="125" prefHeight="20" promptText="2"/>
 
-    <Text text="STATUS DO MÊS" layoutX="610" layoutY="550"/>
+    <Text text="TOTAL:" layoutX="600" layoutY="200"/>
+    <Label id="valorTotal" text="R$: 700" layoutX="775" layoutY="175"/>
+
+    <Text text="Mês:" layoutX="600" layoutY="250"/>
+    <ComboBox layoutX="775" layoutY="230" prefHeight="25" prefWidth="110" promptText="STATUS">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Janeiro"/>
+                <String fx:value="Fevereiro"/>
+                <String fx:value="Março"/>
+                <String fx:value="Abril"/>
+                <String fx:value="Maio"/>
+                <String fx:value="Junho"/>
+                <String fx:value="Julho"/>
+                <String fx:value="Agosto"/>
+                <String fx:value="Setembro"/>
+                <String fx:value="Outubro"/>
+                <String fx:value="Novembro"/>
+                <String fx:value="Dezembro"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Button layoutX="620" layoutY="385" mnemonicParsing="false" onAction="#navegarParaFinanceiroStatus">
+        <graphic>
+            <ImageView fitHeight="100" fitWidth="100">
+                <Image url="@../img/java_logo_256-256.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text text="STATUS DO MÊS" layoutX="610" layoutY="510"/>
 
 </Pane>
