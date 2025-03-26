@@ -5,6 +5,17 @@ Button {
     -fx-padding: 0px 0px;
 }
 
+ComboBox {
+    -fx-background-color: transparent;
+    -fx-border-color: #182052;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+ComboBox .list-cell {
+    -fx-text-fill: #182052;
+}
+
 TextField {
     -fx-background-color: transparent;
     -fx-text-fill: #182052;
@@ -48,15 +59,6 @@ Text {
     -fx-background-radius: 10;
 }
 
-#botaoSalvar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-}
-
 .botoesEsquerda {
     -fx-background-color: transparent;
     -fx-border-color: rgba(255, 255, 255, 0.35);
@@ -66,6 +68,51 @@ Text {
     -fx-padding: 9px 10px;
     -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white, white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+    -fx-padding: 3 0 3 7;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #182052;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #5F3AFC;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+    -fx-cursor: default;
+}
+
+.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
+    -fx-scale-x: 0;
+    -fx-scale-y: 0;
+}
+
+#botaoSalvar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
 }
 
 #botaoSair {
@@ -80,19 +127,14 @@ Text {
     -fx-background-color: rgba(255, 0, 0, 0.35);
 }
 
-ComboBox {
+#valorTotal {
     -fx-background-color: transparent;
+    -fx-text-fill: #182052;
     -fx-border-color: #182052;
     -fx-border-width: 2;
+    -fx-font-size: 11.5pt;
+    -fx-font-family: "Nunito";
+    -fx-pref-width: 110;
     -fx-border-radius: 10;
-}
-
-ComboBox .list-cell {
-    -fx-text-fill: #182052;
-}
-
-.combo-box-popup .list-view {
-    -fx-background-color: white, white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
-    -fx-padding: 3 0 3 7;
+    -fx-padding: 5px;
 }
