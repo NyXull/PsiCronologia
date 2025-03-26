@@ -17,4 +17,9 @@ public class FinanceiroPagamentoController {
     private void navegarParaLogin(ActionEvent event) throws IOException {
         TrocarCena.trocarCena("/fxml/login.fxml", "/css/login.css", event);
     }
+
+    @FXML
+    private void navegarParaFinanceiroStatus(ActionEvent event) throws IOException {
+        TrocarCena.trocarCena("/fxml/financeiro-status.fxml", "/css/financeiro-status.css", event);
+    }
 }
