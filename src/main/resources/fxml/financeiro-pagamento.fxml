@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.FinanceiroPagamentoController">
+
+    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
+
+    <ImageView>
+        <Image url="@../img/efeito-fundo-roxo-237.png"/>
+    </ImageView>
+
+    <Button layoutX="175" layoutY="25" mnemonicParsing="false" onAction="#navegarParaHome">
+        <graphic>
+            <ImageView fitHeight="35" fitWidth="40">
+                <Image url="@../img/Duke.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text styleClass="titulo" text="FINANCEIRO" x="300" y="50"/>
+
+    <Text styleClass="label" text="Paciente:" x="20" y="100"/>
+    <Text styleClass="label" text="nome sobrenome" x="95" y="100"/>
+
+    <Line endX="215" endY="135" startX="20" startY="135" stroke="white" strokeWidth="1.25"/>
+
+    <Pane styleClass="fundoRosa" layoutX="275" layoutY="75" prefHeight="35" prefWidth="850"/>
+    <Text styleClass="subtitulo" text="Informações" x="295" y="100"/>
+
+    <Button id="botaoSalvar" layoutX="600" layoutY="350" mnemonicParsing="false" text="SALVAR"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="250" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="FINANCEIRO"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="RELATÓRIOS"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="BIBLIOTECA"/>
+
+    <Button id="botaoSair" layoutX="30" layoutY="475" mnemonicParsing="false" onAction="#navegarParaLogin"
+            prefHeight="20" prefWidth="175" text="SAIR"/>
+
+    <Text text="Valor por sessão:" layoutX="300" layoutY="150"/>
+    <TextField layoutX="450" layoutY="125" prefHeight="20" promptText="R$ 350"/>
+
+    <Text text="Vencimento:" layoutX="300" layoutY="200"/>
+    <TextField layoutX="450" layoutY="175" prefHeight="20" promptText="11/11/2024"/>
+
+    <Text text="Status:" layoutX="300" layoutY="250"/>
+    <ComboBox layoutX="450" layoutY="230" prefHeight="25" prefWidth="110" promptText="STATUS">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="PAGO"/>
+                <String fx:value="ABERTO"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <ImageView x="620" y="425" fitHeight="100" fitWidth="100">
+        <Image url="@../img/java_logo_256-256.png"/>
+    </ImageView>
+
+    <Text text="STATUS DO MÊS" layoutX="610" layoutY="550"/>
+
+</Pane>

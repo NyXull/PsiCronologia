@@ -1,0 +1,98 @@
+Button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-padding: 0px 0px;
+}
+
+TextField {
+    -fx-background-color: transparent;
+    -fx-text-fill: #182052;
+    -fx-border-color: #182052;
+    -fx-border-width: 2;
+    -fx-font-size: 11.5pt;
+    -fx-font-family: "Nunito";
+    -fx-pref-width: 110;
+    -fx-prompt-text-fill: #182052;
+    -fx-border-radius: 10;
+}
+
+Text {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+.titulo {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+.subtitulo {
+    -fx-font-size: 15pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+.label {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: white;
+}
+
+.fundoRosa {
+    -fx-background-color: #DE3AFC;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 10;
+}
+
+#botaoSalvar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
+}
+
+.botoesEsquerda {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 9px 10px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+}
+
+#botaoSair {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-background-color: rgba(255, 0, 0, 0.35);
+}
+
+ComboBox {
+    -fx-background-color: transparent;
+    -fx-border-color: #182052;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+ComboBox .list-cell {
+    -fx-text-fill: #182052;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white, white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+    -fx-padding: 3 0 3 7;
+}
