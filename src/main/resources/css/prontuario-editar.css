@@ -5,6 +5,23 @@ Button {
     -fx-padding: 0px 0px;
 }
 
+ComboBox {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+TextArea {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
 TextField {
     -fx-background-color: transparent;
     -fx-text-fill: white;
@@ -127,4 +144,21 @@ Text {
 
 #sublinhado {
     -fx-underline: true;
+}
+
+ComboBox .list-cell {
+    -fx-text-fill: #182052;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white, white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+    -fx-padding: 3 0 3 7;
+}
+
+#tamanhoLetras .combo-box-popup .list-view {
+    -fx-background-color: white, white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+    -fx-pref-width: 50;
+    -fx-padding: 3 0 3 7;
 }
