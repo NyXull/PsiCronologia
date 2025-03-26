@@ -30,7 +30,7 @@
 
     <Button layoutX="75" layoutY="250" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="AGENDA"/>
 
-    <Button layoutX="75" layoutY="325" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="FINANCEIRO"/>
+    <Button layoutX="75" layoutY="325" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="FINANCEIRO" onAction="#navegarParaFinanceiroPagamento"/>
 
     <Button layoutX="75" layoutY="400" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="RELATÓRIOS"/>
 
