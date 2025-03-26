@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controller.ProntuarioEditarController">
 
@@ -63,11 +65,82 @@
     <Pane styleClass="fundoOpcoes" layoutX="485" layoutY="235" prefHeight="25" prefWidth="120"/>
     <Pane styleClass="fundoOpcoes" layoutX="635" layoutY="235" prefHeight="25" prefWidth="120"/>
     <Pane styleClass="fundoOpcoes" layoutX="785" layoutY="235" prefHeight="25" prefWidth="120"/>
-    <Pane styleClass="fundoOpcoes" layoutX="935" layoutY="235" prefHeight="25" prefWidth="120"/>
+    <Pane styleClass="fundoOpcoes" layoutX="935" layoutY="235" prefHeight="25" prefWidth="150"/>
 
     <Button styleClass="botaoOpcoesTexto" layoutX="345" layoutY="237" prefHeight="20" prefWidth="20" text="B"/>
     <Button styleClass="botaoOpcoesTexto" layoutX="370" layoutY="237" prefHeight="20" prefWidth="20" text="𝙄"/>
-    <Button id="sublinhado" styleClass="botaoOpcoesTexto" layoutX="395" layoutY="237" prefHeight="20" prefWidth="20" text="U"/>
+    <Button id="sublinhado" styleClass="botaoOpcoesTexto" layoutX="395" layoutY="237" prefHeight="20" prefWidth="20"
+            text="U"/>
     <Button styleClass="botaoOpcoesTexto" layoutX="420" layoutY="237" prefHeight="20" prefWidth="20" text="̶S̶"/>
+
+    <Button layoutX="495" layoutY="237" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/esquerda.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="520" layoutY="237" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/centralizar.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="545" layoutY="237" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/direita.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="570" layoutY="237" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/justificado.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="660" layoutY="237" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/numeracao.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="710" layoutY="237" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/marcacao.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <ComboBox layoutX="785" layoutY="230" prefHeight="20" prefWidth="120" promptText="Fonte">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Arial"/>
+                <String fx:value="Comfortaa"/>
+                <String fx:value="Nunito"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <ComboBox id="tamanhoLetras" layoutX="930" layoutY="230" prefHeight="20" prefWidth="145" promptText="Tamanho">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="12"/>
+                <String fx:value="24"/>
+                <String fx:value="72"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <TextArea layoutX="300" layoutY="275" prefHeight="210" prefWidth="795" prefRowCount="20" prefColumnCount="50" wrapText="true" />
 
 </Pane>
