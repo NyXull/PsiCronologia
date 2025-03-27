@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.FinanceiroStatusController">
+
+    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
+
+    <ImageView>
+        <Image url="@../img/efeito-fundo-roxo-237.png"/>
+    </ImageView>
+
+    <Button layoutX="175" layoutY="25" mnemonicParsing="false" onAction="#navegarParaHome">
+        <graphic>
+            <ImageView fitHeight="35" fitWidth="40">
+                <Image url="@../img/Duke.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text styleClass="titulo" text="FINANCEIRO" x="300" y="50"/>
+
+    <Text styleClass="label" text="Paciente:" x="20" y="100"/>
+    <Text styleClass="label" text="nome sobrenome" x="95" y="100"/>
+
+    <Line endX="215" endY="135" startX="20" startY="135" stroke="white" strokeWidth="1.25"/>
+
+    <Pane layoutX="275" layoutY="75" prefHeight="35" prefWidth="850" styleClass="fundoRosa"/>
+    <Text styleClass="subtitulo" text="Status mensal" x="295" y="100"/>
+
+    <Button id="botaoSalvar" layoutX="900" layoutY="20" mnemonicParsing="false" text="SALVAR"/>
+
+    <Button layoutX="30" layoutY="250" mnemonicParsing="false" prefHeight="20" prefWidth="175"
+            styleClass="botoesEsquerda" text="FINANCEIRO" onAction="#navegarParaFinanceiroPagamento"/>
+
+    <Button layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20" prefWidth="175"
+            styleClass="botoesEsquerda" text="RELATÓRIOS"/>
+
+    <Button layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20" prefWidth="175"
+            styleClass="botoesEsquerda" text="BIBLIOTECA"/>
+
+    <Button id="botaoSair" layoutX="30" layoutY="475" mnemonicParsing="false" prefHeight="20" prefWidth="175"
+            text="SAIR" onAction="#navegarParaLogin"/>
+
+    <Text layoutX="300" layoutY="420" text="Mês:"/>
+    <ComboBox layoutX="400" layoutY="400" prefHeight="25" prefWidth="110" promptText="Mês">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Janeiro"/>
+                <String fx:value="Fevereiro"/>
+                <String fx:value="Março"/>
+                <String fx:value="Abril"/>
+                <String fx:value="Maio"/>
+                <String fx:value="Junho"/>
+                <String fx:value="Julho"/>
+                <String fx:value="Agosto"/>
+                <String fx:value="Setembro"/>
+                <String fx:value="Outubro"/>
+                <String fx:value="Novembro"/>
+                <String fx:value="Dezembro"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Text layoutX="575" layoutY="420" text="Status:"/>
+    <ComboBox layoutX="675" layoutY="400" prefHeight="25" prefWidth="110" promptText="STATUS">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="PAGO"/>
+                <String fx:value="ABERTO"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Text layoutX="300" layoutY="495" text="Mês:"/>
+    <ComboBox layoutX="400" layoutY="475" prefHeight="25" prefWidth="110" promptText="Mês">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Janeiro"/>
+                <String fx:value="Fevereiro"/>
+                <String fx:value="Março"/>
+                <String fx:value="Abril"/>
+                <String fx:value="Maio"/>
+                <String fx:value="Junho"/>
+                <String fx:value="Julho"/>
+                <String fx:value="Agosto"/>
+                <String fx:value="Setembro"/>
+                <String fx:value="Outubro"/>
+                <String fx:value="Novembro"/>
+                <String fx:value="Dezembro"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Button id="botaoAlterar" layoutX="825" layoutY="395" mnemonicParsing="false" text="ALTERAR"/>
+
+    <Button id="botaoExcluir" layoutX="585" layoutY="470" mnemonicParsing="false" text="EXCLUIR"/>
+
+    <Pane layoutX="275" layoutY="350" prefHeight="35" prefWidth="850" styleClass="fundoRosa"/>
+    <Text styleClass="subtitulo" text="Alterar ou excluir status" x="295" y="375"/>
+
+    <Pane layoutX="550" layoutY="120" prefHeight="225" prefWidth="300">
+        <Pane styleClass="painelMeses" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="75" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="150" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="225" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutY="150" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutY="75" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="75" layoutY="150" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="150" layoutY="150" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="225" layoutY="150" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="75" layoutY="75" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="150" layoutY="75" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" layoutX="225" layoutY="75" prefHeight="75" prefWidth="75"/>
+    </Pane>
+
+</Pane>
