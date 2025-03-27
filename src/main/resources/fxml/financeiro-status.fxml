@@ -104,24 +104,84 @@
 
     <Button id="botaoAlterar" layoutX="825" layoutY="395" mnemonicParsing="false" text="ALTERAR"/>
 
-    <Button id="botaoExcluir" layoutX="585" layoutY="470" mnemonicParsing="false" text="EXCLUIR"/>
+    <Button fx:id="botaoExcluir" layoutX="585" layoutY="470" mnemonicParsing="false" text="EXCLUIR" onAction="#mostrarPopupExcluir"/>
 
     <Pane layoutX="275" layoutY="350" prefHeight="35" prefWidth="850" styleClass="fundoRosa"/>
     <Text styleClass="subtitulo" text="Alterar ou excluir status" x="295" y="375"/>
 
     <Pane layoutX="550" layoutY="120" prefHeight="225" prefWidth="300">
-        <Pane styleClass="painelMeses" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="75" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="150" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="225" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutY="150" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutY="75" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="75" layoutY="150" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="150" layoutY="150" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="225" layoutY="150" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="75" layoutY="75" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="150" layoutY="75" prefHeight="75" prefWidth="75"/>
-        <Pane styleClass="painelMeses" layoutX="225" layoutY="75" prefHeight="75" prefWidth="75"/>
+        <Pane styleClass="painelMeses" prefHeight="75" prefWidth="75">
+            <Text text="Janeiro" layoutX="15" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="75" prefHeight="75" prefWidth="75">
+            <Text text="Fevereiro" layoutX="10" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="150" prefHeight="75" prefWidth="75">
+            <Text text="Março" layoutX="17" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="225" prefHeight="75" prefWidth="75">
+            <Text text="Abril" layoutX="20" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutY="150" prefHeight="75" prefWidth="75">
+            <Text text="Setembro" layoutX="10" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutY="75" prefHeight="75" prefWidth="75">
+            <Text text="Maio" layoutX="18" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="75" layoutY="150" prefHeight="75" prefWidth="75">
+            <Text text="Outubro" layoutX="10" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="150" layoutY="150" prefHeight="75" prefWidth="75">
+            <Text text="Novembro" layoutX="5" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="225" layoutY="150" prefHeight="75" prefWidth="75">
+            <Text text="Dezembro" layoutX="5" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="75" layoutY="75" prefHeight="75" prefWidth="75">
+            <Text text="Junho" layoutX="17" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="150" layoutY="75" prefHeight="75" prefWidth="75">
+            <Text text="Julho" layoutX="18" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
+        <Pane styleClass="painelMeses" layoutX="225" layoutY="75" prefHeight="75" prefWidth="75">
+            <Text text="Agosto" layoutX="15" layoutY="20"/>
+            <ImageView layoutX="25" layoutY="35" fitHeight="25" fitWidth="25">
+                <Image url="@../img/check-verde.png"/>
+            </ImageView>
+        </Pane>
     </Pane>
 
 </Pane>
