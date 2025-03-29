@@ -41,7 +41,7 @@
             prefWidth="175" text="FINANCEIRO" onAction="#navegarParaFinanceiroStatus"/>
 
     <Button styleClass="botoesEsquerda" layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20"
-            prefWidth="175" text="RELATÓRIOS"/>
+            prefWidth="175" text="RELATÓRIOS" onAction="#navegarParaRelatorio"/>
 
     <Button styleClass="botoesEsquerda" layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20"
             prefWidth="175" text="BIBLIOTECA"/>
