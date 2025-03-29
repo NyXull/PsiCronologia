@@ -44,7 +44,7 @@
             styleClass="botoesEsquerda" text="FINANCEIRO" onAction="#navegarParaFinanceiroPagamento"/>
 
     <Button layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20" prefWidth="175"
-            styleClass="botoesEsquerda" text="RELATÓRIOS"/>
+            styleClass="botoesEsquerda" text="RELATÓRIOS" onAction="#navegarParaRelatorio"/>
 
     <Button layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20" prefWidth="175"
             styleClass="botoesEsquerda" text="BIBLIOTECA"/>
