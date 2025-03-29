@@ -17,4 +17,10 @@ public class HomePacienteController {
     private void navegarParaFinanceiroPagamento(ActionEvent event) throws IOException {
         TrocarCena.trocarCena("/fxml/financeiro-pagamento.fxml", "/css/financeiro-pagamento.css", event);
     }
+
+    @FXML
+    private void navegarParaRelatorio(ActionEvent event) throws IOException {
+        TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
+    }
+
 }
