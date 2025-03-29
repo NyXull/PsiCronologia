@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.RelatorioController">
+
+    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
+
+    <ImageView>
+        <Image url="@../img/efeito-fundo-roxo-237.png"/>
+    </ImageView>
+
+    <Button layoutX="175" layoutY="25" mnemonicParsing="false" onAction="#navegarParaHome">
+        <graphic>
+            <ImageView fitHeight="35" fitWidth="40">
+                <Image url="@../img/Duke.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text styleClass="titulo" text="RELATÓRIOS" x="300" y="50"/>
+
+    <Text styleClass="label" text="Paciente:" x="20" y="100"/>
+    <Text styleClass="label" text="nome sobrenome" x="95" y="100"/>
+
+    <Line endX="215" endY="135" startX="20" startY="135" stroke="white" strokeWidth="1.25"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="250" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="FINANCEIRO" onAction="#navegarParaFinanceiroPagamento"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="RELATÓRIOS" onAction="#navegarParaRelatorio"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="BIBLIOTECA"/>
+
+    <Button id="botaoSair" layoutX="30" layoutY="475" mnemonicParsing="false" onAction="#navegarParaLogin"
+            prefHeight="20" prefWidth="175" text="SAIR"/>
+
+    <Pane styleClass="fundoRosa" layoutX="275" layoutY="75" prefHeight="35" prefWidth="850"/>
+    <Text styleClass="subtitulo" text="Detalhes do relatório" x="295" y="100"/>
+
+    <Text styleClass="subtitulo" text="Modelo:" x="785" y="100"/>
+    <ComboBox layoutX="915" layoutY="78" prefHeight="25" prefWidth="150" promptText="Encaminhamento">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Encaminhamento"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Pane styleClass="fundoRosa" id="fundoRosaClaro" layoutX="300" layoutY="135" prefHeight="350" prefWidth="800"/>
+
+    <Pane styleClass="fundoOpcoes" layoutX="335" layoutY="155" prefHeight="25" prefWidth="120"/>
+    <Pane styleClass="fundoOpcoes" layoutX="485" layoutY="155" prefHeight="25" prefWidth="120"/>
+    <Pane styleClass="fundoOpcoes" layoutX="635" layoutY="155" prefHeight="25" prefWidth="120"/>
+    <Pane styleClass="fundoOpcoes" layoutX="785" layoutY="155" prefHeight="25" prefWidth="120"/>
+    <Pane styleClass="fundoOpcoes" layoutX="935" layoutY="155" prefHeight="25" prefWidth="150"/>
+
+    <Button styleClass="botaoOpcoesTexto" layoutX="345" layoutY="157" prefHeight="20" prefWidth="20" text="B"/>
+    <Button styleClass="botaoOpcoesTexto" layoutX="370" layoutY="157" prefHeight="20" prefWidth="20" text="𝙄"/>
+    <Button id="sublinhado" styleClass="botaoOpcoesTexto" layoutX="395" layoutY="157" prefHeight="20" prefWidth="20"
+            text="U"/>
+    <Button styleClass="botaoOpcoesTexto" layoutX="420" layoutY="157" prefHeight="20" prefWidth="20" text="̶S̶"/>
+
+    <Button layoutX="495" layoutY="157" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/esquerda.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="520" layoutY="157" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/centralizar.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="545" layoutY="157" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/direita.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="570" layoutY="157" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/justificado.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="660" layoutY="157" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/numeracao.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button layoutX="710" layoutY="157" prefHeight="20" prefWidth="20">
+        <graphic>
+            <ImageView fitHeight="19" fitWidth="19">
+                <Image url="@../img/marcacao.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <ComboBox styleClass="comboBoxEditorTexto" layoutX="788" layoutY="154" prefHeight="20" prefWidth="120"
+              promptText="Fonte">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Arial"/>
+                <String fx:value="Comfortaa"/>
+                <String fx:value="Nunito"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <ComboBox styleClass="comboBoxEditorTexto" id="tamanhoLetras" layoutX="933" layoutY="154" prefHeight="20"
+              prefWidth="145" promptText="Tamanho">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="12"/>
+                <String fx:value="24"/>
+                <String fx:value="72"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <TextArea layoutX="302.5" layoutY="195" prefHeight="285" prefWidth="795" prefRowCount="20" prefColumnCount="50"
+              wrapText="true"/>
+
+    <Button styleClass="botaoOpcao" layoutX="375" layoutY="515" mnemonicParsing="false" text="BAIXAR PDF"/>
+
+    <Button styleClass="botaoOpcao" layoutX="600" layoutY="515" mnemonicParsing="false" text="SALVAR MODELO"/>
+
+    <Button styleClass="botaoOpcao" fx:id="botaoExcluir" layoutX="825" layoutY="515" mnemonicParsing="false"
+            text="EXCLUIR MODELO" onAction="#mostrarPopupExcluir"/>
+
+</Pane>
