@@ -22,4 +22,9 @@ public class FinanceiroPagamentoController {
     private void navegarParaFinanceiroStatus(ActionEvent event) throws IOException {
         TrocarCena.trocarCena("/fxml/financeiro-status.fxml", "/css/financeiro-status.css", event);
     }
+
+    @FXML
+    private void navegarParaRelatorio(ActionEvent event) throws IOException {
+        TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
+    }
 }
