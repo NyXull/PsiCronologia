@@ -28,7 +28,7 @@
     <Button layoutX="75" layoutY="175" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="PRONTUÁRIO"
             onAction="#navegarParaProntuarioLista"/>
 
-    <Button layoutX="75" layoutY="250" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="AGENDA"/>
+    <Button layoutX="75" layoutY="250" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="AGENDA" onAction="#navegarParaAgenda"/>
 
     <Button layoutX="75" layoutY="325" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="FINANCEIRO" onAction="#navegarParaFinanceiroPagamento"/>
 
