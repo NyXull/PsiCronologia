@@ -28,7 +28,7 @@
     <Button id="botaoEditarImagem" layoutX="125.0" layoutY="275.0" mnemonicParsing="false" prefHeight="30.0"
             prefWidth="200.0" text="EDITAR IMAGEM"/>
 
-    <Button layoutX="125.0" layoutY="375.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="AGENDA"/>
+    <Button layoutX="125.0" layoutY="375.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="AGENDA" onAction="#navegarParaAgenda"/>
 
     <Button layoutX="125.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0"
             text="BIBLIOTECA"/>
