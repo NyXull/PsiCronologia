@@ -1,0 +1,120 @@
+Button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-padding: 0px 0px;
+}
+
+Text {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+.titulo {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+.botoesEsquerda {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 9px 10px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+}
+
+.texto-destaque-painel {
+    -fx-font-size: 13.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+}
+
+.dia-semana {
+   -fx-font-size: 12pt;
+   -fx-fill: white;
+   -fx-font-family: "Nunito";
+}
+
+.botao-numero-dia-semana {
+    -fx-background-color: transparent;
+    -fx-text-fill: #182052;
+    -fx-padding: 0px 0px;
+}
+
+.botao-numero-dia-semana.selecionado {
+    -fx-background-color: transparent;
+    -fx-border-color: #9E3AFC;
+    -fx-padding: 0px 2px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20;
+}
+
+.domingo {
+    -fx-text-fill: red;
+}
+
+.quadrado-dia {
+    -fx-background-color: transparent;
+}
+
+.quadrado-dia .dia-semana {
+    -fx-fill: #182052;
+    -fx-font-size: 11pt;
+}
+
+.quadrado-dia .dia-mes {
+    -fx-font-size: 16pt;
+}
+
+.quadrado-horario {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-width: 1;
+    -fx-border-color: #182052;
+}
+
+.quadrado-horario .hora {
+    -fx-font-size: 9pt;
+}
+
+.quadrado-horario .nome-paciente {
+    -fx-font-size: 9pt;
+}
+
+#botaoSair {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-background-color: rgba(255, 0, 0, 0.35);
+}
+
+#fundo-branco-mes {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+}
+
+#fundo-azul-claro {
+    -fx-background-color: #3A91FC;
+    -fx-background-radius: 10;
+}
+
+#fundo-roxo-dias-semana {
+    -fx-background-color: #182052;
+}
+
+#retangulo-principal {
+     -fx-background-color: transparent;
+     -fx-border-color: #182052;
+     -fx-border-width: 2;
+     -fx-background-radius: 0;
+}
