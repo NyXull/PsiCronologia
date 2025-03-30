@@ -23,4 +23,9 @@ public class HomePacienteController {
         TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
     }
 
+    @FXML
+    private void navegarParaAgenda(ActionEvent event) throws IOException {
+        TrocarCena.trocarCena("/fxml/agenda-editar.fxml", "/css/agenda-editar.css", event);
+    }
+
 }
