@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.BibliotecaController">
+
+    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
+
+    <ImageView>
+        <Image url="@../img/efeito-fundo-roxo-237.png"/>
+    </ImageView>
+
+    <Text styleClass="titulo" text="BIBLIOTECA" x="300" y="50"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="INÍCIO" onAction="#navegarParaHome"/>
+
+    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20"
+            prefWidth="175" text="AGENDA" onAction="#navegarParaAgenda"/>
+
+    <Button id="botaoSair" layoutX="30" layoutY="475" mnemonicParsing="false" onAction="#navegarParaLogin"
+            prefHeight="20" prefWidth="175" text="SAIR"/>
+
+    <Button layoutX="900" layoutY="25" mnemonicParsing="false">
+        <graphic>
+            <ImageView fitHeight="75" fitWidth="75">
+                <Image url="@../img/java_logo_256-256.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Text text="ADICIONAR ARQUIVO" layoutX="860" layoutY="125"/>
+
+    <Button id="botaoSalvar" layoutX="600" layoutY="525" mnemonicParsing="false" text="SALVAR"/>
+
+    <ScrollPane layoutX="300" layoutY="150" prefWidth="800" prefHeight="350" style="-fx-background-color: transparent;"
+                vbarPolicy="ALWAYS" hbarPolicy="NEVER">
+        <GridPane>
+
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+            </columnConstraints>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="0"
+                  GridPane.rowIndex="0">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="A importância da Transferência no Processo Terapêutico"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="1"
+                  GridPane.rowIndex="0">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="A Psicologia na Educação Infantil: Perspectivas Práticas"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="2"
+                  GridPane.rowIndex="0">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Estudo Comparativo: Freud, Jung e Lacan"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="3"
+                  GridPane.rowIndex="0">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Mecanismos de Defesa e Suas Implicações Clínicas"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="0"
+                  GridPane.rowIndex="1">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Os Sonhos e o Inconsciente: Análise Psicanalítica"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="1"
+                  GridPane.rowIndex="1">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Psicanálise Aplicada à Sociedade Contemporânea"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="2"
+                  GridPane.rowIndex="1">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Psicopatologias Modernas: Ansiedade e Depressão"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="3"
+                  GridPane.rowIndex="1">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Saúde Mental e Resiliência: Abordagens Contemporâneas"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="0"
+                  GridPane.rowIndex="2">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Pag Diário_20-10-24"/>
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="1"
+                  GridPane.rowIndex="2">
+                <Button>
+                    <graphic>
+                        <ImageView fitHeight="125" fitWidth="125">
+                            <Image url="@../img/java_logo_256-256.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Text styleClass="nome-arquivo" wrappingWidth="130" textAlignment="CENTER"
+                      text="Pag Diário_2..."/>
+            </VBox>
+
+        </GridPane>
+    </ScrollPane>
+
+
+</Pane>
