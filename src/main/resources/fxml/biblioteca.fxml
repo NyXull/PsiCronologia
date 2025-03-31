@@ -37,7 +37,8 @@
 
     <Button id="botaoSalvar" layoutX="600" layoutY="525" mnemonicParsing="false" text="SALVAR"/>
 
-    <ScrollPane layoutX="300" layoutY="150" prefWidth="800" prefHeight="350" style="-fx-background-color: transparent;"
+[    <ScrollPane fx:id="scrollPane" layoutX="300" layoutY="150" prefWidth="800" prefHeight="350"
+                style="-fx-background-color: transparent;"
                 vbarPolicy="ALWAYS" hbarPolicy="NEVER">
         <GridPane>
 
@@ -50,7 +51,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="0"
                   GridPane.rowIndex="0">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -63,7 +64,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="1"
                   GridPane.rowIndex="0">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -76,7 +77,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="2"
                   GridPane.rowIndex="0">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -89,7 +90,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="3"
                   GridPane.rowIndex="0">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -102,7 +103,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="0"
                   GridPane.rowIndex="1">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -115,7 +116,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="1"
                   GridPane.rowIndex="1">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -128,7 +129,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="2"
                   GridPane.rowIndex="1">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -141,7 +142,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="3"
                   GridPane.rowIndex="1">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -154,7 +155,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="0"
                   GridPane.rowIndex="2">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
@@ -167,7 +168,7 @@
 
             <VBox alignment="CENTER" spacing="10" prefHeight="200" prefWidth="200" GridPane.columnIndex="1"
                   GridPane.rowIndex="2">
-                <Button>
+                <Button onAction="#mostrarPopupArquivo">
                     <graphic>
                         <ImageView fitHeight="125" fitWidth="125">
                             <Image url="@../img/java_logo_256-256.png"/>
