@@ -1,0 +1,82 @@
+Button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-padding: 0px 0px;
+}
+
+Text {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+GridPane {
+    -fx-background-color: rgba(222, 58, 252, 0.2);
+    -fx-background-radius: 10;
+}
+
+.titulo {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+.botoesEsquerda {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 9px 10px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #182052;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #5F3AFC;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+    -fx-cursor: default;
+}
+
+.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
+    -fx-scale-x: 0;
+    -fx-scale-y: 0;
+}
+
+#botaoSair {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(255, 255, 255, 0.35);
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-background-color: rgba(255, 0, 0, 0.35);
+}
+
+#botaoSalvar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
+    -fx-pref-width: 200;
+}
