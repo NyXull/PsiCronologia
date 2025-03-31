@@ -37,6 +37,11 @@ public class HomeController implements Initializable {
         TrocarCena.trocarCena("/fxml/agenda-visualizacao.fxml", "/css/agenda-visualizacao.css", event);
     }
 
+    @FXML
+    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
+        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         double radius = 75;

@@ -51,6 +51,12 @@ public class RelatorioController {
     }
 
     @FXML
+    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
+        fecharPopup();
+        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
+    }
+
+    @FXML
     private void mostrarPopupExcluir() {
         if (popupExcluir != null && popupExcluir.isShowing()) {
             fecharPopup();

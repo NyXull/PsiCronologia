@@ -61,6 +61,12 @@ public class AgendaEditarController {
         TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
     }
 
+    @FXML
+    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
+        fecharPopup();
+        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
+    }
+
     public void initialize() {
         criarBotoesDias();
 
