@@ -38,7 +38,7 @@
             prefWidth="175" text="RELATÓRIOS" onAction="#navegarParaRelatorio"/>
 
     <Button styleClass="botoesEsquerda" layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20"
-            prefWidth="175" text="BIBLIOTECA"/>
+            prefWidth="175" text="BIBLIOTECA" onAction="#navegarParaBiblioteca"/>
 
     <Button id="botaoSair" layoutX="30" layoutY="475" mnemonicParsing="false" onAction="#navegarParaLogin"
             prefHeight="20" prefWidth="175" text="SAIR"/>

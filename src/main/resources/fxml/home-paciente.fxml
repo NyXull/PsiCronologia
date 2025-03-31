@@ -34,6 +34,6 @@
 
     <Button layoutX="75" layoutY="400" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="RELATÓRIOS" onAction="#navegarParaRelatorio"/>
 
-    <Button layoutX="75" layoutY="475" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="BIBLIOTECA"/>
+    <Button layoutX="75" layoutY="475" mnemonicParsing="false" prefHeight="20" prefWidth="300" text="BIBLIOTECA" onAction="#navegarParaBiblioteca"/>
 
 </Pane>

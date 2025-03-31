@@ -31,7 +31,7 @@
     <Button layoutX="125.0" layoutY="375.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="AGENDA" onAction="#navegarParaAgenda"/>
 
     <Button layoutX="125.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0"
-            text="BIBLIOTECA"/>
+            text="BIBLIOTECA" onAction="#navegarParaBiblioteca"/>
 
     <Button id="botaoSair" layoutX="125.0" layoutY="525.0" mnemonicParsing="false" onAction="#navegarParaLogin"
             prefHeight="30.0" prefWidth="200.0" text="SAIR"/>
