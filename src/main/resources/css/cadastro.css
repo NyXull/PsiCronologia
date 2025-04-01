@@ -1,31 +1,35 @@
-.titulo {
+/* Estilo do painel de fundo */
+.painel-fundo {
+    -fx-background-color: #182052;
+}
+
+/* Retângulo de fundo */
+.retangulo-fundo {
+    -fx-fill: #C5BAF4;
+}
+
+/* Títulos */
+.texto-titulo {
     -fx-font-size: 42.5pt;
     -fx-font-family: "Comfortaa";
     -fx-fill: white;
 }
 
-.subtitulo {
+.texto-subtitulo {
     -fx-font-size: 34.5pt;
     -fx-font-family: "Comfortaa";
     -fx-fill: #182052;
 }
 
-.label {
+/* Rótulos dos campos */
+.texto-rotulo {
     -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
     -fx-fill: #182052;
 }
 
-#botaoCadastrar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-}
-
-TextField, PasswordField {
+/* Campos de entrada */
+.campo-entrada {
     -fx-background-color: transparent;
     -fx-text-fill: #182052;
     -fx-border-color: transparent;
@@ -34,4 +38,20 @@ TextField, PasswordField {
     -fx-font-family: "Nunito";
     -fx-pref-width: 325;
     -fx-prompt-text-fill: #182052;
+}
+
+/* Linhas dos campos */
+.linha-campo {
+    -fx-stroke: #182052;
+    -fx-stroke-width: 1.5;
+}
+
+/* Botão de cadastro */
+.botao-cadastrar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
 }
