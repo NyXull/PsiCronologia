@@ -37,7 +37,7 @@
 
     <Button id="botaoSalvar" layoutX="600" layoutY="525" mnemonicParsing="false" text="SALVAR"/>
 
-[    <ScrollPane fx:id="scrollPane" layoutX="300" layoutY="150" prefWidth="800" prefHeight="350"
+    <ScrollPane fx:id="scrollPane" layoutX="300" layoutY="150" prefWidth="800" prefHeight="350"
                 style="-fx-background-color: transparent;"
                 vbarPolicy="ALWAYS" hbarPolicy="NEVER">
         <GridPane>
