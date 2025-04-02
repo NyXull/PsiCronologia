@@ -16,11 +16,6 @@ Line {
     -fx-stroke-width: 1.5;
 }
 
-/* Rectangle de fundo */
-Rectangle {
-    -fx-fill: #C5BAF4;
-}
-
 /* Títulos */
 .texto-titulo {
     -fx-font-size: 42.5pt;
@@ -83,6 +78,16 @@ Rectangle {
     -fx-background-color: #c38ebc;
     -fx-background-radius: 30px;
     -fx-padding: 10px 40px;
+}
+
+/* Estilo do painel de fundo */
+.painel-fundo {
+    -fx-background-color: #182052;
+}
+
+/* Retângulo de fundo */
+.retangulo-fundo {
+    -fx-fill: #C5BAF4;
 }
 
 /* Efeito de underline abaixo do texto */

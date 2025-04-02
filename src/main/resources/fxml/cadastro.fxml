@@ -16,30 +16,30 @@
     <Rectangle styleClass="retangulo-fundo" height="600" width="675" layoutX="475"/>
 
     <!-- Títulos -->
-    <Text styleClass="texto-titulo" text="PsiOrganize" layoutX="65" layoutY="350"/>
-    <Text styleClass="texto-subtitulo" text="CADASTRO" layoutX="700" layoutY="125"/>
+    <Text styleClass="texto-titulo" layoutX="65" layoutY="350" text="PsiOrganize"/>
+    <Text styleClass="texto-subtitulo" layoutX="700" layoutY="125" text="CADASTRO"/>
 
     <!-- Campo de Nome -->
-    <Text styleClass="texto-rotulo" text="NOME" layoutX="665" layoutY="200"/>
+    <Text styleClass="texto-rotulo" layoutX="665" layoutY="200" text="NOME"/>
     <TextField styleClass="campo-entrada" layoutX="655" layoutY="215" promptText="Nome"/>
     <Line styleClass="linha-campo" startX="665" endX="1000" startY="250" endY="250"/>
 
     <!-- Campo de Email -->
-    <Text styleClass="texto-rotulo" text="EMAIL" layoutX="665" layoutY="285"/>
+    <Text styleClass="texto-rotulo" layoutX="665" layoutY="285" text="EMAIL"/>
     <TextField styleClass="campo-entrada" layoutX="655" layoutY="300" promptText="Email"/>
     <Line styleClass="linha-campo" startX="665" endX="1000" startY="335" endY="335"/>
 
     <!-- Campo de Senha -->
-    <Text styleClass="texto-rotulo" text="SENHA" layoutX="665" layoutY="370"/>
+    <Text styleClass="texto-rotulo" layoutX="665" layoutY="370" text="SENHA"/>
     <PasswordField styleClass="campo-entrada" layoutX="655" layoutY="385" promptText="Senha"/>
     <Line styleClass="linha-campo" startX="665" endX="1000" startY="420" endY="420"/>
 
     <!-- Imagens -->
-    <ImageView styleClass="imagem-clipboard" layoutX="165" layoutY="200">
+    <ImageView layoutX="165" layoutY="200">
         <Image url="@../img/clipboard_resized.png"/>
     </ImageView>
 
-    <ImageView styleClass="imagem-efeito-fundo">
+    <ImageView>
         <Image url="@../img/efeito-fundo-roxo.png"/>
     </ImageView>
 
