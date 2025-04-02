@@ -1,31 +1,4 @@
-.titulo {
-    -fx-font-size: 42.5pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: white;
-}
-
-.subtitulo {
-    -fx-font-size: 34.5pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.label {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-
-#botaoEntrar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-}
-
+/* Campos de entrada de texto */
 TextField, PasswordField {
     -fx-background-color: transparent;
     -fx-text-fill: #182052;
@@ -37,26 +10,73 @@ TextField, PasswordField {
     -fx-prompt-text-fill: #182052;
 }
 
-#botaoCadastrar {
+/* Line do campo de entrada */
+Line {
+    -fx-stroke: #182052;
+    -fx-stroke-width: 1.5;
+}
+
+/* Rectangle de fundo */
+Rectangle {
+    -fx-fill: #C5BAF4;
+}
+
+/* Títulos */
+.texto-titulo {
+    -fx-font-size: 42.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: white;
+}
+
+.texto-subtitulo {
+    -fx-font-size: 34.5pt;
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+/* Campos de entrada */
+.campo-entrada {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+}
+
+/* Botão de entrar */
+.botao-entrar {
+    -fx-font-size: 12.5pt;
+    -fx-font-family: "Nunito";
+    -fx-text-fill: #182052;
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 40px;
+}
+
+/* Botão de cadastrar */
+.botao-cadastrar {
     -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
     -fx-text-fill: #5F3AFC;
     -fx-background-color: transparent;
 }
 
-#labelPopup {
+/* Label de Pop-up */
+.label-popup {
     -fx-background-color: #c38ebc;
     -fx-background-radius: 25px;
     -fx-padding: 18px 150px;
 }
 
-#textPopup1, #textPopup2 {
+/* Text do Pop-up */
+.text-popup {
     -fx-font-size: 11.5pt;
     -fx-font-family: "Nunito";
     -fx-fill: #182052;
+    -fx-stroke-type: OUTSIDE;
+    -fx-wrappingWidth: 200;
 }
 
-#botaoPopup {
+/* Botão de Pop-up */
+.botao-popup {
     -fx-font-size: 12.5pt;
     -fx-font-family: "Nunito";
     -fx-text-fill: #182052;
@@ -65,3 +85,7 @@ TextField, PasswordField {
     -fx-padding: 10px 40px;
 }
 
+/* Efeito de underline abaixo do texto */
+#textPopup2 {
+    -fx-underline: true;
+}
