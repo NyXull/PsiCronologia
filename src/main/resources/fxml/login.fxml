@@ -8,21 +8,26 @@
 <?import javafx.scene.text.*?>
 <Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-    <Rectangle fill="#C5BAF4" height="600" width="675" x="475"/>
 
-    <Text styleClass="subtitulo" text="LOGIN" x="750" y="100.0"/>
+    <!-- Retângulo de fundo -->
+    <Rectangle height="600" width="675" layoutX="475"/>
 
-    <Text styleClass="label" text="EMAIL" x="665" y="215"/>
+    <!-- Títulos -->
+    <Text styleClass="texto-titulo" layoutX="65" layoutY="350" text="PsiOrganize"/>
+    <Text styleClass="texto-subtitulo" layoutX="750" layoutY="100" text="LOGIN"/>
+
+    <!-- Campo de Email -->
+    <Text styleClass="campo-entrada" layoutX="665" layoutY="215" text="EMAIL"/>
     <TextField layoutX="655" layoutY="230" promptText="Email"/>
+    <Line startX="665" endX="1000" startY="265" endY="265"/>
 
-    <Line endX="1000" endY="265" startX="665" startY="265" stroke="#182052" strokeWidth="1.5"/>
-
-    <Text styleClass="label" text="SENHA" x="665" y="300"/>
+    <!-- Campo de Senha -->
+    <Text styleClass="campo-entrada" layoutX="665" layoutY="300" text="SENHA"/>
     <PasswordField layoutX="655" layoutY="315" promptText="Senha"/>
+    <Line startX="665" endX="1000" startY="350" endY="350"/>
 
-    <Line endX="1000" endY="350" startX="665" startY="350" stroke="#182052" strokeWidth="1.5"/>
-
-    <ImageView x="165" y="200">
+    <!-- Imagens -->
+    <ImageView layoutX="165" layoutY="200">
         <Image url="@../img/clipboard_resized.png"/>
     </ImageView>
 
@@ -30,23 +35,29 @@
         <Image url="@../img/efeito-fundo-roxo.png"/>
     </ImageView>
 
-    <Text fill="WHITE" styleClass="titulo" text="PsiOrganize" x="65" y="350"/>
-
-    <Button id="botaoEntrar" layoutX="740.0" layoutY="435" mnemonicParsing="false" text="ENTRAR"
+    <!-- Botão de Entrar -->
+    <Button styleClass="botao-entrar" layoutX="740" layoutY="435" mnemonicParsing="false" text="ENTRAR"
             onAction="#navegarParaHome"/>
 
-    <Button id="botaoCadastrar" layoutX="650" layoutY="355" mnemonicParsing="false" onAction="#navegarParaCadastro"
-            text="CADASTRE-SE AGORA"/>
-    <Button id="botaoPopup" layoutX="500" layoutY="25.0" mnemonicParsing="false" onAction="#alternarVisibilidadePopup"
-            text="Pop-up"/>
+    <!-- Botão de Cadastro -->
+    <Button styleClass="botao-cadastrar" layoutX="650" layoutY="355" mnemonicParsing="false" text="CADASTRE-SE AGORA"
+            onAction="#navegarParaCadastro"/>
 
-    <Label fx:id="labelPopup" layoutX="655.0" layoutY="120.0"/>
+    <!-- Botão de Pop-up -->
+    <Button styleClass="botao-popup" layoutX="500" layoutY="25" mnemonicParsing="false" text="Pop-up"
+            onAction="#alternarVisibilidadePopup"/>
 
-    <Text fx:id="textPopup1" layoutX="735" layoutY="145" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="E-mail ou senha incorretos." wrappingWidth="200.0"/>
-    <Text fx:id="textPopup2" layoutX="735" layoutY="165" strokeType="OUTSIDE" strokeWidth="0.0" text="Tente novamente."
-          underline="true" wrappingWidth="200.0"/>
+    <!-- Label do Pop-up -->
+    <Label fx:id="labelPopup" styleClass="label-popup" layoutX="655" layoutY="120"/>
+
+    <!-- Texts do Pop-up -->
+    <Text fx:id="textPopup1" styleClass="text-popup" layoutX="735" layoutY="145" text="E-mail ou senha incorretos."/>
+
+    <Text fx:id="textPopup2" styleClass="text-popup" layoutX="735" layoutY="165" text="Tente novamente."/>
+
+    <!-- Imagem do Pop-up -->
     <ImageView fx:id="imageViewPopup" layoutX="685" layoutY="140">
         <Image url="@../img/Duke.png"/>
     </ImageView>
+
 </Pane>
