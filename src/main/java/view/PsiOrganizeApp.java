@@ -1,38 +1,43 @@
 package view;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
 public class PsiOrganizeApp extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    private static Scene mainScene;
 
     @Override
-    public void start(Stage stage) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
-
-            Scene sceneCadastro = new Scene(root, 1150, 600, javafx.scene.paint.Color.rgb(24, 32, 82));
-            sceneCadastro.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/login.css")).toExternalForm());
-            sceneCadastro.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/fonts.css")).toExternalForm());
-
-            stage.setResizable(false);
-            stage.setTitle("PsiOrganize");
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/img/icon.png")).toExternalForm()));
-
-            stage.setScene(sceneCadastro);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+	public void start(Stage primaryStage) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+			ScrollPane scrollPane = loader.load();			
+			
+			scrollPane.setFitToHeight(true);
+			scrollPane.setFitToWidth(true);
+			
+			mainScene = new Scene(scrollPane);
+			primaryStage.setScene(mainScene);
+			primaryStage.setTitle("PsiOrganize");
+			primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/img/icon_cerebro.png")).toExternalForm()));
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+    
+    public static Scene getMainScene() {
+    	return mainScene;
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
     }
 }

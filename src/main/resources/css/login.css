@@ -1,96 +1,101 @@
-/* Campos de entrada de texto */
-TextField, PasswordField {
-    -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 325;
-    -fx-prompt-text-fill: #182052;
-}
-
-/* Line do campo de entrada */
-Line {
-    -fx-stroke: #182052;
-    -fx-stroke-width: 1.5;
-}
-
-/* Títulos */
-.texto-titulo {
-    -fx-font-size: 42.5pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: white;
-}
-
-.texto-subtitulo {
-    -fx-font-size: 34.5pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-/* Campos de entrada */
-.campo-entrada {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-/* Botão de entrar */
-.botao-entrar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-}
-
-/* Botão de cadastrar */
-.botao-cadastrar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #5F3AFC;
-    -fx-background-color: transparent;
-}
-
-/* Label de Pop-up */
-.label-popup {
-    -fx-background-color: #c38ebc;
-    -fx-background-radius: 25px;
-    -fx-padding: 18px 150px;
-}
-
-/* Text do Pop-up */
-.text-popup {
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-    -fx-stroke-type: OUTSIDE;
-    -fx-wrappingWidth: 200;
-}
-
-/* Botão de Pop-up */
-.botao-popup {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #c38ebc;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-}
-
-/* Estilo do painel de fundo */
-.painel-fundo {
+/* Fundo e imagem do VBox da esquerda */
+#vbox1Login {
     -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psiorganize.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
 }
 
-/* Retângulo de fundo */
-.retangulo-fundo {
-    -fx-fill: #C5BAF4;
+/* Fundo do VBox da direita */
+#vbox2Login {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
 }
 
-/* Efeito de underline abaixo do texto */
-#textPopup2 {
+#txtLogin {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#txtEmail, #txtSenha {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 400px;
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #182052 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;
+    
+    -fx-prompt-text-fill: #5F3AFC;
+}
+
+#txtEmail:focused, #txtSenha:focused {
+    -fx-border-color: transparent transparent #9E3AFC transparent;
+}
+
+#btCadastro {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3A91FC;
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
     -fx-underline: true;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 400px;
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btCadastro:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btEntrar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btEntrar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#hBoxLogin {
+    -fx-alignment: CENTER;
+    -fx-padding: 80px 0 10px 0;
+}
+
+#hBoxEmail {
+    -fx-alignment: CENTER;
+    -fx-padding: 20 0 0 0px;
+}
+
+#hBoxSenha {
+    -fx-alignment: CENTER;
+    -fx-padding: 5 0 0 0;
+    -fx-pref-height: -1;
+}
+
+#hBoxCadastro {
+    -fx-alignment: CENTER;
+    -fx-padding: 5 0 5 0;
+    -fx-pref-height: 5px;
+}
+
+#hBoxEntrar {
+    -fx-alignment: CENTER;
+    -fx-padding: 30 0 0 0; 
+    -fx-pref-height: 2px;
 }

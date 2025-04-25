@@ -1,63 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.*?>
-<Pane styleClass="painel-fundo" xmlns="http://javafx.com/javafx/23.0.1"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-    <!-- Retângulo de fundo -->
-    <Rectangle styleClass="retangulo-fundo" height="600" width="675" layoutX="475"/>
-
-    <!-- Títulos -->
-    <Text styleClass="texto-titulo" layoutX="65" layoutY="350" text="PsiOrganize"/>
-    <Text styleClass="texto-subtitulo" layoutX="750" layoutY="100" text="LOGIN"/>
-
-    <!-- Campo de Email -->
-    <Text styleClass="campo-entrada" layoutX="665" layoutY="215" text="EMAIL"/>
-    <TextField layoutX="655" layoutY="230" promptText="Email"/>
-    <Line startX="665" endX="1000" startY="265" endY="265"/>
-
-    <!-- Campo de Senha -->
-    <Text styleClass="campo-entrada" layoutX="665" layoutY="300" text="SENHA"/>
-    <PasswordField layoutX="655" layoutY="315" promptText="Senha"/>
-    <Line startX="665" endX="1000" startY="350" endY="350"/>
-
-    <!-- Imagens -->
-    <ImageView layoutX="165" layoutY="200">
-        <Image url="@../img/clipboard_resized.png"/>
-    </ImageView>
-
-    <ImageView>
-        <Image url="@../img/efeito-fundo-roxo.png"/>
-    </ImageView>
-
-    <!-- Botão de Entrar -->
-    <Button styleClass="botao-entrar" layoutX="740" layoutY="435" mnemonicParsing="false" text="ENTRAR"
-            onAction="#navegarParaHome"/>
-
-    <!-- Botão de Cadastro -->
-    <Button styleClass="botao-cadastrar" layoutX="650" layoutY="355" mnemonicParsing="false" text="CADASTRE-SE AGORA"
-            onAction="#navegarParaCadastro"/>
-
-    <!-- Botão de Pop-up -->
-    <Button styleClass="botao-popup" layoutX="500" layoutY="25" mnemonicParsing="false" text="Pop-up"
-            onAction="#alternarVisibilidadePopup"/>
-
-    <!-- Label do Pop-up -->
-    <Label fx:id="labelPopup" styleClass="label-popup" layoutX="655" layoutY="120"/>
-
-    <!-- Texts do Pop-up -->
-    <Text fx:id="textPopup1" styleClass="text-popup" layoutX="735" layoutY="145" text="E-mail ou senha incorretos."/>
-
-    <Text fx:id="textPopup2" styleClass="text-popup" layoutX="735" layoutY="165" text="Tente novamente."/>
-
-    <!-- Imagem do Pop-up -->
-    <ImageView fx:id="imageViewPopup" layoutX="685" layoutY="140">
-        <Image url="@../img/Duke.png"/>
-    </ImageView>
-
-</Pane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <content>
+      <HBox fx:id="hboxLogin" prefHeight="500" prefWidth="700">
+         <children>
+            <VBox fx:id="vbox1Login" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="vbox2Login" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox fx:id="hBoxLogin" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text fx:id="txtLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hBoxEmail" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtEmail" promptText="Email" />                        	
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hBoxSenha" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <PasswordField fx:id="txtSenha" promptText="Senha" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hBoxCadastro" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btCadastro" mnemonicParsing="false" onAction="#onBtCadastroAction" text="CADASTRE-SE AGORA" />
+                     </children></HBox>
+                  <HBox fx:id="hBoxEntrar" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#onBtEntrarAction" text="ENTRAR" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </content>
+</ScrollPane>

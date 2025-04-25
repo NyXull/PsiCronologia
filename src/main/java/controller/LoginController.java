@@ -1,60 +1,57 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import model.TrocarCena;
 
-import java.io.IOException;
-
-public class LoginController {
-
-    public Label labelPopup;
-    public Text textPopup1;
-    public Text textPopup2;
-    public ImageView imageViewPopup;
-    private boolean isPopupVisivel = false;
+public class LoginController implements Initializable {
 
     @FXML
-    private void initialize() {
-        if (labelPopup != null) {
-            ocultarPopup();
-        }
-    }
+    private VBox vbox1Login;
 
     @FXML
-    private void navegarParaCadastro(ActionEvent evento) throws IOException {
-        TrocarCena.trocarCena("/fxml/cadastro.fxml", "/css/cadastro.css", evento);
-    }
+    private VBox vbox2Login;
 
     @FXML
-    private void navegarParaHome(ActionEvent evento) throws IOException {
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", evento);
-    }
+    private HBox hboxLogin;
 
     @FXML
-    private void alternarVisibilidadePopup() {
-        if (isPopupVisivel) {
-            ocultarPopup();
-        } else {
-            exibirPopup();
-        }
-        isPopupVisivel = !isPopupVisivel;
-    }
+    private TextField txtEmail;
 
-    private void exibirPopup() {
-        labelPopup.setVisible(true);
-        textPopup1.setVisible(true);
-        textPopup2.setVisible(true);
-        imageViewPopup.setVisible(true);
-    }
+    @FXML
+    private PasswordField txtSenha;
 
-    private void ocultarPopup() {
-        labelPopup.setVisible(false);
-        textPopup1.setVisible(false);
-        textPopup2.setVisible(false);
-        imageViewPopup.setVisible(false);
+    @FXML
+    private Button btCadastro;
+
+    @FXML
+    private Button btEntrar;
+
+    @FXML
+    private Text txtLogin;
+    
+    @FXML
+    public void onBtCadastroAction() {
+    	System.out.println("onBtCadastroAction");    	
     }
+    
+    @FXML
+    public void onBtEntrarAction() {
+    	System.out.println("onBtEntrarAction");
+    }
+    
+    @Override
+    public void initialize(URL uri, ResourceBundle rb) {
+    	// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+        vbox1Login.prefWidthProperty().bind(hboxLogin.widthProperty().multiply(0.25));
+        vbox2Login.prefWidthProperty().bind(hboxLogin.widthProperty().multiply(0.75));        
+    } 
 }
