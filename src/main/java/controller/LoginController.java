@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import util.ViewLoader;
 
 public class LoginController implements Initializable {
 
@@ -40,7 +41,7 @@ public class LoginController implements Initializable {
     
     @FXML
     public void onBtCadastroAction() {
-    	System.out.println("onBtCadastroAction");    	
+    	ViewLoader.loadView("/fxml/cadastro.fxml", "/css/cadastro.css");    	
     }
     
     @FXML

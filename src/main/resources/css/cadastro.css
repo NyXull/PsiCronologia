@@ -1,57 +1,60 @@
-/* Estilo do painel de fundo */
-.painel-fundo {
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Cadastro {
     -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psiorganize.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
 }
 
-/* Retângulo de fundo */
-.retangulo-fundo {
-    -fx-fill: #C5BAF4;
+/* Fundo do VBox da direita */
+#vBox2Cadastro {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
 }
 
-/* Títulos */
-.texto-titulo {
-    -fx-font-size: 42.5pt;
+#txtCadastro {
     -fx-font-family: "Comfortaa";
-    -fx-fill: white;
-}
-
-.texto-subtitulo {
-    -fx-font-size: 34.5pt;
-    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
     -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
 }
 
-/* Rótulos dos campos */
-.texto-rotulo {
-    -fx-font-size: 12.5pt;
+#txtNome, #txtEmail, #txtSenha {
     -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
+    -fx-font-size: 12px;
+    -fx-pref-width: 400px;
+    -fx-alignment: CENTER_LEFT;
 
-/* Campos de entrada */
-.campo-entrada {
     -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 325;
-    -fx-prompt-text-fill: #182052;
+    -fx-border-color: transparent transparent #182052 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;
+    
+    -fx-prompt-text-fill: #5F3AFC;
 }
 
-/* Linhas dos campos */
-.linha-campo {
-    -fx-stroke: #182052;
-    -fx-stroke-width: 1.5;
+#txtNome:focused, #txtEmail:focused, #txtSenha:focused {
+    -fx-border-color: transparent transparent #9E3AFC transparent;
 }
 
-/* Botão de cadastro */
-.botao-cadastrar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
+#btCadastrar {
     -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btCadastrar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#vBoxTextFieldsBt, #hBoxCadastro {
+    -fx-alignment: CENTER;
 }
