@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import util.ViewLoader;
 
 public class CadastroPacienteController implements Initializable{
 
@@ -41,7 +42,7 @@ public class CadastroPacienteController implements Initializable{
     
     @FXML
     public void onBtCadastrarAction() {
-    	System.out.println("onBtCadastrarAction");
+    	ViewLoader.loadView("/fxml/cadastro-paciente-finalizado.fxml", "/css/cadastro-paciente-finalizado.css");
     }
 
 	@Override

@@ -1,26 +1,54 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import model.TrocarCena;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import util.ViewLoader;
 
-import java.io.IOException;
+public class CadastroPacienteFinalizadoController implements Initializable{
 
-public class CadastroPacienteFinalizadoController {
-
-    @FXML
-    private void navegarParaCadastroPaciente(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/cadastro-paciente.fxml", "/css/cadastro-paciente.css", event);
-    }
-
-    @FXML
-    private void navegarParaHome(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", event);
-    }
-
-    @FXML
-    private void navegarParaHomePaciente(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/home-paciente.fxml", "/css/home-paciente.css", event);
-    }
-
+	@FXML
+	private HBox hBoxPaiCadastroPacienteFinalizado;
+	
+	@FXML
+	private VBox vBox1CadastroPacienteFinalizado;
+	
+	@FXML
+	private VBox vBox2CadastroPacienteFinalizado;
+	
+	@FXML
+	private Button btHome;
+	
+	@FXML
+	private Button btEditarPaciente;
+	
+	@FXML
+	private Button btNovoPaciente;
+	
+	@FXML
+	public void onBtHomeAction() {
+		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+	}
+	
+	@FXML
+	public void onBtEditarPacienteAction() {
+		System.out.println("onBtEditarPacienteAction");
+	}
+	
+	@FXML
+	public void onBtNovoPacienteAction() {
+		ViewLoader.loadView("/fxml/cadastro-paciente.fxml", "/css/cadastro-paciente.css");
+	}
+	
+	@Override
+	public void initialize(URL uri, ResourceBundle rb) {
+		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+		vBox1CadastroPacienteFinalizado.prefWidthProperty().bind(hBoxPaiCadastroPacienteFinalizado.widthProperty().multiply(0.25));
+		vBox2CadastroPacienteFinalizado.prefWidthProperty().bind(hBoxPaiCadastroPacienteFinalizado.widthProperty().multiply(0.75));		
+	}
 }
