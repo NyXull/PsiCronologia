@@ -37,7 +37,7 @@ public class CadastroPacienteFinalizadoController implements Initializable{
 	
 	@FXML
 	public void onBtEditarPacienteAction() {
-		System.out.println("onBtEditarPacienteAction");
+		ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
 	}
 	
 	@FXML

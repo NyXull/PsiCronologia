@@ -1,17 +1,71 @@
-Button {
-    -fx-background-color: transparent;
-    -fx-border-color: #c38ebc;
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: #182052;
-    -fx-padding: 8px 10px;
-    -fx-font-size: 13.5pt;
-    -fx-font-family: "Nunito";
-    -fx-border-radius: 10px;
+/* Fundo e imagem do VBox da esquerda */
+#vBox1HomePaciente {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER; 
 }
 
-.titulo {
-    -fx-font-size: 15.5pt;
-    -fx-font-family: "Comfortaa";
+/* Fundo do VBox da direita */
+#vBox2HomePaciente {    
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+#txtSaudacao{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 28px;
+    -fx-fill: #d9d9d9;
+    -fx-text-alignment: CENTER;
+}
+
+#btProntuario, #btAgenda, #btFinanceiro, #btRelatorios, #btBiblioteca{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #182052;
+
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btProntuario:hover, #btAgenda:hover, #btFinanceiro:hover, 
+#btRelatorios:hover, #btBiblioteca:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#gridPaneCabeca{
+	-fx-background-color: transparent;
+    -fx-background-image: url("../img/cabeca.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;  
+    -fx-pref-width: 350px; 
+    -fx-pref-height: 400px; 
+    -fx-alignment: CENTER;
+}
+
+#hBoxCabeca{
+	-fx-alignment: CENTER;
+}
+
+#hboxLinha, #hBoxNomeDoPacienteAqui{
+	-fx-alignment: TOP_CENTER;
+}
+
+#txtPaciente, #txtNomeDoPacienteAqui{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
     -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
 }

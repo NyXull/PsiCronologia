@@ -1,36 +1,69 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import model.TrocarCena;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import java.io.IOException;
+public class HomePacienteController implements Initializable{
 
-public class HomePacienteController {
-
-    @FXML
-    private void navegarParaProntuarioLista(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/prontuario-lista.fxml", "/css/prontuario-lista.css", event);
-    }
-
-    @FXML
-    private void navegarParaFinanceiroPagamento(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/financeiro-pagamento.fxml", "/css/financeiro-pagamento.css", event);
-    }
-
-    @FXML
-    private void navegarParaRelatorio(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
-    }
-
-    @FXML
-    private void navegarParaAgenda(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/agenda-editar.fxml", "/css/agenda-editar.css", event);
-    }
-
-    @FXML
-    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
-    }
-
+	 @FXML
+	 private VBox vBox1HomePaciente;
+	 
+	 @FXML
+	 private VBox vBox2HomePaciente;
+	 
+	 @FXML
+	 private HBox hBoxPaiHomePaciente;
+	
+	 @FXML
+	 private Button btProntuario;
+	 
+	 @FXML
+	 private Button btAgenda;
+	 
+	 @FXML
+	 private Button btFinanceiro;
+	 
+	 @FXML
+	 private Button btRelatorios;
+	 
+	 @FXML
+	 private Button btBiblioteca;
+	 
+	 @FXML
+	 public void onBtProntuario() {
+		 System.out.println("onBtProntuario");
+	 }
+	 
+	 @FXML
+	 public void onBtAgenda() {
+		 System.out.println("onBtAgenda");
+	 }
+	 
+	 @FXML
+	 public void onBtFinanceiro() {
+		 System.out.println("onBtFinanceiro");
+	 }
+	 
+	 @FXML
+	 public void onBtRelatorios() {
+		 System.out.println("onBtRelatorios");
+	 }
+	 
+	 @FXML
+	 public void onBtBiblioteca() {
+		 System.out.println("onBtBiblioteca");
+	 }	 
+	 
+	 @Override
+	public void initialize(URL uri, ResourceBundle rb) {
+		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+		 vBox1HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.25));
+		 vBox2HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.75));		
+	}    
 }
