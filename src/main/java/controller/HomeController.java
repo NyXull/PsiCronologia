@@ -1,67 +1,66 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
-import model.Paciente;
-import model.TrocarCena;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import util.ViewLoader;
+
 public class HomeController implements Initializable {
-    @FXML
-    private ImageView imageView;
-
-    @FXML
-    private ListView<Paciente> listViewPacientes;
-
-    @FXML
-    private void navegarParaLogin(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/login.fxml", "/css/login.css", event);
-    }
-
-    @FXML
-    private void navegarParaCadastroPaciente(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/cadastro-paciente.fxml", "/css/cadastro-paciente.css", event);
-    }
-
-    @FXML
-    private void navegarParaAgenda(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/agenda-visualizacao.fxml", "/css/agenda-visualizacao.css", event);
-    }
-
-    @FXML
-    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
-    }
-
+    
+	@FXML
+	private HBox hBoxPaiHome;
+	
+	@FXML
+	private VBox vBox1Home;
+	
+	@FXML
+	private VBox vBox2Home;
+	
+	@FXML
+	private Button btAgenda;
+	
+	@FXML
+	private Button btBiblioteca;
+	
+	@FXML
+	private Button btSair;
+	
+	@FXML
+	private Button btAdicionar;
+	
+	@FXML
+	private TextField txtPesquisar;
+	
+	@FXML
+	private void onBtAgendaAction() {
+		System.out.println("onBtAgendaAction");
+	}
+	
+	@FXML
+	private void onBtBibliotecaAction() {
+		System.out.println("onBtBibliotecaAction");
+	}
+	
+	@FXML
+	private void onBtSairAction() {
+		System.out.println("onBtSairAction");
+	}
+	
+	@FXML
+	private void onBtAdicionarAction() {
+		System.out.println("onBtAdicionarAction");
+	}
+	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        double radius = 75;
-        Circle clip = new Circle(radius);
-        clip.setCenterX(radius);
-        clip.setCenterY(radius);
-
-        imageView.setPreserveRatio(false);
-        imageView.setFitWidth(radius * 2);
-        imageView.setFitHeight(radius * 2);
-        imageView.setClip(clip);
-        imageView.setSmooth(true);
-
-        ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
-
-        for (int i = 1; i <= 100; i++) {
-            pacientes.add(new Paciente("Paciente " + i));
-        }
-
-        listViewPacientes.setItems(pacientes);
+    	// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+    	vBox1Home.prefWidthProperty().bind(hBoxPaiHome.widthProperty().multiply(0.25));
+    	vBox2Home.prefWidthProperty().bind(hBoxPaiHome.widthProperty().multiply(0.75)); 
     }
-
 }

@@ -1,66 +1,100 @@
-.titulo {
-    -fx-font-size: 31.5pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: white;
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Home {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
 }
 
-.subtitulo {
-    -fx-font-size: 22.5pt;
-    -fx-font-family: "Comfortaa";
+/* Fundo do VBox da direita */
+#vBox2Home {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
+}
+
+#txtSaudacao{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 28px;
+    -fx-fill: #d9d9d9;
+    -fx-text-alignment: CENTER;
+}
+
+#btAgenda, #btBiblioteca{
+	 -fx-background-color: transparent;
+    -fx-border-color: #d9d9d9;
+    -fx-text-fill: #d9d9d9;
+
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btAgenda:hover, #btBiblioteca:hover, #btSair:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btSair{
+	 -fx-background-color: rgba(188, 24, 35, 0.7);
+    -fx-border-color: #d9d9d9;
+    -fx-text-fill: #d9d9d9;
+
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;	
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+   
+}
+#txtTitulo{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 30px;
     -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
 }
 
-Button {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
+#vboxPesquisa{
+	-fx-border-width: 1px 1px 1px 1px; 
     -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 9px 10px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
+    -fx-border-color: #DE3AFC;
+    -fx-border-radius: 5px;
+    -fx-alignment: CENTER;
+    
 }
 
-#botaoSair {
-    -fx-background-color: rgba(255, 0, 0, 0.35);
+#txtPesquisar{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 50px;
+    -fx-alignment: CENTER_LEFT;
+    
+    -fx-background-color: transparent;    
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-color: #DE3AFC;
+    -fx-border-radius: 15px;
+    
+    -fx-prompt-text-fill: #5F3AFC;
 }
 
-#botaoEditarImagem {
-    -fx-padding: 2px 0px;
-}
-
-.painelPesquisa {
+#listView {
     -fx-background-color: transparent;
-    -fx-border-color: #c38ebc;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
-}
-
-TextField {
-    -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-font-size: 15.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 250;
-    -fx-prompt-text-fill: #182052;
-}
-
-#bordaInterna {
-    -fx-border-radius: 20;
-}
-
-.botaoIcone {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-padding: 0px 0px;
-}
-
-ListView {
-    -fx-background-color: transparent;
-    -fx-background: transparent;
+    -fx-background: transparent;     
 }
 
 .list-cell {
@@ -70,30 +104,36 @@ ListView {
     -fx-font-size: 12.5pt;
 }
 
-.scroll-bar:vertical .thumb {
-    -fx-background-color: #182052;
-    -fx-background-radius: 5;
-}
-
-.scroll-bar:vertical .track {
-    -fx-background-color: #5F3AFC;
-    -fx-background-radius: 5;
-}
-
-.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+#btAdicionar{
+	-fx-background-image: url("../img/botao_adicionar.png");
+    -fx-background-size: cover;
     -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
     -fx-padding: 0;
-    -fx-opacity: 0;
-    -fx-cursor: default;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+   -fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 
-.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
-    -fx-scale-x: 0;
-    -fx-scale-y: 0;
+#btAdicionar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-Text {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
+#txtNovoPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
     -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+    -fx-pref-width: 100px; 
+}
+
+#vboxBtAdicionar, #hboxTitulo{
+	-fx-alignment: CENTER;
+}
+
+#hboxSaudacao{
+	-fx-alignment: TOP_CENTER;
 }

@@ -1,66 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.HomeController">
-    <Rectangle fill="#C5BAF4" height="600" width="675" x="475"/>
 
-    <Pane layoutX="508.0" layoutY="100.0" prefHeight="350.0" prefWidth="330.0" styleClass="painelPesquisa">
-        <ListView fx:id="listViewPacientes" layoutX="15" layoutY="70" prefHeight="250" prefWidth="300"/>
-    </Pane>
-
-    <Pane id="bordaInterna" layoutX="520.0" layoutY="110.0" prefHeight="35.0" prefWidth="305.0"
-          styleClass="painelPesquisa"/>
-
-    <ImageView>
-        <Image url="@../img/efeito-fundo-roxo.png"/>
-    </ImageView>
-
-    <Text fill="WHITE" styleClass="titulo" text="Saudações, nome!" x="35" y="75"/>
-
-    <Text styleClass="subtitulo" text="Qual paciente deseja editar, nome?" x="540" y="75"/>
-
-    <Button id="botaoEditarImagem" layoutX="125.0" layoutY="275.0" mnemonicParsing="false" prefHeight="30.0"
-            prefWidth="200.0" text="EDITAR IMAGEM"/>
-
-    <Button layoutX="125.0" layoutY="375.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="AGENDA" onAction="#navegarParaAgenda"/>
-
-    <Button layoutX="125.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0"
-            text="BIBLIOTECA" onAction="#navegarParaBiblioteca"/>
-
-    <Button id="botaoSair" layoutX="125.0" layoutY="525.0" mnemonicParsing="false" onAction="#navegarParaLogin"
-            prefHeight="30.0" prefWidth="200.0" text="SAIR"/>
-
-    <ImageView fx:id="imageView" layoutX="150" layoutY="100" pickOnBounds="true">
-        <Image url="@../img/zoeira.jpg"/>
-    </ImageView>
-
-    <Line endX="405" endY="320" startX="60" startY="320" stroke="white" strokeWidth="1.25"/>
-
-    <TextField layoutX="530" layoutY="105" prefHeight="25" prefWidth="150" promptText="Pesquisar"/>
-
-    <Button layoutX="775" layoutY="115" mnemonicParsing="false" prefHeight="15" prefWidth="40" styleClass="botaoIcone">
-        <graphic>
-            <ImageView fitHeight="20" fitWidth="20">
-                <Image url="@../img/Duke.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="900" layoutY="150" mnemonicParsing="false" prefHeight="15" prefWidth="40" styleClass="botaoIcone"
-            onAction="#navegarParaCadastroPaciente">
-        <graphic>
-            <ImageView fitHeight="150" fitWidth="150">
-                <Image url="@../img/java_logo_256-256.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Text text="NOVO PACIENTE" x="915" y="325"/>
-
-</Pane>
+<HBox fx:id="hBoxPaiHome" prefHeight="500" prefWidth="700" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <VBox fx:id="vBox1Home" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox fx:id="hboxSaudacao" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text fx:id="txtSaudacao" strokeType="OUTSIDE" strokeWidth="0.0" text="Saudações!" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <GridPane fx:id="gridPaneBotoes" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btAgenda" mnemonicParsing="false" onAction="#onBtAgendaAction" text="AGENDA" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" />
+                  <Button fx:id="btBiblioteca" mnemonicParsing="false" onAction="#onBtBibliotecaAction" text="BIBLIOTECA" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                  <Button fx:id="btSair" mnemonicParsing="false" onAction="#onBtSairAction" text="SAIR" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets bottom="80.0" />
+               </padding>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="vBox2Home" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox fx:id="hboxTitulo" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text fx:id="txtTitulo" strokeType="OUTSIDE" strokeWidth="0.0" text="Qual paciente deseja editar?" />
+               </children>
+            </HBox>
+            <HBox fx:id="hboxListBotao" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox fx:id="hboxPesquisa" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="vboxPesquisa" prefHeight="200.0" prefWidth="250.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                              <TextField fx:id="txtPesquisar" promptText="Pesquisar">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="2.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <ListView fx:id="listView" prefWidth="225.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="50.0" left="50.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox fx:id="vboxBtAdicionar" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <children>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="btAdicionar" mnemonicParsing="false" onAction="#onBtAdicionarAction" GridPane.halignment="CENTER" />
+                              <Text fx:id="txtNovoPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="NOVO PACIENTE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="40.0" />
+                                 </GridPane.margin>
+                              </Text>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

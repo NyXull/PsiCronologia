@@ -38,7 +38,7 @@ public class LoginController2 implements Initializable {
     
     @FXML
     public void onBtEntrarAction() {
-    	System.out.println("onBtEntrarAction");
+    	ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
     }
     
     @Override
