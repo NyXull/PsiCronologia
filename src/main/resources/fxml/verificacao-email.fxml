@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="hBoxPaiVerificacaoEmail" prefHeight="500" prefWidth="700" stylesheets="@../css/verificacao-email.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VerificacaoEmailController">
+   <children>
+      <VBox fx:id="vBox1VerificacaoEmail" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="vBox2VerificacaoEmail" alignment="CENTER" spacing="30.0" HBox.hgrow="ALWAYS">
+         <children>
+            <HBox fx:id="hBoxVerificacao" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text fx:id="txtVerificacao" strokeType="OUTSIDE" strokeWidth="0.0" text="VALIDE SEU EMAIL" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="hboxImagem" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin></HBox>
+            <GridPane maxWidth="500.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="txtMensagem" strokeType="OUTSIDE" strokeWidth="0.0" text="Tudo certo! Enviamos um e-mail com seu link de validação. " GridPane.halignment="CENTER">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin></Text>
+                  <Text fx:id="txtMensagem2" strokeType="OUTSIDE" strokeWidth="0.0" text="Se não encontrar, dá uma olhadinha no Spam e Promoções, combinado?" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin></Text>
+                  <Button fx:id="btLogin" mnemonicParsing="false" onAction="#onBtLoginAction" text="LOGIN" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin></Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="50.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>
