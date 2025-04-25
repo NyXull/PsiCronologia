@@ -1,21 +1,53 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import model.TrocarCena;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-import java.io.IOException;
+public class CadastroPacienteController implements Initializable{
 
-public class CadastroPacienteController {
-
+	@FXML
+    private HBox hBoxPaiCadastroPaciente;
+	
+	@FXML
+	private VBox vBox1CadastroPaciente;
+	
+	@FXML
+	private VBox vBox2CadastroPaciente;
+	
     @FXML
-    private void navegarParaHome(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", event);
+    private TextField txtNome;
+    
+    @FXML
+    private TextField txtEmail;
+    
+    @FXML
+    private TextField txtDataNascimento;
+    
+    @FXML
+    private TextField txtCPF;
+    
+    @FXML
+    private TextField txtTelefone;
+    
+    @FXML
+    private Button btCadastrar;
+    
+    @FXML
+    public void onBtCadastrarAction() {
+    	System.out.println("onBtCadastrarAction");
     }
 
-    @FXML
-    private void navegarParaCadastroFinalizado(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/cadastro-paciente-finalizado.fxml", "/css/cadastro-paciente-finalizado.css",
-                event);
-    }
+	@Override
+	public void initialize(URL uri, ResourceBundle rb) {
+		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+		vBox1CadastroPaciente.prefWidthProperty().bind(hBoxPaiCadastroPaciente.widthProperty().multiply(0.25));
+        vBox2CadastroPaciente.prefWidthProperty().bind(hBoxPaiCadastroPaciente.widthProperty().multiply(0.75));		
+	}
 }

@@ -54,7 +54,7 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private void onBtAdicionarAction() {
-		System.out.println("onBtAdicionarAction");
+		ViewLoader.loadView("/fxml/cadastro-paciente.fxml", "/css/cadastro-paciente.css");
 	}
 	
     @Override
