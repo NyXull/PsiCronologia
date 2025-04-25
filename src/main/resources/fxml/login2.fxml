@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="hBoxPaiLogin2" prefHeight="500" prefWidth="700" stylesheets="@../css/login2.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController2">
+   <children>
+      <VBox fx:id="vBox1Login2" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="vBox2Login2" HBox.hgrow="ALWAYS">
+         <children>
+            <HBox fx:id="hBoxLogin" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="txtLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" />
+               </children>
+            </HBox>
+            <HBox fx:id="hBoxEmail" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="txtEmail" promptText="Email" />
+               </children>
+            </HBox>
+            <HBox fx:id="hBoxSenha" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <PasswordField fx:id="txtSenha" promptText="Senha" />
+               </children>
+            </HBox>
+            <HBox fx:id="hBoxEntrar" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#onBtEntrarAction" text="ENTRAR" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

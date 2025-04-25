@@ -26,7 +26,7 @@ public class VerificacaoEmailController implements Initializable{
 	
 	@FXML
 	public void onBtLoginAction() {
-		System.out.println("onBtLoginAction");
+		ViewLoader.loadView("/fxml/login2.fxml", "/css/login.css");
 	}
 	
 	@Override
