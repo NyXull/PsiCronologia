@@ -1,16 +1,22 @@
 package controller;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import dao.PsicologoDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import model.Psicologo;
+import util.Alerts;
 import util.ViewLoader;
 
 public class LoginController2 implements Initializable {
@@ -38,7 +44,28 @@ public class LoginController2 implements Initializable {
     
     @FXML
     public void onBtEntrarAction() {
-    	ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+    	try {
+    		String emailPsico = txtEmail.getText();
+        	String senhaPsico = txtSenha.getText();
+        	
+        	Psicologo objPsicologo = new Psicologo();
+        	objPsicologo.setEmailPsico(emailPsico);
+        	objPsicologo.setSenhaPsico(senhaPsico);
+        	
+        	PsicologoDAO objPsicologoDAO = new PsicologoDAO();
+        	ResultSet rsPsicologoDAO = objPsicologoDAO.autenticacaoPsico(objPsicologo);
+        	
+        	if (rsPsicologoDAO.next()) {
+        		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");        		
+        	}
+        	else {
+        		Alerts.showAlert(null, "Email ou Senha inválidos!", null, AlertType.ERROR);
+        	}
+    	}
+    	catch (SQLException e) {
+    		Alerts.showAlert(null, "LoginController:", null, AlertType.ERROR);
+    		
+    	}
     }
     
     @Override
