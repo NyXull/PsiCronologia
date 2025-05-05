@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.Psicologo;
+import model.services.PsicologoService;
 import util.Alerts;
 import util.ViewLoader;
 
@@ -55,21 +56,24 @@ public class LoginController implements Initializable {
     public void onBtEntrarAction(ActionEvent event) {
     	try {
     		String emailPsico = txtEmail.getText();
-        	String senhaPsico = txtSenha.getText();
-        	
-        	Psicologo objPsicologo = new Psicologo();
-        	objPsicologo.setEmailPsico(emailPsico);
-        	objPsicologo.setSenhaPsico(senhaPsico);
-        	
-        	PsicologoDAO objPsicologoDAO = new PsicologoDAO();
-        	ResultSet rsPsicologoDAO = objPsicologoDAO.autenticacaoPsico(objPsicologo);
-        	
-        	if (rsPsicologoDAO.next()) {
-        		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");        		
-        	}
-        	else {
-        		Alerts.showAlert(null, "Email ou Senha inválidos!", null, AlertType.ERROR);
-        	}
+        	String senhaPsico = txtSenha.getText();if (emailPsico.isEmpty() || senhaPsico.isEmpty()) {
+	            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.", AlertType.ERROR);
+	        }
+			else {        	
+	        	Psicologo objPsicologo = new Psicologo();
+	        	objPsicologo.setEmailPsico(emailPsico);
+	        	objPsicologo.setSenhaPsico(senhaPsico);
+	        	
+	        	PsicologoService psicoService = new PsicologoService();
+	        	ResultSet rsPsicologoDAO = psicoService.autenticacao(objPsicologo);
+	        	
+	        	if (rsPsicologoDAO.next()) {
+	        		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");        		
+	        	}
+	        	else {
+	        		Alerts.showAlert("Erro ao logar", "Email ou Senha inválidos!", "Preencha todos os campos corretamente.", AlertType.ERROR);
+	        	}
+			}
     	}
     	catch (SQLException e) {
     		Alerts.showAlert(null, "LoginController:", null, AlertType.ERROR);
