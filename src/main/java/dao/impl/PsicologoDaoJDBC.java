@@ -65,4 +65,29 @@ private Connection conn;
 			DB.closeStatement(pstm);		
 		}
 	}
+
+	@Override
+	public boolean emailExiste(String email) {
+		PreparedStatement pstm = null;
+	    ResultSet rs = null;
+	   
+	    try {
+	        pstm = conn.prepareStatement("SELECT COUNT(*) FROM psicologo WHERE email = ?");
+	        pstm.setString(1, email);
+	        rs = pstm.executeQuery();
+	        
+	        if (rs.next()) {
+	            return rs.getInt(1) > 0;
+	        }
+	       
+	        return false;
+	    }
+	    catch (SQLException e) {
+	        throw new DbException(e.getMessage());
+	    }
+	    finally {
+	        DB.closeResultSet(rs);
+	        DB.closeStatement(pstm);
+	    }
+	}
 }	

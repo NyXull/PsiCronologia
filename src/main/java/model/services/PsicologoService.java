@@ -17,4 +17,8 @@ public class PsicologoService {
 	public void cadastrarPsicologo(Psicologo objPsicologo) {
 		dao.cadastrarPsicologo(objPsicologo);
 	}
+	
+	public boolean emailJaCadastrado(String email) {
+	    return dao.emailExiste(email);
+	}
 }

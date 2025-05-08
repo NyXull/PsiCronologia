@@ -56,6 +56,12 @@ public class CadastroController implements Initializable{
 		    	objPsicologo.setSenhaPsico(senhaPsico);
 				
 		    	PsicologoService psicoService = new PsicologoService();
+		    	
+		    	if (psicoService.emailJaCadastrado(emailPsico)) {
+		    	    Alerts.showAlert("Erro de Validação", "Email já cadastrado", "Use outro endereço de email.", AlertType.ERROR);
+		    	    return;
+		    	}
+		    	
 		    	psicoService.cadastrarPsicologo(objPsicologo);
 		    	
 		    	ViewLoader.loadView("/fxml/verificacao-email.fxml", "/css/verificacao-email.css");
