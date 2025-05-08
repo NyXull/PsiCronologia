@@ -12,8 +12,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.entities.Psicologo;
+import model.services.EmailService;
 import model.services.PsicologoService;
+import model.services.VerificacaoEmailService;
 import util.Alerts;
+import util.EmailTemplates;
 import util.ViewLoader;
 
 public class CadastroController implements Initializable{
@@ -63,6 +66,18 @@ public class CadastroController implements Initializable{
 		    	}
 		    	
 		    	psicoService.cadastrarPsicologo(objPsicologo);
+		    	
+		    	VerificacaoEmailService verificacaoService = new VerificacaoEmailService();
+		    	String codigo = verificacaoService.gerarCodigo(emailPsico);
+		    	
+		    	String corpoEmail = EmailTemplates.getEmailVerificacao(nomePsico, codigo);
+		    	
+		    	EmailService emailService = new EmailService();
+				
+				emailService.enviarEmail(
+						"Verificação de email",
+						corpoEmail,
+						objPsicologo.getEmailPsico());
 		    	
 		    	ViewLoader.loadView("/fxml/verificacao-email.fxml", "/css/verificacao-email.css");
 			}
