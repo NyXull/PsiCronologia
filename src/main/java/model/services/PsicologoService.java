@@ -2,8 +2,8 @@ package model.services;
 
 import java.sql.ResultSet;
 
-import dao.DaoFactory;
 import dao.PsicologoDAO;
+import dao.factory.DaoFactory;
 import model.entities.Psicologo;
 
 public class PsicologoService {
