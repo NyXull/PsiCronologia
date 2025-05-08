@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -37,10 +38,11 @@
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
                 <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
                 <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <Text fx:id="txtMensagem" strokeType="OUTSIDE" strokeWidth="0.0" text="Tudo certo! Enviamos um e-mail com seu link de validação. " GridPane.halignment="CENTER">
+                  <Text fx:id="txtMensagem" strokeType="OUTSIDE" strokeWidth="0.0" text="Tudo certo! Enviamos um e-mail com o código de validação. " GridPane.halignment="CENTER">
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin></Text>
@@ -48,10 +50,14 @@
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin></Text>
-                  <Button fx:id="btLogin" mnemonicParsing="false" onAction="#onBtLoginAction" text="LOGIN" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Button fx:id="btVerificar" mnemonicParsing="false" onAction="#onBtVerificarAction" text="VERIFICAR" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin></Button>
+                  <TextField fx:id="txtCodigoVerificacao" maxWidth="400.0" promptText="Código de Verificação" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                </children>
                <VBox.margin>
                   <Insets />

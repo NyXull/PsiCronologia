@@ -37,7 +37,21 @@
     -fx-alignment: CENTER_LEFT;  
 }
 
-#btLogin {
+#txtCodigoVerificacao{
+	 -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 100px;
+    -fx-alignment: CENTER_LEFT;
+   
+    -fx-background-color: transparent;
+    -fx-border-color: #182052 #182052 #182052 #182052; 
+    -fx-border-width: 1px 1px 1px 1px; 
+    -fx-border-style: solid;
+    
+    -fx-prompt-text-fill: #5F3AFC;
+}
+
+#btVerificar {
     -fx-background-color: #9E3AFC;
     -fx-font-weight: bold;
     -fx-text-fill: #182052;
