@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import model.TrocarCena;
+import model.entities.TrocarCena;
 
 import java.io.IOException;
 

@@ -9,7 +9,7 @@ import java.sql.Statement;
 import dao.PsicologoDAO;
 import db.DB;
 import db.DbException;
-import model.Psicologo;
+import model.entities.Psicologo;
 
 public class PsicologoDaoJDBC implements PsicologoDAO{
 	

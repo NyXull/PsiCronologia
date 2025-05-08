@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 
 import dao.DaoFactory;
 import dao.PsicologoDAO;
-import model.Psicologo;
+import model.entities.Psicologo;
 
 public class PsicologoService {
 	

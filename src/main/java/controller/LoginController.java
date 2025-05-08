@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import model.Psicologo;
+import model.entities.Psicologo;
 import model.services.PsicologoService;
 import util.Alerts;
 import util.ViewLoader;
@@ -56,7 +56,9 @@ public class LoginController implements Initializable {
     public void onBtEntrarAction(ActionEvent event) {
     	try {
     		String emailPsico = txtEmail.getText();
-        	String senhaPsico = txtSenha.getText();if (emailPsico.isEmpty() || senhaPsico.isEmpty()) {
+        	String senhaPsico = txtSenha.getText();
+        	
+        	if (emailPsico.isEmpty() || senhaPsico.isEmpty()) {
 	            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.", AlertType.ERROR);
 	        }
 			else {        	

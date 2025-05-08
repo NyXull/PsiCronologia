@@ -2,7 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import model.TrocarCena;
+import model.entities.TrocarCena;
 
 import java.io.IOException;
 

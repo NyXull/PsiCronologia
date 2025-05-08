@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.Psicologo;
+import model.entities.Psicologo;
 import model.services.PsicologoService;
 import util.Alerts;
 import util.ViewLoader;

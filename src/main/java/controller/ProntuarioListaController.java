@@ -6,8 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import model.Paciente;
-import model.TrocarCena;
+import model.entities.Paciente;
+import model.entities.TrocarCena;
 
 import java.io.IOException;
 import java.net.URL;
