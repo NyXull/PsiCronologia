@@ -38,7 +38,7 @@
                <children>
                   <TextField fx:id="txtNome" promptText="Nome" GridPane.hgrow="ALWAYS" />
                   <TextField fx:id="txtEmail" promptText="Email" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtDataNascimento" promptText="Dara de nascimento" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtDataNascimento" promptText="Data de nascimento" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
                   <TextField fx:id="txtCPF" promptText="CPF" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
                   <TextField fx:id="txtTelefone" promptText="Telefone" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
                   <Button fx:id="btCadastrar" mnemonicParsing="false" onAction="#onBtCadastrarAction" text="CADASTRAR" GridPane.halignment="CENTER" GridPane.rowIndex="5">
