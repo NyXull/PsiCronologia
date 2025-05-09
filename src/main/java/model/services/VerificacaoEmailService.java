@@ -4,8 +4,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.UUID;
 
-import dao.VerificacaoEmailDAO;
 import dao.factory.DaoFactory;
+import dao.interfaces.VerificacaoEmailDAO;
 import model.entities.VerificacaoEmail;
 
 public class VerificacaoEmailService {

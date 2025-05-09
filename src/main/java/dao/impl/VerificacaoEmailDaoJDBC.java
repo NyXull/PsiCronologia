@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
-import dao.VerificacaoEmailDAO;
+import dao.interfaces.VerificacaoEmailDAO;
 import db.DbException;
 import model.entities.VerificacaoEmail;
 

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import dao.PsicologoDAO;
+import dao.interfaces.PsicologoDAO;
 import db.DB;
 import db.DbException;
 import model.entities.Psicologo;
