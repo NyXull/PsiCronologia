@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import model.entities.Paciente;
+import model.entities.Paciente_EXCLUIR;
 import model.entities.TrocarCena;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class ProntuarioEditarController implements Initializable {
 
     @FXML
-    private ListView<Paciente> listViewDatas;
+    private ListView<Paciente_EXCLUIR> listViewDatas;
 
     @FXML
     private void navegarParaHome(ActionEvent event) throws IOException {
@@ -25,10 +25,10 @@ public class ProntuarioEditarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Paciente> pacientes = FXCollections.observableArrayList();
+        ObservableList<Paciente_EXCLUIR> pacientes = FXCollections.observableArrayList();
 
         for (int i = 1; i <= 50; i++) {
-            pacientes.add(new Paciente("01/" + "01/" + "01"));
+            pacientes.add(new Paciente_EXCLUIR("01/" + "01/" + "01"));
         }
 
         listViewDatas.setItems(pacientes);

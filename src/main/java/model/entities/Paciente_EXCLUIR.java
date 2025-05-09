@@ -1,9 +1,9 @@
 package model.entities;
 
-public class Paciente {
+public class Paciente_EXCLUIR {
     private final String nome;
 
-    public Paciente(String nome) {
+    public Paciente_EXCLUIR(String nome) {
         this.nome = nome;
     }
 
