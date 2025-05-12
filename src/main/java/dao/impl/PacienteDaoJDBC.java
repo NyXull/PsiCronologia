@@ -53,13 +53,49 @@ public class PacienteDaoJDBC implements PacienteDAO{
 	}
 
 	@Override
-	public boolean cpfExiste(String cpf) {
+	public Paciente buscarPorCpf(String cpf) {
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		
 		try {
-			pstm = conn.prepareStatement("SELECT COUNT(*) FROM paciente WHERE cpf = ?");
+			pstm = conn.prepareStatement("SELECT * FROM paciente WHERE cpf = ?");
 			pstm.setString(1, cpf);
+			rs = pstm.executeQuery();
+			
+			if (rs.next()) {
+				Paciente paciente = instanciacaoPaciente(rs);
+				return paciente;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(pstm);
+		}
+	}
+
+	private Paciente instanciacaoPaciente(ResultSet rs) throws SQLException {
+		Paciente paciente = new Paciente();
+		paciente.setIdPaciente(rs.getInt("id"));
+		paciente.setCpf(rs.getString("cpf"));
+		paciente.setNomePaciente(rs.getString("nome"));
+		paciente.setDataNascimento(rs.getDate("data_nascimento"));
+		paciente.setTelefone(rs.getString("telefone"));
+		return paciente;
+	}
+
+	@Override
+	public boolean relacaoJaExiste(int idPsicologo, int idPaciente) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
+		try {
+			pstm = conn.prepareStatement(
+					"SELECT COUNT(*) FROM psicologo_paciente WHERE id_psicologo = ? AND id_paciente = ?");
+			pstm.setInt(1, idPsicologo);
+			pstm.setInt(2, idPaciente);
 			rs = pstm.executeQuery();
 			
 			if (rs.next()) {
@@ -69,9 +105,27 @@ public class PacienteDaoJDBC implements PacienteDAO{
 		}
 		catch (SQLException e) {
 	        throw new DbException(e.getMessage());
-	    }
-	    finally {
+	    } finally {
 	        DB.closeResultSet(rs);
+	        DB.closeStatement(pstm);
+	    }
+	}
+
+	@Override
+	public void associarPsicologoPaciente(int idPsicologo, int idPaciente) {
+		PreparedStatement pstm = null;
+		
+		try {
+			pstm = conn.prepareStatement(
+					"INSERT INTO psicologo_paciente (id_psicologo, id_paciente) VALUES (?, ?)");
+			pstm.setInt(1, idPsicologo);
+			pstm.setInt(2, idPaciente);
+			pstm.executeUpdate();
+			
+		}
+		catch (SQLException e) {
+	        throw new DbException(e.getMessage());
+	    } finally {
 	        DB.closeStatement(pstm);
 	    }
 	}

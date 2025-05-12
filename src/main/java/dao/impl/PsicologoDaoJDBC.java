@@ -20,20 +20,37 @@ private Connection conn;
 	}
 
 	@Override
-	public ResultSet autenticacaoPsico(Psicologo objPsicologo) {
+	public Psicologo autenticarPsico(String email, String senha) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		
 		try {
-			String sql = "select * from psicologo where email = ? and senha = ?";
+			pstm = conn.prepareStatement("SELECT * FROM psicologo WHERE email = ? AND senha = ?");
+			pstm.setString(1, email);
+			pstm.setString(2, senha);
+			rs = pstm.executeQuery();
 			
-			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setString(1, objPsicologo.getEmailPsico());
-			pstm.setString(2, objPsicologo.getSenhaPsico());
-			
-			ResultSet rs = pstm.executeQuery();
-			return rs;
+			if (rs.next()) {
+				Psicologo obj = instanciacaoPsico(rs);
+				return obj;
+			}
+			return null;
 		}
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
+		}finally {
+	        DB.closeResultSet(rs);
+	        DB.closeStatement(pstm);
 		}
+	}
+
+	private Psicologo instanciacaoPsico(ResultSet rs) throws SQLException {
+		Psicologo obj = new Psicologo();
+		obj.setIdPsico(rs.getInt("id"));
+		obj.setNomePsico(rs.getString("nome"));
+		obj.setEmailPsico(rs.getString("email"));
+		obj.setSenhaPsico(rs.getString("senha"));
+		return obj;
 	}
 
 	@Override

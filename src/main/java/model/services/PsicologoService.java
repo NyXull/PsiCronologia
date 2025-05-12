@@ -1,7 +1,5 @@
 package model.services;
 
-import java.sql.ResultSet;
-
 import dao.factory.DaoFactory;
 import dao.interfaces.PsicologoDAO;
 import model.entities.Psicologo;
@@ -10,8 +8,8 @@ public class PsicologoService {
 	
 	private PsicologoDAO dao = DaoFactory.createPsicologoDao();
 	
-	public ResultSet autenticacao(Psicologo objPsicologo) {
-		return dao.autenticacaoPsico(objPsicologo);
+	public Psicologo autenticarPsico(String email, String senha) {
+		return dao.autenticarPsico(email, senha);
 	}
 	
 	public void cadastrarPsicologo(Psicologo objPsicologo) {

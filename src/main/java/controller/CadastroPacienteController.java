@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import model.entities.Paciente;
 import model.services.PacienteService;
 import util.Alerts;
+import util.SessaoUsuario;
 import util.ViewLoader;
 
 public class CadastroPacienteController implements Initializable{
@@ -60,14 +61,17 @@ public class CadastroPacienteController implements Initializable{
     	if (paciente != null) {    		
     		PacienteService pacienteService = new PacienteService();
     		
-    		if(pacienteService.cpfJaCadastrado(paciente.getCpf())) {
-    			Alerts.showAlert("Erro de Validação", "CPF já cadastrado", "Use um CPF por paciente.", AlertType.ERROR);
+    		try {
+    			pacienteService.cadastrarOuAssociarPaciente(paciente, SessaoUsuario.getPsicologoLogado().getIdPsico());
+    			
+    			ViewLoader.loadView("/fxml/cadastro-paciente-finalizado.fxml", "/css/cadastro-paciente-finalizado.css");    			
     		}
-    		else {
-    			pacienteService.cadastrarPaciente(paciente);
-        		
-        		ViewLoader.loadView("/fxml/cadastro-paciente-finalizado.fxml", "/css/cadastro-paciente-finalizado.css");
-    		}    		
+    		catch(IllegalStateException e) {
+    			Alerts.showAlert("Erro de Validação", "CPF já cadastrado", "Você já cadastrou este paciente!", AlertType.ERROR);
+    		}
+    		catch (Exception e) {
+    			Alerts.showAlert("Erro inesperado", "Erro ao cadastrar paciente", e.getMessage(), AlertType.ERROR);
+    		}
     	}    	    
     }
 

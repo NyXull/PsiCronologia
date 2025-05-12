@@ -1,12 +1,10 @@
 package dao.interfaces;
 
-import java.sql.ResultSet;
-
 import model.entities.Psicologo;
 
 public interface PsicologoDAO {
 
-	ResultSet autenticacaoPsico(Psicologo objPsicologo);
+	Psicologo autenticarPsico(String email, String senha);
 	void cadastrarPsicologo(Psicologo objPsicologo);
 	boolean emailExiste(String email);
 }

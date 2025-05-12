@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import dao.interfaces.PsicologoDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +18,7 @@ import javafx.scene.text.Text;
 import model.entities.Psicologo;
 import model.services.PsicologoService;
 import util.Alerts;
+import util.SessaoUsuario;
 import util.ViewLoader;
 
 public class LoginController implements Initializable {
@@ -61,15 +61,13 @@ public class LoginController implements Initializable {
         	if (emailPsico.isEmpty() || senhaPsico.isEmpty()) {
 	            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.", AlertType.ERROR);
 	        }
-			else {        	
-	        	Psicologo objPsicologo = new Psicologo();
-	        	objPsicologo.setEmailPsico(emailPsico);
-	        	objPsicologo.setSenhaPsico(senhaPsico);
-	        	
+			else {	        	
 	        	PsicologoService psicoService = new PsicologoService();
-	        	ResultSet rsPsicologoDAO = psicoService.autenticacao(objPsicologo);
-	        	
-	        	if (rsPsicologoDAO.next()) {
+	        	Psicologo psicoLogado = psicoService.autenticarPsico(emailPsico, senhaPsico);
+	        		        	
+	        	if (psicoLogado != null) {
+	        		SessaoUsuario.setPsicologo(psicoLogado);
+	        		
 	        		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");        		
 	        	}
 	        	else {
@@ -77,10 +75,9 @@ public class LoginController implements Initializable {
 	        	}
 			}
     	}
-    	catch (SQLException e) {
-    		Alerts.showAlert(null, "LoginController:", null, AlertType.ERROR);
-    		
-    	}    	
+    	catch (Exception e) {
+    		Alerts.showAlert(null, "LoginController:", null, AlertType.ERROR);    		
+    	}
     }
     
     @Override
