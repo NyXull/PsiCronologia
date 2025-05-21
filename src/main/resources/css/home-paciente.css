@@ -63,7 +63,7 @@
 	-fx-alignment: TOP_CENTER;
 }
 
-#txtPaciente, #txtNomeDoPacienteAqui{
+#txtPaciente, #txtNomeDoPaciente{
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
     -fx-fill: #182052;

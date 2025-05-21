@@ -8,6 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import model.entities.Paciente;
+import util.SessaoPaciente;
 
 public class HomePacienteController implements Initializable{
 
@@ -19,6 +22,9 @@ public class HomePacienteController implements Initializable{
 	 
 	 @FXML
 	 private HBox hBoxPaiHomePaciente;
+	 
+	 @FXML
+	 private Text txtNomeDoPaciente;
 	
 	 @FXML
 	 private Button btProntuario;
@@ -64,6 +70,11 @@ public class HomePacienteController implements Initializable{
 	public void initialize(URL uri, ResourceBundle rb) {
 		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
 		 vBox1HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.25));
-		 vBox2HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.75));		
+		 vBox2HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.75));
+		 
+		 Paciente paciente = SessaoPaciente.getPaciente();
+		 if (paciente != null) {
+			 txtNomeDoPaciente.setText(paciente.getNomePaciente());
+		 }
 	}    
 }
