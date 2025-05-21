@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.interfaces.PacienteDAO;
 import db.DB;
@@ -81,6 +83,7 @@ public class PacienteDaoJDBC implements PacienteDAO{
 		paciente.setIdPaciente(rs.getInt("id"));
 		paciente.setCpf(rs.getString("cpf"));
 		paciente.setNomePaciente(rs.getString("nome"));
+		paciente.setEmailPaciente(rs.getString("email"));
 		paciente.setDataNascimento(rs.getDate("data_nascimento"));
 		paciente.setTelefone(rs.getString("telefone"));
 		return paciente;
@@ -126,6 +129,42 @@ public class PacienteDaoJDBC implements PacienteDAO{
 		catch (SQLException e) {
 	        throw new DbException(e.getMessage());
 	    } finally {
+	        DB.closeStatement(pstm);
+	    }
+	}
+
+	@Override
+	public List<Paciente> listarPorPsicologo(int idPsicologo) {
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<Paciente> listaPaciente = new ArrayList<>();
+		
+		try {
+			pstm = conn.prepareStatement("""
+					SELECT paci.id, paci.nome, paci.cpf, paci.email, paci.telefone, paci.data_nascimento
+					FROM paciente paci
+					INNER JOIN psicologo_paciente psi_paci ON paci.id = psi_paci.id_paciente
+					WHERE psi_paci.id_psicologo = ?
+					""");
+			
+			pstm.setInt(1, idPsicologo);rs = pstm.executeQuery();
+			
+			while (rs.next()) {
+				Paciente paciente = new Paciente();
+				paciente.setIdPaciente(rs.getInt("id"));
+				paciente.setNomePaciente(rs.getString("nome"));
+				paciente.setCpf(rs.getString("cpf"));
+				paciente.setTelefone(rs.getString("telefone"));
+				paciente.setEmailPaciente(rs.getString("email"));
+				paciente.setDataNascimento(rs.getDate("data_nascimento"));
+				listaPaciente.add(paciente);
+			}
+			return listaPaciente;
+		}
+		catch (SQLException e) {
+	        throw new DbException("Erro ao buscar pacientes do psicólogo: " + e.getMessage());
+	    } finally {
+	        DB.closeResultSet(rs);
 	        DB.closeStatement(pstm);
 	    }
 	}

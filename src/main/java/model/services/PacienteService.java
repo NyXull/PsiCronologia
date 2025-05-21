@@ -1,5 +1,7 @@
 package model.services;
 
+import java.util.List;
+
 import dao.factory.DaoFactory;
 import dao.interfaces.PacienteDAO;
 import model.entities.Paciente;
@@ -25,5 +27,9 @@ public class PacienteService {
 			}
 			dao.associarPsicologoPaciente(idPsicologo, pacienteExistente.getIdPaciente());
 		}
+	}
+	
+	public List<Paciente> listarPorPsicologo(int idPsicologo){
+		return dao.listarPorPsicologo(idPsicologo);
 	}
 }
