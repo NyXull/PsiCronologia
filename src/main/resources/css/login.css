@@ -1,7 +1,7 @@
 /* Fundo e imagem do VBox da esquerda */
 #vbox1Login {
     -fx-background-color: #182052;
-    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psiorganize.png");
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psicronologia.png");
     -fx-background-repeat: repeat, no-repeat;
     -fx-background-position: center center;
     -fx-background-size: contain, contain;

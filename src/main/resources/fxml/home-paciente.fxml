@@ -27,7 +27,7 @@
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin></Text>
-                  <Text fx:id="txtNomeDoPacienteAqui" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                  <Text fx:id="txtNomeDoPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin></Text>

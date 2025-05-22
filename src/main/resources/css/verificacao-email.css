@@ -1,7 +1,7 @@
 /* Fundo e imagem do VBox da esquerda */
 #vBox1VerificacaoEmail {
     -fx-background-color: #182052;
-    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psiorganize.png");
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psicronologia.png");
     -fx-background-repeat: repeat, no-repeat;
     -fx-background-position: center center;
     -fx-background-size: contain, contain;
@@ -37,7 +37,21 @@
     -fx-alignment: CENTER_LEFT;  
 }
 
-#btLogin {
+#txtCodigoVerificacao{
+	 -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 100px;
+    -fx-alignment: CENTER_LEFT;
+   
+    -fx-background-color: transparent;
+    -fx-border-color: #182052 #182052 #182052 #182052; 
+    -fx-border-width: 1px 1px 1px 1px; 
+    -fx-border-style: solid;
+    
+    -fx-prompt-text-fill: #5F3AFC;
+}
+
+#btVerificar {
     -fx-background-color: #9E3AFC;
     -fx-font-weight: bold;
     -fx-text-fill: #182052;

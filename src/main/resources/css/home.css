@@ -92,16 +92,28 @@
     -fx-prompt-text-fill: #5F3AFC;
 }
 
-#listView {
+#listViewPacientes {
     -fx-background-color: transparent;
-    -fx-background: transparent;     
+    -fx-background: transparent;
 }
 
 .list-cell {
-    -fx-background-color: transparent;
-    -fx-text-fill: #5F3AFC;
     -fx-font-family: "Nunito";
-    -fx-font-size: 12.5pt;
+    -fx-font-size: 10pt;
+    -fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+.list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
 }
 
 #btAdicionar{

@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import model.TrocarCena;
+import model.entities.TrocarCena;
 
 import java.io.IOException;
 
