@@ -13,10 +13,6 @@
     -fx-alignment: CENTER;
 }
 
-#vBoxHome{
-	-fx-alignment: CENTER_RIGHT;
-}
-
 #btHome {
     -fx-background-image: url("../img/botao_home.png");
     -fx-background-size: cover;
@@ -43,12 +39,6 @@
     -fx-pref-width: 100px;
 }
 
-#hBoxNovoProntuario {
-    -fx-alignment: CENTER;
-    -fx-padding: 20 0 0 0px;
-    -fx-pref-height: 300px;
-}
-
 #btNovoProntuario {
     -fx-background-image: url("../img/botao_adicionar.png");
     -fx-background-size: cover;
@@ -71,11 +61,6 @@
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
     -fx-fill: white;
-    -fx-text-alignment: CENTER;
-}
-
-#hboxLinha {
-	-fx-alignment: TOP_CENTER;
 }
 
 #lineLinha {
