@@ -37,12 +37,20 @@ public class LoginController2 implements Initializable {
 
     @FXML
     private PasswordField txtSenha;
+    
+    @FXML
+    private Button btCadastro;
 
     @FXML
     private Button btEntrar;
 
     @FXML
     private Text txtLogin;
+    
+    @FXML
+    public void onBtCadastroAction() {
+    	ViewLoader.loadView("/fxml/cadastro.fxml", "/css/cadastro.css");    	
+    }
     
     @FXML
     public void onBtEntrarAction() {
