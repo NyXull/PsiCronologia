@@ -55,6 +55,14 @@ public class CadastroPacienteController implements Initializable{
     private Button btCadastrar;
     
     @FXML
+    private Button btVoltar;
+    
+    @FXML
+    public void onBtVoltarAction() { 
+    	ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+    }
+    
+    @FXML
     public void onBtCadastrarAction() {
     	Paciente paciente = validacaoEInstaciacao();
     	

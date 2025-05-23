@@ -12,7 +12,23 @@
 
 <HBox fx:id="hBoxPaiCadastroPaciente" prefHeight="500" prefWidth="700" stylesheets="@../css/cadastro-paciente.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroPacienteController">
    <children>
-      <VBox fx:id="vBox1CadastroPaciente" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="vBox1CadastroPaciente" HBox.hgrow="ALWAYS">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#onBtVoltarAction" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Button>
+               </children>
+            </GridPane>
+         </children></VBox>
       <VBox fx:id="vBox2CadastroPaciente" HBox.hgrow="ALWAYS">
          <children>
             <HBox fx:id="hBoxCadastro" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -38,7 +54,7 @@
                <children>
                   <TextField fx:id="txtNome" promptText="Nome" GridPane.hgrow="ALWAYS" />
                   <TextField fx:id="txtEmail" promptText="Email" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtDataNascimento" promptText="Data de nascimento" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtDataNascimento" promptText="Dara de nascimento" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
                   <TextField fx:id="txtCPF" promptText="CPF" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
                   <TextField fx:id="txtTelefone" promptText="Telefone" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
                   <Button fx:id="btCadastrar" mnemonicParsing="false" onAction="#onBtCadastrarAction" text="CADASTRAR" GridPane.halignment="CENTER" GridPane.rowIndex="5">

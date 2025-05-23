@@ -13,6 +13,24 @@
     -fx-alignment: CENTER;  
 }
 
+#btVoltar {
+    -fx-background-image: url("../img/botao_voltar.png");
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 60px;              
+    -fx-pref-height: 60px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btVoltar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
 #txtCadastro {
     -fx-font-family: "Comfortaa";
     -fx-font-size: 34px;
