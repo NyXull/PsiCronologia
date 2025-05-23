@@ -68,7 +68,8 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private void onBtSairAction() {
-		System.out.println("onBtSairAction");
+		SessaoUsuario.encerrarSessao();
+	    ViewLoader.loadView("/fxml/login2.fxml", "/css/login2.css");
 	}
 	
 	@FXML
