@@ -84,6 +84,8 @@ public class LoginController implements Initializable {
     public void initialize(URL uri, ResourceBundle rb) {
     	// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
         vbox1Login.prefWidthProperty().bind(hboxLogin.widthProperty().multiply(0.25));
-        vbox2Login.prefWidthProperty().bind(hboxLogin.widthProperty().multiply(0.75));        
+        vbox2Login.prefWidthProperty().bind(hboxLogin.widthProperty().multiply(0.75));  
+        
+        btEntrar.setDefaultButton(true);
     } 
 }
