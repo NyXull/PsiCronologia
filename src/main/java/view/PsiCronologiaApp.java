@@ -10,7 +10,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class PsiOrganizeApp extends Application {
+public class PsiCronologiaApp extends Application {
 
     private static Scene mainScene;
 
@@ -25,7 +25,7 @@ public class PsiOrganizeApp extends Application {
 			
 			mainScene = new Scene(scrollPane);
 			primaryStage.setScene(mainScene);
-			primaryStage.setTitle("PsiOrganize");
+			primaryStage.setTitle("PsiCronologia");
 			primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/img/icon_cerebro.png")).toExternalForm()));
 			primaryStage.show();
 		} catch (IOException e) {
