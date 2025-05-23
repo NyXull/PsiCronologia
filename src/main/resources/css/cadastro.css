@@ -38,6 +38,14 @@
     -fx-border-color: transparent transparent #9E3AFC transparent;
 }
 
+#lblErroEmail, #lblErroSenha {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #D23636;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
 #btCadastrar {
     -fx-background-color: #9E3AFC;
     -fx-font-weight: bold;

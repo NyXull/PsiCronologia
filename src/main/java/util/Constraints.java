@@ -27,4 +27,14 @@ public class Constraints {
                 }
 		    });
 	}
+	
+	public static boolean validacaoSintaxeEmail(String email) {
+		return email.contains("@") && email.contains(".") && email.indexOf("@") < email.lastIndexOf(".");
+	}
+	
+	public static boolean senhaValida(String senha) {
+		boolean temMaiuscula = senha.chars().anyMatch(Character::isUpperCase);
+		boolean temSimbolo = senha.chars().anyMatch(c -> !Character.isLetterOrDigit(c));
+		return senha.length() >= 8 && temMaiuscula && temSimbolo;
+	}	
 }
