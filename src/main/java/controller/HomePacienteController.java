@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.entities.Paciente;
 import util.SessaoPaciente;
+import util.ViewLoader;
 
 public class HomePacienteController implements Initializable{
 
@@ -22,6 +23,9 @@ public class HomePacienteController implements Initializable{
 	 
 	 @FXML
 	 private HBox hBoxPaiHomePaciente;
+	 
+	 @FXML
+	 private Button brInicio;
 	 
 	 @FXML
 	 private Text txtNomeDoPaciente;
@@ -65,6 +69,11 @@ public class HomePacienteController implements Initializable{
 	 public void onBtBiblioteca() {
 		 System.out.println("onBtBiblioteca");
 	 }	 
+	 
+	 @FXML
+		public void onBtInicioAction() {
+			ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+		}
 	 
 	 @Override
 	public void initialize(URL uri, ResourceBundle rb) {
