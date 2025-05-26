@@ -17,6 +17,7 @@ import model.entities.Paciente;
 import model.services.PacienteService;
 import util.Alerts;
 import util.Constraints;
+import util.SessaoPaciente;
 import util.SessaoUsuario;
 import util.ViewLoader;
 
@@ -78,6 +79,8 @@ public class CadastroPacienteController implements Initializable{
     		
     		try {
     			pacienteService.cadastrarOuAssociarPaciente(paciente, SessaoUsuario.getPsicologoLogado().getIdPsico());
+    			
+    			SessaoPaciente.setPaciente(paciente);
     			
     			ViewLoader.loadView("/fxml/cadastro-paciente-finalizado.fxml", "/css/cadastro-paciente-finalizado.css");    			
     		}
