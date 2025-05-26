@@ -1,59 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
-<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.ProntuarioListaController">
 
-    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
-
-    <ImageView>
-        <Image url="@../img/efeito-fundo-roxo-237.png"/>
-    </ImageView>
-
-    <Button layoutX="175" layoutY="25" mnemonicParsing="false" onAction="#navegarParaHome">
-        <graphic>
-            <ImageView fitHeight="35" fitWidth="40">
-                <Image url="@../img/Duke.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Text styleClass="titulo" text="Paciente:" x="20" y="100"/>
-    <Text styleClass="titulo" text="nome sobrenome" x="95" y="100"/>
-
-    <Line endX="215" endY="135" startX="20" startY="135" stroke="white" strokeWidth="1.25"/>
-
-    <Pane layoutX="20" layoutY="150" prefHeight="425" prefWidth="200" styleClass="painelPesquisa">
-        <ListView fx:id="listViewDatas" layoutX="10" layoutY="60" prefHeight="350" prefWidth="180"/>
-    </Pane>
-
-    <Pane id="bordaInterna" layoutX="30" layoutY="165" prefHeight="30" prefWidth="180"
-          styleClass="painelPesquisa"/>
-
-    <TextField layoutX="35" layoutY="160" prefHeight="25" promptText="Pesquisar"/>
-
-    <Button layoutX="165" layoutY="170" mnemonicParsing="false" prefHeight="15" prefWidth="40">
-        <graphic>
-            <ImageView fitHeight="20" fitWidth="20">
-                <Image url="@../img/Duke.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="600" layoutY="150" mnemonicParsing="false" prefHeight="15" prefWidth="40"
-            onAction="#navegarParaProntuarioEditar">
-        <graphic>
-            <ImageView fitHeight="200" fitWidth="200">
-                <Image url="@../img/java_logo_256-256.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Text text="NOVO PRONTUÁRIO" x="620" y="375"/>
-
-</Pane>
+<HBox fx:id="hBoxPaiProntuarioLista" prefHeight="500" prefWidth="700" stylesheets="@../css/prontuario-lista.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProntuarioListaController">
+    <children>
+        <VBox fx:id="vBox1ProntuarioLista" HBox.hgrow="ALWAYS">
+            <children>
+                <GridPane prefHeight="70.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="btHome" mnemonicParsing="false" onAction="#onBtHomeAction" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                    </children>
+                </GridPane>
+                <GridPane VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0" prefWidth="87.99997965494791" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.99999618530273" minWidth="10.0" prefWidth="236.66668701171872" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Text fx:id="txtPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets top="20.0" />
+                            </GridPane.margin>
+                        </Text>
+                        <Text fx:id="txtNomeDoPacienteAqui" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets top="20.0" />
+                            </GridPane.margin>
+                        </Text>
+                    </children>
+                </GridPane>
+                <GridPane VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Line fx:id="lineLinha" endX="224.16665649414062" startX="-60.01591491699219" startY="-0.8493550419807434" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                    </children>
+                </GridPane>
+                <GridPane prefHeight="350.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <VBox fx:id="vboxPesquisa" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="txtPesquisar" promptText="Pesquisar" VBox.vgrow="ALWAYS">
+                                    <VBox.margin>
+                                        <Insets left="5.0" right="5.0" top="7.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <ListView fx:id="listView" VBox.vgrow="ALWAYS" />
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </GridPane.margin>
+                        </VBox>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+        <VBox fx:id="vBox2ProntuarioLista" HBox.hgrow="ALWAYS">
+            <children>
+                <GridPane prefHeight="319.0" prefWidth="374.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="390.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="238.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="btNovoProntuario" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onBtNovoProntuario" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                        <Text fx:id="txtNovoProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="NOVO PRONTUÁRIO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets top="-10.0" />
+                            </GridPane.margin>
+                        </Text>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
+</HBox>

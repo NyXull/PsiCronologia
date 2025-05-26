@@ -1,164 +1,154 @@
-Button {
+/* Fundo e imagem do VBox da esquerda */
+#vBox1ProntuarioLista {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2ProntuarioLista {
+    -fx-background-color: #C5BAF4;
+    -fx-alignment: CENTER;
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;
     -fx-background-color: transparent;
+    -fx-background-radius: 0;
     -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-padding: 0px 0px;
+    -fx-padding: 0;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 
-ComboBox {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-TextArea {
-    -fx-background-color: transparent;
+#txtPaciente, #txtNomeDoPacienteAqui{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: white;
 }
 
-.text-area .scroll-pane .viewport{
-    -fx-background-color: transparent;
+#vboxPesquisa{
+	-fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+    -fx-alignment: CENTER;
 }
 
-.text-area .scroll-pane .content{
+#txtPesquisar{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 50px;
+    -fx-alignment: CENTER_LEFT;
     -fx-background-color: transparent;
-}
-
-TextField {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-font-size: 13.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 145;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-color: white;
+    -fx-border-radius: 15px;
     -fx-prompt-text-fill: white;
 }
 
-ListView {
+#listView {
     -fx-background-color: transparent;
     -fx-background: transparent;
 }
 
-Text {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
+#vBox1FundoRosa {
+    -fx-background-color: #c38ebc;
+    -fx-background-radius: 15px;
 }
 
-.titulo {
-    -fx-font-size: 20pt;
+#vBox2FundoRosa {
+    -fx-background-color: #c38ebc;
+    -fx-background-radius: 15px;
+}
+
+#txtProntuario, #txtData, #txtDataDoProntuarioAqui, #txtDetalhesDoProntuario {
     -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
 }
 
-.subtitulo {
-    -fx-font-size: 15pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
+#txtData, #txtDataDoProntuarioAqui {
+    -fx-font-size: 16px;
 }
 
-.label {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: white;
+#txtProntuario {
+    -fx-font-size: 23px;
 }
 
-.painelPesquisa {
-    -fx-background-color: transparent;
-    -fx-border-color: white;
-    -fx-border-width: 2;
+#txtDetalhesDoProntuario {
+    -fx-font-size: 19px;
 }
 
-.list-cell {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-family: "Nunito";
-    -fx-font-size: 12.5pt;
+#vBox3FundoRosa {
+    -fx-background-color: #c38ebc;
+    -fx-background-radius: 15px;
 }
 
-.scroll-bar:vertical .thumb {
-    -fx-background-color: #182052;
-    -fx-background-radius: 5;
+#vBox4FundoRosa {
+    -fx-background-color: #A38EFC;
+    -fx-background-radius: 15px;
 }
 
-.scroll-bar:vertical .track {
-    -fx-background-color: #5F3AFC;
-    -fx-background-radius: 5;
-}
-
-.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
-    -fx-opacity: 0;
-    -fx-cursor: default;
-}
-
-.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
-    -fx-scale-x: 0;
-    -fx-scale-y: 0;
-}
-
-.fundoOpcoes {
-    -fx-background-color: white;
-    -fx-background-radius: 6;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-border-radius: 6;
-}
-
-.fundoRosa {
-    -fx-background-color: #DE3AFC;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 10;
-}
-
-
-#bordaInterna {
-    -fx-border-radius: 20;
-}
-.botaoOpcoesTexto {
-    -fx-text-fill: #182052;
-    -fx-font-family: "Nunito";
-    -fx-font-size: 10pt;
-    -fx-font-weight: bold;
-}
-
-#textoData {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-#botaoSalvar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
+#btSalvar {
     -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 
-#fundoRosaClaro {
-    -fx-background-color: rgba(222, 58, 252, 0.3);
+#txtAreaProntuario {
+    -fx-background-color: transparent;
 }
 
-#sublinhado {
-    -fx-underline: true;
+#txtAreaProntuario .content {
+    -fx-background-color: transparent;
 }
 
-ComboBox .list-cell {
+#txtAreaProntuario .viewport {
+    -fx-background-color: transparent;
+}
+
+#btSalvar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#cbFonte, #cbTamanho {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#cbFonte .list-cell, #cbTamanho .list-cell {
     -fx-text-fill: #182052;
 }
 
-.combo-box-popup .list-view {
-    -fx-background-color: white, white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
-    -fx-padding: 3 0 3 7;
+#cbFonte .combo-box-popup .list-view, #cbTamanho .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-border-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
 }
 
-#tamanhoLetras .combo-box-popup .list-view {
-    -fx-background-color: white, white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
-    -fx-pref-width: 50;
-    -fx-padding: 3 0 3 7;
+#vBox1FundoOpcoes {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
 }

@@ -47,7 +47,7 @@ public class HomePacienteController implements Initializable{
 	 
 	 @FXML
 	 public void onBtProntuario() {
-		 System.out.println("onBtProntuario");
+		 ViewLoader.loadView("/fxml/prontuario-lista.fxml", "/css/prontuario-lista.css");
 	 }
 	 
 	 @FXML

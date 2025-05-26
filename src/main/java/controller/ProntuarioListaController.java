@@ -1,41 +1,76 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import model.entities.Paciente_EXCLUIR;
-import model.entities.TrocarCena;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+import model.entities.Paciente;
+import util.SessaoPaciente;
+import util.ViewLoader;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProntuarioListaController implements Initializable {
 
     @FXML
-    private ListView<Paciente_EXCLUIR> listViewDatas;
+    public HBox hBoxPaiProntuarioLista;
 
     @FXML
-    private void navegarParaHome(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", event);
+    public VBox vBox1ProntuarioLista;
+
+    @FXML
+    public Button btHome;
+
+    @FXML
+    public Text txtPaciente;
+
+    @FXML
+    public Text txtNomeDoPacienteAqui;
+
+    @FXML
+    public Line lineLinha;
+
+    @FXML
+    public VBox vboxPesquisa;
+
+    @FXML
+    public TextField txtPesquisar;
+
+    @FXML
+    public ListView listView;
+
+    @FXML
+    public VBox vBox2ProntuarioLista;
+
+    @FXML
+    public Button btNovoProntuario;
+
+    @FXML
+    public Text txtNovoProntuario;
+
+    public void onBtHomeAction() {
+        ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
     }
 
-    @FXML
-    private void navegarParaProntuarioEditar(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/prontuario-editar.fxml", "/css/prontuario-editar.css", event);
+    public void onBtNovoProntuario() {
+        ViewLoader.loadView("/fxml/prontuario-editar.fxml", "/css/prontuario-editar.css");
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Paciente_EXCLUIR> pacientes = FXCollections.observableArrayList();
+    public void initialize(URL uri, ResourceBundle rb) {
+        // Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+        vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
+        vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
 
-        for (int i = 1; i <= 50; i++) {
-            pacientes.add(new Paciente_EXCLUIR("01/" + "01/" + "01"));
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente != null) {
+            txtNomeDoPacienteAqui.setText(paciente.getNomePaciente());
         }
-
-        listViewDatas.setItems(pacientes);
     }
 }
