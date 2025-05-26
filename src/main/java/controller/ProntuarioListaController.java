@@ -9,6 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import model.entities.Paciente;
+import util.SessaoPaciente;
 import util.ViewLoader;
 
 import java.net.URL;
@@ -57,9 +59,7 @@ public class ProntuarioListaController implements Initializable {
     }
 
     public void onBtNovoProntuario() {
-        {
-            System.out.println("onBtNovoProntuario");
-        }
+        ViewLoader.loadView("/fxml/prontuario-editar.fxml", "/css/prontuario-editar.css");
     }
 
     @Override
@@ -67,5 +67,10 @@ public class ProntuarioListaController implements Initializable {
         // Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
         vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
         vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
+
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente != null) {
+            txtNomeDoPacienteAqui.setText(paciente.getNomePaciente());
+        }
     }
 }
