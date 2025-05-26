@@ -116,6 +116,36 @@
     -fx-underline: true;
 }
 
+#listViewPacientes .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#listViewPacientes .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#listViewPacientes .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#listViewPacientes .scroll-bar .increment-button,
+#listViewPacientes .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+/* Opcional: ocultar o scroll horizontal se não for necessário */
+#listViewPacientes .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+}
+
+
 #btAdicionar{
 	-fx-background-image: url("../img/botao_adicionar.png");
     -fx-background-size: cover;

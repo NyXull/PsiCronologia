@@ -80,6 +80,7 @@ Psicologo psicologo = validacaoEInstanciacaoPsico();
 		vBox2Cadastro.prefWidthProperty().bind(hBoxPaiCadastro.widthProperty().multiply(0.75));
 		
 		iniciarValidacoes();
+		btCadastrar.setDefaultButton(true);
 	}
 	
 	private void iniciarValidacoes() {

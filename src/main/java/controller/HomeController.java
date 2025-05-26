@@ -1,6 +1,8 @@
 package controller;
 
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -18,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import model.entities.Paciente;
+import model.entities.Psicologo;
 import model.services.PacienteService;
 import util.SessaoPaciente;
 import util.SessaoUsuario;
@@ -93,6 +96,8 @@ public class HomeController implements Initializable {
     	PacienteService pacienteService = new PacienteService();
     	
     	List<Paciente> pacientes = pacienteService.listarPorPsicologo(idPsicologoLogado);
+    	
+    	Collections.sort(pacientes, Comparator.comparing(Paciente::getNomePaciente, String.CASE_INSENSITIVE_ORDER));
     	
     	obsPacientes = FXCollections.observableArrayList(pacientes);
     	

@@ -97,6 +97,7 @@ public class CadastroPacienteController implements Initializable{
         vBox2CadastroPaciente.prefWidthProperty().bind(hBoxPaiCadastroPaciente.widthProperty().multiply(0.75));
         
         iniciarValidacaoSintaxeEmail();
+        btCadastrar.setDefaultButton(true);
 	}
 	
 	private void iniciarValidacaoSintaxeEmail() {
