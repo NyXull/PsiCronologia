@@ -1,146 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<HBox fx:id="hBoxPaiProntuarioLista" prefHeight="500" prefWidth="700" stylesheets="@../css/prontuario-editar.css"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controller.ProntuarioEditarController">
-
-    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
-
-    <ImageView>
-        <Image url="@../img/efeito-fundo-roxo-237.png"/>
-    </ImageView>
-
-    <Button layoutX="175" layoutY="25" mnemonicParsing="false" onAction="#navegarParaHome">
-        <graphic>
-            <ImageView fitHeight="35" fitWidth="40">
-                <Image url="@../img/Duke.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Text styleClass="titulo" text="PRONTUÁRIO" x="300" y="50"/>
-
-    <Text styleClass="label" text="Paciente:" x="20" y="100"/>
-    <Text styleClass="label" text="nome sobrenome" x="95" y="100"/>
-
-    <Line endX="215" endY="135" startX="20" startY="135" stroke="white" strokeWidth="1.25"/>
-
-    <Pane layoutX="20" layoutY="150" prefHeight="425" prefWidth="200" styleClass="painelPesquisa">
-        <ListView fx:id="listViewDatas" layoutX="10" layoutY="60" prefHeight="350" prefWidth="180"/>
-    </Pane>
-
-    <Pane id="bordaInterna" layoutX="30" layoutY="165" prefHeight="30" prefWidth="180"
-          styleClass="painelPesquisa"/>
-
-    <TextField layoutX="35" layoutY="160" prefHeight="25" promptText="Pesquisar"/>
-
-    <Button layoutX="165" layoutY="170" mnemonicParsing="false" prefHeight="15" prefWidth="40">
-        <graphic>
-            <ImageView fitHeight="20" fitWidth="20">
-                <Image url="@../img/Duke.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Pane styleClass="fundoRosa" layoutX="275" layoutY="65" prefHeight="70" prefWidth="850"/>
-    <Text styleClass="subtitulo" text="Data" x="295" y="90"/>
-    <Text text="01/01/2025" x="295" y="120"/>
-
-    <Pane styleClass="fundoRosa" layoutX="275" layoutY="150" prefHeight="50" prefWidth="850"/>
-    <Text styleClass="subtitulo" text="Detalhes do prontuário" x="295" y="180"/>
-
-    <Button id="botaoSalvar" layoutX="600" layoutY="500" mnemonicParsing="false" text="SALVAR"/>
-
-    <Pane styleClass="fundoRosa" layoutX="300" layoutY="225" prefHeight="50" prefWidth="800"/>
-    <Pane styleClass="fundoRosa" id="fundoRosaClaro" layoutX="300" layoutY="235" prefHeight="250" prefWidth="800"/>
-
-    <Pane styleClass="fundoOpcoes" layoutX="335" layoutY="235" prefHeight="25" prefWidth="120"/>
-    <Pane styleClass="fundoOpcoes" layoutX="485" layoutY="235" prefHeight="25" prefWidth="120"/>
-    <Pane styleClass="fundoOpcoes" layoutX="635" layoutY="235" prefHeight="25" prefWidth="120"/>
-    <Pane styleClass="fundoOpcoes" layoutX="785" layoutY="235" prefHeight="25" prefWidth="120"/>
-    <Pane styleClass="fundoOpcoes" layoutX="935" layoutY="235" prefHeight="25" prefWidth="150"/>
-
-    <Button styleClass="botaoOpcoesTexto" layoutX="345" layoutY="237" prefHeight="20" prefWidth="20" text="B"/>
-    <Button styleClass="botaoOpcoesTexto" layoutX="370" layoutY="237" prefHeight="20" prefWidth="20" text="𝙄"/>
-    <Button id="sublinhado" styleClass="botaoOpcoesTexto" layoutX="395" layoutY="237" prefHeight="20" prefWidth="20"
-            text="U"/>
-    <Button styleClass="botaoOpcoesTexto" layoutX="420" layoutY="237" prefHeight="20" prefWidth="20" text="̶S̶"/>
-
-    <Button layoutX="495" layoutY="237" prefHeight="20" prefWidth="20">
-        <graphic>
-            <ImageView fitHeight="19" fitWidth="19">
-                <Image url="@../img/esquerda.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="520" layoutY="237" prefHeight="20" prefWidth="20">
-        <graphic>
-            <ImageView fitHeight="19" fitWidth="19">
-                <Image url="@../img/centralizar.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="545" layoutY="237" prefHeight="20" prefWidth="20">
-        <graphic>
-            <ImageView fitHeight="19" fitWidth="19">
-                <Image url="@../img/direita.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="570" layoutY="237" prefHeight="20" prefWidth="20">
-        <graphic>
-            <ImageView fitHeight="19" fitWidth="19">
-                <Image url="@../img/justificado.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="660" layoutY="237" prefHeight="20" prefWidth="20">
-        <graphic>
-            <ImageView fitHeight="19" fitWidth="19">
-                <Image url="@../img/numeracao.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Button layoutX="710" layoutY="237" prefHeight="20" prefWidth="20">
-        <graphic>
-            <ImageView fitHeight="19" fitWidth="19">
-                <Image url="@../img/marcacao.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <ComboBox layoutX="785" layoutY="230" prefHeight="20" prefWidth="120" promptText="Fonte">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Arial"/>
-                <String fx:value="Comfortaa"/>
-                <String fx:value="Nunito"/>
-            </FXCollections>
-        </items>
-    </ComboBox>
-
-    <ComboBox id="tamanhoLetras" layoutX="930" layoutY="230" prefHeight="20" prefWidth="145" promptText="Tamanho">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="12"/>
-                <String fx:value="24"/>
-                <String fx:value="72"/>
-            </FXCollections>
-        </items>
-    </ComboBox>
-
-    <TextArea layoutX="300" layoutY="275" prefHeight="210" prefWidth="795" prefRowCount="20" prefColumnCount="50" wrapText="true" />
-
-</Pane>
+    <children>
+        <VBox fx:id="vBox1ProntuarioLista" HBox.hgrow="ALWAYS">
+            <children>
+                <GridPane prefHeight="70.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="btHome" mnemonicParsing="false" onAction="#onBtHomeAction"
+                                GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS"/>
+                    </children>
+                </GridPane>
+                <GridPane VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0"
+                                           prefWidth="125.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.99999618530273" minWidth="10.0"
+                                           prefWidth="220.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Text fx:id="txtPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente:"
+                              GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP"
+                              GridPane.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets top="20.0"/>
+                            </GridPane.margin>
+                        </Text>
+                        <Text fx:id="txtNomeDoPacienteAqui" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                              GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets top="20.0"/>
+                            </GridPane.margin>
+                        </Text>
+                    </children>
+                </GridPane>
+                <GridPane prefHeight="350.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <VBox fx:id="vboxPesquisa" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="txtPesquisar" promptText="Pesquisar" VBox.vgrow="ALWAYS">
+                                    <VBox.margin>
+                                        <Insets left="5.0" right="5.0" top="7.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <ListView fx:id="listView" VBox.vgrow="ALWAYS"/>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            </GridPane.margin>
+                        </VBox>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+        <VBox fx:id="vBox2ProntuarioLista" HBox.hgrow="ALWAYS">
+            <children>
+                <GridPane prefWidth="500.0" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="346.0" minHeight="0.0" prefHeight="188.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="453.0" minHeight="0.0" prefHeight="265.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="435.0" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <GridPane GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="205.0"
+                                                vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <VBox fx:id="vBox3FundoRosa" prefHeight="200.0" prefWidth="100.0"
+                                      GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                    <GridPane.margin>
+                                        <Insets/>
+                                    </GridPane.margin>
+                                </VBox>
+                                <GridPane GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1"
+                                                  GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btEsquerda" mnemonicParsing="false" text="Button"
+                                                        GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                        GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                                                <Button fx:id="btCentralizado" mnemonicParsing="false" text="Button"
+                                                        GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                                        GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                                        GridPane.vgrow="ALWAYS"/>
+                                                <Button fx:id="btDireita" mnemonicParsing="false" text="Button"
+                                                        GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                                                        GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                                        GridPane.vgrow="ALWAYS"/>
+                                                <Button fx:id="btJustificado" mnemonicParsing="false" text="Button"
+                                                        GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                                                        GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                                        GridPane.vgrow="ALWAYS"/>
+                                            </children>
+                                        </GridPane>
+                                        <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="2"
+                                                  GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <Button fx:id="btNumerado" mnemonicParsing="false" text="Button"
+                                                        GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                        GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                                                <Button fx:id="btOrdenado" layoutX="10.0" layoutY="27.0"
+                                                        mnemonicParsing="false" text="Button" GridPane.columnIndex="1"
+                                                        GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                        GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                                            </children>
+                                        </GridPane>
+                                        <GridPane layoutX="10.0" layoutY="10.0" GridPane.columnIndex="3"
+                                                  GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <ComboBox fx:id="cbFonte" promptText="Fonte"
+                                                          GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                          GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                                            </children>
+                                        </GridPane>
+                                        <GridPane layoutX="266.0" layoutY="10.0" GridPane.columnIndex="4"
+                                                  GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <ComboBox fx:id="cbTamanho" promptText="Tamanho"
+                                                          GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                          GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                                            </children>
+                                        </GridPane>
+                                        <VBox fx:id="vBox1FundoOpcoes" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <children>
+                                                <GridPane VBox.vgrow="ALWAYS">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Button fx:id="btNegrito" mnemonicParsing="false" text="Button"
+                                                                GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                                                GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                                                        <Button fx:id="btItalico" layoutX="9.0" layoutY="27.0"
+                                                                mnemonicParsing="false" text="Button"
+                                                                GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                                                GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                                                GridPane.vgrow="ALWAYS"/>
+                                                        <Button fx:id="btSublinhado" layoutX="10.0" layoutY="27.0"
+                                                                mnemonicParsing="false" text="Button"
+                                                                GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                                                                GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                                                GridPane.vgrow="ALWAYS"/>
+                                                        <Button fx:id="btRasurado" layoutX="10.0" layoutY="27.0"
+                                                                mnemonicParsing="false" text="Button"
+                                                                GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                                                                GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                                                GridPane.vgrow="ALWAYS"/>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                            <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                            </GridPane.margin>
+                                        </VBox>
+                                    </children>
+                                </GridPane>
+                                <VBox fx:id="vBox4FundoRosa" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"
+                                      GridPane.vgrow="ALWAYS">
+                                    <GridPane.margin>
+                                        <Insets/>
+                                    </GridPane.margin>
+                                    <children>
+                                        <TextArea fx:id="txtAreaProntuario" prefHeight="200.0" prefWidth="200.0"
+                                                  wrapText="true"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <GridPane.margin>
+                                <Insets left="20.0" right="30.0" top="10.0"/>
+                            </GridPane.margin>
+                        </GridPane>
+                        <GridPane GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <Text fx:id="txtProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="PRONTUÁRIO"
+                                      GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                    <GridPane.margin>
+                                        <Insets left="50.0"/>
+                                    </GridPane.margin>
+                                </Text>
+                                <GridPane GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox fx:id="vBox1FundoRosa" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <GridPane.margin>
+                                                <Insets/>
+                                            </GridPane.margin>
+                                        </VBox>
+                                        <GridPane GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <Text fx:id="txtData" strokeType="OUTSIDE" strokeWidth="0.0" text="Data"
+                                                      GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                    <GridPane.margin>
+                                                        <Insets left="7.0"/>
+                                                    </GridPane.margin>
+                                                </Text>
+                                                <Text fx:id="txtDataDoProntuarioAqui" strokeType="OUTSIDE"
+                                                      strokeWidth="0.0" text="Data Do Prontuario Aqui"
+                                                      GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"
+                                                      GridPane.vgrow="ALWAYS">
+                                                    <GridPane.margin>
+                                                        <Insets left="7.0"/>
+                                                    </GridPane.margin>
+                                                </Text>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                    <GridPane.margin>
+                                        <Insets bottom="10.0" left="15.0" right="25.0" top="10.0"/>
+                                    </GridPane.margin>
+                                </GridPane>
+                                <GridPane GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <GridPane.margin>
+                                        <Insets bottom="10.0" left="15.0" right="25.0" top="10.0"/>
+                                    </GridPane.margin>
+                                    <children>
+                                        <VBox fx:id="vBox2FundoRosa" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                            <GridPane.margin>
+                                                <Insets/>
+                                            </GridPane.margin>
+                                        </VBox>
+                                        <Text fx:id="txtDetalhesDoProntuario" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              text="Detalhes do prontuário" GridPane.hgrow="ALWAYS"
+                                              GridPane.vgrow="ALWAYS">
+                                            <GridPane.margin>
+                                                <Insets left="7.0"/>
+                                            </GridPane.margin>
+                                        </Text>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </GridPane>
+                        <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#onBtSalvar" text="SALVAR"
+                                GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2"
+                                GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
+</HBox>
