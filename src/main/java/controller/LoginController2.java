@@ -37,12 +37,20 @@ public class LoginController2 implements Initializable {
 
     @FXML
     private PasswordField txtSenha;
+    
+    @FXML
+    private Button btCadastro;
 
     @FXML
     private Button btEntrar;
 
     @FXML
     private Text txtLogin;
+    
+    @FXML
+    public void onBtCadastroAction() {
+    	ViewLoader.loadView("/fxml/cadastro.fxml", "/css/cadastro.css");    	
+    }
     
     @FXML
     public void onBtEntrarAction() {
@@ -76,6 +84,8 @@ public class LoginController2 implements Initializable {
     public void initialize(URL uri, ResourceBundle rb) {
     	// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
     	vBox1Login2.prefWidthProperty().bind(hBoxPaiLogin2.widthProperty().multiply(0.25));
-    	vBox2Login2.prefWidthProperty().bind(hBoxPaiLogin2.widthProperty().multiply(0.75));        
+    	vBox2Login2.prefWidthProperty().bind(hBoxPaiLogin2.widthProperty().multiply(0.75));  
+    	
+    	btEntrar.setDefaultButton(true);
     } 
 }

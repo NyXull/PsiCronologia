@@ -68,7 +68,8 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private void onBtSairAction() {
-		System.out.println("onBtSairAction");
+		SessaoUsuario.encerrarSessao();
+	    ViewLoader.loadView("/fxml/login2.fxml", "/css/login2.css");
 	}
 	
 	@FXML
@@ -82,7 +83,11 @@ public class HomeController implements Initializable {
     	vBox1Home.prefWidthProperty().bind(hBoxPaiHome.widthProperty().multiply(0.25));
     	vBox2Home.prefWidthProperty().bind(hBoxPaiHome.widthProperty().multiply(0.75)); 
     	
-    	// Busca pacientes pelo ID do psicólogo
+    	iniciarListaPacientes();    	
+    }
+
+	private void iniciarListaPacientes() {
+		// Busca pacientes pelo ID do psicólogo
     	int idPsicologoLogado = SessaoUsuario.getPsicologoLogado().getIdPsico();
     	
     	PacienteService pacienteService = new PacienteService();
@@ -141,6 +146,6 @@ public class HomeController implements Initializable {
     				ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
     			}
     		}
-    	});
-    }
+    	});		
+	}
 }

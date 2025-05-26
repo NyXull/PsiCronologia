@@ -7,14 +7,16 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.entities.Paciente;
 import model.services.PacienteService;
 import util.Alerts;
+import util.Constraints;
 import util.SessaoUsuario;
 import util.ViewLoader;
 
@@ -43,6 +45,9 @@ public class CadastroPacienteController implements Initializable{
     private TextField txtEmail;
     
     @FXML
+    private Label labelErroEmail;
+    
+    @FXML
     private TextField txtDataNascimento;
     
     @FXML
@@ -53,6 +58,16 @@ public class CadastroPacienteController implements Initializable{
     
     @FXML
     private Button btCadastrar;
+    
+    @FXML
+    private Button btVoltar;
+    
+    private boolean emailValido = false;
+    
+    @FXML
+    public void onBtVoltarAction() { 
+    	ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+    }
     
     @FXML
     public void onBtCadastrarAction() {
@@ -79,9 +94,31 @@ public class CadastroPacienteController implements Initializable{
 	public void initialize(URL uri, ResourceBundle rb) {
 		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
 		vBox1CadastroPaciente.prefWidthProperty().bind(hBoxPaiCadastroPaciente.widthProperty().multiply(0.25));
-        vBox2CadastroPaciente.prefWidthProperty().bind(hBoxPaiCadastroPaciente.widthProperty().multiply(0.75));		
+        vBox2CadastroPaciente.prefWidthProperty().bind(hBoxPaiCadastroPaciente.widthProperty().multiply(0.75));
+        
+        iniciarValidacaoSintaxeEmail();
 	}
 	
+	private void iniciarValidacaoSintaxeEmail() {
+		txtEmail.focusedProperty().addListener((obs, estavaFocado, estaFocado) -> {
+			if (!estaFocado) {
+				String email = txtEmail.getText();
+				if (email.isEmpty()) {
+					labelErroEmail.setText("");
+					emailValido = true;
+				}
+				else if (!Constraints.validacaoSintaxeEmail(email)) {
+					labelErroEmail.setText("Email inválido");
+					emailValido = false;
+				}
+				else {
+					labelErroEmail.setText("");
+					emailValido = true;
+				}
+			}
+		});		
+	}
+
 	private Paciente validacaoEInstaciacao() {
 		String nomePaciente = txtNome.getText();
 		String emailPaciente = txtEmail.getText();

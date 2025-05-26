@@ -14,7 +14,10 @@
                <children>
                   <VBox fx:id="vBoxHome" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="btHome" mnemonicParsing="false" onAction="#onBtHomeAction" />
+                        <Button fx:id="btHome" mnemonicParsing="false" onAction="#onBtHomeAction">
+                           <VBox.margin>
+                              <Insets right="-20.0" />
+                           </VBox.margin></Button>
                      </children>
                      <HBox.margin>
                         <Insets />

@@ -13,6 +13,24 @@
     -fx-alignment: CENTER;  
 }
 
+#btVoltar {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 100px;              
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btVoltar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
 #txtCadastro {
     -fx-font-family: "Comfortaa";
     -fx-font-size: 34px;
@@ -36,6 +54,14 @@
 
 #txtNome:focused, #txtEmail:focused, #txtDataNascimento:focused, #txtCPF:focused, #txtTelefone:focused {
     -fx-border-color: transparent transparent #9E3AFC transparent;
+}
+
+#labelErroEmail {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #D23636;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
 
 #btCadastrar {
