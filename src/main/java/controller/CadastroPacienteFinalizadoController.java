@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import util.SessaoPaciente;
 import util.ViewLoader;
 
 public class CadastroPacienteFinalizadoController implements Initializable{
@@ -37,7 +38,9 @@ public class CadastroPacienteFinalizadoController implements Initializable{
 	
 	@FXML
 	public void onBtEditarPacienteAction() {
-		ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
+		if (SessaoPaciente.getPaciente() != null) {
+			ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
+		}
 	}
 	
 	@FXML
