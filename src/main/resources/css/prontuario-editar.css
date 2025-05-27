@@ -56,6 +56,7 @@
     -fx-border-color: white;
     -fx-border-radius: 15px;
     -fx-prompt-text-fill: white;
+    -fx-text-fill: white;    
 }
 
 #listView {
@@ -63,40 +64,212 @@
     -fx-background: transparent;
 }
 
-#vBox1FundoRosa {
-    -fx-background-color: #c38ebc;
-    -fx-background-radius: 15px;
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 0px 0px;
 }
 
-#vBox2FundoRosa {
-    -fx-background-color: #c38ebc;
-    -fx-background-radius: 15px;
+#hBoxRosa2{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px 0px 10px 10px;
 }
 
-#txtProntuario, #txtData, #txtDataDoProntuarioAqui, #txtDetalhesDoProntuario {
-    -fx-font-family: "Comfortaa";
-}
-
-#txtData, #txtDataDoProntuarioAqui {
-    -fx-font-size: 16px;
+#hBoxRosa3{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 10px 10px;
 }
 
 #txtProntuario {
     -fx-font-size: 23px;
 }
 
+#txtProntuario, #txtData, #txtDataDoProntuarioAqui, #txtDetalhesDoProntuario {
+    -fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+}
+
+#txtData, #txtDataDoProntuarioAqui {
+    -fx-font-size: 14px;
+}
+
 #txtDetalhesDoProntuario {
     -fx-font-size: 19px;
 }
 
-#vBox3FundoRosa {
-    -fx-background-color: #c38ebc;
-    -fx-background-radius: 15px;
+#hBoxRosa4{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 0px 0px;
 }
 
-#vBox4FundoRosa {
-    -fx-background-color: #A38EFC;
-    -fx-background-radius: 15px;
+#btNegrito{
+	 -fx-background-image: url("../img/botao_negrito.png");
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;    
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btNegrito:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btItalico{
+	 -fx-background-image: url("../img/botao_italico.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btItalico:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btNumerado{
+	-fx-background-image: url("../img/botao_numerado.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btNumerado:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btOrdenado{
+	-fx-background-image: url("../img/botao_ordenado.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btOrdenado:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btEsquerda{
+	-fx-background-image: url("../img/botao_esquerda.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btEsquerda:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btCentralizado{
+	-fx-background-image: url("../img/botao_centralizado.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btCentralizado:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btDireita{
+	-fx-background-image: url("../img/botao_direita.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btDireita:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btJustificado{
+	-fx-background-image: url("../img/botao_justificado.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: #182052;  
+    -fx-border-radius: 5;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btJustificado:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#hBoxTxtArea{
+	-fx-background-color: rgba(140, 129, 204, 0.4);	
+	 -fx-background-radius: 0px 0px 10px 10px;
 }
 
 #btSalvar {
@@ -111,6 +284,11 @@
     -fx-scale-y: 1;
 }
 
+#btSalvar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
 #txtAreaProntuario {
     -fx-background-color: transparent;
 }
@@ -123,9 +301,51 @@
     -fx-background-color: transparent;
 }
 
-#btSalvar:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
+#txtAreaProntuario .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#txtAreaProntuario .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#txtAreaProntuario .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#txtAreaProntuario .scroll-bar .increment-button,
+#txtAreaProntuario .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+/*SCROLL DA LISTVIEW */
+#listView .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#listView .scroll-bar:vertical .thumb {
+    -fx-background-color: white; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#txtAreaProntuario .scroll-bar:vertical .track,
+#listView .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#listView .scroll-bar .increment-button,
+#listView .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
 }
 
 #cbFonte, #cbTamanho {
@@ -136,19 +356,12 @@
 }
 
 #cbFonte .list-cell, #cbTamanho .list-cell {
-    -fx-text-fill: #182052;
+    -fx-text-fill: #000000;
 }
 
 #cbFonte .combo-box-popup .list-view, #cbTamanho .combo-box-popup .list-view {
     -fx-background-color: #C5BAF4;
     -fx-border-radius: 5;
-    -fx-border-color: #000000;
-    -fx-border-radius: 5;
-}
-
-#vBox1FundoOpcoes {
-    -fx-background-color: #C5BAF4;
-    -fx-background-radius: 5;
     -fx-border-color: #000000;
     -fx-border-radius: 5;
 }

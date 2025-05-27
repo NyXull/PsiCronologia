@@ -9,56 +9,55 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <HBox fx:id="hBoxPaiProntuarioLista" prefHeight="500" prefWidth="700" stylesheets="@../css/prontuario-lista.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProntuarioListaController">
     <children>
         <VBox fx:id="vBox1ProntuarioLista" HBox.hgrow="ALWAYS">
             <children>
-                <GridPane prefHeight="70.0" VBox.vgrow="ALWAYS">
-                    <columnConstraints>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <GridPane>
+                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Button fx:id="btHome" mnemonicParsing="false" onAction="#onBtHomeAction" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                    </children>
-                </GridPane>
-                <GridPane VBox.vgrow="ALWAYS">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0" prefWidth="87.99997965494791" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.99999618530273" minWidth="10.0" prefWidth="236.66668701171872" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Text fx:id="txtPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
-                            <GridPane.margin>
-                                <Insets top="20.0" />
-                            </GridPane.margin>
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints fx:id="gridInicio" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="btHome" mnemonicParsing="false" onAction="#onBtHomeAction" GridPane.halignment="RIGHT">
+                           <GridPane.margin>
+                              <Insets right="-20.0" />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="gridNomePaciente">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0" prefWidth="131.33332316080728" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.99999618530273" minWidth="10.0" prefWidth="169.33334350585935" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Text fx:id="txtPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                         </Text>
-                        <Text fx:id="txtNomeDoPacienteAqui" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
-                            <GridPane.margin>
-                                <Insets top="20.0" />
-                            </GridPane.margin>
+                        <Text fx:id="txtNomeDoPacienteAqui" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                         </Text>
-                    </children>
-                </GridPane>
-                <GridPane VBox.vgrow="ALWAYS">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Line fx:id="lineLinha" endX="224.16665649414062" startX="-60.01591491699219" startY="-0.8493550419807434" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
-                    </children>
-                </GridPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+            </VBox>
                 <GridPane prefHeight="350.0" VBox.vgrow="ALWAYS">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -91,14 +90,14 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints maxHeight="390.0" minHeight="10.0" prefHeight="235.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="238.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="550.0" minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="btNovoProntuario" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onBtNovoProntuario" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
+                        <Button fx:id="btNovoProntuario" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onBtNovoProntuario" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                         <Text fx:id="txtNovoProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="NOVO PRONTUÁRIO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
                             <GridPane.margin>
-                                <Insets top="-10.0" />
+                                <Insets top="-170.0" />
                             </GridPane.margin>
                         </Text>
                     </children>
