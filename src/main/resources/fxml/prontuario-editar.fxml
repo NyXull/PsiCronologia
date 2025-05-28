@@ -95,33 +95,41 @@
                       <RowConstraints fx:id="grid1LinhaRosa1" maxHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                       <RowConstraints fx:id="grid1LinhaRosa2" maxHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                         <RowConstraints fx:id="grid1LinhaRosa3" maxHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox fx:id="hBoxRosa3" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                        <HBox fx:id="hBoxRosa3" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS" />
                         <HBox fx:id="hBoxRosa1" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                         <HBox fx:id="hBoxRosa2" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <HBox fx:id="hBoxRosa5" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4" />
                                 <Text fx:id="txtProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="PRONTUÁRIO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                     <GridPane.margin>
                                         <Insets left="50.0" />
                                     </GridPane.margin>
                                 </Text>
-                                    <Text fx:id="txtData" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                    <Text fx:id="txtData" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                         <GridPane.margin>
-                                            <Insets left="7.0" />
+                                            <Insets left="13.0" />
                                         </GridPane.margin>
                                     </Text>
-                                    <Text fx:id="txtDataDoProntuarioAqui" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Do Prontuario Aqui" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                                    <Text fx:id="txtDataDoProntuarioAqui" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Do Prontuario Aqui" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                         <GridPane.margin>
-                                            <Insets left="7.0" />
+                                            <Insets left="13.0" />
                                         </GridPane.margin>
                                     </Text>
-                                  <Text fx:id="txtDetalhesDoProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="Detalhes do prontuário" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                                  <Text fx:id="txtDetalhesDoProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="Detalhes do prontuário" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
                                       <GridPane.margin>
-                                          <Insets left="7.0" />
+                                          <Insets left="13.0" />
                                       </GridPane.margin>
                                   </Text>
+                        <TextField fx:id="txtNumeroSessao" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" promptText="Sessão" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets left="13.0" />
+                           </GridPane.margin>
+                        </TextField>
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />

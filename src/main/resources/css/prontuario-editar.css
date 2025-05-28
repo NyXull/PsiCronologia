@@ -79,6 +79,16 @@
     -fx-background-radius: 10px 10px 10px 10px;
 }
 
+#hBoxRosa4{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 0px 0px;
+}
+
+#hBoxRosa5{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 10px 10px;
+}
+
 #txtProntuario {
     -fx-font-size: 23px;
 }
@@ -92,14 +102,26 @@
     -fx-font-size: 14px;
 }
 
+#txtNumeroSessao {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 400px;
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #182052 transparent;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-radius: 0px;
+    
+    -fx-prompt-text-fill: #182052;
+}
+
 #txtDetalhesDoProntuario {
     -fx-font-size: 19px;
 }
 
-#hBoxRosa4{
-	-fx-background-color: rgba(195, 142, 188, 0.6);
-    -fx-background-radius: 10px 10px 0px 0px;
-}
+
 
 #btNegrito{
 	 -fx-background-image: url("../img/botao_negrito.png");
