@@ -116,6 +116,9 @@ public class ProntuarioEditarController implements Initializable {
     public Button btNomeDoPacienteAqui;
 
     @FXML
+    public TextField txtNumeroSessao;
+
+    @FXML
     public void onBtHomeAction() {
         ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
     }
