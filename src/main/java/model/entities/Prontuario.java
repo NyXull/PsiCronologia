@@ -9,12 +9,13 @@ public class Prontuario {
     private Date dataAtendimento;
     private String descricao;
     private String caminhoArquivo;
+    private Integer sessao;
 
     public Prontuario() {
     }
 
     public Prontuario(Integer idProntuario, Integer idPaciente, Date dataAtendimento, String descricao,
-                      String caminhoArquivo) {
+                      String caminhoArquivo, Integer sessao) {
         super();
         this.idProntuario = idProntuario;
         this.idPaciente = idPaciente;
@@ -61,5 +62,13 @@ public class Prontuario {
 
     public void setCaminhoArquivo(String caminhoArquivo) {
         this.caminhoArquivo = caminhoArquivo;
+    }
+
+    public Integer getSessao() {
+        return sessao;
+    }
+
+    public void setSessao(Integer sessao) {
+        this.sessao = sessao;
     }
 }
