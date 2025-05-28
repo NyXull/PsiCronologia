@@ -97,3 +97,17 @@
     -fx-background-color: transparent;
     -fx-background: transparent;
 }
+
+#btNomeDoPacienteAqui {
+    -fx-background-color: transparent;
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}

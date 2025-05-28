@@ -29,9 +29,6 @@ public class ProntuarioEditarController implements Initializable {
     public Text txtPaciente;
 
     @FXML
-    public Text txtNomeDoPacienteAqui;
-
-    @FXML
     public Line lineLinha;
 
     @FXML
@@ -116,6 +113,9 @@ public class ProntuarioEditarController implements Initializable {
     public Button btSalvar;
 
     @FXML
+    public Button btNomeDoPacienteAqui;
+
+    @FXML
     public void onBtHomeAction() {
         ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
     }
@@ -123,6 +123,10 @@ public class ProntuarioEditarController implements Initializable {
     @FXML
     public void onBtSalvar() {
         System.out.println("onBtSalvar");
+    }
+
+    public void onBtNomeDoPacienteAquiAction() {
+        ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
     }
 
     @Override
@@ -133,7 +137,7 @@ public class ProntuarioEditarController implements Initializable {
 
         Paciente paciente = SessaoPaciente.getPaciente();
         if (paciente != null) {
-            txtNomeDoPacienteAqui.setText(paciente.getNomePaciente());
+            btNomeDoPacienteAqui.setText(paciente.getNomePaciente());
         }
     }
 }
