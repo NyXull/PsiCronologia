@@ -393,6 +393,7 @@
     -fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
     -fx-text-fill: white;
+    -fx-underline: true;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
 }
