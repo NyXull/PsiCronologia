@@ -89,6 +89,8 @@
     -fx-border-radius: 15px;
 
     -fx-prompt-text-fill: white;
+    
+    -fx-text-fill: white;    
 }
 
 #listView {
