@@ -8,7 +8,7 @@ public class ProntuarioService {
 
     private ProntuarioDAO dao = DaoFactory.createProntuarioDao();
 
-    void salvarProntuario(Prontuario objProntuario) {
+    public void salvarProntuario(Prontuario objProntuario) {
         dao.salvarProntuario(objProntuario);
     }
 }
