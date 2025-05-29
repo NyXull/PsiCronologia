@@ -23,7 +23,7 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
         PreparedStatement pstm = null;
 
         try {
-            pstm = conn.prepareStatement("inset into prontuario"
+            pstm = conn.prepareStatement("insert into prontuario"
                     + "(id_paciente, data_atendimento, descricao, caminho_arquivo, sessao) "
                     + "values(?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
