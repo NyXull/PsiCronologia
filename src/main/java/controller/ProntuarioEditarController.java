@@ -8,13 +8,27 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import model.entities.Paciente;
+import model.entities.Prontuario;
+import model.services.ProntuarioService;
+import util.Alerts;
 import util.SessaoPaciente;
 import util.ViewLoader;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ProntuarioEditarController implements Initializable {
+
+    private final SimpleDateFormat sdf;
+
+    public ProntuarioEditarController() {
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+    }
 
     @FXML
     public HBox hBoxPaiProntuarioLista;
@@ -125,7 +139,18 @@ public class ProntuarioEditarController implements Initializable {
 
     @FXML
     public void onBtSalvar() {
-        System.out.println("onBtSalvar");
+        Prontuario prontuario = validacaoEInstaciacao();
+
+        if (prontuario != null) {
+            ProntuarioService prontuarioService = new ProntuarioService();
+
+            try {
+                prontuarioService.salvarProntuario(prontuario);
+            } catch (Exception e) {
+                Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar o prontuário",
+                        Alert.AlertType.ERROR);
+            }
+        }
     }
 
     public void onBtNomeDoPacienteAquiAction() {
@@ -141,6 +166,51 @@ public class ProntuarioEditarController implements Initializable {
         Paciente paciente = SessaoPaciente.getPaciente();
         if (paciente != null) {
             btNomeDoPacienteAqui.setText(paciente.getNomePaciente());
+        }
+
+        LocalDate dataAtual = LocalDate.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataFormatada = dataAtual.format(formatter);
+
+        txtDataDoProntuarioAqui.setText(dataFormatada);
+    }
+
+    public Prontuario validacaoEInstaciacao() {
+        String dataAtendimentoString = txtDataDoProntuarioAqui.getText();
+        String descricao = txtAreaProntuario.getText();
+        String caminho_arquivo = "path";
+        String sessaoString = txtNumeroSessao.getText();
+
+        if (dataAtendimentoString.isEmpty() || descricao.isEmpty() || caminho_arquivo.isEmpty() || sessaoString.isEmpty()) {
+            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+
+        try {
+            Date dataAtendimento = sdf.parse(dataAtendimentoString);
+
+            Integer sessao = Integer.valueOf(sessaoString);
+
+            Paciente paciente = SessaoPaciente.getPaciente();
+            if (paciente == null) {
+                return null;
+            }
+
+            Prontuario prontuario = new Prontuario();
+
+            prontuario.setIdPaciente(paciente.getIdPaciente());
+            prontuario.setDataAtendimento(dataAtendimento);
+            prontuario.setDescricao(descricao);
+            prontuario.setCaminhoArquivo(caminho_arquivo);
+            prontuario.setSessao(sessao);
+
+            return prontuario;
+        } catch (Exception e) {
+            Alerts.showAlert("Erro de Validação", "Data inválida", "Use um formato válido. Exemplo: 08/06/2024.",
+                    Alert.AlertType.ERROR);
+            return null;
         }
     }
 }
