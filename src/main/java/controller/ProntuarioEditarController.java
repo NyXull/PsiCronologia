@@ -11,6 +11,7 @@ import model.entities.Paciente;
 import model.entities.Prontuario;
 import model.services.ProntuarioService;
 import util.Alerts;
+import util.Constraints;
 import util.SessaoPaciente;
 import util.ViewLoader;
 
@@ -174,6 +175,10 @@ public class ProntuarioEditarController implements Initializable {
         String dataFormatada = dataAtual.format(formatter);
 
         txtDataDoProntuarioAqui.setText(dataFormatada);
+
+        Constraints.setTextFieldInteger(txtNumeroSessao);
+        Constraints.setTextFieldMaxLength(txtNumeroSessao, 10);
+        Constraints.setTextAreaMaxLength(txtAreaProntuario, 16777215);
     }
 
     public Prontuario validacaoEInstaciacao() {
@@ -191,7 +196,16 @@ public class ProntuarioEditarController implements Initializable {
         try {
             Date dataAtendimento = sdf.parse(dataAtendimentoString);
 
-            Integer sessao = Integer.valueOf(sessaoString);
+            Long sessaoLong = Long.valueOf(sessaoString);
+
+            if (sessaoLong < 0 || sessaoLong > Integer.MAX_VALUE) {
+                Alerts.showAlert("Erro de Validação", "Número de sessão inválido",
+                        "O número da sessão deve ser um inteiro positivo e menor ou igual a " + Integer.MAX_VALUE + ".",
+                        Alert.AlertType.ERROR);
+                return null;
+            }
+
+            Integer sessao = Math.toIntExact(sessaoLong);
 
             Paciente paciente = SessaoPaciente.getPaciente();
             if (paciente == null) {
