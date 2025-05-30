@@ -147,6 +147,8 @@ public class ProntuarioEditarController implements Initializable {
 
             try {
                 prontuarioService.salvarProntuario(prontuario);
+            } catch (IllegalArgumentException e) {
+                Alerts.showAlert("Erro de Validação", "Sessão já existe", e.getMessage(), Alert.AlertType.ERROR);
             } catch (Exception e) {
                 Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar o prontuário",
                         Alert.AlertType.ERROR);

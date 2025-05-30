@@ -47,4 +47,25 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
         }
     }
 
+    @Override
+    public boolean sessaoJaExiste(Integer sessao) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement("select 1 from prontuario where id_paciente = ? and sessao = ?");
+
+            pstm.setInt(1, idPaciente);
+            pstm.setInt(2, sessao);
+
+            rs = pstm.executeQuery();
+
+            return rs.next();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
 }
