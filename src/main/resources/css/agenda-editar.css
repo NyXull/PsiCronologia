@@ -1,173 +1,176 @@
-Button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-padding: 0px 0px;
-}
-
-Text {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-.titulo {
-    -fx-font-size: 20pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.label {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: white;
-}
-
-.botoesEsquerda {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 9px 10px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-}
-
-.texto-destaque-painel {
-    -fx-font-size: 13.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-}
-
-.dia-semana {
-   -fx-font-size: 12pt;
-   -fx-fill: white;
-   -fx-font-family: "Nunito";
-}
-
-.botao-numero-dia-semana {
-    -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-padding: 0px 0px;
-}
-
-.botao-numero-dia-semana.selecionado {
-    -fx-background-color: transparent;
-    -fx-border-color: #9E3AFC;
-    -fx-padding: 0px 2px;
-    -fx-border-width: 2px;
-    -fx-border-radius: 20;
-}
-
-.domingo {
-    -fx-text-fill: red;
-}
-
-.quadrado-dia {
-    -fx-background-color: transparent;
-}
-
-.quadrado-dia .dia-semana {
-    -fx-fill: #182052;
-    -fx-font-size: 11pt;
-}
-
-.quadrado-dia .dia-mes {
-    -fx-font-size: 16pt;
-}
-
-.quadrado-horario {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-border-width: 1;
-    -fx-border-color: #182052;
-}
-
-.quadrado-horario .hora {
-    -fx-font-size: 9pt;
-}
-
-.quadrado-horario .nome-paciente {
-    -fx-font-size: 9pt;
-}
-
-.layout {
-    -fx-background-radius: 10px;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
-    -fx-background-color: #9E3AFC;
-}
-
-.labelPergunta {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-padding: 0px 0px 0px 10px;
-}
-
-.botaoNao {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #c60003;
-    -fx-background-radius: 10px;
-    -fx-padding: 3px 20px;
-}
-
-.botaoSim {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #DE3AFC;
-    -fx-background-radius: 10px;
-    -fx-padding: 3px 20px;
-}
-
-.botao-travar-agenda {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-}
-
-#botaoSair {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 5px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-background-color: rgba(255, 0, 0, 0.35);
-}
-
-#fundo-branco-mes {
-    -fx-background-color: white;
-    -fx-background-radius: 10;
-}
-
-#fundo-azul-claro {
-    -fx-background-color: #3A91FC;
-    -fx-background-radius: 10;
-}
-
-#fundo-roxo-dias-semana {
+/* Fundo e imagem do VBox da esquerda */
+#vBox1AgendaEditar {
     -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
 }
 
-#botaoSalvar {
-    -fx-font-size: 12.5pt;
+/* Fundo do VBox da direita */
+#vBox2AgendaEditar {     
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER; 
+}
+
+#btInicio {
+    -fx-background-image: url("../img/botao_home2.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 50px;              
+    -fx-pref-height: 50px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btInicio:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: #d9d9d9;
+    -fx-text-alignment: CENTER;
+}
+
+#btNomeDoPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+#btNomeDoPaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btFinanceiro, #btRelatorios, #btBiblioteca{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 60px;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 
-#retangulo-principal {
-     -fx-background-color: transparent;
-     -fx-border-color: #182052;
-     -fx-border-width: 2;
-     -fx-background-radius: 0;
+#btProntuario:hover, #btFinanceiro:hover, 
+#btRelatorios:hover, #btBiblioteca:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAgenda{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 28px;
+    -fx-fill: #182052;
+}
+
+#hBoxAzul{
+	-fx-background-color: rgba(24, 32, 82, 0.8);
+    -fx-background-radius: 10px 10px 0px 0px;
+}
+
+#hBoxCinzaClaro1{
+	-fx-background-color: rgba(140, 129, 204, 0.2);	
+	-fx-background-radius: 0px 0px 10px 10px;
+}
+
+#hBoxCinzaClaro2 {
+	-fx-background-color: rgba(140, 129, 204, 0.2);	
+	-fx-background-radius: 10px 10px 10px 10px;
+}
+
+#txtMesAno{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 18px;
+    -fx-fill: #d9d9d9;    
+}
+
+#btMesAnterior {
+	-fx-background-image: url("../img/botao_mes_anterior.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btMesAnterior:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btMesSeguinte {
+	-fx-background-image: url("../img/botao_mes_seguinte.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btMesSeguinte:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.lblDiasSemana {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 10px;
+    -fx-text-fill: #182052;
+    -fx-font-weight: bold;
+}
+
+.btDiaMes {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-fill: #182052;
+    -fx-background-color: rgba(230, 230, 250, 0.2);
+    -fx-background-radius: 5;
+    -fx-padding: 5 15 5 15;
+    -fx-font-weight: bold;    
+    -fx-alignment: center;
+    -fx-text-alignment: center;    
+}
+
+.btHorario {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 10px;
+    -fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-border-color: #3d3d3d #3d3d3d #3d3d3d #3d3d3d;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-radius: 10px 10px 10px 10px;
+    -fx-border-style: solid;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
 }

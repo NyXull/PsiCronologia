@@ -1,74 +1,262 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.*?>
-<Pane style="-fx-background-color: #182052;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.AgendaEditarController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-    <Rectangle fill="#C5BAF4" height="600" width="913" x="237"/>
-
-    <ImageView>
-        <Image url="@../img/efeito-fundo-roxo-237.png"/>
-    </ImageView>
-
-    <Button layoutX="175" layoutY="25" mnemonicParsing="false" onAction="#navegarParaHome">
-        <graphic>
-            <ImageView fitHeight="35" fitWidth="40">
-                <Image url="@../img/Duke.png"/>
-            </ImageView>
-        </graphic>
-    </Button>
-
-    <Text styleClass="titulo" text="AGENDA" x="300" y="50"/>
-
-    <Text styleClass="label" text="Paciente:" x="20" y="100"/>
-    <Text styleClass="label" text="nome sobrenome" x="95" y="100"/>
-
-    <Line endX="215" endY="135" startX="20" startY="135" stroke="white" strokeWidth="1.25"/>
-
-    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="250" mnemonicParsing="false" prefHeight="20"
-            prefWidth="175" text="FINANCEIRO" onAction="#navegarParaFinanceiroPagamento"/>
-
-    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="325" mnemonicParsing="false" prefHeight="20"
-            prefWidth="175" text="RELATÓRIOS" onAction="#navegarParaRelatorio"/>
-
-    <Button styleClass="botoesEsquerda" layoutX="30" layoutY="400" mnemonicParsing="false" prefHeight="20"
-            prefWidth="175" text="BIBLIOTECA" onAction="#navegarParaBiblioteca"/>
-
-    <Button id="botaoSair" layoutX="30" layoutY="475" mnemonicParsing="false" onAction="#navegarParaLogin"
-            prefHeight="20" prefWidth="175" text="SAIR"/>
-
-    <Pane id="fundo-branco-mes" layoutX="300" layoutY="75" prefWidth="300" prefHeight="250">
-
-        <Pane id="fundo-azul-claro" prefWidth="300" prefHeight="50">
-            <Text styleClass="texto-destaque-painel" layoutX="15" layoutY="27" text="JANEIRO"/>
-            <Text styleClass="texto-destaque-painel" layoutX="240" layoutY="27" text="2025"/>
-        </Pane>
-
-        <Pane id="fundo-roxo-dias-semana" layoutY="40" prefWidth="300" prefHeight="25">
-            <Text styleClass="dia-semana" layoutX="25" layoutY="18" text="D"/>
-            <Text styleClass="dia-semana" layoutX="65" layoutY="18" text="S"/>
-            <Text styleClass="dia-semana" layoutX="105" layoutY="18" text="T"/>
-            <Text styleClass="dia-semana" layoutX="145" layoutY="18" text="Q"/>
-            <Text styleClass="dia-semana" layoutX="185" layoutY="18" text="Q"/>
-            <Text styleClass="dia-semana" layoutX="225" layoutY="18" text="S"/>
-            <Text styleClass="dia-semana" layoutX="265" layoutY="18" text="S"/>
-        </Pane>
-
-        <Pane fx:id="areaDiasMes" layoutY="75" prefHeight="150" prefWidth="300"/>
-
-    </Pane>
-
-    <Button id="botaoSalvar" layoutX="350" layoutY="450" mnemonicParsing="false" text="SALVAR"/>
-
-    <Pane id="retangulo-principal" layoutX="675" layoutY="25" prefWidth="352" prefHeight="550">
-        <Pane fx:id="containerDias" layoutX="1" layoutY="1" prefWidth="350" prefHeight="50"/>
-        <Pane fx:id="containerHorarios" layoutX="1" layoutY="51" prefWidth="350" prefHeight="500"/>
-    </Pane>
-
-</Pane>
+<HBox fx:id="hBoxPaiAgendaEditar" prefHeight="500.0" prefWidth="700" stylesheets="@../css/agenda-editar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AgendaEditarController">
+   <children>
+      <VBox fx:id="vBox1AgendaEditar" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints fx:id="gridInicio" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btInicio" mnemonicParsing="false" onAction="#onBtInicioAction" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></Button>
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="gridNomePaciente" maxWidth="300.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.33331298828125" minWidth="10.0" prefWidth="131.33332316080728" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.99999618530273" minWidth="10.0" prefWidth="169.33334350585935" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text fx:id="txtPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Text>
+                        <Button fx:id="btNomeDoPaciente" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+            </VBox>
+            <GridPane maxWidth="300.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btProntuario" mnemonicParsing="false" onAction="#onBtProntuario" text="PRONTUÁRIO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btFinanceiro" mnemonicParsing="false" onAction="#onBtFinanceiro" text="FINANCEIRO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btRelatorios" mnemonicParsing="false" onAction="#onBtRelatorios" text="RELATÓRIOS" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btBiblioteca" mnemonicParsing="false" onAction="#onBtBiblioteca" text="BIBLIOTECA " GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </GridPane>
+         </children>
+      </VBox>
+      <VBox fx:id="vBox2AgendaEditar" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane prefHeight="80.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="txtAgenda" strokeType="OUTSIDE" strokeWidth="0.0" text="AGENDA" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </GridPane>
+            <HBox fx:id="hBoxAzul" maxWidth="350.0" prefHeight="90.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <GridPane prefHeight="50.0" HBox.hgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.66668701171875" minWidth="10.0" prefWidth="106.3333740234375" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="72.33331298828125" minWidth="10.0" prefWidth="47.6666259765625" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text fx:id="txtMesAno" strokeType="OUTSIDE" strokeWidth="0.0" text="Mês de 2025" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets left="5.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Button fx:id="btMesAnterior" mnemonicParsing="false" prefWidth="57.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btMesSeguinte" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </GridPane>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="hBoxCinzaClaro1" maxWidth="350.0" prefHeight="300.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <GridPane fx:id="txtDiaMes4" maxWidth="450.0" HBox.hgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label styleClass="lblDiasSemana" text="Domingo" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Label styleClass="lblDiasSemana" text="Segunda" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label styleClass="lblDiasSemana" text="Terça" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label styleClass="lblDiasSemana" text="Quarta" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label styleClass="lblDiasSemana" text="Quinta" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label styleClass="lblDiasSemana" text="Sexta" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label styleClass="lblDiasSemana" text="Sábado" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Button maxWidth="45.0" mnemonicParsing="false" styleClass="btDiaMes" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </GridPane>
+               </children>
+            </HBox>
+            <HBox fx:id="hBoxCinzaClaro2" maxWidth="550.0" prefHeight="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <GridPane HBox.hgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefWidth="60.0" styleClass="btHorario" text="08:00" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="08:30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="09:00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="09:30" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="10:00" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="10:30" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="11:00" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="11:30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="12:00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="12:30" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="13:00" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="13:30" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="14:00" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="14:30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="15:00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="15:30" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="16:00" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="16:30" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="17:00" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="17:30" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="18:00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="18:30" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="19:00" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                        <Label prefWidth="60.0" styleClass="btHorario" text="19:30" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </GridPane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>
