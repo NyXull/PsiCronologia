@@ -3,7 +3,7 @@ package util;
 import model.entities.Paciente;
 
 public class SessaoPaciente {
-	private static Paciente paciente;
+    private static Paciente paciente;
 
     public static void setPaciente(Paciente p) {
         paciente = p;
@@ -15,5 +15,9 @@ public class SessaoPaciente {
 
     public static void limpar() {
         paciente = null;
+    }
+
+    public static Integer getIdPaciente() {
+        return paciente != null ? paciente.getIdPaciente() : null;
     }
 }
