@@ -25,7 +25,7 @@ public class HomePacienteController implements Initializable{
 	 private HBox hBoxPaiHomePaciente;
 	 
 	 @FXML
-	 private Button brInicio;
+	 private Button btInicio;
 	 
 	 @FXML
 	 private Text txtNomeDoPaciente;
@@ -52,7 +52,7 @@ public class HomePacienteController implements Initializable{
 	 
 	 @FXML
 	 public void onBtAgenda() {
-		 System.out.println("onBtAgenda");
+		 ViewLoader.loadView("/fxml/agenda-editar.fxml", "/css/agenda-editar.css");
 	 }
 	 
 	 @FXML
