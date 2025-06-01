@@ -6,4 +6,5 @@ public interface ProntuarioDAO {
 
     void salvarProntuario(Prontuario objProntuario);
     boolean sessaoJaExiste(Integer sessao);
+    int getProximoIdOrdem(int idSessao);
 }
