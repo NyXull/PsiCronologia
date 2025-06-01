@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import model.entities.Paciente;
 import model.entities.Prontuario;
@@ -44,9 +43,6 @@ public class ProntuarioEditarController implements Initializable {
     public Text txtPaciente;
 
     @FXML
-    public Line lineLinha;
-
-    @FXML
     public VBox vboxPesquisa;
 
     @FXML
@@ -57,9 +53,6 @@ public class ProntuarioEditarController implements Initializable {
 
     @FXML
     public VBox vBox2ProntuarioLista;
-
-    @FXML
-    public VBox vBox3FundoRosa;
 
     @FXML
     public Button btEsquerda;
@@ -86,22 +79,10 @@ public class ProntuarioEditarController implements Initializable {
     public ComboBox cbTamanho;
 
     @FXML
-    public VBox vBox1FundoOpcoes;
-
-    @FXML
     public Button btNegrito;
 
     @FXML
     public Button btItalico;
-
-    @FXML
-    public Button btSublinhado;
-
-    @FXML
-    public Button btRasurado;
-
-    @FXML
-    public VBox vBox4FundoRosa;
 
     @FXML
     public TextArea txtAreaProntuario;
@@ -110,16 +91,10 @@ public class ProntuarioEditarController implements Initializable {
     public Text txtProntuario;
 
     @FXML
-    public VBox vBox1FundoRosa;
-
-    @FXML
     public Text txtData;
 
     @FXML
     public Text txtDataDoProntuarioAqui;
-
-    @FXML
-    public VBox vBox2FundoRosa;
 
     @FXML
     public Text txtDetalhesDoProntuario;
@@ -131,7 +106,7 @@ public class ProntuarioEditarController implements Initializable {
     public Button btNomeDoPacienteAqui;
 
     @FXML
-    public TextField txtNumeroSessao;
+    public Text txtSessaoDoProntuarioAqui;
 
     @FXML
     public void onBtHomeAction() {
@@ -147,6 +122,7 @@ public class ProntuarioEditarController implements Initializable {
 
             try {
                 prontuarioService.salvarProntuario(prontuario);
+                atualizarSessao(prontuarioService);
             } catch (IllegalArgumentException e) {
                 Alerts.showAlert("Erro de Validação", "Sessão já existe", e.getMessage(), Alert.AlertType.ERROR);
             } catch (Exception e) {
@@ -178,18 +154,18 @@ public class ProntuarioEditarController implements Initializable {
 
         txtDataDoProntuarioAqui.setText(dataFormatada);
 
-        Constraints.setTextFieldInteger(txtNumeroSessao);
-        Constraints.setTextFieldMaxLength(txtNumeroSessao, 10);
         Constraints.setTextAreaMaxLength(txtAreaProntuario, 16777215);
+
+        ProntuarioService prontuarioService = new ProntuarioService();
+        atualizarSessao(prontuarioService);
     }
 
     public Prontuario validacaoEInstaciacao() {
         String dataAtendimentoString = txtDataDoProntuarioAqui.getText();
         String descricao = txtAreaProntuario.getText();
         String caminho_arquivo = "path";
-        String sessaoString = txtNumeroSessao.getText();
 
-        if (dataAtendimentoString.isEmpty() || descricao.isEmpty() || caminho_arquivo.isEmpty() || sessaoString.isEmpty()) {
+        if (dataAtendimentoString.isEmpty() || descricao.isEmpty() || caminho_arquivo.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
                     Alert.AlertType.ERROR);
             return null;
@@ -197,17 +173,6 @@ public class ProntuarioEditarController implements Initializable {
 
         try {
             Date dataAtendimento = sdf.parse(dataAtendimentoString);
-
-            Long sessaoLong = Long.valueOf(sessaoString);
-
-            if (sessaoLong < 0 || sessaoLong > Integer.MAX_VALUE) {
-                Alerts.showAlert("Erro de Validação", "Número de sessão inválido",
-                        "O número da sessão deve ser um inteiro positivo e menor ou igual a " + Integer.MAX_VALUE + ".",
-                        Alert.AlertType.ERROR);
-                return null;
-            }
-
-            Integer sessao = Math.toIntExact(sessaoLong);
 
             Paciente paciente = SessaoPaciente.getPaciente();
             if (paciente == null) {
@@ -220,7 +185,7 @@ public class ProntuarioEditarController implements Initializable {
             prontuario.setDataAtendimento(dataAtendimento);
             prontuario.setDescricao(descricao);
             prontuario.setCaminhoArquivo(caminho_arquivo);
-            prontuario.setSessao(sessao);
+            prontuario.setIdSessao(paciente.getIdPaciente());
 
             return prontuario;
         } catch (Exception e) {
@@ -228,5 +193,12 @@ public class ProntuarioEditarController implements Initializable {
                     Alert.AlertType.ERROR);
             return null;
         }
+    }
+
+    public void atualizarSessao(ProntuarioService prontuarioService) {
+        int idSessao = SessaoPaciente.getPaciente().getIdPaciente();
+        int proximoIdOrdem = prontuarioService.getProximoIdOrdem(idSessao);
+
+        txtSessaoDoProntuarioAqui.setText(String.valueOf(proximoIdOrdem));
     }
 }
