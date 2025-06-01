@@ -116,16 +116,16 @@
                                         <Insets left="13.0" />
                                     </GridPane.margin>
                                 </Text>
+                                <Text fx:id="txtSessaoDoProntuarioAqui" layoutX="23.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sessão Do Prontuario Aqui" GridPane.rowIndex="4">
+                                    <GridPane.margin>
+                                        <Insets left="13.0" />
+                                    </GridPane.margin>
+                                </Text>
                                 <Text fx:id="txtDetalhesDoProntuario" strokeType="OUTSIDE" strokeWidth="0.0" text="Detalhes do prontuário" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.vgrow="ALWAYS">
                                     <GridPane.margin>
                                         <Insets left="13.0" />
                                     </GridPane.margin>
                                 </Text>
-                                <TextField fx:id="txtNumeroSessao" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" promptText="Sessão" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                                    <GridPane.margin>
-                                        <Insets left="13.0" />
-                                    </GridPane.margin>
-                                </TextField>
                             </children>
                             <HBox.margin>
                                 <Insets left="20.0" right="20.0" />
