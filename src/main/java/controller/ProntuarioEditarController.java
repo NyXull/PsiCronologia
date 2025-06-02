@@ -1,5 +1,9 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -18,7 +22,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProntuarioEditarController implements Initializable {
@@ -49,7 +55,7 @@ public class ProntuarioEditarController implements Initializable {
     public TextField txtPesquisar;
 
     @FXML
-    public ListView listView;
+    public ListView<Prontuario> listView;
 
     @FXML
     public VBox vBox2ProntuarioLista;
@@ -108,6 +114,9 @@ public class ProntuarioEditarController implements Initializable {
     @FXML
     public Text txtSessaoDoProntuarioAqui;
 
+    private ObservableList<Prontuario> obsProntuarios;
+    private FilteredList<Prontuario> prontuariosFiltrados;
+
     @FXML
     public void onBtHomeAction() {
         ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
@@ -123,6 +132,7 @@ public class ProntuarioEditarController implements Initializable {
             try {
                 prontuarioService.salvarProntuario(prontuario);
                 atualizarSessao(prontuarioService);
+                carregarListaProntuarios();
             } catch (IllegalArgumentException e) {
                 Alerts.showAlert("Erro de Validação", "Sessão já existe", e.getMessage(), Alert.AlertType.ERROR);
             } catch (Exception e) {
@@ -158,6 +168,8 @@ public class ProntuarioEditarController implements Initializable {
 
         ProntuarioService prontuarioService = new ProntuarioService();
         atualizarSessao(prontuarioService);
+
+        carregarListaProntuarios();
     }
 
     public Prontuario validacaoEInstaciacao() {
@@ -200,5 +212,72 @@ public class ProntuarioEditarController implements Initializable {
         int proximoIdOrdem = prontuarioService.getProximoIdOrdem(idSessao);
 
         txtSessaoDoProntuarioAqui.setText(String.valueOf(proximoIdOrdem));
+    }
+
+    private void carregarListaProntuarios() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return;
+        }
+
+        ProntuarioService prontuarioService = new ProntuarioService();
+        List<Prontuario> prontuarios = prontuarioService.listarPorPaciente(paciente.getIdPaciente());
+
+        // Ordena por data de atendimento (mais recente primeiro)
+        prontuarios.sort(Comparator.comparing(Prontuario::getDataAtendimento).reversed());
+
+        obsProntuarios = FXCollections.observableArrayList(prontuarios);
+
+        prontuariosFiltrados = new FilteredList<>(obsProntuarios, p -> true);
+
+        // Listener para o campo de pesquisa (filtra pela data formatada)
+        txtPesquisar.textProperty().addListener((obs, oldValue, newValue) -> {
+            prontuariosFiltrados.setPredicate(prontuario -> {
+                if (newValue == null || newValue.isBlank()) {
+                    return true;
+                }
+
+                String dataFormatada = sdf.format(prontuario.getDataAtendimento());
+                return dataFormatada.contains(newValue.trim());
+            });
+        });
+
+        // Placeholder para quando não houver resultados
+        prontuariosFiltrados.addListener((ListChangeListener<Prontuario>) change -> {
+            if (prontuariosFiltrados.isEmpty()) {
+                Text placeholderText = new Text("Nenhum prontuário encontrado!");
+                placeholderText.setStyle("-fx-font-family: 'Nunito'; -fx-font-size: 13pt; -fx-fill: #5F3AFC; " +
+                        "-fx-font-style: italic;");
+                listView.setPlaceholder(placeholderText);
+            } else {
+                listView.setPlaceholder(null);
+            }
+        });
+
+        listView.setItems(prontuariosFiltrados);
+
+        // Exibe somente a data formatada na ListView
+        listView.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(Prontuario prontuario, boolean empty) {
+                super.updateItem(prontuario, empty);
+                if (empty || prontuario == null) {
+                    setText(null);
+                } else {
+                    setText(sdf.format(prontuario.getDataAtendimento()));
+                }
+            }
+        });
+
+        // Evento de clique na ListView
+        listView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                Prontuario prontuarioSelecionado = listView.getSelectionModel().getSelectedItem();
+                if (prontuarioSelecionado != null) {
+                    System.out.println("Prontuário selecionado: " + sdf.format(prontuarioSelecionado.getDataAtendimento()));
+                    // Aqui você pode implementar ações futuras, como carregar dados do prontuário selecionado
+                }
+            }
+        });
     }
 }
