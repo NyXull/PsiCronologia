@@ -4,6 +4,8 @@ import dao.factory.DaoFactory;
 import dao.interfaces.ProntuarioDAO;
 import model.entities.Prontuario;
 
+import java.util.List;
+
 public class ProntuarioService {
 
     private ProntuarioDAO dao = DaoFactory.createProntuarioDao();
@@ -18,5 +20,9 @@ public class ProntuarioService {
 
     public int getProximoIdOrdem(int idSessao) {
         return dao.getProximoIdOrdem(idSessao);
+    }
+
+    public List<Prontuario> listarPorPaciente(Integer idPaciente) {
+        return dao.listarPorPaciente(idPaciente);
     }
 }
