@@ -7,6 +7,8 @@ import model.entities.Prontuario;
 import util.SessaoPaciente;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProntuarioDaoJDBC implements ProntuarioDAO {
 
@@ -90,6 +92,40 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
             }
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public List<Prontuario> listarPorPaciente(Integer idPaciente) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        List<Prontuario> listaProntuario = new ArrayList<>();
+
+        try {
+            pstm = conn.prepareStatement(
+                    "SELECT id, id_paciente, data_atendimento, descricao, caminho_arquivo, id_sessao " +
+                            "FROM prontuario WHERE id_paciente = ? ORDER BY data_atendimento DESC"
+            );
+
+            pstm.setInt(1, idPaciente);
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Prontuario prontuario = new Prontuario();
+                prontuario.setIdProntuario(rs.getInt("id"));
+                prontuario.setIdPaciente(rs.getInt("id_paciente"));
+                prontuario.setDataAtendimento(rs.getDate("data_atendimento"));
+                prontuario.setDescricao(rs.getString("descricao"));
+                prontuario.setCaminhoArquivo(rs.getString("caminho_arquivo"));
+                prontuario.setIdSessao(rs.getInt("id_sessao"));
+                listaProntuario.add(prontuario);
+            }
+            return listaProntuario;
+        } catch (SQLException e) {
+            throw new DbException("Erro ao buscar prontuários do paciente: " + e.getMessage());
         } finally {
             DB.closeResultSet(rs);
             DB.closeStatement(pstm);
