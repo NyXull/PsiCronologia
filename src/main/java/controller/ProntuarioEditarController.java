@@ -131,7 +131,6 @@ public class ProntuarioEditarController implements Initializable {
 
             try {
                 prontuarioService.salvarProntuario(prontuario);
-                atualizarSessao(prontuarioService);
                 carregarListaProntuarios();
             } catch (IllegalArgumentException e) {
                 Alerts.showAlert("Erro de Validação", "Sessão já existe", e.getMessage(), Alert.AlertType.ERROR);
@@ -176,6 +175,7 @@ public class ProntuarioEditarController implements Initializable {
         String dataAtendimentoString = txtDataDoProntuarioAqui.getText();
         String descricao = txtAreaProntuario.getText();
         String caminho_arquivo = "path";
+        Integer idOrdem = Integer.valueOf(txtSessaoDoProntuarioAqui.getText());
 
         if (dataAtendimentoString.isEmpty() || descricao.isEmpty() || caminho_arquivo.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
@@ -198,6 +198,7 @@ public class ProntuarioEditarController implements Initializable {
             prontuario.setDescricao(descricao);
             prontuario.setCaminhoArquivo(caminho_arquivo);
             prontuario.setIdSessao(paciente.getIdPaciente());
+            prontuario.setIdOrdem(idOrdem);
 
             return prontuario;
         } catch (Exception e) {
@@ -274,8 +275,12 @@ public class ProntuarioEditarController implements Initializable {
             if (event.getClickCount() == 1) {
                 Prontuario prontuarioSelecionado = listView.getSelectionModel().getSelectedItem();
                 if (prontuarioSelecionado != null) {
-                    System.out.println("Prontuário selecionado: " + sdf.format(prontuarioSelecionado.getDataAtendimento()));
-                    // Aqui você pode implementar ações futuras, como carregar dados do prontuário selecionado
+                    String idOrdem = String.valueOf(prontuarioSelecionado.getIdOrdem());
+                    String dataAtendimentoFormatada = sdf.format(prontuarioSelecionado.getDataAtendimento());
+
+                    txtSessaoDoProntuarioAqui.setText(idOrdem);
+                    txtAreaProntuario.setText(prontuarioSelecionado.getDescricao());
+                    txtDataDoProntuarioAqui.setText(dataAtendimentoFormatada);
                 }
             }
         });
