@@ -107,7 +107,7 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
         try {
             pstm = conn.prepareStatement(
                     "SELECT id, id_paciente, data_atendimento, descricao, caminho_arquivo, id_sessao, id_ordem " +
-                            "FROM prontuario WHERE id_paciente = ? ORDER BY data_atendimento DESC"
+                            "FROM prontuario WHERE id_paciente = ? ORDER BY id_ordem DESC"
             );
 
             pstm.setInt(1, idPaciente);
