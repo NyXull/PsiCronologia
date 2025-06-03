@@ -52,7 +52,7 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
     }
 
     @Override
-    public boolean sessaoJaExiste(Integer sessao) {
+    public boolean sessaoJaExiste(Integer idSessao) {
         PreparedStatement pstm = null;
         ResultSet rs = null;
 
@@ -60,7 +60,7 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
             pstm = conn.prepareStatement("select 1 from prontuario where id_paciente = ? and id_sessao = ?");
 
             pstm.setInt(1, idPaciente);
-            pstm.setInt(2, sessao);
+            pstm.setInt(2, idSessao);
 
             rs = pstm.executeQuery();
 
@@ -106,7 +106,7 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
 
         try {
             pstm = conn.prepareStatement(
-                    "SELECT id, id_paciente, data_atendimento, descricao, caminho_arquivo, id_sessao " +
+                    "SELECT id, id_paciente, data_atendimento, descricao, caminho_arquivo, id_sessao, id_ordem " +
                             "FROM prontuario WHERE id_paciente = ? ORDER BY data_atendimento DESC"
             );
 
@@ -121,11 +121,57 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
                 prontuario.setDescricao(rs.getString("descricao"));
                 prontuario.setCaminhoArquivo(rs.getString("caminho_arquivo"));
                 prontuario.setIdSessao(rs.getInt("id_sessao"));
+                prontuario.setIdOrdem(rs.getInt("id_ordem"));
                 listaProntuario.add(prontuario);
             }
             return listaProntuario;
         } catch (SQLException e) {
             throw new DbException("Erro ao buscar prontuários do paciente: " + e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public void atualizarProntuario(Prontuario objProntuario) {
+        PreparedStatement pstm = null;
+
+        try {
+            pstm = conn.prepareStatement(
+                    "UPDATE prontuario SET descricao = ? WHERE id_ordem = ?"
+            );
+
+            pstm.setString(1, objProntuario.getDescricao());
+            pstm.setInt(2, objProntuario.getIdOrdem());
+
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public Integer getIdOrdem(Integer idOrdem) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement("select prontuario.id_ordem from prontuario where id_ordem = ?");
+
+            pstm.setInt(1, idOrdem);
+
+            rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("id_ordem");
+            } else {
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
         } finally {
             DB.closeResultSet(rs);
             DB.closeStatement(pstm);
