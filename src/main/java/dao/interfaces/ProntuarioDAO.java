@@ -8,9 +8,14 @@ public interface ProntuarioDAO {
 
     void salvarProntuario(Prontuario objProntuario);
 
-    boolean sessaoJaExiste(Integer sessao);
+    boolean sessaoJaExiste(Integer idSessao);
 
     int getProximoIdOrdem(int idSessao);
 
     List<Prontuario> listarPorPaciente(Integer idPaciente);
+
+    void atualizarProntuario(Prontuario objProntuario);
+
+    Integer getIdOrdem(Integer idSessao);
+
 }
