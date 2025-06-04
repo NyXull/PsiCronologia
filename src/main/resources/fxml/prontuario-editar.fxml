@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.web.HTMLEditor?>
 
 <HBox fx:id="hBoxPaiProntuarioLista" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/prontuario-editar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProntuarioEditarController">
     <children>
@@ -196,6 +197,7 @@
                         <HBox fx:id="hBoxTxtArea" prefHeight="100.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                         <TextArea fx:id="txtAreaProntuario" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                         <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#onBtSalvar" text="SALVAR" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" />
                     </children>
                     <VBox.margin>
                         <Insets left="20.0" right="20.0" />
