@@ -11,6 +11,10 @@ public class Psicologo {
 	
 	public Psicologo() {		
 	}
+	
+	public Psicologo(Integer idPsico) {
+		this.idPsico = idPsico;
+	}
 
 	public Psicologo(Integer idPsico, String nomePsico, String emailPsico, String senhaPsico) {
 		super();

@@ -1,4 +1,5 @@
-.dialog-pane {
+/*ESTILO PRA showAlert */
+.dialog-pane.show-alert {
     -fx-background-color: #C5BAF4;
     -fx-border-color: #9E3AFC;
     -fx-border-width: 2px;
@@ -7,21 +8,21 @@
     -fx-font-family: "Comfortaa";
 }
 
-.dialog-pane .header-panel {
+.dialog-pane.show-alert .header-panel {
     -fx-background-color: transparent;
     -fx-text-fill: #182052;
 }
 
-.dialog-pane .content {
+.dialog-pane.show-alert .content {
     -fx-text-fill: #182052;
     -fx-font-weight: normal !important;
 }
 
-.dialog-pane .label {
+.dialog-pane.show-alert .label {
     -fx-text-fill: #182052;
 }
 
-.button-bar .button {
+.dialog-pane.show-alert .button-bar .button {
     -fx-background-color: #9E3AFC;
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -30,4 +31,110 @@
 .dialog-pane:header .label {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+}
+
+/*ESTILO PRA mostrarPopupAgendamentoCompleto */
+
+.dialog-pane.mostrarPopupAgendamentoCompleto {
+    -fx-background-color: #C5BAF4;
+    -fx-effect: dropshadow(gaussian, rgba(158,58,252,0.5), 10, 0.5, 0, 0);
+    -fx-padding: 15;
+    -fx-font-family: "Comfortaa";
+}
+
+.dialog-pane.mostrarPopupAgendamentoCompleto .header-panel {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+}
+
+.dialog-pane.mostrarPopupAgendamentoCompleto .content {
+    -fx-text-fill: #000000;
+    -fx-font-weight: normal !important;
+}
+
+.dialog-pane.mostrarPopupAgendamentoCompleto .label {
+    -fx-text-fill: #182052;
+}
+
+.dialog-pane.mostrarPopupAgendamentoCompleto .button-bar .button {
+    -fx-background-color: #3A4B85;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane:header .label {
+    -fx-font-size: 14px;
+     -fx-font-weight: bold !important;
+}
+
+/*ESTILO PRA agendamentoRealizadoComSucesso */
+
+.dialog-pane.agendamentoRealizadoComSucesso {
+    -fx-background-color: #C5BAF4;
+    -fx-border-color: #27AE60;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(158,58,252,0.5), 10, 0.5, 0, 0);
+    -fx-padding: 15;
+    -fx-font-family: "Comfortaa";
+}
+
+.dialog-pane.agendamentoRealizadoComSucesso .header-panel {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+}
+
+.dialog-pane.agendamentoRealizadoComSucesso .content {
+    -fx-text-fill: #000000;
+    -fx-font-weight: normal !important;
+}
+
+.dialog-pane.agendamentoRealizadoComSucesso .label {
+    -fx-text-fill: #182052;
+}
+
+.dialog-pane.agendamentoRealizadoComSucesso .button-bar .button {
+    -fx-background-color: #3A91FC;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane:header .label {
+    -fx-font-size: 14px;
+     -fx-font-weight: normal !important;
+}
+
+/*ESTILO PRA confirmarCancelamentoDoAgendamento */
+
+.dialog-pane.confirmarCancelamentoDoAgendamento {
+    -fx-background-color: #C5BAF4;
+    -fx-border-color: #E74C3C;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(158,58,252,0.5), 10, 0.5, 0, 0);
+    -fx-padding: 15;
+    -fx-font-family: "Comfortaa";
+}
+
+.dialog-pane.confirmarCancelamentoDoAgendamento .header-panel {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+}
+
+.dialog-pane.confirmarCancelamentoDoAgendamento .content {
+    -fx-text-fill: #000000;
+    -fx-font-weight: normal !important;
+}
+
+.dialog-pane.confirmarCancelamentoDoAgendamento .label {
+    -fx-text-fill: #182052;
+}
+
+.dialog-pane.confirmarCancelamentoDoAgendamento .button-bar .button {
+    -fx-background-color: #C0392B;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane:header .label {
+    -fx-font-size: 14px;
+     -fx-font-weight: normal !important;
 }

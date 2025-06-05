@@ -61,7 +61,7 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private void onBtAgendaAction() {
-		System.out.println("onBtAgendaAction");
+		ViewLoader.loadView("/fxml/agenda-editar.fxml", "/css/agenda-editar.css");
 	}
 	
 	@FXML
