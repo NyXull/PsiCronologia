@@ -14,10 +14,14 @@ import javafx.scene.web.HTMLEditor;
 import model.entities.Paciente;
 import model.entities.Prontuario;
 import model.services.ProntuarioService;
+import org.docx4j.convert.in.xhtml.XHTMLImporterImpl;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.jsoup.Jsoup;
 import util.Alerts;
 import util.SessaoPaciente;
 import util.ViewLoader;
+
+import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -142,12 +146,11 @@ public class ProntuarioEditarController implements Initializable {
     public Prontuario validacaoEInstaciacao() {
         String dataAtendimentoString = txtDataDoProntuarioAqui.getText();
         String descricaoHtml = htmlEditor.getHtmlText();
-        String caminho_arquivo = "path";
         Integer idOrdem = Integer.valueOf(txtSessaoDoProntuarioAqui.getText());
         int maxLength = 16777215;
         String descricaoTexto = Jsoup.parse(descricaoHtml).text().trim();
 
-        if (dataAtendimentoString.isEmpty() || descricaoTexto.isEmpty() || caminho_arquivo.isEmpty()) {
+        if (dataAtendimentoString.isEmpty() || descricaoTexto.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
                     Alert.AlertType.ERROR);
             return null;
@@ -168,17 +171,38 @@ public class ProntuarioEditarController implements Initializable {
                 return null;
             }
 
+            // Gerar nome do arquivo dinamicamente
+            String nomeArquivo = gerarNomeArquivo(dataAtendimento, paciente.getNomePaciente(), idOrdem);
+
+            // Obter caminho da pasta Documentos do usuário
+            String userHome = System.getProperty("user.home");
+            String documentosPath = userHome + File.separator + "Documents";
+
+            // Criar objeto File com o caminho completo
+            File arquivoDocx = new File(documentosPath, nomeArquivo);
+
+            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
+            XHTMLImporterImpl xhtmlImporter = new XHTMLImporterImpl(wordMLPackage);
+
+            wordMLPackage.getMainDocumentPart().getContent().addAll(
+                    xhtmlImporter.convert(descricaoHtml, null));
+
+            // Salvar o arquivo DOCX no caminho gerado
+            wordMLPackage.save(arquivoDocx);
+
+            // Criar e preencher o objeto Prontuario
             Prontuario prontuario = new Prontuario();
 
             prontuario.setIdPaciente(paciente.getIdPaciente());
             prontuario.setDataAtendimento(dataAtendimento);
             prontuario.setDescricao(descricaoHtml);
-            prontuario.setCaminhoArquivo(caminho_arquivo);
+            prontuario.setCaminhoArquivo(arquivoDocx.getAbsolutePath());
             prontuario.setIdSessao(paciente.getIdPaciente());
             prontuario.setIdOrdem(idOrdem);
 
             return prontuario;
         } catch (Exception e) {
+            e.printStackTrace(); // para ajudar no debug
             Alerts.showAlert("Erro de Validação", "Data inválida", "Use um formato válido. Exemplo: 08/06/2024.",
                     Alert.AlertType.ERROR);
             return null;
@@ -261,5 +285,15 @@ public class ProntuarioEditarController implements Initializable {
                 }
             }
         });
+    }
+
+    public String gerarNomeArquivo(Date dataAtendimento, String nomePaciente, int numeroSessao) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // usa hífens no lugar de barras
+        String nomePacienteSanitizado = nomePaciente.replaceAll("[^a-zA-Z0-9]", "_");
+
+        return String.format("%s_%s_sessao%d.docx",
+                sdf.format(dataAtendimento),
+                nomePacienteSanitizado,
+                numeroSessao);
     }
 }
