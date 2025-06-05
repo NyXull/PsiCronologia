@@ -380,7 +380,7 @@
     -fx-background: transparent;
 }
 
-.list-cell {
+#listView .list-cell {
     -fx-font-family: "Nunito";
     -fx-font-size: 10pt;
     -fx-text-fill: white;
@@ -426,4 +426,78 @@
 #listView .scroll-bar:horizontal {
     -fx-opacity: 0;
     -fx-max-height: 0;
+}
+
+ToolBar {
+    -fx-background-color: rgba(195, 142, 188, 0.6);
+}
+
+Separator {
+    -fx-opacity: 0;
+}
+
+#htmlEditor .combo-box-base {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor .toggle-button, #htmlEditor .button {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor {
+    -fx-background-color: transparent;
+}
+
+#htmlEditor .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#htmlEditor .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#htmlEditor .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#htmlEditor .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#htmlEditor .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#htmlEditor .scroll-bar .increment-button,
+#htmlEditor .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
 }
