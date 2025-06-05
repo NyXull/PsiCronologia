@@ -10,14 +10,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.web.HTMLEditor;
 import model.entities.Paciente;
 import model.entities.Prontuario;
 import model.services.ProntuarioService;
+import org.jsoup.Jsoup;
 import util.Alerts;
-import util.Constraints;
 import util.SessaoPaciente;
 import util.ViewLoader;
-
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -30,6 +30,9 @@ import java.util.ResourceBundle;
 public class ProntuarioEditarController implements Initializable {
 
     private final SimpleDateFormat sdf;
+
+    @FXML
+    public HTMLEditor htmlEditor;
 
     public ProntuarioEditarController() {
         sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -59,39 +62,6 @@ public class ProntuarioEditarController implements Initializable {
 
     @FXML
     public VBox vBox2ProntuarioLista;
-
-    @FXML
-    public Button btEsquerda;
-
-    @FXML
-    public Button btCentralizado;
-
-    @FXML
-    public Button btDireita;
-
-    @FXML
-    public Button btJustificado;
-
-    @FXML
-    public Button btNumerado;
-
-    @FXML
-    public Button btOrdenado;
-
-    @FXML
-    public ComboBox cbFonte;
-
-    @FXML
-    public ComboBox cbTamanho;
-
-    @FXML
-    public Button btNegrito;
-
-    @FXML
-    public Button btItalico;
-
-    @FXML
-    public TextArea txtAreaProntuario;
 
     @FXML
     public Text txtProntuario;
@@ -163,8 +133,6 @@ public class ProntuarioEditarController implements Initializable {
 
         txtDataDoProntuarioAqui.setText(dataFormatada);
 
-        Constraints.setTextAreaMaxLength(txtAreaProntuario, 16777215);
-
         ProntuarioService prontuarioService = new ProntuarioService();
         atualizarSessao(prontuarioService);
 
@@ -173,12 +141,21 @@ public class ProntuarioEditarController implements Initializable {
 
     public Prontuario validacaoEInstaciacao() {
         String dataAtendimentoString = txtDataDoProntuarioAqui.getText();
-        String descricao = txtAreaProntuario.getText();
+        String descricaoHtml = htmlEditor.getHtmlText();
         String caminho_arquivo = "path";
         Integer idOrdem = Integer.valueOf(txtSessaoDoProntuarioAqui.getText());
+        int maxLength = 16777215;
+        String descricaoTexto = Jsoup.parse(descricaoHtml).text().trim();
 
-        if (dataAtendimentoString.isEmpty() || descricao.isEmpty() || caminho_arquivo.isEmpty()) {
+        if (dataAtendimentoString.isEmpty() || descricaoTexto.isEmpty() || caminho_arquivo.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+
+        if (descricaoHtml.length() > maxLength) {
+            Alerts.showAlert("Erro de Validação", "Texto muito longo!",
+                    "O texto não pode ultrapassar " + maxLength + " caracteres (incluindo HTML).",
                     Alert.AlertType.ERROR);
             return null;
         }
@@ -195,7 +172,7 @@ public class ProntuarioEditarController implements Initializable {
 
             prontuario.setIdPaciente(paciente.getIdPaciente());
             prontuario.setDataAtendimento(dataAtendimento);
-            prontuario.setDescricao(descricao);
+            prontuario.setDescricao(descricaoHtml);
             prontuario.setCaminhoArquivo(caminho_arquivo);
             prontuario.setIdSessao(paciente.getIdPaciente());
             prontuario.setIdOrdem(idOrdem);
@@ -279,7 +256,7 @@ public class ProntuarioEditarController implements Initializable {
                     String dataAtendimentoFormatada = sdf.format(prontuarioSelecionado.getDataAtendimento());
 
                     txtSessaoDoProntuarioAqui.setText(idOrdem);
-                    txtAreaProntuario.setText(prontuarioSelecionado.getDescricao());
+                    htmlEditor.setHtmlText(prontuarioSelecionado.getDescricao());
                     txtDataDoProntuarioAqui.setText(dataAtendimentoFormatada);
                 }
             }
