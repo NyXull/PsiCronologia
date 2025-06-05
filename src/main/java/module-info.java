@@ -4,6 +4,7 @@ module com.example.psiorganize {
     requires java.sql;
     requires jakarta.mail;
     requires javafx.web;
+    requires javafx.swing;
     
     opens view to javafx.fxml;
     opens controller to javafx.fxml;
