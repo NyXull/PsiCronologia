@@ -13,6 +13,10 @@ public class Paciente {
 	
 	public Paciente() {		
 	}
+	
+	public Paciente(Integer idPaciente) {
+		this.idPaciente = idPaciente;
+	}
 
 	public Paciente(Integer idPaciente, String cpf, String nomePaciente, String emailPaciente, Date dataNascimento,
 			String telefone) {
