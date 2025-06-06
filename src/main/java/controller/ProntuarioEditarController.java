@@ -171,14 +171,11 @@ public class ProntuarioEditarController implements Initializable {
                 return null;
             }
 
-            // Gerar nome do arquivo dinamicamente
-            String nomeArquivo = gerarNomeArquivo(dataAtendimento, paciente.getNomePaciente(), idOrdem);
+            String nomeArquivo = gerarNomeArquivo(paciente.getNomePaciente(), idOrdem);
 
-            // Obter caminho da pasta Documentos do usuário
             String userHome = System.getProperty("user.home");
             String documentosPath = userHome + File.separator + "Documents";
 
-            // Criar objeto File com o caminho completo
             File arquivoDocx = new File(documentosPath, nomeArquivo);
 
             WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
@@ -187,10 +184,8 @@ public class ProntuarioEditarController implements Initializable {
             wordMLPackage.getMainDocumentPart().getContent().addAll(
                     xhtmlImporter.convert(descricaoHtml, null));
 
-            // Salvar o arquivo DOCX no caminho gerado
             wordMLPackage.save(arquivoDocx);
 
-            // Criar e preencher o objeto Prontuario
             Prontuario prontuario = new Prontuario();
 
             prontuario.setIdPaciente(paciente.getIdPaciente());
@@ -202,7 +197,6 @@ public class ProntuarioEditarController implements Initializable {
 
             return prontuario;
         } catch (Exception e) {
-            e.printStackTrace(); // para ajudar no debug
             Alerts.showAlert("Erro de Validação", "Data inválida", "Use um formato válido. Exemplo: 08/06/2024.",
                     Alert.AlertType.ERROR);
             return null;
@@ -287,12 +281,10 @@ public class ProntuarioEditarController implements Initializable {
         });
     }
 
-    public String gerarNomeArquivo(Date dataAtendimento, String nomePaciente, int numeroSessao) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // usa hífens no lugar de barras
+    public String gerarNomeArquivo(String nomePaciente, int numeroSessao) {
         String nomePacienteSanitizado = nomePaciente.replaceAll("[^a-zA-Z0-9]", "_");
 
-        return String.format("%s_%s_sessao%d.docx",
-                sdf.format(dataAtendimento),
+        return String.format("%s_sessao_%d.docx",
                 nomePacienteSanitizado,
                 numeroSessao);
     }
