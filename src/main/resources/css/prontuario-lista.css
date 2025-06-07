@@ -24,6 +24,7 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btHome:hover {
@@ -50,6 +51,7 @@
     -fx-pref-height: 200px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btNovoProntuario:hover {
@@ -57,10 +59,26 @@
     -fx-scale-y: 1.1;
 }
 
-#txtPaciente, #txtNomeDoPacienteAqui{
+#txtPaciente {
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
     -fx-fill: white;
+}
+
+#btNomeDoPacienteAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
 #lineLinha {
@@ -96,19 +114,4 @@
 #listView {
     -fx-background-color: transparent;
     -fx-background: transparent;
-}
-
-#btNomeDoPacienteAqui {
-    -fx-background-color: transparent;
-    -fx-font-family: "Comfortaa";
-    -fx-font-size: 15px;
-    -fx-text-fill: white;
-    -fx-underline: true;
-    -fx-scale-x: 1;
-    -fx-scale-y: 1;
-}
-
-#btNomeDoPacienteAqui:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
 }

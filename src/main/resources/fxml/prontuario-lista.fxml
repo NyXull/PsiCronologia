@@ -46,7 +46,7 @@
                               <Insets />
                            </GridPane.margin>
                         </Text>
-                        <Button fx:id="btNomeDoPacienteAqui" mnemonicParsing="false" onAction="#onBtNomeDoPacienteAquiAction" text="Nome Do Paciente Aqui" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                        <Button fx:id="btNomeDoPacienteAqui" mnemonicParsing="false" onAction="#onBtNomeDoPacienteAquiAction" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" />
