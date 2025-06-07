@@ -1,35 +1,115 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import model.entities.TrocarCena;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import model.entities.Paciente;
+import util.ExibirNomeDoPaciente;
+import util.SessaoPaciente;
+import util.ViewLoader;
 
-import java.io.IOException;
+public class FinanceiroPagamentoController implements Initializable{
 
-public class FinanceiroPagamentoController {
-
+	@FXML
+	private VBox vBox1FinanceiroPagamento;
+	
+	@FXML
+	private VBox vBox2FinanceiroPagamento;
+	
+	@FXML
+	private HBox hBoxPaiFinanceiroPagamento;
+	
     @FXML
-    private void navegarParaHome(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", event);
-    }
-
+    private Button btNomeDoPacienteAqui;
+    
     @FXML
-    private void navegarParaLogin(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/login.fxml", "/css/login.css", event);
-    }
-
+    private Button btProntuario;
+    
     @FXML
-    private void navegarParaFinanceiroStatus(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/financeiro-status.fxml", "/css/financeiro-status.css", event);
-    }
-
+    private Button btAgenda;
+    
     @FXML
-    private void navegarParaRelatorio(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
-    }
-
+    private Button btRelatorios;
+    
     @FXML
-    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
-    }
+    private TextField textFieldValorPorSessao;
+    
+    @FXML
+    private TextField textFieldVencimento;
+    
+    @FXML
+    private TextField textFieldQuantidadePorMes;
+    
+    @FXML
+    private Label lblTotal;
+    
+    @FXML
+    private ComboBox comboBoxStatus;
+    
+    @FXML
+    private ComboBox comboBoxMes;
+    
+    @FXML
+    private Button btSalvar;
+    
+    @FXML
+    private Button btStatusMensal;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)		
+		vBox1FinanceiroPagamento.prefWidthProperty().bind(hBoxPaiFinanceiroPagamento.widthProperty().multiply(0.25));
+		vBox2FinanceiroPagamento.prefWidthProperty().bind(hBoxPaiFinanceiroPagamento.widthProperty().multiply(0.75));		
+		
+		exibirNomePaciente();
+	}
+	
+	private void exibirNomePaciente() {
+		Paciente paciente = SessaoPaciente.getPaciente();
+		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+		btNomeDoPacienteAqui.setText(nomeFormatado.toString());
+	}
+
+	@FXML
+	private void onBtHomeAction() {
+		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+	}
+	
+	@FXML
+	private void onBtNomeDoPacienteAquiAction() {
+		ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
+	}
+	
+	@FXML
+	private void onBtProntuarioAction() {
+		ViewLoader.loadView("/fxml/prontuario-lista.fxml", "/css/prontuario-lista.css");
+	}
+	
+	@FXML
+	private void onBtAgendaAction() {
+		ViewLoader.loadView("/fxml/agenda-editar.fxml", "/css/agenda-editar.css");
+	}
+	
+	@FXML
+	private void onBtRelatoriosAction() {
+		System.out.println("onBtRelatoriosAction");
+	}
+	
+	@FXML
+	private void onBtSalvarAction() {
+		System.out.println("onBtSalvarAction");
+	}
+	
+	@FXML
+	private void onBtStatusMensalAction() {
+		System.out.println("onBtStatusMensalAction");
+	}
 }

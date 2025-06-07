@@ -1,140 +1,178 @@
-Button {
+/* Fundo e imagem do VBox da esquerda */
+#vBox1FinanceiroPagamento {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2FinanceiroPagamento {
+    -fx-background-color: #C5BAF4;
+    -fx-alignment: CENTER;
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;
     -fx-background-color: transparent;
+    -fx-background-radius: 0;
     -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-padding: 0px 0px;
+    -fx-padding: 0;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
-ComboBox {
-    -fx-background-color: transparent;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-ComboBox .list-cell {
-    -fx-text-fill: #182052;
-}
-
-TextField {
-    -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 110;
-    -fx-prompt-text-fill: #182052;
-    -fx-border-radius: 10;
-}
-
-Text {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-.titulo {
-    -fx-font-size: 20pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.subtitulo {
-    -fx-font-size: 15pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.label {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Comfortaa";
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
     -fx-fill: white;
 }
 
-.fundoRosa {
-    -fx-background-color: #DE3AFC;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 10;
+#btNomeDoPacienteAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
 }
 
-.botoesEsquerda {
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btRelatorios, #btAgenda{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btProntuario:hover, #btRelatorios:hover, #btAgenda:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtFinanceiro {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#txtInformacoes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 18px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 10px 10px;
+}
+
+.lblInformacoes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 11px;
+    -fx-fill: #182052;
+    -fx-font-weight: bold;
+}
+
+.textFieldInformacoes {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+	-fx-text-fill: #182052;
     -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
+    -fx-border-color: rgba(24, 32, 82, 0.3);
+    -fx-border-width: 1px 1px 1px 1px;
     -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 9px 10px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
+    -fx-border-radius: 5px;
 }
 
-.combo-box-popup .list-view {
-    -fx-background-color: white, white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
-    -fx-padding: 3 0 3 7;
+.comboBoxInformacoes {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
 }
 
-.combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: transparent;
-}
-
-.combo-box-popup .list-view .list-cell:selected {
-    -fx-background-color: transparent;
-}
-
-.scroll-bar:vertical .thumb {
-    -fx-background-color: #182052;
-    -fx-background-radius: 5;
-}
-
-.scroll-bar:vertical .track {
-    -fx-background-color: #5F3AFC;
-    -fx-background-radius: 5;
-}
-
-.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
-    -fx-opacity: 0;
-    -fx-cursor: default;
-}
-
-.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
-    -fx-scale-x: 0;
-    -fx-scale-y: 0;
-}
-
-#botaoSalvar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
+.comboBoxInformacoes .list-cell {
     -fx-text-fill: #182052;
+}
+
+.comboBoxInformacoes .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#lblStatusDoMes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 15px;
+    -fx-pref-width: 200px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #182052;
+}
+
+#btSalvar {
     -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-}
-
-#botaoSair {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 5px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-background-color: rgba(255, 0, 0, 0.35);
-}
-
-#valorTotal {
-    -fx-background-color: transparent;
+    -fx-font-weight: bold;
     -fx-text-fill: #182052;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 110;
-    -fx-border-radius: 10;
-    -fx-padding: 5px;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSalvar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btStatusMensal {
+	-fx-background-image: url("../img/botao_status_mensal.png");
+    -fx-background-size: cover;    
+    -fx-pref-width: 100px;              
+    -fx-pref-height: 100px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
