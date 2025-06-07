@@ -88,7 +88,7 @@
                   <Insets />
                </VBox.margin>
             </GridPane>
-            <HBox fx:id="hBoxAzul" maxWidth="350.0" prefHeight="80.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+            <HBox fx:id="hBoxAzul" maxWidth="350.0" prefHeight="80.0" prefWidth="100.0">
                <children>
                   <GridPane prefHeight="50.0" HBox.hgrow="ALWAYS">
                     <columnConstraints>
