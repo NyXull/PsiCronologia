@@ -71,12 +71,6 @@ public class FinanceiroPagamentoController implements Initializable{
 		
 		exibirNomePaciente();
 	}
-	
-	private void exibirNomePaciente() {
-		Paciente paciente = SessaoPaciente.getPaciente();
-		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
-		btNomeDoPacienteAqui.setText(nomeFormatado.toString());
-	}
 
 	@FXML
 	private void onBtHomeAction() {
@@ -110,6 +104,12 @@ public class FinanceiroPagamentoController implements Initializable{
 	
 	@FXML
 	private void onBtStatusMensalAction() {
-		System.out.println("onBtStatusMensalAction");
+		ViewLoader.loadView("/fxml/financeiro-status.fxml", "/css/financeiro-status.css");
+	}
+	
+	private void exibirNomePaciente() {
+		Paciente paciente = SessaoPaciente.getPaciente();
+		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+		btNomeDoPacienteAqui.setText(nomeFormatado.toString());
 	}
 }
