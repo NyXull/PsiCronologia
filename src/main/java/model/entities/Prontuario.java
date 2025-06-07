@@ -9,19 +9,21 @@ public class Prontuario {
     private Date dataAtendimento;
     private String descricao;
     private String caminhoArquivo;
-    private Integer sessao;
+    private Integer idSessao;
+    private Integer idOrdem;
 
     public Prontuario() {
     }
 
     public Prontuario(Integer idProntuario, Integer idPaciente, Date dataAtendimento, String descricao,
-                      String caminhoArquivo, Integer sessao) {
-        super();
+                      String caminhoArquivo, Integer idSessao, Integer idOrdem) {
         this.idProntuario = idProntuario;
         this.idPaciente = idPaciente;
         this.dataAtendimento = dataAtendimento;
         this.descricao = descricao;
         this.caminhoArquivo = caminhoArquivo;
+        this.idSessao = idSessao;
+        this.idOrdem = idOrdem;
     }
 
     public Integer getIdProntuario() {
@@ -64,11 +66,19 @@ public class Prontuario {
         this.caminhoArquivo = caminhoArquivo;
     }
 
-    public Integer getSessao() {
-        return sessao;
+    public Integer getIdSessao() {
+        return idSessao;
     }
 
-    public void setSessao(Integer sessao) {
-        this.sessao = sessao;
+    public void setIdSessao(Integer idSessao) {
+        this.idSessao = idSessao;
+    }
+
+    public Integer getIdOrdem() {
+        return idOrdem;
+    }
+
+    public void setIdOrdem(Integer idOrdem) {
+        this.idOrdem = idOrdem;
     }
 }

@@ -1,30 +1,42 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import javafx.scene.web.HTMLEditor;
 import model.entities.Paciente;
 import model.entities.Prontuario;
 import model.services.ProntuarioService;
+import org.docx4j.convert.in.xhtml.XHTMLImporterImpl;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import org.jsoup.Jsoup;
 import util.Alerts;
-import util.Constraints;
 import util.SessaoPaciente;
 import util.ViewLoader;
 
+import java.io.File;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProntuarioEditarController implements Initializable {
 
     private final SimpleDateFormat sdf;
+
+    @FXML
+    public HTMLEditor htmlEditor;
 
     public ProntuarioEditarController() {
         sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -44,82 +56,25 @@ public class ProntuarioEditarController implements Initializable {
     public Text txtPaciente;
 
     @FXML
-    public Line lineLinha;
-
-    @FXML
     public VBox vboxPesquisa;
 
     @FXML
     public TextField txtPesquisar;
 
     @FXML
-    public ListView listView;
+    public ListView<Prontuario> listView;
 
     @FXML
     public VBox vBox2ProntuarioLista;
 
     @FXML
-    public VBox vBox3FundoRosa;
-
-    @FXML
-    public Button btEsquerda;
-
-    @FXML
-    public Button btCentralizado;
-
-    @FXML
-    public Button btDireita;
-
-    @FXML
-    public Button btJustificado;
-
-    @FXML
-    public Button btNumerado;
-
-    @FXML
-    public Button btOrdenado;
-
-    @FXML
-    public ComboBox cbFonte;
-
-    @FXML
-    public ComboBox cbTamanho;
-
-    @FXML
-    public VBox vBox1FundoOpcoes;
-
-    @FXML
-    public Button btNegrito;
-
-    @FXML
-    public Button btItalico;
-
-    @FXML
-    public Button btSublinhado;
-
-    @FXML
-    public Button btRasurado;
-
-    @FXML
-    public VBox vBox4FundoRosa;
-
-    @FXML
-    public TextArea txtAreaProntuario;
-
-    @FXML
     public Text txtProntuario;
-
-    @FXML
-    public VBox vBox1FundoRosa;
 
     @FXML
     public Text txtData;
 
     @FXML
     public Text txtDataDoProntuarioAqui;
-
-    @FXML
-    public VBox vBox2FundoRosa;
 
     @FXML
     public Text txtDetalhesDoProntuario;
@@ -131,7 +86,10 @@ public class ProntuarioEditarController implements Initializable {
     public Button btNomeDoPacienteAqui;
 
     @FXML
-    public TextField txtNumeroSessao;
+    public Text txtSessaoDoProntuarioAqui;
+
+    private ObservableList<Prontuario> obsProntuarios;
+    private FilteredList<Prontuario> prontuariosFiltrados;
 
     @FXML
     public void onBtHomeAction() {
@@ -147,6 +105,9 @@ public class ProntuarioEditarController implements Initializable {
 
             try {
                 prontuarioService.salvarProntuario(prontuario);
+                carregarListaProntuarios();
+            } catch (IllegalArgumentException e) {
+                Alerts.showAlert("Erro de Validação", "Sessão já existe", e.getMessage(), Alert.AlertType.ERROR);
             } catch (Exception e) {
                 Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar o prontuário",
                         Alert.AlertType.ERROR);
@@ -176,19 +137,28 @@ public class ProntuarioEditarController implements Initializable {
 
         txtDataDoProntuarioAqui.setText(dataFormatada);
 
-        Constraints.setTextFieldInteger(txtNumeroSessao);
-        Constraints.setTextFieldMaxLength(txtNumeroSessao, 10);
-        Constraints.setTextAreaMaxLength(txtAreaProntuario, 16777215);
+        ProntuarioService prontuarioService = new ProntuarioService();
+        atualizarSessao(prontuarioService);
+
+        carregarListaProntuarios();
     }
 
     public Prontuario validacaoEInstaciacao() {
         String dataAtendimentoString = txtDataDoProntuarioAqui.getText();
-        String descricao = txtAreaProntuario.getText();
-        String caminho_arquivo = "path";
-        String sessaoString = txtNumeroSessao.getText();
+        String descricaoHtml = htmlEditor.getHtmlText();
+        Integer idOrdem = Integer.valueOf(txtSessaoDoProntuarioAqui.getText());
+        int maxLength = 16777215;
+        String descricaoTexto = Jsoup.parse(descricaoHtml).text().trim();
 
-        if (dataAtendimentoString.isEmpty() || descricao.isEmpty() || caminho_arquivo.isEmpty() || sessaoString.isEmpty()) {
+        if (dataAtendimentoString.isEmpty() || descricaoTexto.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+
+        if (descricaoHtml.length() > maxLength) {
+            Alerts.showAlert("Erro de Validação", "Texto muito longo!",
+                    "O texto não pode ultrapassar " + maxLength + " caracteres (incluindo HTML).",
                     Alert.AlertType.ERROR);
             return null;
         }
@@ -196,29 +166,34 @@ public class ProntuarioEditarController implements Initializable {
         try {
             Date dataAtendimento = sdf.parse(dataAtendimentoString);
 
-            Long sessaoLong = Long.valueOf(sessaoString);
-
-            if (sessaoLong < 0 || sessaoLong > Integer.MAX_VALUE) {
-                Alerts.showAlert("Erro de Validação", "Número de sessão inválido",
-                        "O número da sessão deve ser um inteiro positivo e menor ou igual a " + Integer.MAX_VALUE + ".",
-                        Alert.AlertType.ERROR);
-                return null;
-            }
-
-            Integer sessao = Math.toIntExact(sessaoLong);
-
             Paciente paciente = SessaoPaciente.getPaciente();
             if (paciente == null) {
                 return null;
             }
 
+            String nomeArquivo = gerarNomeArquivo(paciente.getNomePaciente(), idOrdem);
+
+            String userHome = System.getProperty("user.home");
+            String documentosPath = userHome + File.separator + "Documents";
+
+            File arquivoDocx = new File(documentosPath, nomeArquivo);
+
+            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
+            XHTMLImporterImpl xhtmlImporter = new XHTMLImporterImpl(wordMLPackage);
+
+            wordMLPackage.getMainDocumentPart().getContent().addAll(
+                    xhtmlImporter.convert(descricaoHtml, null));
+
+            wordMLPackage.save(arquivoDocx);
+
             Prontuario prontuario = new Prontuario();
 
             prontuario.setIdPaciente(paciente.getIdPaciente());
             prontuario.setDataAtendimento(dataAtendimento);
-            prontuario.setDescricao(descricao);
-            prontuario.setCaminhoArquivo(caminho_arquivo);
-            prontuario.setSessao(sessao);
+            prontuario.setDescricao(descricaoHtml);
+            prontuario.setCaminhoArquivo(arquivoDocx.getAbsolutePath());
+            prontuario.setIdSessao(paciente.getIdPaciente());
+            prontuario.setIdOrdem(idOrdem);
 
             return prontuario;
         } catch (Exception e) {
@@ -226,5 +201,91 @@ public class ProntuarioEditarController implements Initializable {
                     Alert.AlertType.ERROR);
             return null;
         }
+    }
+
+    public void atualizarSessao(ProntuarioService prontuarioService) {
+        int idSessao = SessaoPaciente.getPaciente().getIdPaciente();
+        int proximoIdOrdem = prontuarioService.getProximoIdOrdem(idSessao);
+
+        txtSessaoDoProntuarioAqui.setText(String.valueOf(proximoIdOrdem));
+    }
+
+    private void carregarListaProntuarios() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return;
+        }
+
+        ProntuarioService prontuarioService = new ProntuarioService();
+        List<Prontuario> prontuarios = prontuarioService.listarPorPaciente(paciente.getIdPaciente());
+
+        // Ordena por data de atendimento (mais recente primeiro)
+        prontuarios.sort(Comparator.comparing(Prontuario::getDataAtendimento).reversed());
+
+        obsProntuarios = FXCollections.observableArrayList(prontuarios);
+
+        prontuariosFiltrados = new FilteredList<>(obsProntuarios, p -> true);
+
+        // Listener para o campo de pesquisa (filtra pela data formatada)
+        txtPesquisar.textProperty().addListener((obs, oldValue, newValue) -> {
+            prontuariosFiltrados.setPredicate(prontuario -> {
+                if (newValue == null || newValue.isBlank()) {
+                    return true;
+                }
+
+                String dataFormatada = sdf.format(prontuario.getDataAtendimento());
+                return dataFormatada.contains(newValue.trim());
+            });
+        });
+
+        // Placeholder para quando não houver resultados
+        prontuariosFiltrados.addListener((ListChangeListener<Prontuario>) change -> {
+            if (prontuariosFiltrados.isEmpty()) {
+                Text placeholderText = new Text("Nenhum prontuário encontrado!");
+                placeholderText.setStyle("-fx-font-family: 'Nunito'; -fx-font-size: 13pt; -fx-fill: #5F3AFC; " +
+                        "-fx-font-style: italic;");
+                listView.setPlaceholder(placeholderText);
+            } else {
+                listView.setPlaceholder(null);
+            }
+        });
+
+        listView.setItems(prontuariosFiltrados);
+
+        // Exibe somente a data formatada na ListView
+        listView.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(Prontuario prontuario, boolean empty) {
+                super.updateItem(prontuario, empty);
+                if (empty || prontuario == null) {
+                    setText(null);
+                } else {
+                    setText(sdf.format(prontuario.getDataAtendimento()));
+                }
+            }
+        });
+
+        // Evento de clique na ListView
+        listView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                Prontuario prontuarioSelecionado = listView.getSelectionModel().getSelectedItem();
+                if (prontuarioSelecionado != null) {
+                    String idOrdem = String.valueOf(prontuarioSelecionado.getIdOrdem());
+                    String dataAtendimentoFormatada = sdf.format(prontuarioSelecionado.getDataAtendimento());
+
+                    txtSessaoDoProntuarioAqui.setText(idOrdem);
+                    htmlEditor.setHtmlText(prontuarioSelecionado.getDescricao());
+                    txtDataDoProntuarioAqui.setText(dataAtendimentoFormatada);
+                }
+            }
+        });
+    }
+
+    public String gerarNomeArquivo(String nomePaciente, int numeroSessao) {
+        String nomePacienteSanitizado = nomePaciente.replaceAll("[^a-zA-Z0-9]", "_");
+
+        return String.format("%s_sessao_%d.docx",
+                nomePacienteSanitizado,
+                numeroSessao);
     }
 }
