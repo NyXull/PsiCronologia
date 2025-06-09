@@ -18,6 +18,7 @@ import org.docx4j.convert.in.xhtml.XHTMLImporterImpl;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.jsoup.Jsoup;
 import util.Alerts;
+import util.ExibirNomeDoPaciente;
 import util.SessaoPaciente;
 import util.ViewLoader;
 import util.interfaces.ParametroRecebivel;
@@ -126,22 +127,28 @@ public class ProntuarioEditarController implements Initializable, ParametroReceb
         vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
         vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
 
-        Paciente paciente = SessaoPaciente.getPaciente();
-        if (paciente != null) {
-            btNomeDoPacienteAqui.setText(paciente.getNomePaciente());
-        }
+        atualizarSessao();
 
+        dataAtualFormatada();
+
+        carregarListaProntuarios();
+
+        exibirNomePaciente();
+    }
+
+    private void exibirNomePaciente() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+        btNomeDoPacienteAqui.setText(nomeFormatado.toString());
+    }
+
+    public void dataAtualFormatada() {
         LocalDate dataAtual = LocalDate.now();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dataFormatada = dataAtual.format(formatter);
 
         txtDataDoProntuarioAqui.setText(dataFormatada);
-
-        ProntuarioService prontuarioService = new ProntuarioService();
-        atualizarSessao(prontuarioService);
-
-        carregarListaProntuarios();
     }
 
     public Prontuario validacaoEInstaciacao() {
@@ -204,7 +211,8 @@ public class ProntuarioEditarController implements Initializable, ParametroReceb
         }
     }
 
-    public void atualizarSessao(ProntuarioService prontuarioService) {
+    public void atualizarSessao() {
+        ProntuarioService prontuarioService = new ProntuarioService();
         int idSessao = SessaoPaciente.getPaciente().getIdPaciente();
         int proximoIdOrdem = prontuarioService.getProximoIdOrdem(idSessao);
 
