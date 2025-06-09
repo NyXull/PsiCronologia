@@ -48,6 +48,7 @@
     -fx-pref-width: 400px;
 	-fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btCadastro:hover {
@@ -65,6 +66,7 @@
     -fx-alignment: CENTER;    
 	-fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btEntrar:hover {

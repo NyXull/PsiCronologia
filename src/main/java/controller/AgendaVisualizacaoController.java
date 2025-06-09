@@ -1,166 +1,209 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import model.entities.TrocarCena;
+import model.entities.Agenda;
+import model.entities.Psicologo;
+import model.services.AgendaService;
+import util.ExibirNomeDoPaciente;
+import util.SessaoUsuario;
+import util.ViewLoader;
 
-import java.io.IOException;
+public class AgendaVisualizacaoController implements Initializable{
 
-public class AgendaVisualizacaoController {
+	@FXML
+	private VBox vBox1AgendaVisualizacao;
+	
+	@FXML
+	private VBox vBox2AgendaVisualizacao;
+	
+	@FXML
+	private HBox hBoxPaiAgendaVisualizacao;
+	
+	@FXML
+	private Button btInicio;
+	
+	@FXML
+	private Button btFinanceiro;
+	
+	@FXML
+	private Button btBiblioteca;
+	
+	@FXML
+	private Button btSair;
+	
+	@FXML
+	private Text txtMesAtual;
+	
+	@FXML
+	private Button btSemanaAnterior;
+	
+	@FXML
+	private Button btSemanaSeguinte;
+	
+	@FXML
+	private GridPane gridDiaDoMes;
+	
+	@FXML
+	private GridPane gridHorarios;
+	
+	private YearMonth mesAtual;
+	
+	@FXML
+	public void onBtInicioAction() {
+		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
+	}
+	
+	@FXML
+	public void onBtFinanceiroAction() {
+		System.out.println("onBtFinanceiroAction");
+	}
+	
+	@FXML
+	public void onBtBibliotecaAction() {
+		System.out.println("onBtBibliotecaAction");
+	}
+	
+	@FXML
+	public void onBtSairAction() {
+		SessaoUsuario.encerrarSessao();
+	    ViewLoader.loadView("/fxml/login2.fxml", "/css/login2.css");
+	}
 
-    @FXML
-    private Pane containerDias;
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		vBox1AgendaVisualizacao.prefWidthProperty().bind(hBoxPaiAgendaVisualizacao.widthProperty().multiply(0.25));
+		vBox2AgendaVisualizacao.prefWidthProperty().bind(hBoxPaiAgendaVisualizacao.widthProperty().multiply(0.75));
+		
+		mesAtual = YearMonth.now();
+		atualizarCalendario();
+		atualizarHorarios(LocalDate.now());
+	}
+	
+	private void atualizarCalendario() {
+		gridDiaDoMes.getChildren().clear();
 
-    @FXML
-    private Pane containerHorarios;
+		Locale locale = Locale.forLanguageTag("pt-BR");
+		String nomeMes = mesAtual.getMonth().getDisplayName(TextStyle.FULL, locale);
 
-    @FXML
-    private Pane areaDiasMes;
+		txtMesAtual.setText(nomeMes.substring(0, 1).toUpperCase() + nomeMes.substring(1) + " " + mesAtual.getYear());
 
-    @FXML
-    private void navegarParaHome(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", event);
-    }
+		LocalDate primeiroDiaDoMes = mesAtual.atDay(1);
+		int diaDaSemana = primeiroDiaDoMes.getDayOfWeek().getValue();
 
-    @FXML
-    private void navegarParaLogin(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/login.fxml", "/css/login.css", event);
-    }
+		int diasNoMes = mesAtual.lengthOfMonth();
+		int linha = 0;
+		int coluna = (diaDaSemana % 7);
 
-    @FXML
-    private void navegarParaAgenda(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/agenda-visualizacao.fxml", "/css/agenda-visualizacao.css", event);
-    }
+		LocalDate hoje = LocalDate.now();
 
-    @FXML
-    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
-        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
-    }
+		for (int dia = 1; dia <= diasNoMes; dia++) {
+			Button botaoDia = new Button(String.valueOf(dia));
 
-    public void initialize() {
-        criarBotoesDias();
+			if (hoje.getDayOfMonth() == dia && hoje.getMonthValue() == mesAtual.getMonthValue()
+					&& hoje.getYear() == mesAtual.getYear()) {
 
-        criarDiasDaSemana();
+				botaoDia.getStyleClass().add("btDiaAtual");
+			} else {
+				botaoDia.getStyleClass().add("btDiaMes");
+			}
 
-        criarHorarios();
-    }
+			final int diaSelecionado = dia;
+			botaoDia.setOnAction(e -> {
+				gridDiaDoMes.getChildren().forEach(node -> node.getStyleClass().remove("btDiaClicado"));
 
-    private void criarDiasDaSemana() {
-        String[] diasSemana = {"DOM.", "SEG.", "TER.", "QUA.", "QUI.", "SEX.", "SAB."};
-        String[] diasMes = {"10", "11", "12", "13", "14", "15", "16"};
+				botaoDia.getStyleClass().add("btDiaClicado");
 
-        for (int i = 0; i < diasSemana.length; i++) {
-            Pane paneDia = new Pane();
-            paneDia.getStyleClass().add("quadrado-dia");
-            paneDia.setPrefSize(50, 50);
-            paneDia.setLayoutX(i * 50);
+				LocalDate dataSelecionada = mesAtual.atDay(diaSelecionado);
+				
+				atualizarHorarios(dataSelecionada);
+			});
 
-            Text textoDiaSemana = new Text(diasSemana[i]);
-            textoDiaSemana.getStyleClass().add("dia-semana");
-            textoDiaSemana.setLayoutX(9);
-            textoDiaSemana.setLayoutY(20);
+			gridDiaDoMes.add(botaoDia, coluna, linha);
 
-            Text textoDiaMes = new Text(diasMes[i]);
-            textoDiaMes.getStyleClass().add("dia-mes");
-            textoDiaMes.setLayoutX(11);
-            textoDiaMes.setLayoutY(40);
+			coluna++;
+			if (coluna > 6) {
+				coluna = 0;
+				linha++;
+			}
+		}
+	}
+	
+	private void atualizarHorarios(LocalDate dataSelecionada) {
+		gridHorarios.getChildren().clear();
+		
+		Psicologo psicolgo = SessaoUsuario.getPsicologoLogado();
+		AgendaService agendaService = new AgendaService();
+		
+		List<LocalTime> horariosOcupados = agendaService.buscarHorariosOcupados(dataSelecionada, psicolgo);
+		
+		int linha = 0;
+		int coluna = 0;
+		
+		LocalTime horario = LocalTime.of(8, 0);
+		LocalTime fim = LocalTime.of(19, 30);
+		
+		LocalTime horarioAtual = LocalTime.now();
+		
+		while (!horario.isAfter(fim)) {
+			
+			String horarioFormatado = horario.format(DateTimeFormatter.ofPattern("HH:mm"));
+			Label labelHorario = new Label(horarioFormatado);
+			
+			boolean ocupado = horariosOcupados.contains(horario);
+			
+			if (ocupado) {
+				Optional<Agenda> agendaOpt = agendaService.buscarAgendamento(dataSelecionada, horario, psicolgo);
+				String nomePaciente = agendaOpt.get().getPaciente().getNomePaciente().toString();
+				String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(nomePaciente);
+				labelHorario = new Label(horarioFormatado + " \n " + nomeFormatado);
+				Tooltip tooltip = new Tooltip(nomePaciente);
+				Tooltip.install(labelHorario, tooltip);
+				labelHorario.getStyleClass().add("lblHorarioOcupado");
+			}
+			else {
+				labelHorario = new Label(horarioFormatado + "\n");
+				labelHorario.getStyleClass().add("lblHorarioDisponivel");
+			}
+			
+			gridHorarios.add(labelHorario, coluna, linha);
+			coluna++;
+			
+			if (coluna > 5) {
+				coluna = 0;
+				linha++;
+			}
+			horario = horario.plusMinutes(30);
+		}
+	}
 
-            paneDia.getChildren().addAll(textoDiaSemana, textoDiaMes);
+	@FXML
+	public void onBtMesAnterior() {
+		mesAtual = mesAtual.minusMonths(1);
+		atualizarCalendario();
+	}
 
-            containerDias.getChildren().add(paneDia);
-        }
-    }
-
-    private void criarHorarios() {
-        int numHorarios = 10;
-        int colunas = 7;
-
-        for (int i = 0; i < numHorarios; i++) {
-            for (int j = 0; j < colunas; j++) {
-
-                Pane paneHorario = new Pane();
-                paneHorario.getStyleClass().add("quadrado-horario");
-                paneHorario.setPrefSize(50, 50);
-                paneHorario.setLayoutX(j * 50);
-                paneHorario.setLayoutY(i * 50);
-
-                Text textoHora = new Text(String.format("%02d:00", 8 + i));
-                textoHora.getStyleClass().add("hora");
-                textoHora.setLayoutX(12);
-                textoHora.setLayoutY(15);
-
-                Text textoPaciente = new Text("-");
-                textoPaciente.getStyleClass().add("nome-paciente");
-                textoPaciente.setLayoutX(15);
-                textoPaciente.setLayoutY(40);
-
-                paneHorario.getChildren().addAll(textoHora, textoPaciente);
-
-                containerHorarios.getChildren().add(paneHorario);
-            }
-        }
-    }
-
-    private void criarBotoesDias() {
-        int x = 15;
-        int y = 0;
-        int dia = 1;
-
-        int primeiroDiaSemana = 3;
-
-        x += primeiroDiaSemana * 40;
-
-        for (int semana = 0; semana < 5; semana++) {
-            for (int diaSemana = 0; diaSemana < 7; diaSemana++) {
-                if (dia > 31) break;
-
-                if (dia == 1 && semana == 0 && diaSemana < primeiroDiaSemana) {
-                    continue;
-                }
-
-                Button botao = new Button(dia > 0 ? String.valueOf(dia) : "-");
-                botao.setPrefHeight(30);
-                botao.setPrefWidth(30);
-                botao.setLayoutX(x);
-                botao.setLayoutY(y);
-                if (dia > 0) {
-                    botao.getStyleClass().add("botao-numero-dia-semana");
-                    botao.setOnAction(_ -> selecionarDia(botao));
-                } else {
-                    botao.getStyleClass().add("numero-dia-semana");
-                }
-
-                if (Math.abs(x - 15) < 40) {
-                    botao.getStyleClass().add("domingo");
-                }
-
-                areaDiasMes.getChildren().add(botao);
-
-                x += 40;
-                dia++;
-
-                if (diaSemana == 6) {
-                    x = 15;
-                    y += 35;
-                }
-            }
-        }
-    }
-
-    private void selecionarDia(Button botao) {
-        for (Node node : areaDiasMes.getChildren()) {
-            if (node instanceof Button) {
-                node.getStyleClass().remove("selecionado");
-            }
-        }
-
-        if (!botao.getStyleClass().contains("selecionado") && !botao.getStyleClass().contains("domingo")) {
-            botao.getStyleClass().add("selecionado");
-        }
-    }
-
+	@FXML
+	public void onBtMesSeguinte() {
+		mesAtual = mesAtual.plusMonths(1);
+		atualizarCalendario();
+	}
 }

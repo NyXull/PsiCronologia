@@ -12,8 +12,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import model.entities.Paciente;
+import util.ExibirNomeDoPaciente;
 import model.entities.Prontuario;
 import model.services.ProntuarioService;
 import util.SessaoPaciente;
@@ -88,10 +90,13 @@ public class ProntuarioListaController implements Initializable {
         vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
         vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
 
-        Paciente paciente = SessaoPaciente.getPaciente();
-        if (paciente != null) {
-            btNomeDoPacienteAqui.setText(paciente.getNomePaciente());
-        }
+        exibirNomePaciente();
+    }
+
+	private void exibirNomePaciente() {
+		Paciente paciente = SessaoPaciente.getPaciente();
+		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+		btNomeDoPacienteAqui.setText(nomeFormatado.toString());
 
         carregarListaProntuarios();
     }

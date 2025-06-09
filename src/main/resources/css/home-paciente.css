@@ -25,6 +25,7 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btInicio:hover {
@@ -32,28 +33,28 @@
     -fx-scale-y: 1.1;
 }
 
-#txtPaciente, #txtNomeDoPaciente{
+#txtPaciente{
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
     -fx-fill: #182052;
     -fx-text-alignment: CENTER;
 }
 
-#txtSaudacao{
+#btNomeDoPaciente {
 	-fx-font-family: "Comfortaa";
-    -fx-font-size: 28px;
-    -fx-fill: #d9d9d9;
-    -fx-text-alignment: CENTER;
+    -fx-font-size: 15px;
+    -fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
 }
 
-#btProntuario, #btAgenda, #btFinanceiro, #btRelatorios, #btBiblioteca{
+#btProntuario, #btAgenda, #btFinanceiro, #btRelatorios{
 	 -fx-background-color: transparent;
     -fx-border-color: #DE3AFC;
     -fx-text-fill: #182052;
-
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-
     -fx-font-family: "Nunito";
     -fx-font-size: 12px;
     -fx-padding: 4px 8px;
@@ -62,10 +63,11 @@
     -fx-pref-height: 10px; 
 	-fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btProntuario:hover, #btAgenda:hover, #btFinanceiro:hover, 
-#btRelatorios:hover, #btBiblioteca:hover {
+#btRelatorios:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
@@ -88,4 +90,3 @@
 #hboxLinha, #hBoxNomeDoPacienteAqui{
 	-fx-alignment: TOP_CENTER;
 }
-

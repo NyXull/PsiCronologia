@@ -28,6 +28,7 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btHome:hover {
@@ -72,6 +73,7 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btNovoPaciente:hover {
@@ -90,6 +92,7 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btEditarPaciente:hover {

@@ -24,6 +24,7 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btVoltar:hover {
@@ -74,6 +75,7 @@
     -fx-alignment: CENTER;    
 	-fx-scale-x: 1;
     -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
 #btCadastrar:hover {

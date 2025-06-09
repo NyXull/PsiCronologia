@@ -1,156 +1,98 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
-import model.entities.TrocarCena;
+import model.entities.Paciente;
+import util.ExibirNomeDoPaciente;
+import util.SessaoPaciente;
+import util.ViewLoader;
 
-import java.io.IOException;
-
-public class FinanceiroStatusController {
-
-    public Button botaoExcluir;
-    private Popup popupExcluir;
-    private ChangeListener<Number> stageXListener;
-    private ChangeListener<Number> stageYListener;
+public class FinanceiroStatusController implements Initializable{
 
     @FXML
-    private void navegarParaHome(ActionEvent event) throws IOException {
-        fecharPopup();
-        TrocarCena.trocarCena("/fxml/home.fxml", "/css/home.css", event);
-    }
-
+    private HBox hBoxPaiFinanceiroStatus;
+       
     @FXML
-    private void navegarParaLogin(ActionEvent event) throws IOException {
-        fecharPopup();
-        TrocarCena.trocarCena("/fxml/login.fxml", "/css/login.css", event);
-    }
-
+    private VBox vBox1FinanceiroStatus;
+    
     @FXML
-    private void navegarParaFinanceiroPagamento(ActionEvent event) throws IOException {
-        fecharPopup();
-        TrocarCena.trocarCena("/fxml/financeiro-pagamento.fxml", "/css/financeiro-pagamento.css", event);
-    }
-
+    private VBox vBox2FinanceiroStatus;
+    
     @FXML
-    private void navegarParaRelatorio(ActionEvent event) throws IOException {
-        fecharPopup();
-        TrocarCena.trocarCena("/fxml/relatorio.fxml", "/css/relatorio.css", event);
-    }
-
+    private Button btHome;
+    
     @FXML
-    private void navegarParaBiblioteca(ActionEvent event) throws IOException {
-        fecharPopup();
-        TrocarCena.trocarCena("/fxml/biblioteca.fxml", "/css/biblioteca.css", event);
-    }
-
+    private Button btNomeDoPaciente;
+    
     @FXML
-    private void mostrarPopupExcluir() {
-        if (popupExcluir != null && popupExcluir.isShowing()) {
-            fecharPopup();
-        }
+    private Button btProntuario;
+    
+    @FXML
+    private Button btAgenda;
+    
+    @FXML
+    private Button btRelatorios;
+    
+    @FXML
+    private ComboBox comboBoxMesParaAlterar;
+    
+    @FXML
+    private ComboBox comboBoxMesParaExcluir;
+    
+    @FXML
+    private ComboBox comboBoxStatus;
+    
+    @FXML
+    private Button btExcluir;
 
-        popupExcluir = criarPopup();
-        Stage stage = (Stage) botaoExcluir.getScene().getWindow();
-        Bounds bounds = calcularPosicaoInicial(botaoExcluir, popupExcluir);
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		vBox1FinanceiroStatus.prefWidthProperty().bind(hBoxPaiFinanceiroStatus.widthProperty().multiply(0.25));
+		vBox2FinanceiroStatus.prefWidthProperty().bind(hBoxPaiFinanceiroStatus.widthProperty().multiply(0.75));
+		
+		exibirNomePaciente();		
+	}    
 
-        configurarListenersDeMovimento(stage, botaoExcluir, popupExcluir);
-        popupExcluir.show(stage, bounds.getMinX(), bounds.getMinY());
+	@FXML
+    private void onBtHomeAction() {
+    	ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
     }
-
-
-    private Popup criarPopup() {
-        Popup popup = new Popup();
-        VBox layout = criarLayout();
-        popup.getContent().add(layout);
-        popupExcluir = popup;
-        return popupExcluir;
-    }
-
-    private VBox criarLayout() {
-        VBox layout = new VBox(10);
-        layout.setPadding(new Insets(10));
-        layout.getStyleClass().add("layout");
-
-        Label pergunta = new Label("CERTEZA QUE DESEJA EXCLUIR?");
-        pergunta.getStyleClass().add("labelPergunta");
-
-        HBox botoesLayout = criarBotoesLayout();
-        layout.getChildren().addAll(pergunta, botoesLayout);
-
-        return layout;
-    }
-
-    private HBox criarBotoesLayout() {
-        HBox botoesLayout = new HBox(10);
-        botoesLayout.setAlignment(Pos.CENTER);
-
-        Button botaoSim = criarBotao("Sim", "botaoSim", e -> ((Node) e.getSource()).getScene().getWindow().hide());
-        Button botaoNao = criarBotao("Não", "botaoNao", e -> ((Node) e.getSource()).getScene().getWindow().hide());
-
-        botoesLayout.getChildren().addAll(botaoSim, botaoNao);
-        return botoesLayout;
-    }
-
-    private Button criarBotao(String texto, String estilo, EventHandler<ActionEvent> acao) {
-        Button botao = new Button(texto);
-        botao.getStyleClass().add(estilo);
-        botao.setOnAction(acao);
-        return botao;
-    }
-
-    private Bounds calcularPosicaoInicial(Node referencia, Popup popup) {
-        Bounds bounds = referencia.localToScreen(referencia.getBoundsInLocal());
-        double larguraReferencia = referencia.getBoundsInLocal().getWidth();
-        double alturaReferencia = referencia.getBoundsInLocal().getHeight();
-        double x = bounds.getMinX() + (larguraReferencia / 2) - (popup.getWidth() / 2);
-        double y = bounds.getMinY() + alturaReferencia;
-        return new BoundingBox(x, y, 0, 0);
-    }
-
-    private void configurarListenersDeMovimento(Stage stage, Node referencia, Popup popup) {
-        stageXListener = (_, _, _) -> {
-            Bounds newBounds = referencia.localToScreen(referencia.getBoundsInLocal());
-            if (newBounds == null) return;
-
-            double larguraReferencia = referencia.getBoundsInLocal().getWidth();
-            double newX = newBounds.getMinX() + (larguraReferencia / 2) - (popup.getWidth() / 2);
-            popup.setX(newX);
-        };
-
-        stageYListener = (_, _, _) -> {
-            Bounds newBounds = referencia.localToScreen(referencia.getBoundsInLocal());
-            if (newBounds == null) return;
-
-            double alturaReferencia = referencia.getBoundsInLocal().getHeight();
-            double newY = newBounds.getMinY() + alturaReferencia;
-            popup.setY(newY);
-        };
-
-        stage.xProperty().addListener(stageXListener);
-        stage.yProperty().addListener(stageYListener);
-    }
-
-    private void fecharPopup() {
-        if (popupExcluir != null && popupExcluir.isShowing()) {
-            popupExcluir.hide();
-            Stage stage = (Stage) botaoExcluir.getScene().getWindow();
-            stage.xProperty().removeListener(stageXListener);
-            stage.yProperty().removeListener(stageYListener);
-            popupExcluir = null;
-        }
-    }
-
+    
+    @FXML
+	private void onBtNomeDoPacienteAction() {
+		ViewLoader.loadView("/fxml/home-paciente.fxml", "/css/home-paciente.css");
+	}
+	
+	@FXML
+	private void onBtProntuarioAction() {
+		ViewLoader.loadView("/fxml/prontuario-lista.fxml", "/css/prontuario-lista.css");
+	}
+	
+	@FXML
+	private void onBtAgendaAction() {
+		ViewLoader.loadView("/fxml/agenda-editar.fxml", "/css/agenda-editar.css");
+	}
+	
+	@FXML
+	private void onBtRelatoriosAction() {
+		System.out.println("onBtRelatoriosAction");
+	}
+	
+	@FXML
+	private void onBtSalvarAction() {
+		System.out.println("onBtSalvarAction");
+	}
+	
+	private void exibirNomePaciente() {
+		Paciente paciente = SessaoPaciente.getPaciente();
+		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+		btNomeDoPaciente.setText(nomeFormatado.toString());		
+	}
 }

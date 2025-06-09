@@ -96,7 +96,7 @@ public class AgendaEditarController implements Initializable {
 
 	@FXML
 	public void onBtFinanceiro() {
-		System.out.println("onBtFinanceiro");
+		ViewLoader.loadView("/fxml/financeiro-pagamento.fxml", "/css/financeiro-pagamento.css");
 	}
 
 	@FXML
