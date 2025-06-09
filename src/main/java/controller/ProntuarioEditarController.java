@@ -20,6 +20,7 @@ import org.jsoup.Jsoup;
 import util.Alerts;
 import util.SessaoPaciente;
 import util.ViewLoader;
+import util.interfaces.ParametroRecebivel;
 
 import java.io.File;
 import java.net.URL;
@@ -31,7 +32,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ProntuarioEditarController implements Initializable {
+public class ProntuarioEditarController implements Initializable, ParametroRecebivel<Prontuario> {
 
     private final SimpleDateFormat sdf;
 
@@ -287,5 +288,18 @@ public class ProntuarioEditarController implements Initializable {
         return String.format("%s_sessao_%d.docx",
                 nomePacienteSanitizado,
                 numeroSessao);
+    }
+
+    public void carregarProntuario(Prontuario prontuario) {
+        if (prontuario != null) {
+            txtSessaoDoProntuarioAqui.setText(String.valueOf(prontuario.getIdOrdem()));
+            htmlEditor.setHtmlText(prontuario.getDescricao());
+            txtDataDoProntuarioAqui.setText(sdf.format(prontuario.getDataAtendimento()));
+        }
+    }
+
+    @Override
+    public void receberParametro(Prontuario prontuario) {
+        carregarProntuario(prontuario);
     }
 }
