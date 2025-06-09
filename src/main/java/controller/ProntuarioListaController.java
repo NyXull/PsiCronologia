@@ -91,14 +91,14 @@ public class ProntuarioListaController implements Initializable {
         vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
 
         exibirNomePaciente();
+        
+        carregarListaProntuarios();
     }
 
-	private void exibirNomePaciente() {
-		Paciente paciente = SessaoPaciente.getPaciente();
-		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
-		btNomeDoPacienteAqui.setText(nomeFormatado.toString());
-
-        carregarListaProntuarios();
+    private void exibirNomePaciente() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+        btNomeDoPacienteAqui.setText(nomeFormatado.toString());
     }
 
     private void carregarListaProntuarios() {
