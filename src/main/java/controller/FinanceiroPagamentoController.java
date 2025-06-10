@@ -94,7 +94,7 @@ public class FinanceiroPagamentoController implements Initializable{
 	
 	@FXML
 	private void onBtRelatoriosAction() {
-		System.out.println("onBtRelatoriosAction");
+		ViewLoader.loadView("/fxml/relatorio.fxml", "/css/relatorio.css");
 	}
 	
 	@FXML
@@ -105,6 +105,16 @@ public class FinanceiroPagamentoController implements Initializable{
 	@FXML
 	private void onBtStatusMensalAction() {
 		ViewLoader.loadView("/fxml/financeiro-status.fxml", "/css/financeiro-status.css");
+	}
+	
+	@FXML
+	private void onBtAlterarAction() {
+		System.out.println("onBtAlterarAction");
+	}
+	
+	@FXML
+	private void onBtExcluirAction() {
+		System.out.println("onBtExcluirAction");
 	}
 	
 	private void exibirNomePaciente() {

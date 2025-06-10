@@ -63,13 +63,13 @@ public class HomePacienteController implements Initializable {
 
 	@FXML
 	public void onBtRelatorios() {
-		System.out.println("onBtRelatorios");
+		ViewLoader.loadView("/fxml/relatorio.fxml", "/css/relatorio.css");
 	}
 
 	@FXML
 	public void onBtInicioAction() {
 		ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
-	}
+	}	
 
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {

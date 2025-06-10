@@ -1,270 +1,370 @@
-Button {
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Relatorios {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2Relatorios {
+    -fx-background-color: #C5BAF4;
+    -fx-alignment: CENTER;
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;
     -fx-background-color: transparent;
+    -fx-background-radius: 0;
     -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-padding: 0px 0px;
+    -fx-padding: 0;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
-ComboBox {
-    -fx-background-color: transparent;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-ComboBox .list-cell {
-    -fx-text-fill: #182052;
-}
-
-TextField {
-    -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 110;
-    -fx-prompt-text-fill: #182052;
-    -fx-border-radius: 10;
-}
-
-Text {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-TextArea {
-    -fx-background-color: transparent;
-}
-
-.text-area .scroll-pane .viewport{
-    -fx-background-color: transparent;
-}
-
-.text-area .scroll-pane .content{
-    -fx-background-color: transparent;
-}
-
-.titulo {
-    -fx-font-size: 20pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.subtitulo {
-    -fx-font-size: 15pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.label {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Comfortaa";
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
     -fx-fill: white;
 }
 
-.fundoRosa {
-    -fx-background-color: #DE3AFC;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 10;
+#btNomeDoPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
 }
 
-.botoesEsquerda {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 9px 10px;
-    -fx-font-size: 12.5pt;
+#btNomeDoPaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btRelatorios, #btAgenda{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
 }
 
-.combo-box-popup .list-view {
-    -fx-background-color: white, white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
-    -fx-padding: 3 0 3 7;
+#btProntuario:hover, #btRelatorios:hover, #btAgenda:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
-.combo-box-popup .list-view .list-cell:hover {
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+#hBoxRosa2 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px;
+}
+
+#hBoxRosa3 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+#lblModelo {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #182052;    
+}
+
+#txtRelatorios {
+	-fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+    -fx-font-size: 23px;
+}
+
+#txtDetalhesDoRelatorio {
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+    -fx-font-size: 20px;
+}
+
+#comboBoxModelo {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#comboBoxModelo .list-cell {
+    -fx-text-fill: #182052;
+}
+
+#comboBoxModelo .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#hBoxTxtArea{
+	-fx-background-color: rgba(140, 129, 204, 0.4);	
+	 -fx-background-radius: 0px 0px 10px 10px;
+}
+
+#btSalvar, #btBaixarPdf {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSalvar:hover, #btBaixarPdf:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btExcluirModelo {
+    -fx-background-color: #C0392B;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btExcluirModelo:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAreaProntuario {
     -fx-background-color: transparent;
 }
 
-.combo-box-popup .list-view .list-cell:selected {
+#txtAreaProntuario .content {
     -fx-background-color: transparent;
 }
 
-.scroll-bar:vertical .thumb {
-    -fx-background-color: #182052;
-    -fx-background-radius: 5;
+#txtAreaProntuario .viewport {
+    -fx-background-color: transparent;
 }
 
-.scroll-bar:vertical .track {
-    -fx-background-color: #5F3AFC;
-    -fx-background-radius: 5;
-}
-
-.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+#txtAreaProntuario .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-padding: 0;
-    -fx-opacity: 0;
-    -fx-cursor: default;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
 }
 
-.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
-    -fx-scale-x: 0;
-    -fx-scale-y: 0;
-}
-
-.painelMeses {
-    -fx-background-color: transparent;
-    -fx-border-color: #182052;
-    -fx-border-width: 1;
-    -fx-background-radius: 0;
-}
-
-.botoesLayout {
-    -fx-alignment: center;
-    -fx-spacing: 10;
-}
-
-.botaoNao {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #c60003;
+#txtAreaProntuario .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
     -fx-background-radius: 10px;
-    -fx-padding: 3px 20px;
 }
 
-.botaoSim {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #DE3AFC;
+#txtAreaProntuario .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
     -fx-background-radius: 10px;
-    -fx-padding: 3px 20px;
 }
 
-.labelPergunta {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-padding: 0px 0px 0px 5px;
+#txtAreaProntuario .scroll-bar .increment-button,
+#txtAreaProntuario .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
 }
 
-.layout {
+#txtAreaProntuario .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
     -fx-background-radius: 10px;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
-    -fx-background-color: #9E3AFC;
 }
 
-.painelMeses Text {
-    -fx-font-size: 10pt;
+#cbFonte, #cbTamanho {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
 }
 
-.fundoRosa {
-    -fx-background-color: #DE3AFC;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 10;
+#cbFonte .list-cell, #cbTamanho .list-cell {
+    -fx-text-fill: #000000;
 }
 
-.fundoOpcoes {
-    -fx-background-color: white;
-    -fx-background-radius: 6;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-border-radius: 6;
+#cbFonte .combo-box-popup .list-view, #cbTamanho .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-border-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
 }
 
-.botaoOpcoesTexto {
-    -fx-text-fill: #182052;
-    -fx-font-family: "Nunito";
-    -fx-font-size: 10pt;
-    -fx-font-weight: bold;
-}
-
-.comboBoxEditorTexto {
+#btNomeDoPacienteAqui {
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-border-radius: 0;
-}
-
-.botaoOpcao {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 10px;
-    -fx-pref-width: 200;
-}
-
-#botaoSair {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
     -fx-text-fill: white;
-    -fx-padding: 5px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-background-color: rgba(255, 0, 0, 0.35);
+    -fx-underline: true;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 
-#valorTotal {
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#listView {
     -fx-background-color: transparent;
-    -fx-text-fill: #182052;
-    -fx-border-color: #182052;
-    -fx-border-width: 2;
-    -fx-font-size: 11.5pt;
-    -fx-font-family: "Nunito";
-    -fx-pref-width: 110;
-    -fx-border-radius: 10;
-    -fx-padding: 5px;
+    -fx-background: transparent;
 }
 
-#botaoAlterar {
-    -fx-font-size: 12.5pt;
+#listView .list-cell {
     -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 5px 40px;
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
 }
 
-#botaoExcluir {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-color: #c60003;
+.list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#listView .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#listView .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
     -fx-background-radius: 10px;
-    -fx-padding: 5px 40px;
 }
 
-#fundoRosaClaro {
-    -fx-background-color: rgba(222, 58, 252, 0.3);
+#listView .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
 }
 
-#tamanhoLetras .combo-box-popup .list-view {
-    -fx-background-color: white, white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
-    -fx-pref-width: 50;
-    -fx-padding: 3 0 3 7;
+#listView .scroll-bar .increment-button,
+#listView .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
 }
 
-#botaoExcluir {
-    -fx-background-color: #c60003;
-    -fx-font-size: 12.5pt;
+/* Opcional: ocultar o scroll horizontal se não for necessário */
+#listView .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+}
+
+ToolBar {
+    -fx-background-color: rgba(195, 142, 188, 0.6);
+}
+
+Separator {
+    -fx-opacity: 0;
+}
+
+#htmlEditor .combo-box-base {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor .toggle-button, #htmlEditor .button {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor {
+    -fx-background-color: transparent;
+}
+
+#htmlEditor .list-cell {
     -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 10px;
-    -fx-pref-width: 200;
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#htmlEditor .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#htmlEditor .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#htmlEditor .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#htmlEditor .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#htmlEditor .scroll-bar .increment-button,
+#htmlEditor .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
 }
