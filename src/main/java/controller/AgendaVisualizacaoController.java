@@ -79,7 +79,7 @@ public class AgendaVisualizacaoController implements Initializable{
 	
 	@FXML
 	public void onBtBibliotecaAction() {
-		System.out.println("onBtBibliotecaAction");
+		ViewLoader.loadView("/fxml/biblioteca.fxml", "/css/biblioteca.css");
 	}
 	
 	@FXML
