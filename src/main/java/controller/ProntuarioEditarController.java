@@ -18,8 +18,10 @@ import org.docx4j.convert.in.xhtml.XHTMLImporterImpl;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.jsoup.Jsoup;
 import util.Alerts;
+import util.ExibirNomeDoPaciente;
 import util.SessaoPaciente;
 import util.ViewLoader;
+import util.interfaces.ParametroRecebivel;
 
 import java.io.File;
 import java.net.URL;
@@ -31,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ProntuarioEditarController implements Initializable {
+public class ProntuarioEditarController implements Initializable, ParametroRecebivel<Prontuario> {
 
     private final SimpleDateFormat sdf;
 
@@ -125,22 +127,28 @@ public class ProntuarioEditarController implements Initializable {
         vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
         vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
 
-        Paciente paciente = SessaoPaciente.getPaciente();
-        if (paciente != null) {
-            btNomeDoPacienteAqui.setText(paciente.getNomePaciente());
-        }
+        atualizarSessao();
 
+        dataAtualFormatada();
+
+        carregarListaProntuarios();
+
+        exibirNomePaciente();
+    }
+
+    private void exibirNomePaciente() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
+        btNomeDoPacienteAqui.setText(nomeFormatado.toString());
+    }
+
+    public void dataAtualFormatada() {
         LocalDate dataAtual = LocalDate.now();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dataFormatada = dataAtual.format(formatter);
 
         txtDataDoProntuarioAqui.setText(dataFormatada);
-
-        ProntuarioService prontuarioService = new ProntuarioService();
-        atualizarSessao(prontuarioService);
-
-        carregarListaProntuarios();
     }
 
     public Prontuario validacaoEInstaciacao() {
@@ -203,7 +211,8 @@ public class ProntuarioEditarController implements Initializable {
         }
     }
 
-    public void atualizarSessao(ProntuarioService prontuarioService) {
+    public void atualizarSessao() {
+        ProntuarioService prontuarioService = new ProntuarioService();
         int idSessao = SessaoPaciente.getPaciente().getIdPaciente();
         int proximoIdOrdem = prontuarioService.getProximoIdOrdem(idSessao);
 
@@ -287,5 +296,18 @@ public class ProntuarioEditarController implements Initializable {
         return String.format("%s_sessao_%d.docx",
                 nomePacienteSanitizado,
                 numeroSessao);
+    }
+
+    public void carregarProntuario(Prontuario prontuario) {
+        if (prontuario != null) {
+            txtSessaoDoProntuarioAqui.setText(String.valueOf(prontuario.getIdOrdem()));
+            htmlEditor.setHtmlText(prontuario.getDescricao());
+            txtDataDoProntuarioAqui.setText(sdf.format(prontuario.getDataAtendimento()));
+        }
+    }
+
+    @Override
+    public void receberParametro(Prontuario prontuario) {
+        carregarProntuario(prontuario);
     }
 }

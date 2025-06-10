@@ -361,13 +361,14 @@
 }
 
 #btNomeDoPacienteAqui {
-    -fx-background-color: transparent;
-    -fx-font-family: "Comfortaa";
+	-fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
-    -fx-text-fill: white;
-    -fx-underline: true;
-    -fx-scale-x: 1;
-    -fx-scale-y: 1;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
 }
 
 #btNomeDoPacienteAqui:hover {

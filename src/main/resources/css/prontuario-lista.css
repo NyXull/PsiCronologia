@@ -24,7 +24,6 @@
     -fx-pref-height: 100px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
-    -fx-cursor: hand;
 }
 
 #btHome:hover {
@@ -51,7 +50,6 @@
     -fx-pref-height: 200px;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
-    -fx-cursor: hand;
 }
 
 #btNovoProntuario:hover {
@@ -59,26 +57,10 @@
     -fx-scale-y: 1.1;
 }
 
-#txtPaciente {
+#txtPaciente, #txtNomeDoPacienteAqui{
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 15px;
     -fx-fill: white;
-}
-
-#btNomeDoPacienteAqui {
-	-fx-font-family: "Comfortaa";
-    -fx-font-size: 15px;
-    -fx-text-fill: #d9d9d9;
-    -fx-background-color: rgba(58, 145, 252, 0.15);
-    -fx-background-radius: 10px;
-    -fx-alignment: center;
-    -fx-text-alignment: center;
-    -fx-cursor: hand;
-}
-
-#btNomeDoPacienteAqui:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
 }
 
 #lineLinha {
@@ -114,4 +96,73 @@
 #listView {
     -fx-background-color: transparent;
     -fx-background: transparent;
+}
+
+#btNomeDoPacienteAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#listView {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+#listView .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+.list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#listView .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#listView .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#listView .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#listView .scroll-bar .increment-button,
+#listView .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+/* Opcional: ocultar o scroll horizontal se não for necessário */
+#listView .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
 }
