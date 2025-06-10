@@ -138,7 +138,13 @@
                      </GridPane.margin></Label>
                   <TextField fx:id="textFieldQuantidadePorMes" maxWidth="150.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                   <ComboBox fx:id="comboBoxMes" maxWidth="150.0" minWidth="100.0" styleClass="comboBoxInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="lblTotal" maxWidth="150.0" minHeight="27.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="lblTotal" maxWidth="150.0" minHeight="27.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></Label>
                </children>
                <VBox.margin>
                   <Insets left="50.0" right="50.0" />
