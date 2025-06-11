@@ -4,27 +4,35 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
+import model.entities.Financeiro;
 import model.entities.Paciente;
-import util.Constraints;
-import util.ExibirNomeDoPaciente;
-import util.SessaoPaciente;
-import util.ViewLoader;
+import model.services.FinanceiroService;
+import util.*;
 import util.enums.TipoStatusPagamento;
 
+import java.math.BigDecimal;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.TextStyle;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class FinanceiroPagamentoController implements Initializable {
+
+    private final SimpleDateFormat sdf;
+
+    public FinanceiroPagamentoController() {
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+    }
 
     @FXML
     private VBox vBox1FinanceiroPagamento;
@@ -180,7 +188,18 @@ public class FinanceiroPagamentoController implements Initializable {
 
     @FXML
     private void onBtSalvarAction() {
-        System.out.println("onBtSalvarAction");
+        Financeiro financeiro = validacaoEInstaciacao();
+
+        if (financeiro != null) {
+            FinanceiroService financeiroService = new FinanceiroService();
+
+            try {
+                financeiroService.salvarInformacoesPagamento(financeiro);
+            } catch (Exception e) {
+                Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar informações",
+                        Alert.AlertType.ERROR);
+            }
+        }
     }
 
     @FXML
@@ -203,11 +222,17 @@ public class FinanceiroPagamentoController implements Initializable {
     public void carregarOpcoesMeses() {
         Locale localePtBr = Locale.forLanguageTag("pt-BR");
 
-        ObservableList<Month> meses = FXCollections.observableArrayList(Month.values());
+        int mesAtual = java.time.LocalDate.now().getMonthValue();
+
+        ObservableList<Month> meses = FXCollections.observableArrayList();
+
+        for (int m = mesAtual; m <= 12; m++) {
+            meses.add(Month.of(m));
+        }
 
         comboBoxMes.setItems(meses);
 
-        comboBoxMes.setValue(Month.of(java.time.LocalDate.now().getMonthValue()));
+        comboBoxMes.setValue(Month.of(mesAtual));
 
         comboBoxMes.setConverter(new StringConverter<Month>() {
             @Override
@@ -222,5 +247,69 @@ public class FinanceiroPagamentoController implements Initializable {
                 return null;
             }
         });
+    }
+
+    public Financeiro validacaoEInstaciacao() {
+        String valorSessaoString = textFieldValorPorSessao.getText();
+        String dataVencimentoString = textFieldVencimento.getText();
+        String quantidadeSessaoString = textFieldQuantidadePorMes.getText();
+        TipoStatusPagamento statusPagamentoEnum = comboBoxStatus.getValue();
+        Month mesStatusPagamentoMonth = comboBoxMes.getValue();
+
+        if (valorSessaoString.isEmpty() || dataVencimentoString.isEmpty() || quantidadeSessaoString.isEmpty() || statusPagamentoEnum == null || mesStatusPagamentoMonth == null) {
+            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+
+        try {
+            Date dataVencimento = sdf.parse(dataVencimentoString);
+
+            if (!dataValida(dataVencimento)) {
+                Alerts.showAlert("Erro de Validação", "Data inválida!", "Data deve ser hoje ou posterior.", Alert.AlertType.ERROR);
+                return null;
+            }
+
+            Paciente paciente = SessaoPaciente.getPaciente();
+            if (paciente == null) {
+                return null;
+            }
+
+            BigDecimal valorSessao = new BigDecimal(valorSessaoString);
+            Integer quantidadeSessao = Integer.valueOf(quantidadeSessaoString);
+            String statusPagamento = String.valueOf(statusPagamentoEnum);
+
+            Locale localePtBr = Locale.forLanguageTag("pt-BR");
+
+            String mesStatusPagamento = mesStatusPagamentoMonth.getDisplayName(TextStyle.FULL, localePtBr);
+            mesStatusPagamento = mesStatusPagamento.substring(0, 1).toUpperCase() + mesStatusPagamento.substring(1);
+
+
+            Financeiro financeiro = new Financeiro();
+
+            financeiro.setIdPaciente(paciente.getIdPaciente());
+            financeiro.setValorSessao(valorSessao);
+            financeiro.setDataVencimento(dataVencimento);
+            financeiro.setQuantidadeSessao(quantidadeSessao);
+            financeiro.setStatusPagamento(statusPagamento);
+            financeiro.setMesStatusPagamento(mesStatusPagamento);
+
+            return financeiro;
+        } catch (Exception e) {
+            Alerts.showAlert("Erro de Validação", "Data inválida", "Use um formato válido. Exemplo: 08/06/2024.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+    }
+
+    public boolean dataValida(Date data) {
+        if (data == null) {
+            return false;
+        }
+
+        LocalDate dataLocal = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate hoje = LocalDate.now();
+
+        return !dataLocal.isBefore(hoje);
     }
 }
