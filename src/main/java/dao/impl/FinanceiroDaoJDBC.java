@@ -45,4 +45,36 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
             DB.closeStatement(pstm);
         }
     }
+
+    @Override
+    public Financeiro carregarInformacoesPagamento(Integer idPaciente) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement("SELECT id, id_paciente, valor_sessao, qtd_sessao, data_vencimento, status, mes_status FROM financeiro WHERE id_paciente = ? ORDER BY data_vencimento DESC LIMIT 1");
+
+            pstm.setInt(1, idPaciente);
+            rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                Financeiro financeiro = new Financeiro();
+                financeiro.setIdFinanceiro(rs.getInt("id"));
+                financeiro.setIdPaciente(rs.getInt("id_paciente"));
+                financeiro.setValorSessao(rs.getBigDecimal("valor_sessao"));
+                financeiro.setQuantidadeSessao(rs.getInt("qtd_sessao"));
+                financeiro.setDataVencimento(rs.getDate("data_vencimento"));
+                financeiro.setStatusPagamento(rs.getString("status"));
+                financeiro.setMesStatusPagamento(rs.getString("mes_status"));
+                return financeiro;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new DbException("Erro ao buscar informações financeiras do paciente: " + e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
 }
