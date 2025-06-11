@@ -11,4 +11,8 @@ public class FinanceiroService {
     public void salvarInformacoesPagamento(Financeiro objFinanceiro) {
         dao.salvarInformacoesPagamento(objFinanceiro);
     }
+
+    public Financeiro carregarInformacoesPagamento(Integer idPaciente) {
+        return dao.carregarInformacoesPagamento(idPaciente);
+    }
 }
