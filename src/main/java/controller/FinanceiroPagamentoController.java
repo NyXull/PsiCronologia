@@ -98,6 +98,13 @@ public class FinanceiroPagamentoController implements Initializable {
         textFieldQuantidadePorMes.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotal());
         textFieldValorPorSessao.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotal());
 
+        try {
+            carregarInformacoesPagamento();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
         atualizarTotal();
 
         carregarOpcoesStatus();
@@ -311,5 +318,49 @@ public class FinanceiroPagamentoController implements Initializable {
         LocalDate hoje = LocalDate.now();
 
         return !dataLocal.isBefore(hoje);
+    }
+
+    private Month converterMesPortuguesParaMonth(String mesPortugues) {
+        return switch (mesPortugues.toLowerCase()) {
+            case "janeiro" -> Month.JANUARY;
+            case "fevereiro" -> Month.FEBRUARY;
+            case "março" -> Month.MARCH;
+            case "abril" -> Month.APRIL;
+            case "maio" -> Month.MAY;
+            case "junho" -> Month.JUNE;
+            case "julho" -> Month.JULY;
+            case "agosto" -> Month.AUGUST;
+            case "setembro" -> Month.SEPTEMBER;
+            case "outubro" -> Month.OCTOBER;
+            case "novembro" -> Month.NOVEMBER;
+            case "dezembro" -> Month.DECEMBER;
+            default -> throw new IllegalArgumentException("Mês inválido: " + mesPortugues);
+        };
+    }
+
+    public void carregarInformacoesPagamento() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return;
+        }
+
+        FinanceiroService financeiroService = new FinanceiroService();
+        Financeiro financeiro = financeiroService.carregarInformacoesPagamento(paciente.getIdPaciente());
+
+        if (financeiro == null) {
+            return;
+        }
+
+        String valorSessao = String.valueOf(financeiro.getValorSessao());
+        String dataVencimento = sdf.format(financeiro.getDataVencimento());
+        String quantidadeSessao = String.valueOf(financeiro.getQuantidadeSessao());
+        TipoStatusPagamento statusPagamento = TipoStatusPagamento.valueOf(financeiro.getStatusPagamento());
+        Month mesStatusPagamentoMonth = converterMesPortuguesParaMonth(financeiro.getMesStatusPagamento());
+
+        textFieldValorPorSessao.setText(valorSessao);
+        textFieldVencimento.setText(dataVencimento);
+        textFieldQuantidadePorMes.setText(quantidadeSessao);
+        comboBoxStatus.setValue(statusPagamento);
+        comboBoxMes.setValue(mesStatusPagamentoMonth);
     }
 }
