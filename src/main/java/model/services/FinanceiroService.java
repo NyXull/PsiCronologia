@@ -1,0 +1,14 @@
+package model.services;
+
+import dao.factory.DaoFactory;
+import dao.interfaces.FinanceiroDAO;
+import model.entities.Financeiro;
+
+public class FinanceiroService {
+
+    private FinanceiroDAO dao = DaoFactory.createFinanceiroDao();
+
+    public void salvarInformacoesPagamento(Financeiro objFinanceiro) {
+        dao.salvarInformacoesPagamento(objFinanceiro);
+    }
+}
