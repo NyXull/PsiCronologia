@@ -82,13 +82,21 @@ public class FinanceiroStatusController implements Initializable{
 	
 	@FXML
 	private void onBtRelatoriosAction() {
-		System.out.println("onBtRelatoriosAction");
+		ViewLoader.loadView("/fxml/relatorio.fxml", "/css/relatorio.css");
 	}
 	
 	@FXML
 	private void onBtSalvarAction() {
 		System.out.println("onBtSalvarAction");
 	}
+		
+	 @FXML public void onBtAlterarAction() {
+		 System.out.println("onBtAlterarAction"); 
+	 }
+	 
+	 @FXML public void onBtExcluirAction() {
+		 System.out.println("onBtExcluirAction"); 
+	 }
 	
 	private void exibirNomePaciente() {
 		Paciente paciente = SessaoPaciente.getPaciente();

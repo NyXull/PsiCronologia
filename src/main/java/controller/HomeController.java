@@ -66,7 +66,7 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private void onBtBibliotecaAction() {
-		System.out.println("onBtBibliotecaAction");
+		ViewLoader.loadView("/fxml/biblioteca.fxml", "/css/biblioteca.css");
 	}
 	
 	@FXML

@@ -1,103 +1,186 @@
-Button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 0px;
-    -fx-padding: 0px 0px;
-}
-
-Text {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-fill: #182052;
-}
-
-GridPane {
-    -fx-background-color: rgba(222, 58, 252, 0.2);
-    -fx-background-radius: 10;
-}
-
-.titulo {
-    -fx-font-size: 20pt;
-    -fx-font-family: "Comfortaa";
-    -fx-fill: #182052;
-}
-
-.botoesEsquerda {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 9px 10px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-}
-
-.scroll-pane > .viewport {
-    -fx-background-color: transparent;
-}
-
-.scroll-bar:vertical .thumb {
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Biblioteca {
     -fx-background-color: #182052;
-    -fx-background-radius: 5;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
 }
 
-.scroll-bar:vertical .track {
-    -fx-background-color: #5F3AFC;
-    -fx-background-radius: 5;
+/* Fundo do VBox da direita */
+#vBox2Biblioteca {     
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER; 
 }
 
-.scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button {
+#btInicio {
+    -fx-background-image: url("../img/botao_home2.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 50px;              
+    -fx-pref-height: 50px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btInicio:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btSair{
+	 -fx-background-color: rgba(188, 24, 35, 0.7);
+    -fx-border-color: #d9d9d9;
+    -fx-text-fill: #d9d9d9;
+
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;	
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btAgenda{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSair:hover, #btFinanceiro:hover, 
+#btBiblioteca:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAgenda{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 22px;
+    -fx-fill: #d9d9d9;
+}
+
+#btMesAnterior {
+	-fx-background-image: url("../img/botao_mes_anterior.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btMesAnterior:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btAdicionar {
+	-fx-background-image: url("../img/botao_adicionar.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 80px;              
+    -fx-pref-height: 80px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btAdicionar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#lblAdicionar {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+    -fx-alignment: center;
+}
+
+#btSalvar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSalvar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#tableArquivos {
     -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+#tableArquivos {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-opacity: 0;
-    -fx-cursor: default;
 }
 
-.scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow  {
-    -fx-scale-x: 0;
-    -fx-scale-y: 0;
-}
-
-.layout {
-    -fx-background-radius: 0px;
-    -fx-border-color: #182052;
-    -fx-border-width: 1;
-    -fx-border-radius: 0;
-    -fx-background-color: #9E3AFC;
-}
-
-.botaoPopup {
-    -fx-font-size: 10pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
+#tableArquivos .column-header-background {
     -fx-background-color: transparent;
-    -fx-background-radius: 0px;
-    -fx-padding: 0px 10px;
 }
 
-.botaoPopup:hover {
+#tableArquivos .filler {
+    -fx-background-color: transparent;
+}
+
+#tableArquivos .scroll-bar:vertical {
     -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px;
 }
 
-#botaoSair {
-    -fx-background-color: transparent;
-    -fx-border-color: rgba(255, 255, 255, 0.35);
-    -fx-border-width: 2px;
-    -fx-border-style: solid;
-    -fx-text-fill: white;
-    -fx-padding: 5px;
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-background-color: rgba(255, 0, 0, 0.35);
-}
-
-#botaoSalvar {
-    -fx-font-size: 12.5pt;
-    -fx-font-family: "Nunito";
-    -fx-text-fill: #182052;
+#tableArquivos .scroll-bar:vertical .thumb {
     -fx-background-color: #9E3AFC;
-    -fx-background-radius: 30px;
-    -fx-padding: 10px 40px;
-    -fx-pref-width: 200;
+    -fx-background-radius: 5px;
+}
+
+#tableArquivos .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+#coluna1, #coluna2, #coluna3, #coluna4 {
+	-fx-background-color: transparent;
 }

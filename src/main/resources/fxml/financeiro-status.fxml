@@ -190,7 +190,7 @@
                   </Label>
                   <ComboBox fx:id="comboBoxStatus" maxWidth="90.0" minWidth="70.0" styleClass="comboBoxAlterarOuExcluir" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                   <ComboBox fx:id="comboBoxMesParaAlterar" maxWidth="90.0" minWidth="70.0" styleClass="comboBoxAlterarOuExcluir" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                  <Button fx:id="btAlterar" mnemonicParsing="false" text="ALTERAR" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btAlterar" mnemonicParsing="false" onAction="#onBtAlterarAction" text="ALTERAR" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets left="40.0" right="20.0" />
@@ -237,7 +237,7 @@
                      </GridPane.margin>
                   </Label>
                   <ComboBox fx:id="comboBoxMesParaAlterar1" maxWidth="90.0" minWidth="70.0" styleClass="comboBoxAlterarOuExcluir" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                  <Button fx:id="btExcluir" mnemonicParsing="false" text="EXCLUIR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btExcluir" mnemonicParsing="false" onAction="#onBtExcluirAction" text="EXCLUIR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets left="40.0" right="20.0" />
