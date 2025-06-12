@@ -10,5 +10,7 @@ public interface FinanceiroDAO {
 
     boolean informacaoPagamentoJaExiste(Integer idPaciente);
 
-    void atualizarInformacoesPagamento(Financeiro objFinanceiro);
+    void atualizarInformacoesPagamento(Financeiro objFinanceiro, int mes, int ano);
+
+    boolean existeRegistroMesAno(Integer idPaciente, int mes, int ano);
 }
