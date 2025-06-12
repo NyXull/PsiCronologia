@@ -105,6 +105,7 @@
               <rowConstraints>
                 <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label styleClass="lblInformacoes" text="Valor por sessão:" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
@@ -133,6 +134,7 @@
                      <padding>
                         <Insets left="5.0" />
                      </padding></Label>
+                  <Label fx:id="lblSucessoSalvar" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets left="50.0" right="50.0" />
