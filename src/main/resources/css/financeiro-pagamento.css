@@ -177,3 +177,10 @@
     -fx-scale-y: 1.1;
 }
 
+#lblSucessoSalvar {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #28a745;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
