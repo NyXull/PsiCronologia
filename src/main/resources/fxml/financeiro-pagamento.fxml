@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -106,7 +105,6 @@
               <rowConstraints>
                 <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
-                <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label styleClass="lblInformacoes" text="Valor por sessão:" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
@@ -117,13 +115,8 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Label>
-                  <Label styleClass="lblInformacoes" text="Status:" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin></Label>
                   <TextField fx:id="textFieldValorPorSessao" maxWidth="150.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                   <TextField fx:id="textFieldVencimento" maxWidth="150.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-                  <ComboBox fx:id="comboBoxStatus" maxWidth="150.0" minWidth="100.0" styleClass="comboBoxInformacoes" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
                   <Label styleClass="lblInformacoes" text="Quantidade por mês:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets />
@@ -132,12 +125,7 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Label>
-                  <Label styleClass="lblInformacoes" text="Mês:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin></Label>
                   <TextField fx:id="textFieldQuantidadePorMes" maxWidth="150.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                  <ComboBox fx:id="comboBoxMes" maxWidth="150.0" minWidth="100.0" styleClass="comboBoxInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
                   <Label fx:id="lblTotal" maxWidth="150.0" minHeight="27.0" minWidth="100.0" styleClass="textFieldInformacoes" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets />
