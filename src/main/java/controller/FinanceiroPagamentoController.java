@@ -1,13 +1,13 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
 import model.entities.Financeiro;
 import model.entities.Paciente;
 import model.services.FinanceiroService;
@@ -17,6 +17,7 @@ import util.enums.TipoStatusPagamento;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
@@ -68,12 +69,6 @@ public class FinanceiroPagamentoController implements Initializable {
     private Label lblTotal;
 
     @FXML
-    private ComboBox<TipoStatusPagamento> comboBoxStatus;
-
-    @FXML
-    private ComboBox<Month> comboBoxMes;
-
-    @FXML
     private Button btSalvar;
 
     @FXML
@@ -107,10 +102,6 @@ public class FinanceiroPagamentoController implements Initializable {
             }
         } else {
             atualizarTotal();
-
-            carregarOpcoesStatus();
-
-            carregarOpcoesMeses();
         }
     }
 
@@ -222,50 +213,12 @@ public class FinanceiroPagamentoController implements Initializable {
         btNomeDoPacienteAqui.setText(nomeFormatado.toString());
     }
 
-    private void carregarOpcoesStatus() {
-        comboBoxStatus.getItems().clear();
-        comboBoxStatus.getItems().addAll(TipoStatusPagamento.ABERTO, TipoStatusPagamento.PAGO);
-        comboBoxStatus.setValue(TipoStatusPagamento.ABERTO);
-    }
-
-    public void carregarOpcoesMeses() {
-        Locale localePtBr = Locale.forLanguageTag("pt-BR");
-
-        int mesAtual = java.time.LocalDate.now().getMonthValue();
-
-        ObservableList<Month> meses = FXCollections.observableArrayList();
-
-        for (int m = mesAtual; m <= 12; m++) {
-            meses.add(Month.of(m));
-        }
-
-        comboBoxMes.setItems(meses);
-
-        comboBoxMes.setValue(Month.of(mesAtual));
-
-        comboBoxMes.setConverter(new StringConverter<Month>() {
-            @Override
-            public String toString(Month month) {
-                if (month == null) return "";
-                String nomeMes = month.getDisplayName(TextStyle.FULL, localePtBr);
-                return nomeMes.substring(0, 1).toUpperCase() + nomeMes.substring(1);
-            }
-
-            @Override
-            public Month fromString(String string) {
-                return null;
-            }
-        });
-    }
-
     public Financeiro validacaoEInstaciacao() {
         String valorSessaoString = textFieldValorPorSessao.getText();
         String dataVencimentoString = textFieldVencimento.getText();
         String quantidadeSessaoString = textFieldQuantidadePorMes.getText();
-        TipoStatusPagamento statusPagamentoEnum = comboBoxStatus.getValue();
-        Month mesStatusPagamentoMonth = comboBoxMes.getValue();
 
-        if (valorSessaoString.isEmpty() || dataVencimentoString.isEmpty() || quantidadeSessaoString.isEmpty() || statusPagamentoEnum == null || mesStatusPagamentoMonth == null) {
+        if (valorSessaoString.isEmpty() || dataVencimentoString.isEmpty() || quantidadeSessaoString.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
                     Alert.AlertType.ERROR);
             return null;
@@ -275,7 +228,8 @@ public class FinanceiroPagamentoController implements Initializable {
             Date dataVencimento = sdf.parse(dataVencimentoString);
 
             if (!dataValida(dataVencimento)) {
-                Alerts.showAlert("Erro de Validação", "Data inválida!", "Data deve ser hoje ou posterior.", Alert.AlertType.ERROR);
+                Alerts.showAlert("Erro de Validação", "Data inválida!", "Data deve ser hoje ou posterior.",
+                        Alert.AlertType.ERROR);
                 return null;
             }
 
@@ -286,13 +240,16 @@ public class FinanceiroPagamentoController implements Initializable {
 
             BigDecimal valorSessao = new BigDecimal(valorSessaoString);
             Integer quantidadeSessao = Integer.valueOf(quantidadeSessaoString);
-            String statusPagamento = String.valueOf(statusPagamentoEnum);
+            String statusPagamento = String.valueOf(TipoStatusPagamento.ABERTO);
+
+            Instant instant = dataVencimento.toInstant();
+            LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+            Month mesStatusPagamentoMonth = localDate.getMonth();
 
             Locale localePtBr = Locale.forLanguageTag("pt-BR");
 
             String mesStatusPagamento = mesStatusPagamentoMonth.getDisplayName(TextStyle.FULL, localePtBr);
             mesStatusPagamento = mesStatusPagamento.substring(0, 1).toUpperCase() + mesStatusPagamento.substring(1);
-
 
             Financeiro financeiro = new Financeiro();
 
@@ -356,17 +313,10 @@ public class FinanceiroPagamentoController implements Initializable {
         String valorSessao = String.valueOf(financeiro.getValorSessao());
         String dataVencimento = sdf.format(financeiro.getDataVencimento());
         String quantidadeSessao = String.valueOf(financeiro.getQuantidadeSessao());
-        TipoStatusPagamento statusPagamento = TipoStatusPagamento.valueOf(financeiro.getStatusPagamento());
-        Month mesStatusPagamentoMonth = converterMesPortuguesParaMonth(financeiro.getMesStatusPagamento());
-
-        carregarOpcoesMeses();
-        carregarOpcoesStatus();
 
         textFieldValorPorSessao.setText(valorSessao);
         textFieldVencimento.setText(dataVencimento);
         textFieldQuantidadePorMes.setText(quantidadeSessao);
-        comboBoxStatus.setValue(statusPagamento);
-        comboBoxMes.setValue(mesStatusPagamentoMonth);
     }
 
     public boolean informacaoPagamentoJaExiste() {
