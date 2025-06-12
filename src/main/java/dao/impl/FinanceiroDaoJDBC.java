@@ -77,4 +77,49 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
             DB.closeStatement(pstm);
         }
     }
+
+    @Override
+    public boolean informacaoPagamentoJaExiste(Integer idPaciente) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement("SELECT id FROM financeiro WHERE id_paciente = ?");
+
+            pstm.setInt(1, idPaciente);
+
+            rs = pstm.executeQuery();
+
+            return rs.next();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public void atualizarInformacoesPagamento(Financeiro objFinanceiro) {
+        PreparedStatement pstm = null;
+
+        try {
+            pstm = conn.prepareStatement(
+                    "UPDATE financeiro SET valor_sessao = ?, qtd_sessao = ?, data_vencimento = ?, status = ?, mes_status = ?  WHERE id_paciente = ?"
+            );
+
+            pstm.setBigDecimal(1, objFinanceiro.getValorSessao());
+            pstm.setInt(2, objFinanceiro.getQuantidadeSessao());
+            pstm.setDate(3, new java.sql.Date(objFinanceiro.getDataVencimento().getTime()));
+            pstm.setString(4, objFinanceiro.getStatusPagamento());
+            pstm.setString(5, objFinanceiro.getMesStatusPagamento());
+            pstm.setInt(6, objFinanceiro.getIdPaciente());
+
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(pstm);
+        }
+    }
 }
