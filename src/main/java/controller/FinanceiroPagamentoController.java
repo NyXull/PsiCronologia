@@ -98,18 +98,20 @@ public class FinanceiroPagamentoController implements Initializable {
         textFieldQuantidadePorMes.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotal());
         textFieldValorPorSessao.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotal());
 
-        try {
-            carregarInformacoesPagamento();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+        if (informacaoPagamentoJaExiste()) {
+            try {
+                carregarInformacoesPagamento();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        } else {
+            atualizarTotal();
+
+            carregarOpcoesStatus();
+
+            carregarOpcoesMeses();
         }
-
-        atualizarTotal();
-
-        carregarOpcoesStatus();
-
-        carregarOpcoesMeses();
     }
 
     private void atualizarTotal() {
@@ -357,10 +359,23 @@ public class FinanceiroPagamentoController implements Initializable {
         TipoStatusPagamento statusPagamento = TipoStatusPagamento.valueOf(financeiro.getStatusPagamento());
         Month mesStatusPagamentoMonth = converterMesPortuguesParaMonth(financeiro.getMesStatusPagamento());
 
+        carregarOpcoesMeses();
+        carregarOpcoesStatus();
+
         textFieldValorPorSessao.setText(valorSessao);
         textFieldVencimento.setText(dataVencimento);
         textFieldQuantidadePorMes.setText(quantidadeSessao);
         comboBoxStatus.setValue(statusPagamento);
         comboBoxMes.setValue(mesStatusPagamentoMonth);
+    }
+
+    public boolean informacaoPagamentoJaExiste() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return false;
+        }
+
+        FinanceiroService financeiroService = new FinanceiroService();
+        return financeiroService.informacaoPagamentoJaExiste(paciente.getIdPaciente());
     }
 }
