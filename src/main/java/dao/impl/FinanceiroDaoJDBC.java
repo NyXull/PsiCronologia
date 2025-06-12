@@ -100,12 +100,13 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
     }
 
     @Override
-    public void atualizarInformacoesPagamento(Financeiro objFinanceiro) {
+    public void atualizarInformacoesPagamento(Financeiro objFinanceiro, int mes, int ano) {
         PreparedStatement pstm = null;
 
         try {
             pstm = conn.prepareStatement(
-                    "UPDATE financeiro SET valor_sessao = ?, qtd_sessao = ?, data_vencimento = ?, status = ?, mes_status = ?  WHERE id_paciente = ?"
+                    "UPDATE financeiro SET valor_sessao = ?, qtd_sessao = ?, data_vencimento = ?, status = ?, " +
+                            "mes_status = ? WHERE id_paciente = ? AND YEAR(data_vencimento) = ? AND MONTH(data_vencimento) = ?"
             );
 
             pstm.setBigDecimal(1, objFinanceiro.getValorSessao());
@@ -114,11 +115,36 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
             pstm.setString(4, objFinanceiro.getStatusPagamento());
             pstm.setString(5, objFinanceiro.getMesStatusPagamento());
             pstm.setInt(6, objFinanceiro.getIdPaciente());
+            pstm.setInt(7, ano);
+            pstm.setInt(8, mes);
 
             pstm.executeUpdate();
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public boolean existeRegistroMesAno(Integer idPaciente, int mes, int ano) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement("SELECT id FROM financeiro WHERE id_paciente = ? AND YEAR(data_vencimento) = ? AND MONTH(data_vencimento) = ? LIMIT 1");
+
+            pstm.setInt(1, idPaciente);
+            pstm.setInt(2, ano);
+            pstm.setInt(3, mes);
+
+            rs = pstm.executeQuery();
+
+            return rs.next();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
             DB.closeStatement(pstm);
         }
     }
