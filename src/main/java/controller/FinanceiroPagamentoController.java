@@ -36,6 +36,9 @@ public class FinanceiroPagamentoController implements Initializable {
     }
 
     @FXML
+    public Label lblSucessoSalvar;
+
+    @FXML
     private VBox vBox1FinanceiroPagamento;
 
     @FXML
@@ -195,6 +198,7 @@ public class FinanceiroPagamentoController implements Initializable {
 
             try {
                 financeiroService.salvarInformacoesPagamento(financeiro);
+                feedbackVisual(true);
             } catch (Exception e) {
                 Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar informações",
                         Alert.AlertType.ERROR);
@@ -221,6 +225,7 @@ public class FinanceiroPagamentoController implements Initializable {
         if (valorSessaoString.isEmpty() || dataVencimentoString.isEmpty() || quantidadeSessaoString.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
                     Alert.AlertType.ERROR);
+            feedbackVisual(false);
             return null;
         }
 
@@ -228,13 +233,15 @@ public class FinanceiroPagamentoController implements Initializable {
             Date dataVencimento = sdf.parse(dataVencimentoString);
 
             if (!dataValida(dataVencimento)) {
-                Alerts.showAlert("Erro de Validação", "Data inválida!", "Data deve ser hoje ou posterior.",
+                Alerts.showAlert("Erro de Validação", "Data inválida!", "Data deve ser entre hoje e 30 dias.",
                         Alert.AlertType.ERROR);
+                feedbackVisual(false);
                 return null;
             }
 
             Paciente paciente = SessaoPaciente.getPaciente();
             if (paciente == null) {
+                feedbackVisual(false);
                 return null;
             }
 
@@ -264,6 +271,7 @@ public class FinanceiroPagamentoController implements Initializable {
         } catch (Exception e) {
             Alerts.showAlert("Erro de Validação", "Data inválida", "Use um formato válido. Exemplo: 08/06/2024.",
                     Alert.AlertType.ERROR);
+            feedbackVisual(false);
             return null;
         }
     }
@@ -275,8 +283,9 @@ public class FinanceiroPagamentoController implements Initializable {
 
         LocalDate dataLocal = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate hoje = LocalDate.now();
+        LocalDate limite = hoje.plusDays(30);
 
-        return !dataLocal.isBefore(hoje);
+        return !dataLocal.isBefore(hoje) && !dataLocal.isAfter(limite);
     }
 
     private Month converterMesPortuguesParaMonth(String mesPortugues) {
@@ -327,5 +336,13 @@ public class FinanceiroPagamentoController implements Initializable {
 
         FinanceiroService financeiroService = new FinanceiroService();
         return financeiroService.informacaoPagamentoJaExiste(paciente.getIdPaciente());
+    }
+
+    public void feedbackVisual(boolean sucessoSalvar) {
+        if (sucessoSalvar) {
+            lblSucessoSalvar.setText("Dados de pagamento salvos!");
+        } else {
+            lblSucessoSalvar.setText("");
+        }
     }
 }
