@@ -3,6 +3,7 @@ package model.services;
 import dao.factory.DaoFactory;
 import dao.interfaces.FinanceiroDAO;
 import model.entities.Financeiro;
+import util.ExtrairDadosData;
 
 public class FinanceiroService {
 
@@ -10,7 +11,15 @@ public class FinanceiroService {
 
     public void salvarInformacoesPagamento(Financeiro objFinanceiro) {
         if (informacaoPagamentoJaExiste(objFinanceiro.getIdPaciente())) {
-            atualizarInformacoesPagamento(objFinanceiro);
+            int mes = ExtrairDadosData.getMes(objFinanceiro.getDataVencimento());
+            int ano = ExtrairDadosData.getAno(objFinanceiro.getDataVencimento());
+
+            if (existeRegistroMesAno(objFinanceiro.getIdPaciente(), mes, ano)) {
+                atualizarInformacoesPagamento(objFinanceiro, mes, ano);
+                return;
+            }
+
+            dao.salvarInformacoesPagamento(objFinanceiro);
             return;
         }
 
@@ -25,7 +34,11 @@ public class FinanceiroService {
         return dao.informacaoPagamentoJaExiste(idPaciente);
     }
 
-    public void atualizarInformacoesPagamento(Financeiro objFinanceiro) {
-        dao.atualizarInformacoesPagamento(objFinanceiro);
+    public void atualizarInformacoesPagamento(Financeiro objFinanceiro, int mes, int ano) {
+        dao.atualizarInformacoesPagamento(objFinanceiro, mes, ano);
+    }
+
+    public boolean existeRegistroMesAno(Integer idPaciente, int mes, int ano) {
+        return dao.existeRegistroMesAno(idPaciente, mes, ano);
     }
 }
