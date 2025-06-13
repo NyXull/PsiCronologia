@@ -7,6 +7,8 @@ import model.entities.Financeiro;
 import util.SessaoPaciente;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FinanceiroDaoJDBC implements FinanceiroDAO {
 
@@ -23,7 +25,8 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
         PreparedStatement pstm = null;
 
         try {
-            pstm = conn.prepareStatement("INSERT INTO financeiro(id_paciente, valor_sessao, qtd_sessao, data_vencimento, status, mes_status) VALUES(?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            pstm = conn.prepareStatement("INSERT INTO financeiro(id_paciente, valor_sessao, qtd_sessao, " +
+                    "data_vencimento, status, mes_status) VALUES(?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
             pstm.setInt(1, idPaciente);
             pstm.setBigDecimal(2, objFinanceiro.getValorSessao());
@@ -52,7 +55,8 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
         ResultSet rs = null;
 
         try {
-            pstm = conn.prepareStatement("SELECT id, id_paciente, valor_sessao, qtd_sessao, data_vencimento, status, mes_status FROM financeiro WHERE id_paciente = ? ORDER BY data_vencimento DESC LIMIT 1");
+            pstm = conn.prepareStatement("SELECT id, id_paciente, valor_sessao, qtd_sessao, data_vencimento, status, " +
+                    "mes_status FROM financeiro WHERE id_paciente = ? ORDER BY data_vencimento DESC LIMIT 1");
 
             pstm.setInt(1, idPaciente);
             rs = pstm.executeQuery();
@@ -106,7 +110,8 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
         try {
             pstm = conn.prepareStatement(
                     "UPDATE financeiro SET valor_sessao = ?, qtd_sessao = ?, data_vencimento = ?, status = ?, " +
-                            "mes_status = ? WHERE id_paciente = ? AND YEAR(data_vencimento) = ? AND MONTH(data_vencimento) = ?"
+                            "mes_status = ? WHERE id_paciente = ? AND YEAR(data_vencimento) = ? AND MONTH" +
+                            "(data_vencimento) = ?"
             );
 
             pstm.setBigDecimal(1, objFinanceiro.getValorSessao());
@@ -132,7 +137,8 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
         ResultSet rs = null;
 
         try {
-            pstm = conn.prepareStatement("SELECT id FROM financeiro WHERE id_paciente = ? AND YEAR(data_vencimento) = ? AND MONTH(data_vencimento) = ? LIMIT 1");
+            pstm = conn.prepareStatement("SELECT id FROM financeiro WHERE id_paciente = ? AND YEAR(data_vencimento) =" +
+                    " ? AND MONTH(data_vencimento) = ? LIMIT 1");
 
             pstm.setInt(1, idPaciente);
             pstm.setInt(2, ano);
@@ -141,6 +147,43 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
             rs = pstm.executeQuery();
 
             return rs.next();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public List<Financeiro> carregarInformacoesPagamentoPorAno(Integer idPaciente, int ano) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        List<Financeiro> listaFinanceiro = new ArrayList<>();
+
+        try {
+            pstm = conn.prepareStatement("SELECT id, id_paciente, valor_sessao, qtd_sessao, data_vencimento, status, " +
+                    "mes_status FROM financeiro WHERE id_paciente = ? AND YEAR(data_vencimento) = ? ORDER BY " +
+                    "data_vencimento DESC");
+
+            pstm.setInt(1, idPaciente);
+            pstm.setInt(2, ano);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Financeiro financeiro = new Financeiro();
+                financeiro.setIdFinanceiro(rs.getInt("id"));
+                financeiro.setIdPaciente(rs.getInt("id_paciente"));
+                financeiro.setValorSessao(rs.getBigDecimal("valor_sessao"));
+                financeiro.setQuantidadeSessao(rs.getInt("qtd_sessao"));
+                financeiro.setDataVencimento(rs.getDate("data_vencimento"));
+                financeiro.setStatusPagamento(rs.getString("status"));
+                financeiro.setMesStatusPagamento(rs.getString("mes_status"));
+                listaFinanceiro.add(financeiro);
+            }
+
+            return listaFinanceiro;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
