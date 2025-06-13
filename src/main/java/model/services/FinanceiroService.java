@@ -5,6 +5,8 @@ import dao.interfaces.FinanceiroDAO;
 import model.entities.Financeiro;
 import util.ExtrairDadosData;
 
+import java.util.List;
+
 public class FinanceiroService {
 
     private FinanceiroDAO dao = DaoFactory.createFinanceiroDao();
@@ -40,5 +42,9 @@ public class FinanceiroService {
 
     public boolean existeRegistroMesAno(Integer idPaciente, int mes, int ano) {
         return dao.existeRegistroMesAno(idPaciente, mes, ano);
+    }
+
+    public List<Financeiro> carregarInformacoesPagamentoPorAno(Integer idPaciente, int ano) {
+        return dao.carregarInformacoesPagamentoPorAno(idPaciente, ano);
     }
 }
