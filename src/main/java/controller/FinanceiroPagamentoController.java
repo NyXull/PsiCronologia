@@ -288,24 +288,6 @@ public class FinanceiroPagamentoController implements Initializable {
         return !dataLocal.isBefore(hoje) && !dataLocal.isAfter(limite);
     }
 
-    private Month converterMesPortuguesParaMonth(String mesPortugues) {
-        return switch (mesPortugues.toLowerCase()) {
-            case "janeiro" -> Month.JANUARY;
-            case "fevereiro" -> Month.FEBRUARY;
-            case "março" -> Month.MARCH;
-            case "abril" -> Month.APRIL;
-            case "maio" -> Month.MAY;
-            case "junho" -> Month.JUNE;
-            case "julho" -> Month.JULY;
-            case "agosto" -> Month.AUGUST;
-            case "setembro" -> Month.SEPTEMBER;
-            case "outubro" -> Month.OCTOBER;
-            case "novembro" -> Month.NOVEMBER;
-            case "dezembro" -> Month.DECEMBER;
-            default -> throw new IllegalArgumentException("Mês inválido: " + mesPortugues);
-        };
-    }
-
     public void carregarInformacoesPagamento() {
         Paciente paciente = SessaoPaciente.getPaciente();
         if (paciente == null) {
