@@ -2,6 +2,8 @@ package dao.interfaces;
 
 import model.entities.Financeiro;
 
+import java.util.List;
+
 public interface FinanceiroDAO {
 
     void salvarInformacoesPagamento(Financeiro objFinanceiro);
@@ -13,4 +15,6 @@ public interface FinanceiroDAO {
     void atualizarInformacoesPagamento(Financeiro objFinanceiro, int mes, int ano);
 
     boolean existeRegistroMesAno(Integer idPaciente, int mes, int ano);
+
+    List<Financeiro> carregarInformacoesPagamentoPorAno(Integer idPaciente, int ano);
 }
