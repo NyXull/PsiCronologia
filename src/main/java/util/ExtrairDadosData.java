@@ -14,8 +14,14 @@ public class ExtrairDadosData {
     }
 
     public static int getAno(Date date) {
-        Instant instant = date.toInstant();
-        LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.getYear();
+        if (date == null) {
+            throw new IllegalArgumentException("Data não pode ser nula");
+        }
+        if (date instanceof java.sql.Date) {
+            return ((java.sql.Date) date).toLocalDate().getYear();
+        } else {
+            Instant instant = date.toInstant();
+            return instant.atZone(ZoneId.systemDefault()).toLocalDate().getYear();
+        }
     }
 }
