@@ -46,9 +46,14 @@ public class RecuperacaoSenhaController implements Initializable {
 	
 	@FXML
 	public void onBtEnviarAction() {
-		VerificacaoEmailService verificacaoService = servicoRecuperacao(textFieldEmail.getText());
-		String email = textFieldEmail.getText();
-		ViewLoader.loadView("/fxml/codigo-recuperacao-senha.fxml", "/css/codigo-recuperacao-senha.css", email);	
+		if (textFieldEmail.getText().isEmpty()) {
+			lblErroSintaxeEmail.setText("Insira um email válido!");
+		}
+		else {
+			VerificacaoEmailService verificacaoService = servicoRecuperacao(textFieldEmail.getText());
+			String email = textFieldEmail.getText();
+			ViewLoader.loadView("/fxml/codigo-recuperacao-senha.fxml", "/css/codigo-recuperacao-senha.css", email);
+		}			
 	}
 	
 	private void validacaoEmail() {
