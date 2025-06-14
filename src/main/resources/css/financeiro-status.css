@@ -185,7 +185,7 @@
     -fx-underline: true;
 }
 
-#comboBoxMesParaAlterar .list-cell, #comboBoxMesParaAlterar1 .list-cell {
+#comboBoxMesParaAlterar .list-cell, #comboBoxMesParaExcluir .list-cell {
     -fx-font-family: "Nunito";
     -fx-font-size: 10pt;
     -fx-text-fill: black;
@@ -197,31 +197,31 @@
     -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
 }
 
-#comboBoxMesParaAlterar .list-cell:hover, #comboBoxMesParaAlterar1 .list-cell:hover {
+#comboBoxMesParaAlterar .list-cell:hover, #comboBoxMesParaExcluir .list-cell:hover {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
     -fx-underline: true;
 }
 
-#comboBoxMesParaAlterar .scroll-bar:vertical, #comboBoxMesParaAlterar1 .scroll-bar:vertical {
+#comboBoxMesParaAlterar .scroll-bar:vertical, #comboBoxMesParaExcluir .scroll-bar:vertical {
     -fx-background-color: #DE3AFC;
     -fx-padding: 0;
     -fx-pref-width: 8px; /* Largura da barra de rolagem */
 }
 
-#comboBoxMesParaAlterar .scroll-bar:vertical .thumb, #comboBoxMesParaAlterar1 .scroll-bar:vertical .thumb {
+#comboBoxMesParaAlterar .scroll-bar:vertical .thumb, #comboBoxMesParaExcluir .scroll-bar:vertical .thumb {
     -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
     -fx-background-radius: 10px;
 }
 
-#comboBoxMesParaAlterar .scroll-bar:vertical .track, #comboBoxMesParaAlterar1 .scroll-bar:vertical .track {
+#comboBoxMesParaAlterar .scroll-bar:vertical .track, #comboBoxMesParaExcluir .scroll-bar:vertical .track {
     -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
     -fx-background-radius: 10px;
 }
 
-#comboBoxMesParaAlterar .scroll-bar .increment-button, #comboBoxMesParaAlterar1 .scroll-bar .increment-button,
-#comboBoxMesParaAlterar .scroll-bar .decrement-button, #comboBoxMesParaAlterar1 .scroll-bar .decrement-button {
+#comboBoxMesParaAlterar .scroll-bar .increment-button, #comboBoxMesParaExcluir .scroll-bar .increment-button,
+#comboBoxMesParaAlterar .scroll-bar .decrement-button, #comboBoxMesParaExcluir .scroll-bar .decrement-button {
     -fx-padding: 0;
     -fx-shape: "";
     -fx-background-color: transparent;

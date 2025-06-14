@@ -236,7 +236,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="comboBoxMesParaAlterar1" maxWidth="90.0" minWidth="70.0" styleClass="comboBoxAlterarOuExcluir" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <ComboBox fx:id="comboBoxMesParaExcluir" maxWidth="90.0" minWidth="70.0" styleClass="comboBoxAlterarOuExcluir" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                   <Button fx:id="btExcluir" mnemonicParsing="false" onAction="#onBtExcluirAction" text="EXCLUIR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                </children>
                <VBox.margin>

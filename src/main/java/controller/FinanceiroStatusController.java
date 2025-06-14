@@ -26,9 +26,6 @@ import java.util.stream.Collectors;
 public class FinanceiroStatusController implements Initializable {
 
     @FXML
-    public ComboBox comboBoxMesParaAlterar1;
-
-    @FXML
     private HBox hBoxPaiFinanceiroStatus;
 
     @FXML
@@ -53,13 +50,13 @@ public class FinanceiroStatusController implements Initializable {
     private Button btRelatorios;
 
     @FXML
-    private ComboBox comboBoxMesParaAlterar;
+    private ComboBox<Month> comboBoxMesParaAlterar;
 
     @FXML
-    private ComboBox comboBoxMesParaExcluir;
+    private ComboBox<Month> comboBoxMesParaExcluir;
 
     @FXML
-    private ComboBox comboBoxStatus;
+    private ComboBox<String> comboBoxStatus;
 
     @FXML
     private Button btExcluir;
@@ -204,16 +201,16 @@ public class FinanceiroStatusController implements Initializable {
         ObservableList<Month> meses = FXCollections.observableArrayList(mesesUnicos);
 
         comboBoxMesParaAlterar.setItems(meses);
-        comboBoxMesParaAlterar1.setItems(meses);
+        comboBoxMesParaExcluir.setItems(meses);
 
         if (!meses.isEmpty()) {
-            comboBoxMesParaAlterar.setValue(meses.get(0));
-            comboBoxMesParaAlterar1.setValue(meses.get(0));
+            comboBoxMesParaAlterar.setValue(meses.getFirst());
+            comboBoxMesParaExcluir.setValue(meses.getFirst());
         }
 
         // Configurar conversor para ambos
         comboBoxMesParaAlterar.setConverter(converterMes(localePtBr));
-        comboBoxMesParaAlterar1.setConverter(converterMes(localePtBr));
+        comboBoxMesParaExcluir.setConverter(converterMes(localePtBr));
     }
 
     private StringConverter<Month> converterMes(Locale localePtBr) {
