@@ -107,11 +107,6 @@ public class FinanceiroStatusController implements Initializable {
     }
 
     @FXML
-    private void onBtSalvarAction() {
-        System.out.println("onBtSalvarAction");
-    }
-
-    @FXML
     public void onBtAlterarAction() {
         System.out.println("onBtAlterarAction");
     }
