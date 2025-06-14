@@ -226,3 +226,26 @@
     -fx-shape: "";
     -fx-background-color: transparent;
 }
+
+.hbox-pago {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/botao_check.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-alignment: CENTER;
+}
+
+.hbox-aberto {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/botao_exclamacao.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-alignment: CENTER;
+}
+
+.hbox-excluido {
+    -fx-background-color: transparent;
+    -fx-background-image: none;
+}
