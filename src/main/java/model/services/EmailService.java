@@ -33,7 +33,7 @@ public class EmailService {
 				}
 			});
 			
-			session.setDebug(true);
+			session.setDebug(false);
 			
 			Address[] distinatario = InternetAddress.parse(endereco);
 			

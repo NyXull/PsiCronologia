@@ -56,7 +56,7 @@ public class CadastroController implements Initializable{
 	
 	@FXML
 	public void onBtCadastrar() {
-Psicologo psicologo = validacaoEInstanciacaoPsico();
+		Psicologo psicologo = validacaoEInstanciacaoPsico();
 		
 		if (psicologo != null) {			
 			PsicologoService psicoService = new PsicologoService();
@@ -117,9 +117,7 @@ Psicologo psicologo = validacaoEInstanciacaoPsico();
 				senhaValida = true;
 			}
 			atualizarEstadoBotaoCadastrar();
-		});	
-		
-		//txtNome.textProperty().addListener((obs, valorAntigo, valorAtual) -> atualizarEstadoBotaoCadastrar());
+		});
 	}
 
 	private void atualizarEstadoBotaoCadastrar() {

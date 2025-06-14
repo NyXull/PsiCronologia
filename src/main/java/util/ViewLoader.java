@@ -54,5 +54,5 @@ public class ViewLoader {
             Alerts.showAlert(null, "Erro ao carregar a página", e.getMessage(), AlertType.ERROR);
             return null;
         }
-    }
+    } 
 }
