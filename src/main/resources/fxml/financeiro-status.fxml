@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -127,18 +128,21 @@
                   <Label styleClass="lblMeses" text="Outubro" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
                   <Label styleClass="lblMeses" text="Novembro" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
                   <Label styleClass="lblMeses" text="Dezembro" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
-                  <HBox styleClass="hBoxBordaInferior" GridPane.rowIndex="2" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                  <HBox styleClass="hBoxBordaInferior" GridPane.rowIndex="4" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <HBox styleClass="hBoxBordaEsquerda" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <HBox fx:id="hboxMesJaneiro" styleClass="hBoxBordaInferior" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesMaio" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesFevereiro" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesMarco" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesAbril" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesJunho" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="imgMesJunho" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+                     </children></HBox>
+                  <HBox fx:id="hboxMesSetembro" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesOutubro" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesJulho" styleClass="hBoxBordaInferior" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesAgosto" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesNovembro" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hboxMesDezembro" styleClass="hBoxBordaEsquerda" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
                </children>
             </GridPane>
             <GridPane>
