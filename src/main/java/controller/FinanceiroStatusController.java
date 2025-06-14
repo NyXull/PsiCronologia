@@ -61,12 +61,65 @@ public class FinanceiroStatusController implements Initializable {
     @FXML
     private Button btExcluir;
 
+    @FXML
+    private HBox hboxMesJaneiro;
+
+    @FXML
+    private HBox hboxMesFevereiro;
+
+    @FXML
+    private HBox hboxMesMarco;
+
+    @FXML
+    private HBox hboxMesAbril;
+
+    @FXML
+    private HBox hboxMesMaio;
+
+    @FXML
+    private HBox hboxMesJunho;
+
+    @FXML
+    private HBox hboxMesJulho;
+
+    @FXML
+    private HBox hboxMesAgosto;
+
+    @FXML
+    private HBox hboxMesSetembro;
+
+    @FXML
+    private HBox hboxMesOutubro;
+
+    @FXML
+    private HBox hboxMesNovembro;
+
+    @FXML
+    private HBox hboxMesDezembro;
+
+    private Map<Month, HBox> mapMesParaHBox;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         vBox1FinanceiroStatus.prefWidthProperty().bind(hBoxPaiFinanceiroStatus.widthProperty().multiply(0.25));
         vBox2FinanceiroStatus.prefWidthProperty().bind(hBoxPaiFinanceiroStatus.widthProperty().multiply(0.75));
 
         exibirNomePaciente();
+
+        mapMesParaHBox = Map.ofEntries(
+                Map.entry(Month.JANUARY, hboxMesJaneiro),
+                Map.entry(Month.FEBRUARY, hboxMesFevereiro),
+                Map.entry(Month.MARCH, hboxMesMarco),
+                Map.entry(Month.APRIL, hboxMesAbril),
+                Map.entry(Month.MAY, hboxMesMaio),
+                Map.entry(Month.JUNE, hboxMesJunho),
+                Map.entry(Month.JULY, hboxMesJulho),
+                Map.entry(Month.AUGUST, hboxMesAgosto),
+                Map.entry(Month.SEPTEMBER, hboxMesSetembro),
+                Map.entry(Month.OCTOBER, hboxMesOutubro),
+                Map.entry(Month.NOVEMBER, hboxMesNovembro),
+                Map.entry(Month.DECEMBER, hboxMesDezembro)
+        );
 
         if (informacaoPagamentoJaExiste()) {
             try {
@@ -211,6 +264,8 @@ public class FinanceiroStatusController implements Initializable {
         // Configurar conversor para ambos
         comboBoxMesParaAlterar.setConverter(converterMes(localePtBr));
         comboBoxMesParaExcluir.setConverter(converterMes(localePtBr));
+
+        atualizarIconesMeses(listaFinanceiro);
     }
 
     private StringConverter<Month> converterMes(Locale localePtBr) {
@@ -246,4 +301,42 @@ public class FinanceiroStatusController implements Initializable {
             default -> throw new IllegalArgumentException("Mês inválido: " + mesPortugues);
         };
     }
+
+    private void atualizarIconeMes(HBox hboxMes, String statusPagamento) {
+        hboxMes.getStyleClass().removeAll("hbox-pago", "hbox-aberto", "hbox-excluido");
+
+        if ("PAGO".equalsIgnoreCase(statusPagamento)) {
+            hboxMes.getStyleClass().add("hbox-pago");
+        } else if ("ABERTO".equalsIgnoreCase(statusPagamento)) {
+            hboxMes.getStyleClass().add("hbox-aberto");
+        } else if ("EXCLUIDO".equalsIgnoreCase(statusPagamento)) {
+            hboxMes.getStyleClass().add("hbox-excluido");
+        }
+    }
+
+    public void atualizarIconesMeses(List<Financeiro> listaFinanceiro) {
+        for (Financeiro financeiro : listaFinanceiro) {
+            String mesStr = financeiro.getMesStatusPagamento();
+            if (mesStr == null) continue;
+
+            Month mes;
+            try {
+                int mesNumero = Integer.parseInt(mesStr);
+                mes = Month.of(mesNumero);
+            } catch (NumberFormatException e) {
+                try {
+                    mes = converterMesPortuguesParaMonth(mesStr);
+                } catch (IllegalArgumentException ex) {
+                    continue;
+                }
+            }
+
+            HBox hboxMes = mapMesParaHBox.get(mes);
+            if (hboxMes != null) {
+                atualizarIconeMes(hboxMes, financeiro.getStatusPagamento());
+            }
+        }
+    }
+
+
 }
