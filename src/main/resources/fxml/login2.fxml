@@ -24,29 +24,35 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </HBox>
-            <GridPane maxWidth="400.0">
+            <GridPane>
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="txtEmail" promptText="Email" />
-                  <PasswordField fx:id="txtSenha" promptText="Senha" GridPane.rowIndex="1" />
-                  <Button fx:id="btCadastro" mnemonicParsing="false" onAction="#onBtCadastroAction" text="CADASTRE-SE AGORA" GridPane.rowIndex="2">
+                  <TextField fx:id="txtEmail" prefWidth="400.0" promptText="Email" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <PasswordField fx:id="txtSenha" prefWidth="400.0" promptText="Senha" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btEntrar" minWidth="250.0" mnemonicParsing="false" onAction="#onBtEntrarAction" text="ENTRAR" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btEsqueceuSenha" mnemonicParsing="false" onAction="#onBtEsqueceuSenhaAction" text="Esqueceu sua senha? Clique aqui!" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
-                        <Insets />
+                        <Insets bottom="20.0" />
                      </GridPane.margin>
+                  </Button>
+                  <Button fx:id="btCadastro" mnemonicParsing="false" onAction="#onBtCadastroAction" text="Não tem uma conta? Cadastre-se agora." GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
                      <padding>
-                        <Insets bottom="40.0" />
+                        <Insets bottom="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#onBtEntrarAction" text="ENTRAR" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
                </children>
+               <VBox.margin>
+                  <Insets left="100.0" right="100.0" />
+               </VBox.margin>
             </GridPane>
          </children>
       </VBox>

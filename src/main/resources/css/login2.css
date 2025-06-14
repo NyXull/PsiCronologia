@@ -22,37 +22,30 @@
 
 #txtEmail, #txtSenha {
     -fx-font-family: "Nunito";
-    -fx-font-size: 12px;
-    -fx-pref-width: 400px;
-    -fx-alignment: CENTER_LEFT;
-
-    /* visual da "linha" */
+    -fx-font-size: 13px;
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #182052 transparent; /* só a parte de baixo colorida */
-    -fx-border-width: 0 0 1px 0; /* espessura da borda: top right bottom left */
+    -fx-border-color: transparent transparent #182052 transparent;
+    -fx-border-width: 0 0 1px 0;
     -fx-border-style: solid;
-    
-    -fx-prompt-text-fill: #5F3AFC; /* aqui muda a cor do prompt */
+    -fx-prompt-text-fill: #5F3AFC;
 }
 
 #txtEmail:focused, #txtSenha:focused {
-    -fx-border-color: transparent transparent #9E3AFC transparent; /* muda a cor da linha no foco */
+    -fx-border-color: transparent transparent #9E3AFC transparent;
 }
 
-#btCadastro {
+#btCadastro, #btEsqueceuSenha {
     -fx-background-color: transparent;
     -fx-text-fill: #3A91FC;
     -fx-font-family: "Comfortaa";
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
     -fx-underline: true;
-    -fx-alignment: CENTER_LEFT;
-    -fx-pref-width: 400px;
 	-fx-scale-x: 1;
     -fx-scale-y: 1;
     -fx-cursor: hand;
 }
 
-#btCadastro:hover {
+#btCadastro:hover, #btEsqueceuSenha:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
@@ -60,11 +53,11 @@
 #btEntrar {
     -fx-background-color: #9E3AFC;
     -fx-font-weight: bold;
+    -fx-font-size: 12px;
     -fx-text-fill: #182052;
     -fx-font-family: "Comfortaa";
     -fx-background-radius: 12;
-    -fx-padding: 8px 16px;
-    -fx-alignment: CENTER;    
+    -fx-padding: 8px 16px;    
 	-fx-scale-x: 1;
     -fx-scale-y: 1;
     -fx-cursor: hand;
@@ -74,6 +67,7 @@
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
+
 
 #hBoxLogin {
     -fx-alignment: CENTER;

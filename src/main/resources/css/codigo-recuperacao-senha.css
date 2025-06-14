@@ -1,0 +1,64 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1CodigoRecuperacao {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psicronologia.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2CodigoRecuperacao {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
+}
+
+#txtCodigoRecuperacao {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+.lblMensagem {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 14px;
+}
+
+.textFieldStyle{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-background-color: transparent;
+    -fx-border-color: #182052 #182052 #182052 #182052; 
+    -fx-border-width: 1px 1px 1px 1px; 
+    -fx-border-radius: 5px;
+    -fx-border-style: solid;    
+    -fx-prompt-text-fill: #5F3AFC;
+}
+
+#lblErroCodigo{
+	-fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #D23636;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.buttonStyle {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+.buttonStyle:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
