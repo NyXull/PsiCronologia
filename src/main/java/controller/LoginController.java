@@ -40,6 +40,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private Button btCadastro;
+    
+    @FXML
+    private Button btEsqueceuSenha;
 
     @FXML
     private Button btEntrar;
@@ -50,6 +53,11 @@ public class LoginController implements Initializable {
     @FXML
     public void onBtCadastroAction() {
     	ViewLoader.loadView("/fxml/cadastro.fxml", "/css/cadastro.css");    	
+    }
+    
+    @FXML
+    public void onBtEsqueceuSenhaAction() {
+    	ViewLoader.loadView("/fxml/recuperacao-senha.fxml", "/css/recuperacao-senha.css");    	
     }
     
     @FXML
@@ -76,7 +84,7 @@ public class LoginController implements Initializable {
 			}
     	}
     	catch (Exception e) {
-    		Alerts.showAlert(null, "LoginController:", null, AlertType.ERROR);    		
+    		Alerts.showAlert(null, "LoginController", null, AlertType.ERROR);    		
     	}
     }
     

@@ -19,4 +19,8 @@ public class PsicologoService {
 	public boolean emailJaCadastrado(String email) {
 	    return dao.emailExiste(email);
 	}
+	
+	public void atualizarSenha(String email, String novaSenha) {
+		dao.atualizarSenhaPorEmail(email, novaSenha);
+	}
 }

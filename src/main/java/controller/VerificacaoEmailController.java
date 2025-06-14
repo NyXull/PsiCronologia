@@ -38,7 +38,7 @@ public class VerificacaoEmailController implements Initializable {
 		VerificacaoEmailService emailService = new VerificacaoEmailService();
 
 		if (emailService.validarCodigo(codigo)) {
-			ViewLoader.loadView("/fxml/login2.fxml", "/css/login.css");
+			ViewLoader.loadView("/fxml/login2.fxml", "/css/login2.css");
 		} else {
 			Alerts.showAlert("Código inválido", "Código expirado ou incorreto", "Tente novamente", AlertType.ERROR);
 		}

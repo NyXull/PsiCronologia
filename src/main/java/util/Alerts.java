@@ -3,16 +3,25 @@ package util;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.services.EmailService;
+import model.services.VerificacaoEmailService;
 import util.enums.TipoCancelamento;
 import util.enums.TipoRecorrencia;
 
@@ -23,22 +32,8 @@ public class Alerts {
 		alert.setTitle(title);
 		alert.setHeaderText(header);
 		alert.setContentText(content);
-
-		alert.getDialogPane().getStylesheets().add(Alerts.class.getResource("/css/alerts.css").toExternalForm());
-		alert.getDialogPane().getStyleClass().add("show-alert");
-
-		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-		Image icon = new Image(Alerts.class.getResourceAsStream("/img/icon_exclamacao.png"));
-		stage.getIcons().add(icon);
-
-		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(0), e -> alert.getDialogPane().setTranslateX(0)),
-				new KeyFrame(Duration.millis(50), e -> alert.getDialogPane().setTranslateX(4)),
-				new KeyFrame(Duration.millis(100), e -> alert.getDialogPane().setTranslateX(-4)),
-				new KeyFrame(Duration.millis(150), e -> alert.getDialogPane().setTranslateX(2)),
-				new KeyFrame(Duration.millis(200), e -> alert.getDialogPane().setTranslateX(-2)),
-				new KeyFrame(Duration.millis(250), e -> alert.getDialogPane().setTranslateX(1)),
-				new KeyFrame(Duration.millis(300), e -> alert.getDialogPane().setTranslateX(0)));
-		timeline.play();
+		
+		personalizarAlertaComVibracao(alert, "/img/icon_exclamacao.png", "show-alert");
 
 		alert.show();
 	}
@@ -51,12 +46,8 @@ public class Alerts {
 			alert.setHeaderText(LocalDate.parse(data).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " - " + hora +
 					"\n\nDeseja agendar esse horário para " + nomePaciente + "?");
 
-			alert.getDialogPane().getStylesheets().add(Alerts.class.getResource("/css/alerts.css").toExternalForm());
-			alert.getDialogPane().getStyleClass().add("mostrarPopupAgendamentoCompleto");
-			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-			Image icon = new Image(Alerts.class.getResourceAsStream("/img/icon_calendario.png"));
-			stage.getIcons().add(icon);
-
+			personalizarAlerta(alert, "/img/icon_calendario.png", "mostrarPopupAgendamentoCompleto");
+			
 			ButtonType botaoSim = new ButtonType("Sim", ButtonBar.ButtonData.YES);
 			ButtonType botaoNao = new ButtonType("Não", ButtonBar.ButtonData.NO);
 			alert.getButtonTypes().setAll(botaoSim, botaoNao);
@@ -104,12 +95,7 @@ public class Alerts {
 		alert.setHeaderText(header);
 		alert.setContentText(content);
 
-		alert.getDialogPane().getStylesheets().add(Alerts.class.getResource("/css/alerts.css").toExternalForm());
-		alert.getDialogPane().getStyleClass().add("agendamentoRealizadoComSucesso");
-
-		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-		Image icon = new Image(Alerts.class.getResourceAsStream("/img/icon_calendario.png"));
-		stage.getIcons().add(icon);		
+		personalizarAlerta(alert, "/img/icon_calendario.png", "agendamentoRealizadoComSucesso");
 
 		alert.show();
 	}	
@@ -119,21 +105,7 @@ public class Alerts {
 		alert.setTitle("Cancelamento de horário");
 		alert.setHeaderText(LocalDate.parse(data).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " - " + hora);
 
-		alert.getDialogPane().getStylesheets().add(Alerts.class.getResource("/css/alerts.css").toExternalForm());
-		alert.getDialogPane().getStyleClass().add("confirmarCancelamentoDoAgendamento");
-
-		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-		Image icon = new Image(Alerts.class.getResourceAsStream("/img/icon_cancelar.png"));
-		stage.getIcons().add(icon);		
-		
-		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(0), e -> alert.getDialogPane().setTranslateX(0)),
-				new KeyFrame(Duration.millis(50), e -> alert.getDialogPane().setTranslateX(4)),
-				new KeyFrame(Duration.millis(100), e -> alert.getDialogPane().setTranslateX(-4)),
-				new KeyFrame(Duration.millis(150), e -> alert.getDialogPane().setTranslateX(2)),
-				new KeyFrame(Duration.millis(200), e -> alert.getDialogPane().setTranslateX(-2)),
-				new KeyFrame(Duration.millis(250), e -> alert.getDialogPane().setTranslateX(1)),
-				new KeyFrame(Duration.millis(300), e -> alert.getDialogPane().setTranslateX(0)));
-		timeline.play();
+		personalizarAlertaComVibracao(alert, "/img/icon_cancelar.png", "confirmarCancelamentoDoAgendamento");
 		
 		ButtonType botaoCancelar = new ButtonType("Cancelar");
 		ButtonType apenasEsse = new ButtonType("Apenas este");
@@ -163,5 +135,28 @@ public class Alerts {
 			return Optional.of(TipoCancelamento.RECORRENTE);
 		}
 		 return Optional.of(TipoCancelamento.CANCELADO);
+	}
+
+	private static void personalizarAlerta(Alert alert, String caminhoIcone, String classeCSS) {
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image(Alerts.class.getResourceAsStream(caminhoIcone)));
+		alert.getDialogPane().getStylesheets().add(Alerts.class.getResource("/css/alerts.css").toExternalForm());
+		alert.getDialogPane().getStyleClass().add(classeCSS);
+	}
+	
+	private static void personalizarAlertaComVibracao(Alert alert, String caminhoIcone, String classeCSS) {
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image(Alerts.class.getResourceAsStream(caminhoIcone)));
+		alert.getDialogPane().getStylesheets().add(Alerts.class.getResource("/css/alerts.css").toExternalForm());
+		alert.getDialogPane().getStyleClass().add(classeCSS);
+		
+		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(0), e -> alert.getDialogPane().setTranslateX(0)),
+				new KeyFrame(Duration.millis(50), e -> alert.getDialogPane().setTranslateX(4)),
+				new KeyFrame(Duration.millis(100), e -> alert.getDialogPane().setTranslateX(-4)),
+				new KeyFrame(Duration.millis(150), e -> alert.getDialogPane().setTranslateX(2)),
+				new KeyFrame(Duration.millis(200), e -> alert.getDialogPane().setTranslateX(-2)),
+				new KeyFrame(Duration.millis(250), e -> alert.getDialogPane().setTranslateX(1)),
+				new KeyFrame(Duration.millis(300), e -> alert.getDialogPane().setTranslateX(0)));
+		timeline.play();
 	}
 }

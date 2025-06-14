@@ -39,6 +39,9 @@ public class LoginController2 implements Initializable {
     private PasswordField txtSenha;
     
     @FXML
+    private Button btEsqueceuSenha;
+    
+    @FXML
     private Button btCadastro;
 
     @FXML
@@ -50,6 +53,11 @@ public class LoginController2 implements Initializable {
     @FXML
     public void onBtCadastroAction() {
     	ViewLoader.loadView("/fxml/cadastro.fxml", "/css/cadastro.css");    	
+    }
+    
+    @FXML
+    public void onBtEsqueceuSenhaAction() {
+    	ViewLoader.loadView("/fxml/recuperacao-senha.fxml", "/css/recuperacao-senha.css");    	
     }
     
     @FXML

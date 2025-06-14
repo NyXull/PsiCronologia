@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="hBoxPaiCodigoRecuperacao" prefHeight="500" prefWidth="700" stylesheets="@../css/codigo-recuperacao-senha.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CodigoRecuperacaoSenhaController">
+   <children>
+      <VBox fx:id="vBox1CodigoRecuperacao" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="vBox2CodigoRecuperacao" alignment="CENTER" spacing="30.0" HBox.hgrow="ALWAYS">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fx:id="txtCodigoRecuperacao" strokeType="OUTSIDE" strokeWidth="0.0" text="CÓDIGO DE RECUPERAÇÃO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets top="-100.0" />
+               </VBox.margin>
+            </GridPane>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtMensagem" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin></Text>
+                  <Label maxWidth="400.0" styleClass="lblMensagem" text="Insira o código abaixo:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btAvancar" maxWidth="400.0" mnemonicParsing="false" onAction="#onBtAvancarAction" styleClass="buttonStyle" text="AVANÇAR" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Button>
+                  <TextField fx:id="textFieldCodigo" maxWidth="400.0" promptText="Insira o código recebido" styleClass="textFieldStyle" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label fx:id="lblErroCodigo" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" left="100.0" right="100.0" top="50.0" />
+               </VBox.margin>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>

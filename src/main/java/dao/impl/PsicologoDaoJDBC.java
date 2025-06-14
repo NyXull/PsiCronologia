@@ -107,4 +107,23 @@ private Connection conn;
 	        DB.closeStatement(pstm);
 	    }
 	}
+
+	@Override
+	public void atualizarSenhaPorEmail(String email, String novaSenha) {
+		PreparedStatement pstm = null;
+		
+		try {
+			pstm = conn.prepareStatement("UPDATE psicologo SET senha = ? WHERE email = ?");
+			pstm.setString(1, novaSenha);
+			pstm.setString(2, email);
+			
+			int linhasAfetadas = pstm.executeUpdate();
+			if (linhasAfetadas == 0) {
+				throw new DbException("Nenhum psicólogo encontrado com o email: " + email);
+			}
+		}
+		catch (SQLException e) {
+			throw new DbException("Erro ao atualizar a senha: " + e.getMessage());
+		}		
+	}
 }	
