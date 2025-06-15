@@ -249,3 +249,28 @@
     -fx-background-color: transparent;
     -fx-background-image: none;
 }
+
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+#hBoxRosa2 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px;
+}
+
+#hBoxRosa3 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+#lblVencimento, #txtDataDeVencimentoAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+}
+
+#txtDataDeVencimentoAqui {
+    -fx-fill: #182052;
+}
