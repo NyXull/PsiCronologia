@@ -1,9 +1,11 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
@@ -13,14 +15,15 @@ import javafx.util.StringConverter;
 import model.entities.Financeiro;
 import model.entities.Paciente;
 import model.services.FinanceiroService;
-import util.ExibirNomeDoPaciente;
-import util.ExtrairDadosData;
-import util.SessaoPaciente;
-import util.ViewLoader;
+import util.*;
+import util.enums.TipoStatusPagamento;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.TextStyle;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -68,7 +71,7 @@ public class FinanceiroStatusController implements Initializable {
     private ComboBox<Month> comboBoxMesParaExcluir;
 
     @FXML
-    private ComboBox<String> comboBoxStatus;
+    private ComboBox<TipoStatusPagamento> comboBoxStatus;
 
     @FXML
     private Button btExcluir;
@@ -111,6 +114,8 @@ public class FinanceiroStatusController implements Initializable {
 
     private Map<Month, HBox> mapMesParaHBox;
 
+    private boolean existeDados = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         vBox1FinanceiroStatus.prefWidthProperty().bind(hBoxPaiFinanceiroStatus.widthProperty().multiply(0.25));
@@ -138,6 +143,7 @@ public class FinanceiroStatusController implements Initializable {
                 carregarInformacoesPagamentoPorAno();
             } catch (Exception e) {
                 e.printStackTrace();
+                existeDados = false;
                 throw new RuntimeException(e);
             }
         }
@@ -170,12 +176,28 @@ public class FinanceiroStatusController implements Initializable {
 
     @FXML
     public void onBtAlterarAction() {
-        System.out.println("onBtAlterarAction");
+        Financeiro financeiro = validacaoEInstanciao("alterar");
+
+        if (financeiro != null) {
+            FinanceiroService financeiroService = new FinanceiroService();
+
+            int ano = ExtrairDadosData.getAno(financeiro.getDataVencimento());
+
+            financeiroService.atualizarStatusPagamentoMesStatusAno(financeiro, ano);
+        }
     }
 
     @FXML
     public void onBtExcluirAction() {
-        System.out.println("onBtExcluirAction");
+        Financeiro financeiro = validacaoEInstanciao("excluir");
+
+        if (financeiro != null) {
+            FinanceiroService financeiroService = new FinanceiroService();
+
+            int ano = ExtrairDadosData.getAno(financeiro.getDataVencimento());
+
+            financeiroService.atualizarStatusPagamentoMesStatusAno(financeiro, ano);
+        }
     }
 
     private void exibirNomePaciente() {
@@ -218,31 +240,20 @@ public class FinanceiroStatusController implements Initializable {
             return;
         }
 
-        carregarOpcoesStatus(listaFinanceiro);
+        carregarOpcoesStatus();
         carregarOpcoesMeses(listaFinanceiro);
 
         String dataVencimentoFormatada = sdf.format(financeiroRecente.getDataVencimento());
 
         txtDataDeVencimentoAqui.setText(dataVencimentoFormatada);
+
+        existeDados = true;
     }
 
-    private void carregarOpcoesStatus(List<Financeiro> listaFinanceiro) {
+    private void carregarOpcoesStatus() {
         comboBoxStatus.getItems().clear();
-
-        // Extrair status únicos da lista
-        Set<String> statusUnicos = listaFinanceiro.stream()
-                .map(Financeiro::getStatusPagamento)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toSet());
-
-        // Se quiser usar enum TipoStatusPagamento, pode fazer um mapeamento aqui
-        // Por simplicidade, adiciono direto as Strings
-        comboBoxStatus.getItems().addAll(statusUnicos);
-
-        // Seleciona o primeiro status, se existir
-        if (!statusUnicos.isEmpty()) {
-            comboBoxStatus.setValue(statusUnicos.iterator().next());
-        }
+        comboBoxStatus.getItems().addAll(TipoStatusPagamento.ABERTO, TipoStatusPagamento.PAGO);
+        comboBoxStatus.setValue(TipoStatusPagamento.ABERTO);
     }
 
     public void carregarOpcoesMeses(List<Financeiro> listaFinanceiro) {
@@ -281,7 +292,7 @@ public class FinanceiroStatusController implements Initializable {
         comboBoxMesParaAlterar.setConverter(converterMes(localePtBr));
         comboBoxMesParaExcluir.setConverter(converterMes(localePtBr));
 
-        atualizarIconesMeses(listaFinanceiro);
+        atualizarIconesMeses();
     }
 
     private StringConverter<Month> converterMes(Locale localePtBr) {
@@ -330,7 +341,30 @@ public class FinanceiroStatusController implements Initializable {
         }
     }
 
-    public void atualizarIconesMeses(List<Financeiro> listaFinanceiro) {
+    public void atualizarIconesMeses() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return;
+        }
+
+        FinanceiroService financeiroService = new FinanceiroService();
+
+        // Obter o Financeiro mais recente (ou algum) para pegar a data de vencimento
+        Financeiro financeiroRecente = financeiroService.carregarInformacoesPagamento(paciente.getIdPaciente());
+
+        if (financeiroRecente == null || financeiroRecente.getDataVencimento() == null) {
+            return;
+        }
+
+        int ano = ExtrairDadosData.getAno(financeiroRecente.getDataVencimento());
+
+        List<Financeiro> listaFinanceiro =
+                financeiroService.carregarInformacoesPagamentoPorAno(paciente.getIdPaciente(), ano);
+
+        if (listaFinanceiro == null || listaFinanceiro.isEmpty()) {
+            return;
+        }
+
         for (Financeiro financeiro : listaFinanceiro) {
             String mesStr = financeiro.getMesStatusPagamento();
             if (mesStr == null) continue;
@@ -352,5 +386,105 @@ public class FinanceiroStatusController implements Initializable {
                 atualizarIconeMes(hboxMes, financeiro.getStatusPagamento());
             }
         }
+    }
+
+    public Financeiro validacaoEInstanciao(String acao) {
+        String statusPagamentoString = String.valueOf(comboBoxStatus.getValue());
+        Month mesParaExcluirMonth = comboBoxMesParaExcluir.getValue();
+        Month mesParaAlterarMonth = comboBoxMesParaAlterar.getValue();
+
+        if (!existeDados) {
+            Alerts.showAlert("Erro de Validação", "Sem informações!", "Não é possível alterar nada.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+
+        if ("excluir".equalsIgnoreCase(acao)) {
+            if (mesParaExcluirMonth == null) {
+                Alerts.showAlert("Erro de Validação", "Campo obrigatório!", "Preencha o mês para excluir.",
+                        Alert.AlertType.ERROR);
+                return null;
+            }
+        } else if ("alterar".equalsIgnoreCase(acao)) {
+            if (mesParaAlterarMonth == null) {
+                Alerts.showAlert("Erro de Validação", "Campo obrigatório!", "Preencha o mês para alterar.",
+                        Alert.AlertType.ERROR);
+                return null;
+            }
+        } else {
+            Alerts.showAlert("Erro de Validação", "Ação desconhecida!", "Ação deve ser alterar ou excluir.",
+                    Alert.AlertType.ERROR);
+            return null;
+        }
+
+        try {
+            Paciente paciente = SessaoPaciente.getPaciente();
+            if (paciente == null) {
+                return null;
+            }
+
+            Financeiro financeiroRecente = carregarInformacoesPagamento();
+
+            BigDecimal valorSessao = financeiroRecente.getValorSessao();
+
+            java.sql.Date sqlDate = (java.sql.Date) financeiroRecente.getDataVencimento();
+
+            LocalDate localDate = sqlDate.toLocalDate();
+
+            Date dataVencimento = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            Integer quantidadeSessao = financeiroRecente.getQuantidadeSessao();
+            String statusPagamento = financeiroRecente.getStatusPagamento();
+            String mesStatusPagamento = financeiroRecente.getMesStatusPagamento();
+
+            Locale localePtBr = Locale.forLanguageTag("pt-BR");
+
+            if ("excluir".equalsIgnoreCase(acao)) {
+                String mesParaExcluirString = mesParaExcluirMonth.getDisplayName(TextStyle.FULL, localePtBr);
+                mesParaExcluirString =
+                        mesParaExcluirString.substring(0, 1).toUpperCase() + mesParaExcluirString.substring(1);
+
+                mesStatusPagamento = mesParaExcluirString;
+
+                statusPagamento = String.valueOf(TipoStatusPagamento.EXCLUIDO);
+            } else if ("alterar".equalsIgnoreCase(acao)) {
+                statusPagamento = statusPagamentoString;
+
+                String mesParaAlterarMonthString = mesParaAlterarMonth.getDisplayName(TextStyle.FULL, localePtBr);
+                mesParaAlterarMonthString =
+                        mesParaAlterarMonthString.substring(0, 1).toUpperCase() + mesParaAlterarMonthString.substring(1);
+
+                mesStatusPagamento = mesParaAlterarMonthString;
+            }
+
+            Financeiro financeiro = new Financeiro();
+
+            financeiro.setIdPaciente(paciente.getIdPaciente());
+            financeiro.setValorSessao(valorSessao);
+            financeiro.setDataVencimento(dataVencimento);
+            financeiro.setQuantidadeSessao(quantidadeSessao);
+            financeiro.setStatusPagamento(statusPagamento);
+            financeiro.setMesStatusPagamento(mesStatusPagamento);
+
+            Platform.runLater(this::atualizarIconesMeses);
+
+            return financeiro;
+        } catch (Exception e) {
+            Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar informações",
+                    Alert.AlertType.ERROR);
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Financeiro carregarInformacoesPagamento() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return null;
+        }
+
+        FinanceiroService financeiroService = new FinanceiroService();
+
+        return financeiroService.carregarInformacoesPagamento(paciente.getIdPaciente());
     }
 }
