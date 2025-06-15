@@ -47,4 +47,8 @@ public class FinanceiroService {
     public List<Financeiro> carregarInformacoesPagamentoPorAno(Integer idPaciente, int ano) {
         return dao.carregarInformacoesPagamentoPorAno(idPaciente, ano);
     }
+
+    public void atualizarStatusPagamentoMesStatusAno(Financeiro objFinanceiro, int ano) {
+        dao.atualizarStatusPagamentoMesStatusAno(objFinanceiro, ano);
+    }
 }
