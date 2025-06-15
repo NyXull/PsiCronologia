@@ -191,4 +191,28 @@ public class FinanceiroDaoJDBC implements FinanceiroDAO {
             DB.closeStatement(pstm);
         }
     }
+
+    @Override
+    public void atualizarStatusPagamentoMesStatusAno(Financeiro objFinanceiro, int ano) {
+        PreparedStatement pstm = null;
+
+        try {
+            pstm = conn.prepareStatement(
+                    "UPDATE financeiro SET status = ? WHERE id_paciente = ? AND mes_status = ? AND YEAR" +
+                            "(data_vencimento) = ?"
+            );
+
+            pstm.setString(1, objFinanceiro.getStatusPagamento());
+            pstm.setInt(2, objFinanceiro.getIdPaciente());
+            pstm.setString(3, objFinanceiro.getMesStatusPagamento());
+            pstm.setInt(4, ano);
+
+
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(pstm);
+        }
+    }
 }
