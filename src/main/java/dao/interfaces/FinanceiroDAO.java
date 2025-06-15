@@ -18,5 +18,5 @@ public interface FinanceiroDAO {
 
     List<Financeiro> carregarInformacoesPagamentoPorAno(Integer idPaciente, int ano);
 
-    void atualizarMesEStatusPagamentoAno(Financeiro objFinanceiro, int ano);
+    void atualizarStatusPagamentoMesStatusAno(Financeiro objFinanceiro, int ano);
 }
