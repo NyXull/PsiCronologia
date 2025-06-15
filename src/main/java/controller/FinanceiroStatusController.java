@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.StringConverter;
 import model.entities.Financeiro;
 import model.entities.Paciente;
@@ -18,12 +19,23 @@ import util.SessaoPaciente;
 import util.ViewLoader;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class FinanceiroStatusController implements Initializable {
+
+    private final SimpleDateFormat sdf;
+
+    public FinanceiroStatusController() {
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+    }
+
+    @FXML
+    public Text txtDataDeVencimentoAqui;
 
     @FXML
     private HBox hBoxPaiFinanceiroStatus;
@@ -208,6 +220,10 @@ public class FinanceiroStatusController implements Initializable {
 
         carregarOpcoesStatus(listaFinanceiro);
         carregarOpcoesMeses(listaFinanceiro);
+
+        String dataVencimentoFormatada = sdf.format(financeiroRecente.getDataVencimento());
+
+        txtDataDeVencimentoAqui.setText(dataVencimentoFormatada);
     }
 
     private void carregarOpcoesStatus(List<Financeiro> listaFinanceiro) {
@@ -337,6 +353,4 @@ public class FinanceiroStatusController implements Initializable {
             }
         }
     }
-
-
 }
