@@ -17,4 +17,6 @@ public interface FinanceiroDAO {
     boolean existeRegistroMesAno(Integer idPaciente, int mes, int ano);
 
     List<Financeiro> carregarInformacoesPagamentoPorAno(Integer idPaciente, int ano);
+
+    void atualizarMesEStatusPagamentoAno(Financeiro objFinanceiro, int ano);
 }
