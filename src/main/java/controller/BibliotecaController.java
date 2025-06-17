@@ -4,25 +4,32 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import util.Alerts;
 import util.SessaoUsuario;
 import util.ViewLoader;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
 public class BibliotecaController implements Initializable {
 
@@ -55,6 +62,8 @@ public class BibliotecaController implements Initializable {
 
     @FXML
     private ScrollPane scrollPaneArquivos;
+
+    private final Set<String> arquivosAdicionados = new HashSet<>();
 
     @FXML
     public void onBtInicioAction() {
@@ -110,17 +119,20 @@ public class BibliotecaController implements Initializable {
 
         if (arquivosSelecionados != null) {
             for (File file : arquivosSelecionados) {
-                VBox item = criarItemArquivo(file.getName());
-                tilePaneArquivos.getChildren().add(item);
+                String nome = file.getName();
+                if (!arquivosAdicionados.contains(nome)) {
+                    arquivosAdicionados.add(nome);
+                    VBox item = criarItemArquivo(nome, file.getPath());
+                    tilePaneArquivos.getChildren().add(item);
+                }
             }
         }
     }
 
-    private VBox criarItemArquivo(String nomeArquivo) {
+    private VBox criarItemArquivo(String nomeArquivo, String caminhoCompletoDoArquivo) {
         ImageView icone = criarIconeArquivo(nomeArquivo);
         Label label = new Label(nomeArquivo);
 
-        label.setWrapText(true);
         label.setMaxWidth(100);
         label.setAlignment(Pos.CENTER);
 
@@ -131,11 +143,55 @@ public class BibliotecaController implements Initializable {
         vbox.setMaxWidth(Double.MAX_VALUE);
         VBox.setVgrow(label, Priority.ALWAYS);
 
-        vbox.setStyle("-fx-background-color: transparent;");
-        label.setStyle("-fx-font-family: \"Comfortaa\"; -fx-font-size: 15px; -fx-text-fill: #182052;");
+        label.getStyleClass().add("label");
+
+        ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem copiarItem = new MenuItem("Copiar");
+        MenuItem excluirItem = new MenuItem("Excluir");
+
+        copiarItem.setOnAction(event -> {
+            File arquivoOriginal = new File(caminhoCompletoDoArquivo);
+            if (!arquivoOriginal.exists()) {
+                return;
+            }
+
+            final Clipboard clipboard = Clipboard.getSystemClipboard();
+            final ClipboardContent content = new ClipboardContent();
+
+            content.putFiles(Collections.singletonList(arquivoOriginal));
+
+            clipboard.setContent(content);
+        });
+
+        excluirItem.setOnAction(event -> {
+            File arquivo = new File(caminhoCompletoDoArquivo);
+            if (arquivo.exists()) {
+                boolean excluido = arquivo.delete();
+
+                if (excluido) {
+                    Alerts.showAlert("Exclusão de arquivo", "Arquivo excluído!", "O arquivo selecionado foi deletado.", Alert.AlertType.ERROR);
+                } else {
+                    Alerts.showAlert("Exclusão de arquivo", "Não foi possível excluir o arquivo!", "Verifique se o arquivo está aberto ou se você tem permissão para exclusão.", Alert.AlertType.ERROR);
+                    return;
+                }
+            }
+
+            tilePaneArquivos.getChildren().remove(vbox);
+            arquivosAdicionados.remove(nomeArquivo);
+        });
+
+        contextMenu.getItems().addAll(copiarItem, excluirItem);
+
+        contextMenu.getStyleClass().add("context-menu");
 
         vbox.setOnMouseClicked(event -> {
-            System.out.println("clicado");
+            if (event.getButton() == MouseButton.SECONDARY && event.getClickCount() == 1) {
+                contextMenu.show(vbox, event.getScreenX(), event.getScreenY());
+            } else if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                abrirArquivo(caminhoCompletoDoArquivo);
+            }
+
         });
 
         vbox.setCursor(Cursor.HAND);
@@ -174,8 +230,20 @@ public class BibliotecaController implements Initializable {
 
         Image imagem = new Image(Objects.requireNonNull(getClass().getResource(caminhoIcone)).toExternalForm());
         ImageView imageView = new ImageView(imagem);
-        imageView.setFitWidth(100);
-        imageView.setFitHeight(100);
+        imageView.setFitWidth(70);
+        imageView.setFitHeight(70);
         return imageView;
+    }
+
+    public void abrirArquivo(String caminhoCompletoDoArquivo) {
+        try {
+            File arquivo = new File(caminhoCompletoDoArquivo);
+
+            if (arquivo.exists()) {
+                Desktop.getDesktop().open(arquivo);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
