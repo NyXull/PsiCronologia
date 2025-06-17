@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,6 +21,9 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.entities.Biblioteca;
+import model.entities.Psicologo;
+import model.services.BibliotecaService;
 import util.Alerts;
 import util.SessaoUsuario;
 import util.ViewLoader;
@@ -88,7 +92,19 @@ public class BibliotecaController implements Initializable {
 
     @FXML
     private void onBtSalvarAction() {
-        System.out.println("onBtSalvarAction");
+        List<Biblioteca> bibliotecas = listarArquivos();
+
+        if (bibliotecas != null && !bibliotecas.isEmpty()) {
+            BibliotecaService bibliotecaService = new BibliotecaService();
+
+            for (Biblioteca biblioteca : bibliotecas) {
+                bibliotecaService.salvarArquivo(biblioteca);
+            }
+
+            Alerts.showAlert("Sucesso", "Arquivos salvos", "Todos os arquivos foram salvos com sucesso.", Alert.AlertType.INFORMATION);
+        } else {
+            Alerts.showAlert("Aviso", "Nenhum arquivo para salvar", "Nenhum arquivo válido foi encontrado.", Alert.AlertType.WARNING);
+        }
     }
 
     @Override
@@ -196,6 +212,8 @@ public class BibliotecaController implements Initializable {
 
         vbox.setCursor(Cursor.HAND);
 
+        vbox.setUserData(caminhoCompletoDoArquivo);
+
         return vbox;
     }
 
@@ -245,5 +263,60 @@ public class BibliotecaController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Biblioteca validacaoEInstaciacao(String caminhoArquivo, String nomeArquivo) {
+
+        if (caminhoArquivo == null || caminhoArquivo.isEmpty() ||
+                nomeArquivo == null || nomeArquivo.isEmpty()) {
+            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Os arquivos precisam ter todos os atributos.", Alert.AlertType.ERROR);
+            return null;
+        }
+
+        try {
+            Psicologo psicologo = SessaoUsuario.getPsicologoLogado();
+            if (psicologo == null) {
+                return null;
+            }
+
+            Biblioteca biblioteca = new Biblioteca();
+
+            biblioteca.setIdPsicologo(psicologo.getIdPsico());
+            biblioteca.setCaminhoArquivo(caminhoArquivo);
+            biblioteca.setNomeArquivo(nomeArquivo);
+
+            return biblioteca;
+        } catch (Exception e) {
+            Alerts.showAlert("Erro de Validação", "Erro inesperado!", "Ocorreu um erro ao salvar arquivos.",
+                    Alert.AlertType.ERROR);
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Biblioteca> listarArquivos() {
+        List<Biblioteca> bibliotecas = new ArrayList<>();
+
+        for (Node node : tilePaneArquivos.getChildren()) {
+            if (node instanceof VBox vBox) {
+                String nomeArquivo = null;
+
+                if (!vBox.getChildren().isEmpty() && vBox.getChildren().get(1) instanceof Label label) {
+                    nomeArquivo = label.getText();
+                }
+
+                String caminhoCompletoDoArquivo = (String) vBox.getUserData();
+
+                if (nomeArquivo != null && !nomeArquivo.isEmpty() &&
+                        caminhoCompletoDoArquivo != null && !caminhoCompletoDoArquivo.isEmpty()) {
+                    Biblioteca biblioteca = validacaoEInstaciacao(caminhoCompletoDoArquivo, nomeArquivo);
+                    if (biblioteca != null) {
+                        bibliotecas.add(biblioteca);
+                    }
+                }
+            }
+        }
+
+        return bibliotecas;
     }
 }
