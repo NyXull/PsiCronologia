@@ -39,7 +39,7 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
-            DB.closeConnection();
+            DB.closeStatement(pstm);
         }
     }
 }
