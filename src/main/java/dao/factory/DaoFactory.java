@@ -1,15 +1,7 @@
 package dao.factory;
 
-import dao.impl.AgendaDaoJDBC;
-import dao.impl.PacienteDaoJDBC;
-import dao.impl.ProntuarioDaoJDBC;
-import dao.impl.PsicologoDaoJDBC;
-import dao.impl.VerificacaoEmailDaoJDBC;
-import dao.interfaces.AgendaDAO;
-import dao.interfaces.PacienteDAO;
-import dao.interfaces.ProntuarioDAO;
-import dao.interfaces.PsicologoDAO;
-import dao.interfaces.VerificacaoEmailDAO;
+import dao.impl.*;
+import dao.interfaces.*;
 import db.DB;
 
 public class DaoFactory {
@@ -29,8 +21,16 @@ public class DaoFactory {
     public static ProntuarioDAO createProntuarioDao() {
         return new ProntuarioDaoJDBC(DB.getConnection());
     }
-    
+
     public static AgendaDAO createAgendaDao() {
         return new AgendaDaoJDBC(DB.getConnection());
+    }
+
+    public static FinanceiroDAO createFinanceiroDao() {
+        return new FinanceiroDaoJDBC(DB.getConnection());
+    }
+
+    public static BibliotecaDAO createBibliotecaDao() {
+        return new BibliotecaDaoJDBC(DB.getConnection());
     }
 }

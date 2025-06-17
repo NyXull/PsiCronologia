@@ -156,24 +156,6 @@
     -fx-scale-y: 1.1;
 }
 
-#btSalvar {
-    -fx-background-color: #9E3AFC;
-    -fx-font-weight: bold;
-    -fx-text-fill: #182052;
-    -fx-font-family: "Comfortaa";
-    -fx-background-radius: 12;
-    -fx-padding: 8px 16px;
-    -fx-alignment: CENTER;
-    -fx-scale-x: 1;
-    -fx-scale-y: 1;
-    -fx-cursor: hand;
-}
-
-#btSalvar:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
-
 .hBoxBordaInferior {
 	-fx-border-color: rgba(24, 32, 82, 0.7);
 	-fx-border-width: 1px 1px 1px 1px;
@@ -182,4 +164,113 @@
 .hBoxBordaEsquerda {
 	-fx-border-color: rgba(24, 32, 82, 0.7);
 	-fx-border-width: 1px 1px 1px 0px;
+}
+
+#comboBoxStatus .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#comboBoxStatus .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#comboBoxMesParaAlterar .list-cell, #comboBoxMesParaExcluir .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#comboBoxMesParaAlterar .list-cell:hover, #comboBoxMesParaExcluir .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#comboBoxMesParaAlterar .scroll-bar:vertical, #comboBoxMesParaExcluir .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#comboBoxMesParaAlterar .scroll-bar:vertical .thumb, #comboBoxMesParaExcluir .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#comboBoxMesParaAlterar .scroll-bar:vertical .track, #comboBoxMesParaExcluir .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#comboBoxMesParaAlterar .scroll-bar .increment-button, #comboBoxMesParaExcluir .scroll-bar .increment-button,
+#comboBoxMesParaAlterar .scroll-bar .decrement-button, #comboBoxMesParaExcluir .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+.hbox-pago {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/botao_check.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-alignment: CENTER;
+}
+
+.hbox-aberto {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/botao_exclamacao.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-alignment: CENTER;
+}
+
+.hbox-excluido {
+    -fx-background-color: transparent;
+    -fx-background-image: none;
+}
+
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+#hBoxRosa2 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px;
+}
+
+#hBoxRosa3 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+#lblVencimento, #txtDataDeVencimentoAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+}
+
+#txtDataDeVencimentoAqui {
+    -fx-fill: #182052;
 }

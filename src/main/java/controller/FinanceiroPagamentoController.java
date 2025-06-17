@@ -1,30 +1,42 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
+import model.entities.Financeiro;
 import model.entities.Paciente;
-import util.Constraints;
-import util.ExibirNomeDoPaciente;
-import util.SessaoPaciente;
-import util.ViewLoader;
+import model.services.FinanceiroService;
+import util.*;
 import util.enums.TipoStatusPagamento;
 
+import java.math.BigDecimal;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.TextStyle;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class FinanceiroPagamentoController implements Initializable {
+
+    private final SimpleDateFormat sdf;
+
+    public FinanceiroPagamentoController() {
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+    }
+
+    @FXML
+    public Label lblSucessoSalvar;
 
     @FXML
     private VBox vBox1FinanceiroPagamento;
@@ -60,12 +72,6 @@ public class FinanceiroPagamentoController implements Initializable {
     private Label lblTotal;
 
     @FXML
-    private ComboBox<TipoStatusPagamento> comboBoxStatus;
-
-    @FXML
-    private ComboBox<Month> comboBoxMes;
-
-    @FXML
     private Button btSalvar;
 
     @FXML
@@ -90,11 +96,16 @@ public class FinanceiroPagamentoController implements Initializable {
         textFieldQuantidadePorMes.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotal());
         textFieldValorPorSessao.textProperty().addListener((obs, oldVal, newVal) -> atualizarTotal());
 
-        atualizarTotal();
-
-        carregarOpcoesStatus();
-
-        carregarOpcoesMeses();
+        if (informacaoPagamentoJaExiste()) {
+            try {
+                carregarInformacoesPagamento();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        } else {
+            atualizarTotal();
+        }
     }
 
     private void atualizarTotal() {
@@ -180,7 +191,19 @@ public class FinanceiroPagamentoController implements Initializable {
 
     @FXML
     private void onBtSalvarAction() {
-        System.out.println("onBtSalvarAction");
+        Financeiro financeiro = validacaoEInstaciacao();
+
+        if (financeiro != null) {
+            FinanceiroService financeiroService = new FinanceiroService();
+
+            try {
+                financeiroService.salvarInformacoesPagamento(financeiro);
+                feedbackVisual(true);
+            } catch (Exception e) {
+                Alerts.showAlert("Erro de Validação", "Erro inesperado", "Ocorreu um erro ao salvar informações",
+                        Alert.AlertType.ERROR);
+            }
+        }
     }
 
     @FXML
@@ -194,33 +217,114 @@ public class FinanceiroPagamentoController implements Initializable {
         btNomeDoPacienteAqui.setText(nomeFormatado.toString());
     }
 
-    private void carregarOpcoesStatus() {
-        comboBoxStatus.getItems().clear();
-        comboBoxStatus.getItems().addAll(TipoStatusPagamento.ABERTO, TipoStatusPagamento.PAGO);
-        comboBoxStatus.setValue(TipoStatusPagamento.ABERTO);
-    }
+    public Financeiro validacaoEInstaciacao() {
+        String valorSessaoString = textFieldValorPorSessao.getText();
+        String dataVencimentoString = textFieldVencimento.getText();
+        String quantidadeSessaoString = textFieldQuantidadePorMes.getText();
 
-    public void carregarOpcoesMeses() {
-        Locale localePtBr = Locale.forLanguageTag("pt-BR");
+        if (valorSessaoString.isEmpty() || dataVencimentoString.isEmpty() || quantidadeSessaoString.isEmpty()) {
+            Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha todos os campos.",
+                    Alert.AlertType.ERROR);
+            feedbackVisual(false);
+            return null;
+        }
 
-        ObservableList<Month> meses = FXCollections.observableArrayList(Month.values());
+        try {
+            Date dataVencimento = sdf.parse(dataVencimentoString);
 
-        comboBoxMes.setItems(meses);
-
-        comboBoxMes.setValue(Month.of(java.time.LocalDate.now().getMonthValue()));
-
-        comboBoxMes.setConverter(new StringConverter<Month>() {
-            @Override
-            public String toString(Month month) {
-                if (month == null) return "";
-                String nomeMes = month.getDisplayName(TextStyle.FULL, localePtBr);
-                return nomeMes.substring(0, 1).toUpperCase() + nomeMes.substring(1);
-            }
-
-            @Override
-            public Month fromString(String string) {
+            if (!dataValida(dataVencimento)) {
+                Alerts.showAlert("Erro de Validação", "Data inválida!", "Data deve ser entre hoje e 30 dias.",
+                        Alert.AlertType.ERROR);
+                feedbackVisual(false);
                 return null;
             }
-        });
+
+            Paciente paciente = SessaoPaciente.getPaciente();
+            if (paciente == null) {
+                feedbackVisual(false);
+                return null;
+            }
+
+            BigDecimal valorSessao = new BigDecimal(valorSessaoString);
+            Integer quantidadeSessao = Integer.valueOf(quantidadeSessaoString);
+            String statusPagamento = String.valueOf(TipoStatusPagamento.ABERTO);
+
+            Instant instant = dataVencimento.toInstant();
+            LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
+            Month mesStatusPagamentoMonth = localDate.getMonth();
+
+            Locale localePtBr = Locale.forLanguageTag("pt-BR");
+
+            String mesStatusPagamento = mesStatusPagamentoMonth.getDisplayName(TextStyle.FULL, localePtBr);
+            mesStatusPagamento = mesStatusPagamento.substring(0, 1).toUpperCase() + mesStatusPagamento.substring(1);
+
+            Financeiro financeiro = new Financeiro();
+
+            financeiro.setIdPaciente(paciente.getIdPaciente());
+            financeiro.setValorSessao(valorSessao);
+            financeiro.setDataVencimento(dataVencimento);
+            financeiro.setQuantidadeSessao(quantidadeSessao);
+            financeiro.setStatusPagamento(statusPagamento);
+            financeiro.setMesStatusPagamento(mesStatusPagamento);
+
+            return financeiro;
+        } catch (Exception e) {
+            Alerts.showAlert("Erro de Validação", "Data inválida", "Use um formato válido. Exemplo: 08/06/2024.",
+                    Alert.AlertType.ERROR);
+            feedbackVisual(false);
+            return null;
+        }
+    }
+
+    public boolean dataValida(Date data) {
+        if (data == null) {
+            return false;
+        }
+
+        LocalDate dataLocal = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate hoje = LocalDate.now();
+        LocalDate limite = hoje.plusDays(30);
+
+        return !dataLocal.isBefore(hoje) && !dataLocal.isAfter(limite);
+    }
+
+    public void carregarInformacoesPagamento() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return;
+        }
+
+        FinanceiroService financeiroService = new FinanceiroService();
+        Financeiro financeiro = financeiroService.carregarInformacoesPagamento(paciente.getIdPaciente());
+
+        if (financeiro == null) {
+            return;
+        }
+
+        String valorSessao = String.valueOf(financeiro.getValorSessao());
+        String dataVencimento = sdf.format(financeiro.getDataVencimento());
+        String quantidadeSessao = String.valueOf(financeiro.getQuantidadeSessao());
+
+        textFieldValorPorSessao.setText(valorSessao);
+        textFieldVencimento.setText(dataVencimento);
+        textFieldQuantidadePorMes.setText(quantidadeSessao);
+    }
+
+    public boolean informacaoPagamentoJaExiste() {
+        Paciente paciente = SessaoPaciente.getPaciente();
+        if (paciente == null) {
+            return false;
+        }
+
+        FinanceiroService financeiroService = new FinanceiroService();
+        return financeiroService.informacaoPagamentoJaExiste(paciente.getIdPaciente());
+    }
+
+    public void feedbackVisual(boolean sucessoSalvar) {
+        if (sucessoSalvar) {
+            lblSucessoSalvar.setText("Dados de pagamento salvos!");
+        } else {
+            lblSucessoSalvar.setText("");
+        }
     }
 }

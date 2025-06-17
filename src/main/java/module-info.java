@@ -11,7 +11,7 @@ module com.example.psiorganize {
     requires docx4j_ImportXHTML;
 
     opens view to javafx.fxml;
-    opens controller to javafx.fxml;
+    opens controller to javafx.fxml, javafx.base;
 
     exports view;
 }

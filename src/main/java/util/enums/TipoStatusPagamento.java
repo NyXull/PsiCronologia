@@ -3,7 +3,8 @@ package util.enums;
 public enum TipoStatusPagamento {
 
     PAGO("Pagamento já foi efetuado"),
-    ABERTO("Pagamento não foi efetuado");
+    ABERTO("Pagamento não foi efetuado"),
+    EXCLUIDO("Status excluído");
 
     private final String descricao;
 

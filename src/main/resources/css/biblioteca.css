@@ -146,41 +146,58 @@
     -fx-scale-y: 1.1;
 }
 
-#tableArquivos {
-    -fx-background-color: transparent;
-    -fx-background: transparent;
-}
-
-#tableArquivos {
-    -fx-background-color: transparent;
-    -fx-control-inner-background: transparent;
-    -fx-background-insets: 0;
-    -fx-padding: 0;
-}
-
-#tableArquivos .column-header-background {
-    -fx-background-color: transparent;
-}
-
-#tableArquivos .filler {
-    -fx-background-color: transparent;
-}
-
-#tableArquivos .scroll-bar:vertical {
+#scrollPaneArquivos .scroll-bar:vertical {
     -fx-background-color: #DE3AFC;
     -fx-padding: 0;
-    -fx-pref-width: 8px;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
 }
 
-#tableArquivos .scroll-bar:vertical .thumb {
-    -fx-background-color: #9E3AFC;
-    -fx-background-radius: 5px;
+#scrollPaneArquivos .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
 }
 
-#tableArquivos .scroll-bar:vertical .track {
+#scrollPaneArquivos .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#scrollPaneArquivos .scroll-bar .increment-button,
+#scrollPaneArquivos .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
     -fx-background-color: transparent;
 }
 
-#coluna1, #coluna2, #coluna3, #coluna4 {
-	-fx-background-color: transparent;
+/* Opcional: ocultar o scroll horizontal se não for necessário */
+#scrollPaneArquivos .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+}
+
+#scrollPaneArquivos {
+    -fx-background-color: transparent;
+}
+
+#scrollPaneArquivos .viewport {
+    -fx-background-color: transparent;
+}
+
+.context-menu .menu-item:focused {
+    -fx-background-color: #182052;
+}
+
+.context-menu .menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.context-menu .menu-item .label {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 20px;
+}
+
+.label {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #182052;
 }
