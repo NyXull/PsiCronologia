@@ -182,3 +182,22 @@
 #scrollPaneArquivos .viewport {
     -fx-background-color: transparent;
 }
+
+.context-menu .menu-item:focused {
+    -fx-background-color: #182052;
+}
+
+.context-menu .menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.context-menu .menu-item .label {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 20px;
+}
+
+.label {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #182052;
+}
