@@ -29,4 +29,8 @@ public class DaoFactory {
     public static FinanceiroDAO createFinanceiroDao() {
         return new FinanceiroDaoJDBC(DB.getConnection());
     }
+
+    public static BibliotecaDAO createBibliotecaDao() {
+        return new BibliotecaDaoJDBC(DB.getConnection());
+    }
 }
