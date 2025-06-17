@@ -1,0 +1,119 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1AtualizarDadosPaciente {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/cadastro.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2AtualizarDadosPaciente {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 100px;              
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#lblPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-alignment: center;
+}
+
+#btNomePaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomePaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAtualizarDados {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+.txtDados {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 400px;
+    -fx-alignment: CENTER_LEFT;
+   
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #182052 transparent; 
+    -fx-border-width: 0 0 1px 0; 
+    -fx-border-style: solid;
+    
+    -fx-prompt-text-fill: #5F3AFC; 
+}
+
+.txtDados:focused {
+    -fx-border-color: transparent transparent #9E3AFC transparent;
+}
+
+#labelErroEmailAtualizar, #labelErroData {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #D23636;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#labelSucesso {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #34b07d;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#btAtualizar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btAtualizar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#hBoxCadastro {
+    -fx-alignment: TOP_CENTER;    
+}

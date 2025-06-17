@@ -57,12 +57,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btProntuario" mnemonicParsing="false" onAction="#onBtProntuario" text="PRONTUÁRIO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                  <Button fx:id="btAgenda" mnemonicParsing="false" onAction="#onBtAgenda" text="AGENDA" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-                  <Button fx:id="btFinanceiro" mnemonicParsing="false" onAction="#onBtFinanceiro" text="FINANCEIRO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
-                  <Button fx:id="btRelatorios" mnemonicParsing="false" onAction="#onBtRelatorios" text="RELATÓRIOS" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btProntuario" mnemonicParsing="false" onAction="#onBtProntuario" styleClass="btEstilos" text="PRONTUÁRIO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btAgenda" mnemonicParsing="false" onAction="#onBtAgenda" styleClass="btEstilos" text="AGENDA" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btFinanceiro" mnemonicParsing="false" onAction="#onBtFinanceiro" styleClass="btEstilos" text="FINANCEIRO" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btRelatorios" mnemonicParsing="false" onAction="#onBtRelatorios" styleClass="btEstilos" text="RELATÓRIOS" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <Button fx:id="btDadosPaciente" mnemonicParsing="false" onAction="#onBtDadosPaciente" styleClass="btEstilos" text="DADOS DO PACIENTE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" />
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" />

@@ -12,6 +12,7 @@ import dao.interfaces.PacienteDAO;
 import db.DB;
 import db.DbException;
 import model.entities.Paciente;
+import util.SessaoPaciente;
 
 public class PacienteDaoJDBC implements PacienteDAO{
 
@@ -62,6 +63,7 @@ public class PacienteDaoJDBC implements PacienteDAO{
 		try {
 			pstm = conn.prepareStatement("SELECT * FROM paciente WHERE cpf = ?");
 			pstm.setString(1, cpf);
+			
 			rs = pstm.executeQuery();
 			
 			if (rs.next()) {
@@ -99,6 +101,7 @@ public class PacienteDaoJDBC implements PacienteDAO{
 					"SELECT COUNT(*) FROM psicologo_paciente WHERE id_psicologo = ? AND id_paciente = ?");
 			pstm.setInt(1, idPsicologo);
 			pstm.setInt(2, idPaciente);
+			
 			rs = pstm.executeQuery();
 			
 			if (rs.next()) {
@@ -123,8 +126,8 @@ public class PacienteDaoJDBC implements PacienteDAO{
 					"INSERT INTO psicologo_paciente (id_psicologo, id_paciente) VALUES (?, ?)");
 			pstm.setInt(1, idPsicologo);
 			pstm.setInt(2, idPaciente);
-			pstm.executeUpdate();
 			
+			pstm.executeUpdate();			
 		}
 		catch (SQLException e) {
 	        throw new DbException(e.getMessage());
@@ -168,4 +171,56 @@ public class PacienteDaoJDBC implements PacienteDAO{
 	        DB.closeStatement(pstm);
 	    }
 	}
+
+	@Override
+	public void deletarPorId(Paciente paciente) {
+		PreparedStatement pstm = null;
+		PreparedStatement pstmVinculo = null;
+		
+		try {
+			// Exclui os vínculos da tabela associativa
+			pstmVinculo = conn.prepareStatement("DELETE FROM psicologo_paciente WHERE id_paciente = ?");
+			pstmVinculo.setInt(1, paciente.getIdPaciente());
+			pstmVinculo.executeUpdate();
+			
+			// Exclui o paciente
+			pstm = conn.prepareStatement("DELETE FROM paciente WHERE id = ?");
+			pstm.setInt(1, paciente.getIdPaciente());
+			
+			pstm.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}	
+		finally {
+		        DB.closeStatement(pstm);
+		}
+	}
+
+	@Override
+	public void atualizarPaciente(Paciente paciente) {
+		PreparedStatement pstm = null;
+		
+		try {
+			pstm = conn.prepareStatement("""
+					UPDATE paciente SET cpf = ?, nome = ?, email = ?, 
+					data_nascimento = ?, telefone = ? WHERE id = ?
+					""");
+			
+			pstm.setString(1, paciente.getCpf());
+			pstm.setString(2, paciente.getNomePaciente());
+			pstm.setString(3, paciente.getEmailPaciente());
+			pstm.setDate(4, new java.sql.Date(paciente.getDataNascimento().getTime()));
+			pstm.setString(5, paciente.getTelefone());
+			pstm.setInt(6, paciente.getIdPaciente());
+			
+			pstm.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}	
+		finally {
+		        DB.closeStatement(pstm);
+		}		
+	}	
 }
