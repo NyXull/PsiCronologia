@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -78,8 +79,10 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                       </columnConstraints>
                       <rowConstraints>
-                          <RowConstraints maxHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                          <RowConstraints fx:id="grid1LinhaRosa3" maxHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                          <RowConstraints prefHeight="100.0" vgrow="SOMETIMES" />
+                          <RowConstraints fx:id="grid1LinhaRosa3" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="120.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                       <children>
                           <HBox fx:id="hBoxRosa1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
@@ -101,6 +104,15 @@
                   <Label fx:id="lblModelo" text="Modelo:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                   <HBox fx:id="hBoxRosa3" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                   <ComboBox fx:id="comboBoxModelo" maxWidth="120.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hBoxRosa4" layoutX="10.0" layoutY="79.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hBoxRosa5" layoutX="220.0" layoutY="79.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <HBox fx:id="hBoxRosa6" layoutX="274.0" layoutY="79.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="lblNomeDocumento" text="Nome do documento:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <TextField fx:id="textFieldNomeDocumento" promptText="Nome do documento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
                       </children>
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="20.0" />
@@ -111,7 +123,8 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="400.0" vgrow="ALWAYS" />
+                        <RowConstraints prefHeight="400.0" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="ALWAYS" />
                         <RowConstraints maxHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
