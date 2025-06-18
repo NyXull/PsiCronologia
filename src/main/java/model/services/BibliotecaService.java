@@ -21,4 +21,12 @@ public class BibliotecaService {
     public List<Biblioteca> carregarArquivos(Integer idPsicologo) {
         return dao.carregarArquivos(idPsicologo);
     }
+
+    public boolean arquivoExiste(Integer idPsicologo, String nomeArquivo, String caminhoArquivo) {
+        return dao.arquivoExiste(idPsicologo, nomeArquivo, caminhoArquivo);
+    }
+
+    public void excluirArquivo(Integer idPsicologo, String nomeArquivo, String caminhoArquivo) {
+        dao.excluirArquivo(idPsicologo, nomeArquivo, caminhoArquivo);
+    }
 }
