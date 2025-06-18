@@ -11,4 +11,8 @@ public interface BibliotecaDAO {
     boolean psicologoTemArquivosSalvos(Integer idPsicologo);
 
     List<Biblioteca> carregarArquivos(Integer idPsicologo);
+
+    boolean arquivoExiste(Integer idPsicologo, String nomeArquivo, String caminhoArquivo);
+
+    void excluirArquivo(Integer idPsicologo, String nomeArquivo, String caminhoArquivo);
 }
