@@ -319,4 +319,15 @@ public class BibliotecaController implements Initializable {
 
         return bibliotecas;
     }
+
+    public boolean psicologoTemArquivosSalvos() {
+        Psicologo psicologo = SessaoUsuario.getPsicologoLogado();
+        if (psicologo == null) {
+            return false;
+        }
+
+        BibliotecaService bibliotecaService = new BibliotecaService();
+
+        return bibliotecaService.psicologoTemArquivosSalvos(psicologo.getIdPsico());
+    }
 }
