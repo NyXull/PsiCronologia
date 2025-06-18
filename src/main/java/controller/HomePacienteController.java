@@ -42,6 +42,9 @@ public class HomePacienteController implements Initializable {
 
 	@FXML
 	private Button btRelatorios;
+	
+	@FXML
+	private Button btDadosPaciente;
 
 	@FXML
 	private Button btNomeDoPaciente;
@@ -64,6 +67,11 @@ public class HomePacienteController implements Initializable {
 	@FXML
 	public void onBtRelatorios() {
 		ViewLoader.loadView("/fxml/relatorio.fxml", "/css/relatorio.css");
+	}
+	
+	@FXML
+	public void onBtDadosPaciente() {
+		ViewLoader.loadView("/fxml/dados-paciente.fxml", "/css/dados-paciente.css");
 	}
 
 	@FXML

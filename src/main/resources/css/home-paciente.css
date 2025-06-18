@@ -49,7 +49,7 @@
     -fx-text-alignment: center;
 }
 
-#btProntuario, #btAgenda, #btFinanceiro, #btRelatorios{
+.btEstilos{
 	 -fx-background-color: transparent;
     -fx-border-color: #DE3AFC;
     -fx-text-fill: #182052;
@@ -66,8 +66,7 @@
     -fx-cursor: hand;
 }
 
-#btProntuario:hover, #btAgenda:hover, #btFinanceiro:hover, 
-#btRelatorios:hover {
+.btEstilos:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }

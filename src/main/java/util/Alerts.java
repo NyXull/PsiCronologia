@@ -3,25 +3,18 @@ package util;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.services.EmailService;
-import model.services.VerificacaoEmailService;
+import model.entities.Paciente;
+import model.services.PacienteService;
 import util.enums.TipoCancelamento;
 import util.enums.TipoRecorrencia;
 
@@ -158,5 +151,38 @@ public class Alerts {
 				new KeyFrame(Duration.millis(250), e -> alert.getDialogPane().setTranslateX(1)),
 				new KeyFrame(Duration.millis(300), e -> alert.getDialogPane().setTranslateX(0)));
 		timeline.play();
+	}
+	
+	public static void confirmarExclusaoPaciente(Paciente paciente, PacienteService servicoPaciente) {
+				
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Exclusão de paciente");
+		alert.setHeaderText("Essa ação é definitiva \n\n Tem certeza que deseja excluir o paciente: "
+		+ paciente.getNomePaciente() + "?");
+		alert.setContentText("");
+
+		personalizarAlertaComVibracao(alert, "/img/icon_cancelar.png", "confirmarCancelamentoDoAgendamento");
+		
+		ButtonType botaoSim = new ButtonType("Sim", ButtonBar.ButtonData.YES);
+		ButtonType botaoCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+		alert.getButtonTypes().setAll(botaoSim, botaoCancelar);
+		
+		Optional<ButtonType> resposta = alert.showAndWait();
+				
+		if (resposta.isPresent() && resposta.get() == botaoSim) {
+			servicoPaciente.deletarPacienteAtual(paciente);			
+		}
+		exclusaoRealizadaComSucesso();
+	}
+	
+	public static void exclusaoRealizadaComSucesso() {
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Sucesso");
+		alert.setHeaderText("Exclusão relizada com sucesso!");
+		alert.setContentText(null);
+
+		personalizarAlerta(alert, "/img/icon_lixeira.png", "agendamentoRealizadoComSucesso");
+
+		alert.show();
 	}
 }

@@ -11,4 +11,6 @@ public interface PacienteDAO {
 	boolean relacaoJaExiste(int idPsicologo, int idPaciente);
 	void associarPsicologoPaciente(int idPsicologo, int idPaciente);
 	List<Paciente> listarPorPsicologo(int idPsicologo);
+	void deletarPorId(Paciente paciente);
+	void atualizarPaciente(Paciente paciente);
 }
