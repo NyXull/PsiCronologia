@@ -11,4 +11,8 @@ public class BibliotecaService {
     public void salvarArquivo(Biblioteca objBiblioteca) {
         dao.salvarArquivo(objBiblioteca);
     }
+
+    public boolean psicologoTemArquivosSalvos(Integer idPsicologo) {
+        return dao.psicologoTemArquivosSalvos(idPsicologo);
+    }
 }
