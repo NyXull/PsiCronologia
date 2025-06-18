@@ -112,6 +112,15 @@ public class BibliotecaController implements Initializable {
         padraoLarguraVBox();
 
         tilePaneArquivos.prefWidthProperty().bind(scrollPaneArquivos.widthProperty());
+
+        if (psicologoTemArquivosSalvos()) {
+            try {
+                carregarArquivos();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException();
+            }
+        }
     }
 
     private void padraoLarguraVBox() {
@@ -186,6 +195,7 @@ public class BibliotecaController implements Initializable {
                 boolean excluido = arquivo.delete();
 
                 if (excluido) {
+                    excluirArquivo(nomeArquivo, caminhoCompletoDoArquivo);
                     Alerts.showAlert("Exclusão de arquivo", "Arquivo excluído!", "O arquivo selecionado foi deletado.", Alert.AlertType.ERROR);
                 } else {
                     Alerts.showAlert("Exclusão de arquivo", "Não foi possível excluir o arquivo!", "Verifique se o arquivo está aberto ou se você tem permissão para exclusão.", Alert.AlertType.ERROR);
@@ -329,5 +339,39 @@ public class BibliotecaController implements Initializable {
         BibliotecaService bibliotecaService = new BibliotecaService();
 
         return bibliotecaService.psicologoTemArquivosSalvos(psicologo.getIdPsico());
+    }
+
+    private void carregarArquivos() {
+        Psicologo psicologo = SessaoUsuario.getPsicologoLogado();
+        if (psicologo == null) {
+            return;
+        }
+
+        BibliotecaService bibliotecaService = new BibliotecaService();
+
+        List<Biblioteca> arquivosDoPsicologo = bibliotecaService.carregarArquivos(psicologo.getIdPsico());
+
+        for (Biblioteca arquivo : arquivosDoPsicologo) {
+            String nome = arquivo.getNomeArquivo();
+
+            // Verifica se já não está na lista (por segurança)
+            if (!arquivosAdicionados.contains(nome)) {
+                arquivosAdicionados.add(nome);
+                VBox item = criarItemArquivo(nome, arquivo.getCaminhoArquivo());
+                tilePaneArquivos.getChildren().add(item);
+            }
+        }
+    }
+
+
+    private void excluirArquivo(String nomeArquivo, String caminhoArquivo) {
+        Psicologo psicologo = SessaoUsuario.getPsicologoLogado();
+        if (psicologo == null) {
+            return;
+        }
+
+        BibliotecaService bibliotecaService = new BibliotecaService();
+
+        bibliotecaService.excluirArquivo(psicologo.getIdPsico(), nomeArquivo, caminhoArquivo);
     }
 }
