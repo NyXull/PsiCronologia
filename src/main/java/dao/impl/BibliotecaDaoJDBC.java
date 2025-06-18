@@ -22,6 +22,10 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
 
     @Override
     public void salvarArquivo(Biblioteca objBiblioteca) {
+        if (arquivoExiste(objBiblioteca.getIdPsicologo(), objBiblioteca.getNomeArquivo(), objBiblioteca.getCaminhoArquivo())) {
+            return;
+        }
+
         PreparedStatement pstm = null;
 
         try {
@@ -73,7 +77,7 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
         List<Biblioteca> listaBiblioteca = new ArrayList<>();
 
         try {
-            pstm = conn.prepareStatement("SELECT id, id_psicologo, caminho_arquivo, nome_arquivo FROM biblioteca WHERE id = ?");
+            pstm = conn.prepareStatement("SELECT id, id_psicologo, caminho_arquivo, nome_arquivo FROM biblioteca WHERE id_psicologo = ?");
 
             pstm.setInt(1, idPsicologo);
 
@@ -85,6 +89,7 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
                 biblioteca.setIdPsicologo(rs.getInt("id_psicologo"));
                 biblioteca.setCaminhoArquivo(rs.getString("caminho_arquivo"));
                 biblioteca.setNomeArquivo(rs.getString("nome_arquivo"));
+                listaBiblioteca.add(biblioteca);
             }
 
             return listaBiblioteca;
@@ -92,6 +97,55 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
             throw new DbException(e.getMessage());
         } finally {
             DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public boolean arquivoExiste(Integer idPsicologo, String nomeArquivo, String caminhoArquivo) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement(
+                    "SELECT COUNT(*) FROM biblioteca WHERE id_psicologo = ? AND nome_arquivo = ? AND caminho_arquivo = ?"
+            );
+            pstm.setInt(1, idPsicologo);
+            pstm.setString(2, nomeArquivo);
+            pstm.setString(3, caminhoArquivo);
+
+            rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public void excluirArquivo(Integer idPsicologo, String nomeArquivo, String caminhoArquivo) {
+        PreparedStatement pstm = null;
+
+        try {
+            pstm = conn.prepareStatement(
+                    "DELETE FROM biblioteca WHERE id_psicologo = ? AND nome_arquivo = ? AND caminho_arquivo = ?"
+            );
+
+            pstm.setInt(1, idPsicologo);
+            pstm.setString(2, nomeArquivo);
+            pstm.setString(3, caminhoArquivo);
+
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
             DB.closeStatement(pstm);
         }
     }
