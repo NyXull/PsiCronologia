@@ -42,4 +42,25 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
             DB.closeStatement(pstm);
         }
     }
+
+    @Override
+    public boolean psicologoTemArquivosSalvos(Integer idPsicologo) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+
+        try {
+            pstm = conn.prepareStatement("SELECT id FROM biblioteca WHERE id_psicologo = ?");
+
+            pstm.setInt(1, idPsicologo);
+
+            rs = pstm.executeQuery();
+
+            return rs.next();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
 }
