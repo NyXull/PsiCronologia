@@ -76,22 +76,22 @@
     -fx-scale-y: 1.1;
 }
 
-#hBoxRosa1{
+#hBoxRosa1, #hBoxRosa4 {
 	-fx-background-color: rgba(195, 142, 188, 0.6);
     -fx-background-radius: 10px 0px 0px 10px;
 }
 
-#hBoxRosa2 {
+#hBoxRosa2, #hBoxRosa5 {
 	-fx-background-color: rgba(195, 142, 188, 0.6);
     -fx-background-radius: 0px;
 }
 
-#hBoxRosa3 {
+#hBoxRosa3, #hBoxRosa6 {
 	-fx-background-color: rgba(195, 142, 188, 0.6);
     -fx-background-radius: 0px 10px 10px 0px;
 }
 
-#lblModelo {
+#lblModelo, #lblNomeDocumento {
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 14px;
     -fx-alignment: CENTER_LEFT;
@@ -108,24 +108,6 @@
     -fx-font-family: "Nunito";
     -fx-fill: #182052;
     -fx-font-size: 20px;
-}
-
-#comboBoxModelo {
-    -fx-background-color: #C5BAF4;
-    -fx-background-radius: 5px;
-    -fx-border-color: rgba(24, 32, 82, 0.7);
-    -fx-border-radius: 5px;
-}
-
-#comboBoxModelo .list-cell {
-    -fx-text-fill: #182052;
-}
-
-#comboBoxModelo .combo-box-popup .list-view {
-    -fx-background-color: #C5BAF4;
-    -fx-background-radius: 5px;
-    -fx-border-color: rgba(24, 32, 82, 0.7);
-    -fx-border-radius: 5px;
 }
 
 #hBoxTxtArea{
@@ -364,6 +346,95 @@ Separator {
 
 #htmlEditor .scroll-bar .increment-button,
 #htmlEditor .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+#textFieldNomeDocumento {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+	-fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(24, 32, 82, 0.3);
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-radius: 5px;
+    -fx-prompt-text-fill: #182052;
+}
+
+#comboBoxModelo {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#comboBoxModelo .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#comboBoxModelo .list-cell {
+    -fx-text-fill: #182052;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#comboBoxModelo .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#comboBoxModelo .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#comboBoxModelo .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#comboBoxModelo .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#comboBoxModelo .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#comboBoxModelo .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#comboBoxModelo .scroll-bar .increment-button,
+#comboBoxModelo .scroll-bar .decrement-button {
     -fx-padding: 0;
     -fx-shape: "";
     -fx-background-color: transparent;
