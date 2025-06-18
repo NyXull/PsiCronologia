@@ -101,7 +101,7 @@ public class BibliotecaController implements Initializable {
                 bibliotecaService.salvarArquivo(biblioteca);
             }
 
-            Alerts.showAlert("Sucesso", "Arquivos salvos", "Todos os arquivos foram salvos com sucesso.", Alert.AlertType.INFORMATION);
+            Alerts.showAlert("Sucesso", "Arquivos salvos", "Os arquivos foram salvos com sucesso.", Alert.AlertType.INFORMATION);
         } else {
             Alerts.showAlert("Aviso", "Nenhum arquivo para salvar", "Nenhum arquivo válido foi encontrado.", Alert.AlertType.WARNING);
         }
@@ -196,7 +196,7 @@ public class BibliotecaController implements Initializable {
 
                 if (excluido) {
                     excluirArquivo(nomeArquivo, caminhoCompletoDoArquivo);
-                    Alerts.showAlert("Exclusão de arquivo", "Arquivo excluído!", "O arquivo selecionado foi deletado.", Alert.AlertType.ERROR);
+                    Alerts.showAlert("Exclusão de arquivo", "Arquivo excluído!", "O arquivo selecionado foi deletado.", Alert.AlertType.INFORMATION);
                 } else {
                     Alerts.showAlert("Exclusão de arquivo", "Não foi possível excluir o arquivo!", "Verifique se o arquivo está aberto ou se você tem permissão para exclusão.", Alert.AlertType.ERROR);
                     return;
@@ -223,6 +223,9 @@ public class BibliotecaController implements Initializable {
         vbox.setCursor(Cursor.HAND);
 
         vbox.setUserData(caminhoCompletoDoArquivo);
+
+        Tooltip tooltip = new Tooltip(nomeArquivo);
+        Tooltip.install(label, tooltip);
 
         return vbox;
     }
@@ -280,6 +283,11 @@ public class BibliotecaController implements Initializable {
         if (caminhoArquivo == null || caminhoArquivo.isEmpty() ||
                 nomeArquivo == null || nomeArquivo.isEmpty()) {
             Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Os arquivos precisam ter todos os atributos.", Alert.AlertType.ERROR);
+            return null;
+        }
+
+        if (caminhoArquivo.length() > 100 || nomeArquivo.length() > 100) {
+            Alerts.showAlert("Erro de Validação", "Limite de caracteres alcançado!", "Um arquivo tem endereço ou nome muito longo.", Alert.AlertType.ERROR);
             return null;
         }
 
