@@ -7,6 +7,8 @@ import model.entities.Biblioteca;
 import util.SessaoUsuario;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BibliotecaDaoJDBC implements BibliotecaDAO {
 
@@ -56,6 +58,36 @@ public class BibliotecaDaoJDBC implements BibliotecaDAO {
             rs = pstm.executeQuery();
 
             return rs.next();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(pstm);
+        }
+    }
+
+    @Override
+    public List<Biblioteca> carregarArquivos(Integer idPsicologo) {
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        List<Biblioteca> listaBiblioteca = new ArrayList<>();
+
+        try {
+            pstm = conn.prepareStatement("SELECT id, id_psicologo, caminho_arquivo, nome_arquivo FROM biblioteca WHERE id = ?");
+
+            pstm.setInt(1, idPsicologo);
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Biblioteca biblioteca = new Biblioteca();
+                biblioteca.setIdBiblioteca(rs.getInt("id"));
+                biblioteca.setIdPsicologo(rs.getInt("id_psicologo"));
+                biblioteca.setCaminhoArquivo(rs.getString("caminho_arquivo"));
+                biblioteca.setNomeArquivo(rs.getString("nome_arquivo"));
+            }
+
+            return listaBiblioteca;
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         } finally {
