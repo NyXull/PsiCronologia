@@ -31,6 +31,9 @@ public class CadastroController implements Initializable{
 
 	@FXML
 	private HBox hBoxPaiCadastro;
+	
+	@FXML
+	private Button btVoltar;
 
 	@FXML
 	private TextField txtNome;
@@ -53,6 +56,11 @@ public class CadastroController implements Initializable{
 	private boolean emailValido = false;
 	
 	private boolean senhaValida = false;
+	
+	@FXML
+	public void onBtVoltarAction() {
+		ViewLoader.loadView("/fxml/login2.fxml", "/css/login2.css");
+	}
 	
 	@FXML
 	public void onBtCadastrar() {

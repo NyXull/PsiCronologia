@@ -14,7 +14,27 @@
 
 <HBox fx:id="hBoxPaiCadastro" prefHeight="500" prefWidth="700" stylesheets="@../css/cadastro.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
    <children>
-      <VBox fx:id="vBox1Cadastro" HBox.hgrow="ALWAYS" />
+      <VBox fx:id="vBox1Cadastro" HBox.hgrow="ALWAYS">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#onBtVoltarAction" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </GridPane>
+         </children></VBox>
       <VBox fx:id="vBox2Cadastro" HBox.hgrow="ALWAYS">
          <children>
             <HBox fx:id="hBoxCadastro" VBox.vgrow="ALWAYS">
