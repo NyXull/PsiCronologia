@@ -105,10 +105,8 @@ public class AgendaEditarController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		vBox1AgendaEditar.prefWidthProperty().bind(hBoxPaiAgendaEditar.widthProperty().multiply(0.25));
-		vBox2AgendaEditar.prefWidthProperty().bind(hBoxPaiAgendaEditar.widthProperty().multiply(0.75));
-
+	public void initialize(URL url, ResourceBundle rb) {		
+		padraoLarguraVBox();
 		exibirNomePaciente();
 		mesAtual = YearMonth.now();
 		atualizarCalendario();
@@ -364,5 +362,10 @@ public class AgendaEditarController implements Initializable {
 		Paciente paciente = SessaoPaciente.getPaciente();
 		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
 		btNomeDoPaciente.setText(nomeFormatado.toString());
+	}
+	
+	private void padraoLarguraVBox() {
+		vBox1AgendaEditar.prefWidthProperty().bind(hBoxPaiAgendaEditar.widthProperty().multiply(0.25));
+		vBox2AgendaEditar.prefWidthProperty().bind(hBoxPaiAgendaEditar.widthProperty().multiply(0.75));
 	}
 }

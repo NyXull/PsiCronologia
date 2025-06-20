@@ -85,13 +85,16 @@ public class ProntuarioListaController implements Initializable {
 
     @Override
     public void initialize(URL uri, ResourceBundle rb) {
-        // Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
-        vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
-        vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
+    	padraoLarguraVBox();
 
         exibirNomePaciente();
 
         carregarListaProntuarios();
+    }
+    
+    private void padraoLarguraVBox() {
+    	vBox1ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.25));
+        vBox2ProntuarioLista.prefWidthProperty().bind(hBoxPaiProntuarioLista.widthProperty().multiply(0.75));
     }
 
     private void exibirNomePaciente() {

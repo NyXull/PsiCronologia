@@ -81,10 +81,7 @@ public class FinanceiroPagamentoController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
-        vBox1FinanceiroPagamento.prefWidthProperty().bind(hBoxPaiFinanceiroPagamento.widthProperty().multiply(0.25));
-        vBox2FinanceiroPagamento.prefWidthProperty().bind(hBoxPaiFinanceiroPagamento.widthProperty().multiply(0.75));
-
+    	padraoLarguraVBox();
         exibirNomePaciente();
 
         Constraints.setTextFieldInteger(textFieldQuantidadePorMes);
@@ -326,5 +323,10 @@ public class FinanceiroPagamentoController implements Initializable {
         } else {
             lblSucessoSalvar.setText("");
         }
+    }
+    
+    private void padraoLarguraVBox() {
+    	vBox1FinanceiroPagamento.prefWidthProperty().bind(hBoxPaiFinanceiroPagamento.widthProperty().multiply(0.25));
+        vBox2FinanceiroPagamento.prefWidthProperty().bind(hBoxPaiFinanceiroPagamento.widthProperty().multiply(0.75));
     }
 }

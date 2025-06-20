@@ -89,10 +89,8 @@ public class AgendaVisualizacaoController implements Initializable{
 	}
 
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		vBox1AgendaVisualizacao.prefWidthProperty().bind(hBoxPaiAgendaVisualizacao.widthProperty().multiply(0.25));
-		vBox2AgendaVisualizacao.prefWidthProperty().bind(hBoxPaiAgendaVisualizacao.widthProperty().multiply(0.75));
-		
+	public void initialize(URL url, ResourceBundle rb) {		
+		padraoLarguraVBox();
 		mesAtual = YearMonth.now();
 		atualizarCalendario();
 		atualizarHorarios(LocalDate.now());
@@ -205,5 +203,10 @@ public class AgendaVisualizacaoController implements Initializable{
 	public void onBtMesSeguinte() {
 		mesAtual = mesAtual.plusMonths(1);
 		atualizarCalendario();
+	}
+	
+	private void padraoLarguraVBox() {
+		vBox1AgendaVisualizacao.prefWidthProperty().bind(hBoxPaiAgendaVisualizacao.widthProperty().multiply(0.25));
+		vBox2AgendaVisualizacao.prefWidthProperty().bind(hBoxPaiAgendaVisualizacao.widthProperty().multiply(0.75));
 	}
 }

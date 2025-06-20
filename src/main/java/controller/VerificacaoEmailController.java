@@ -46,7 +46,10 @@ public class VerificacaoEmailController implements Initializable {
 
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
-		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
+		padraoLarguraVBox();
+	}
+	
+	private void padraoLarguraVBox() {
 		vBox1VerificacaoEmail.prefWidthProperty().bind(hBoxPaiVerificacaoEmail.widthProperty().multiply(0.25));
 		vBox2VerificacaoEmail.prefWidthProperty().bind(hBoxPaiVerificacaoEmail.widthProperty().multiply(0.75));
 	}

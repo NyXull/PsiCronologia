@@ -83,10 +83,7 @@ public class CadastroController implements Initializable{
 
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
-		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)		
-		vBox1Cadastro.prefWidthProperty().bind(hBoxPaiCadastro.widthProperty().multiply(0.25));
-		vBox2Cadastro.prefWidthProperty().bind(hBoxPaiCadastro.widthProperty().multiply(0.75));
-		
+		padraoLarguraVBox();
 		iniciarValidacoes();
 		btCadastrar.setDefaultButton(true);
 	}
@@ -174,4 +171,9 @@ public class CadastroController implements Initializable{
 		
 		return verificacaoService;
 	}	
+	
+	private void padraoLarguraVBox() {
+		vBox1Cadastro.prefWidthProperty().bind(hBoxPaiCadastro.widthProperty().multiply(0.25));
+		vBox2Cadastro.prefWidthProperty().bind(hBoxPaiCadastro.widthProperty().multiply(0.75));
+	}
 }

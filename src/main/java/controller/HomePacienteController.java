@@ -81,9 +81,7 @@ public class HomePacienteController implements Initializable {
 
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
-		// Largura proporcional para vbox1 (1/4) e vbox2 (3/4)
-		vBox1HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.25));
-		vBox2HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.75));
+		padraoLarguraVBox();
 
 		exibirNomePaciente();
 	}
@@ -92,5 +90,10 @@ public class HomePacienteController implements Initializable {
 		Paciente paciente = SessaoPaciente.getPaciente();
 		String nomeFormatado = ExibirNomeDoPaciente.formatarNomePaciente(paciente);
 		btNomeDoPaciente.setText(nomeFormatado.toString());
+	}
+	
+	private void padraoLarguraVBox() {
+		vBox1HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.25));
+		vBox2HomePaciente.prefWidthProperty().bind(hBoxPaiHomePaciente.widthProperty().multiply(0.75));
 	}
 }
