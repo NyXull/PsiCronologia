@@ -153,7 +153,7 @@ public class Alerts {
 		timeline.play();
 	}
 	
-	public static void confirmarExclusaoPaciente(Paciente paciente, PacienteService servicoPaciente) {
+	public static boolean confirmarExclusaoPaciente(Paciente paciente, PacienteService servicoPaciente) {
 				
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Exclusão de paciente");
@@ -170,9 +170,11 @@ public class Alerts {
 		Optional<ButtonType> resposta = alert.showAndWait();
 				
 		if (resposta.isPresent() && resposta.get() == botaoSim) {
-			servicoPaciente.deletarPacienteAtual(paciente);			
-		}
-		exclusaoRealizadaComSucesso();
+			servicoPaciente.deletarPacienteAtual(paciente);	
+			exclusaoRealizadaComSucesso();
+			return true;
+		}	
+		return false;
 	}
 	
 	public static void exclusaoRealizadaComSucesso() {

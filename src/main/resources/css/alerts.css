@@ -26,6 +26,7 @@
     -fx-background-color: #9E3AFC;
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .dialog-pane:header .label {
@@ -60,6 +61,7 @@
     -fx-background-color: #3A4B85;
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .dialog-pane:header .label {
@@ -96,6 +98,7 @@
     -fx-background-color: #3A91FC;
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .dialog-pane:header .label {
@@ -132,6 +135,7 @@
     -fx-background-color: #C0392B;
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .dialog-pane:header .label {
