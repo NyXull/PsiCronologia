@@ -101,7 +101,7 @@ public class AgendaEditarController implements Initializable {
 
 	@FXML
 	public void onBtRelatorios() {
-		System.out.println("onBtRelatorios");
+		ViewLoader.loadView("/fxml/relatorio.fxml", "/css/relatorio.css");
 	}
 
 	@Override

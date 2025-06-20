@@ -186,7 +186,7 @@ public class FinanceiroPagamentoController implements Initializable {
 
     @FXML
     private void onBtRelatoriosAction() {
-        System.out.println("onBtRelatoriosAction");
+    	ViewLoader.loadView("/fxml/relatorio.fxml", "/css/relatorio.css");
     }
 
     @FXML
