@@ -212,8 +212,6 @@
     -fx-alignment: center;
     -fx-text-alignment: center;
     -fx-background-radius: 5px;
-    /*-fx-pref-width: 100px;
-    -fx-pref-height: 60px;*/
     -fx-min-width: 100px;
     -fx-max-width: 100px;
     -fx-min-height: 50px;
@@ -228,8 +226,6 @@
     -fx-alignment: center;
     -fx-text-alignment: center;
     -fx-background-radius: 5px;
-   /*-fx-pref-width: 100px;
-    -fx-pref-height: 60px;*/
     -fx-min-width: 100px;
     -fx-max-width: 100px;
     -fx-min-height: 50px;

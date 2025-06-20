@@ -71,12 +71,12 @@
 
 #hBoxLogin {
     -fx-alignment: CENTER;
-    -fx-padding: 80px 0 10px 0; /* top, right, bottom, left */
+    -fx-padding: 80px 0 10px 0;
 }
 
 #hBoxEmail {
     -fx-alignment: CENTER;
-    -fx-padding: 20 0 0 0px; /* top, right, bottom, left */
+    -fx-padding: 20 0 0 0px;
 }
 
 #hBoxSenha {

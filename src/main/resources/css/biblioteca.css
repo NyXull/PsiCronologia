@@ -34,13 +34,11 @@
 }
 
 #btSair{
-	 -fx-background-color: rgba(188, 24, 35, 0.7);
+	-fx-background-color: rgba(188, 24, 35, 0.7);
     -fx-border-color: #d9d9d9;
     -fx-text-fill: #d9d9d9;
-
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-
     -fx-font-family: "Nunito";
     -fx-font-size: 12px;
     -fx-padding: 4px 8px;
@@ -53,7 +51,7 @@
 }
 
 #btAgenda{
-	 -fx-background-color: transparent;
+	-fx-background-color: transparent;
     -fx-border-color: #DE3AFC;
     -fx-text-fill: #d9d9d9;
     -fx-border-radius: 10px;
@@ -149,16 +147,16 @@
 #scrollPaneArquivos .scroll-bar:vertical {
     -fx-background-color: #DE3AFC;
     -fx-padding: 0;
-    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+    -fx-pref-width: 8px;
 }
 
 #scrollPaneArquivos .scroll-bar:vertical .thumb {
-    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-color: #9E3AFC;
     -fx-background-radius: 10px;
 }
 
 #scrollPaneArquivos .scroll-bar:vertical .track {
-    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-color: #C5BAF4;
     -fx-background-radius: 10px;
 }
 

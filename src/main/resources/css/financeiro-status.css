@@ -175,13 +175,13 @@
     -fx-cursor: hand;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
-    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+    -fx-transition: all 0.2s ease-in-out;
 }
 
 #comboBoxStatus .list-cell:hover {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
-    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-background-color: rgba(24, 32, 82, 0.05);
     -fx-underline: true;
 }
 
@@ -194,29 +194,29 @@
     -fx-cursor: hand;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
-    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+    -fx-transition: all 0.2s ease-in-out;
 }
 
 #comboBoxMesParaAlterar .list-cell:hover, #comboBoxMesParaExcluir .list-cell:hover {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
-    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-background-color: rgba(24, 32, 82, 0.05);
     -fx-underline: true;
 }
 
 #comboBoxMesParaAlterar .scroll-bar:vertical, #comboBoxMesParaExcluir .scroll-bar:vertical {
     -fx-background-color: #DE3AFC;
     -fx-padding: 0;
-    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+    -fx-pref-width: 8px;
 }
 
 #comboBoxMesParaAlterar .scroll-bar:vertical .thumb, #comboBoxMesParaExcluir .scroll-bar:vertical .thumb {
-    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-color: #9E3AFC;
     -fx-background-radius: 10px;
 }
 
 #comboBoxMesParaAlterar .scroll-bar:vertical .track, #comboBoxMesParaExcluir .scroll-bar:vertical .track {
-    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-color: #C5BAF4;
     -fx-background-radius: 10px;
 }
 

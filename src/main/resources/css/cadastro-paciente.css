@@ -43,13 +43,11 @@
     -fx-font-family: "Nunito";
     -fx-font-size: 12px;
     -fx-pref-width: 400px;
-    -fx-alignment: CENTER_LEFT;
-   
+    -fx-alignment: CENTER_LEFT;   
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent #182052 transparent; 
     -fx-border-width: 0 0 1px 0; 
-    -fx-border-style: solid;
-    
+    -fx-border-style: solid;    
     -fx-prompt-text-fill: #5F3AFC; 
 }
 
