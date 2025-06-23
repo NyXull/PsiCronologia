@@ -82,7 +82,7 @@
                           <RowConstraints prefHeight="100.0" vgrow="SOMETIMES" />
                           <RowConstraints fx:id="grid1LinhaRosa3" prefHeight="120.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="90.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                       <children>
                           <HBox fx:id="hBoxRosa1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
@@ -107,7 +107,10 @@
                   <HBox fx:id="hBoxRosa4" layoutX="10.0" layoutY="79.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
                   <HBox fx:id="hBoxRosa5" layoutX="220.0" layoutY="79.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
                   <HBox fx:id="hBoxRosa6" layoutX="274.0" layoutY="79.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
-                  <Label fx:id="lblNomeDocumento" text="Nome do documento:" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                  <Label fx:id="lblNomeDocumento" text="Nome do documento:" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin></Label>
                   <TextField fx:id="textFieldNomeDocumento" promptText="Nome do documento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets />

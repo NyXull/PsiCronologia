@@ -185,7 +185,7 @@ public class ProntuarioEditarController implements Initializable, ParametroReceb
             String nomeArquivo = gerarNomeArquivo(paciente.getNomePaciente(), idOrdem);
 
             String userHome = System.getProperty("user.home");
-            String documentosPath = userHome + File.separator + "Documents";
+            String documentosPath = userHome + File.separator + "Desktop";
 
             File arquivoDocx = new File(documentosPath, nomeArquivo);
 

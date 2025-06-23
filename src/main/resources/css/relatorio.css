@@ -91,11 +91,18 @@
     -fx-background-radius: 0px 10px 10px 0px;
 }
 
-#lblModelo, #lblNomeDocumento {
+#lblModelo {
 	-fx-font-family: "Comfortaa";
     -fx-font-size: 14px;
     -fx-alignment: CENTER_LEFT;
     -fx-text-fill: #182052;    
+}
+
+#lblNomeDocumento {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #182052;
 }
 
 #txtRelatorios {

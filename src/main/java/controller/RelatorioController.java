@@ -144,7 +144,7 @@ public class RelatorioController implements Initializable {
         	String htmlFormatado = HtmlUtils.prepararHtmlParaPDF(conteudoOriginal);
         	
         	String userHome = System.getProperty("user.home");
-        	String caminhoCompleto = userHome + "/Documents/" + nomeArquivo + ".pdf";
+        	String caminhoCompleto = userHome + "/Desktop/" + nomeArquivo + ".pdf";
         	
         	PdfExporter.exportarComoPdf(htmlFormatado, caminhoCompleto);
 
