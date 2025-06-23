@@ -177,6 +177,23 @@ public class Alerts {
 		return false;
 	}
 	
+	public static boolean confirmarExclusaoDeDocumento(String nomeModelo) {
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Exclusão de documento");
+		alert.setHeaderText("Essa ação é irreversível \n\n Tem certeza que deseja excluir o documento: "
+		+ nomeModelo + "?");
+		alert.setContentText("");
+		
+		personalizarAlertaComVibracao(alert, "/img/icon_cancelar.png", "confirmarCancelamentoDoAgendamento");
+		
+		ButtonType botaoSim = new ButtonType("Sim", ButtonBar.ButtonData.YES);
+		ButtonType botaoCancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+		alert.getButtonTypes().setAll(botaoSim, botaoCancelar);
+		
+		Optional<ButtonType> resposta = alert.showAndWait();
+		return resposta.isPresent() && resposta.get() == botaoSim;	
+	}
+	
 	public static void exclusaoRealizadaComSucesso() {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Sucesso");

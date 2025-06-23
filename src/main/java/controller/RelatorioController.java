@@ -1,5 +1,14 @@
 package controller;
 
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.safety.Safelist;
+import org.xhtmlrenderer.pdf.ITextRenderer;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,14 +19,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.HTMLEditor;
 import model.entities.Paciente;
+import model.entities.Relatorio;
+import model.services.RelatorioService;
 import util.Alerts;
 import util.ExibirNomeDoPaciente;
 import util.SessaoPaciente;
+import util.SessaoUsuario;
 import util.ViewLoader;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import util.html.HtmlUtils;
+import util.html.PdfExporter;
 
 public class RelatorioController implements Initializable {
 
@@ -47,20 +59,35 @@ public class RelatorioController implements Initializable {
 
     @FXML
     private Button btFinanceiro;
+    
+    @FXML
+    private HTMLEditor htmlEditor;
 
     private ObservableList<String> modelos = FXCollections.observableArrayList();
 
+    private RelatorioService relatorioService;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         vBox1Relatorios.prefWidthProperty().bind(hBoxPaiRelatorios.widthProperty().multiply(0.25));
         vBox2Relatorios.prefWidthProperty().bind(hBoxPaiRelatorios.widthProperty().multiply(0.75));
 
+        relatorioService = new RelatorioService();
+        
+        carregarModelos();
+        
         exibirNomePaciente();
 
         comboBoxModelo.setItems(modelos);
+        comboBoxModelo.setOnAction(e -> carregarTextoDoModelo());
     }
 
-    @FXML
+    private void carregarModelos() {
+		modelos.clear();
+		modelos.addAll(relatorioService.listarNomesDeModelo(SessaoUsuario.getIdPsico()));		
+	}
+
+	@FXML
     private void onBtHomeAction() {
         ViewLoader.loadView("/fxml/home.fxml", "/css/home.css");
     }
@@ -87,17 +114,81 @@ public class RelatorioController implements Initializable {
 
     @FXML
     public void onBtSalvarAction() {
-        gerarNomeModelo();
+        String nomeModelo = textFieldNomeDocumento.getText().trim();
+        String conteudoHtml = htmlEditor.getHtmlText();
+        
+        if (nomeModelo.isEmpty() || Jsoup.parse(conteudoHtml).text().trim().isEmpty()) {
+        	Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha o nome e o conteúdo do documento.", Alert.AlertType.ERROR);
+            return;
+        }
+        
+        Relatorio relatorio = new Relatorio(null, SessaoUsuario.getIdPsico(), conteudoHtml, nomeModelo);
+        relatorioService.salvarOuAtualizarRelatorio(relatorio);
+        
+        carregarModelos();
+        carregarModelos();
+        Alerts.showAlert("Sucesso", null, "Modelo salvo com sucesso!", Alert.AlertType.INFORMATION);
     }
 
     @FXML
     public void onBtBaixarPdfAction() {
-        System.out.println("onBtBaixarPdfAction");
+        String nomeArquivo = textFieldNomeDocumento.getText().trim();
+        String conteudoOriginal = htmlEditor.getHtmlText();
+        
+        if (nomeArquivo.isEmpty() || Jsoup.parse(conteudoOriginal).text().trim().isEmpty()) {
+        	Alerts.showAlert("Erro de Validação", "Campos obrigatórios!", "Preencha o nome e o conteúdo do documento.", Alert.AlertType.ERROR);
+            return;
+        }
+        
+        try {
+        	String htmlFormatado = HtmlUtils.prepararHtmlParaPDF(conteudoOriginal);
+        	
+        	String userHome = System.getProperty("user.home");
+        	String caminhoCompleto = userHome + "/Documents/" + nomeArquivo + ".pdf";
+        	
+        	PdfExporter.exportarComoPdf(htmlFormatado, caminhoCompleto);
+
+        	Alerts.showAlert("Sucesso", null, "Documento exportado como PDF.", Alert.AlertType.INFORMATION);
+        }
+        catch (Exception e) {
+            Alerts.showAlert("Erro", "Exportação falhou", e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     public void onBtExcluirModeloAction() {
-        System.out.println("onBtExcluirModeloAction");
+        String nomeSelecionado = comboBoxModelo.getSelectionModel().getSelectedItem();
+        
+        if (nomeSelecionado == null) {
+        	Alerts.showAlert("Erro", null, "Nenhum modelo selecionado para exclusão.", Alert.AlertType.ERROR);
+            return;
+        }
+        
+        boolean confirmar = Alerts.confirmarExclusaoDeDocumento(nomeSelecionado);
+        
+        if (confirmar) {
+        	Relatorio modelo = relatorioService.buscarPorNomeModelo(nomeSelecionado, SessaoUsuario.getIdPsico());
+                     
+	        if (modelo != null) {
+	        	relatorioService.excluirRelatorio(modelo.getId());
+	        	carregarModelos();
+	        	htmlEditor.setHtmlText("");
+	        	textFieldNomeDocumento.clear();
+	        	 Alerts.showAlert("Sucesso", null, "Modelo excluído com sucesso!", Alert.AlertType.INFORMATION);
+	        }
+        }
+    }
+    
+    private void carregarTextoDoModelo() {
+    	String nomeSelecionado = comboBoxModelo.getSelectionModel().getSelectedItem();
+    	
+    	if (nomeSelecionado != null) {
+    		Relatorio modelo = relatorioService.buscarPorNomeModelo(nomeSelecionado, SessaoUsuario.getIdPsico());
+    		if (modelo != null) {
+    			htmlEditor.setHtmlText(modelo.getDescricao());
+    			textFieldNomeDocumento.setText(modelo.getNomeModelo());
+    		}
+    	}
     }
 
 

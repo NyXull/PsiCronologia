@@ -9,6 +9,10 @@ module com.example.psiorganize {
     requires jakarta.xml.bind;
     requires org.docx4j.core;
     requires docx4j_ImportXHTML;
+    requires flying.saucer.pdf; 
+    requires java.xml; 
+    requires java.desktop;
+    requires itext;
 
     opens view to javafx.fxml;
     opens controller to javafx.fxml, javafx.base;
