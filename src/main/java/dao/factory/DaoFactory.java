@@ -33,4 +33,8 @@ public class DaoFactory {
     public static BibliotecaDAO createBibliotecaDao() {
         return new BibliotecaDaoJDBC(DB.getConnection());
     }
+
+    public static RelatorioDAO createRelatorioDao() {
+        return new RelatorioDaoJDBC(DB.getConnection());
+    }
 }
