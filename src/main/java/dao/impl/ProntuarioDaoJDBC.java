@@ -26,16 +26,16 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
 
         try {
             pstm = conn.prepareStatement("INSERT INTO prontuario (id_paciente, data_atendimento, descricao, " +
-                            "caminho_arquivo, id_sessao, id_ordem) " +
-                            "SELECT ?, ?, ?, ?, ?, COALESCE(MAX(id_ordem), 0) + 1 FROM prontuario WHERE id_sessao = ?",
+                            "id_sessao, id_ordem) " +
+                            "SELECT ?, ?, ?, ?, COALESCE(MAX(id_ordem), 0) + 1 FROM prontuario WHERE id_sessao = ?",
                     Statement.RETURN_GENERATED_KEYS);
 
             pstm.setInt(1, idPaciente);
             pstm.setDate(2, new java.sql.Date(objProntuario.getDataAtendimento().getTime()));
             pstm.setString(3, objProntuario.getDescricao());
-            pstm.setString(4, objProntuario.getCaminhoArquivo());
+            
+            pstm.setInt(4, objProntuario.getIdSessao());
             pstm.setInt(5, objProntuario.getIdSessao());
-            pstm.setInt(6, objProntuario.getIdSessao());
 
             pstm.executeUpdate();
 
@@ -106,7 +106,7 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
 
         try {
             pstm = conn.prepareStatement(
-                    "SELECT id, id_paciente, data_atendimento, descricao, caminho_arquivo, id_sessao, id_ordem " +
+                    "SELECT id, id_paciente, data_atendimento, descricao, id_sessao, id_ordem " +
                             "FROM prontuario WHERE id_paciente = ? ORDER BY id_ordem DESC"
             );
 
@@ -119,7 +119,6 @@ public class ProntuarioDaoJDBC implements ProntuarioDAO {
                 prontuario.setIdPaciente(rs.getInt("id_paciente"));
                 prontuario.setDataAtendimento(rs.getDate("data_atendimento"));
                 prontuario.setDescricao(rs.getString("descricao"));
-                prontuario.setCaminhoArquivo(rs.getString("caminho_arquivo"));
                 prontuario.setIdSessao(rs.getInt("id_sessao"));
                 prontuario.setIdOrdem(rs.getInt("id_ordem"));
                 listaProntuario.add(prontuario);

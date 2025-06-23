@@ -182,27 +182,11 @@ public class ProntuarioEditarController implements Initializable, ParametroReceb
                 return null;
             }
 
-            String nomeArquivo = gerarNomeArquivo(paciente.getNomePaciente(), idOrdem);
-
-            String userHome = System.getProperty("user.home");
-            String documentosPath = userHome + File.separator + "Desktop";
-
-            File arquivoDocx = new File(documentosPath, nomeArquivo);
-
-            WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
-            XHTMLImporterImpl xhtmlImporter = new XHTMLImporterImpl(wordMLPackage);
-
-            wordMLPackage.getMainDocumentPart().getContent().addAll(
-                    xhtmlImporter.convert(descricaoHtml, null));
-
-            wordMLPackage.save(arquivoDocx);
-
             Prontuario prontuario = new Prontuario();
 
             prontuario.setIdPaciente(paciente.getIdPaciente());
             prontuario.setDataAtendimento(dataAtendimento);
             prontuario.setDescricao(descricaoHtml);
-            prontuario.setCaminhoArquivo(arquivoDocx.getAbsolutePath());
             prontuario.setIdSessao(paciente.getIdPaciente());
             prontuario.setIdOrdem(idOrdem);
 
