@@ -14,65 +14,59 @@ import db.DbException;
 import model.entities.Paciente;
 import util.SessaoPaciente;
 
-public class PacienteDaoJDBC implements PacienteDAO{
+public class PacienteDaoJDBC implements PacienteDAO {
 
 	private Connection conn;
-	
+
 	public PacienteDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
-	
+
 	@Override
 	public void cadastrarPaciente(Paciente objPaciente) {
 		PreparedStatement pstm = null;
-		
+
 		try {
-			pstm = conn.prepareStatement(
-					"insert into paciente"
-					+ "(cpf, nome, email, data_nascimento, telefone) "
-					+ "values (?, ?, ?, ?, ?)",
-					Statement.RETURN_GENERATED_KEYS);
-			
+			pstm = conn.prepareStatement("insert into paciente" + "(cpf, nome, email, data_nascimento, telefone) "
+					+ "values (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+
 			pstm.setString(1, objPaciente.getCpf());
 			pstm.setString(2, objPaciente.getNomePaciente());
 			pstm.setString(3, objPaciente.getEmailPaciente());
 			pstm.setDate(4, new java.sql.Date(objPaciente.getDataNascimento().getTime()));
-			pstm.setString(5,  objPaciente.getTelefone());
-			
+			pstm.setString(5, objPaciente.getTelefone());
+
 			pstm.executeUpdate();
-			
+
 			ResultSet rs = pstm.getGeneratedKeys();
 			if (rs.next()) {
 				int id = rs.getInt(1);
 				objPaciente.setIdPaciente(id);
 			}
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		}
-		finally {
+		} finally {
 			DB.closeStatement(pstm);
-		}		
+		}
 	}
 
 	@Override
 	public Paciente buscarPorCpf(String cpf) {
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
-		
+
 		try {
 			pstm = conn.prepareStatement("SELECT * FROM paciente WHERE cpf = ?");
 			pstm.setString(1, cpf);
-			
+
 			rs = pstm.executeQuery();
-			
+
 			if (rs.next()) {
 				Paciente paciente = instanciacaoPaciente(rs);
 				return paciente;
 			}
 			return null;
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeResultSet(rs);
@@ -95,45 +89,42 @@ public class PacienteDaoJDBC implements PacienteDAO{
 	public boolean relacaoJaExiste(int idPsicologo, int idPaciente) {
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
-		
+
 		try {
 			pstm = conn.prepareStatement(
 					"SELECT COUNT(*) FROM psicologo_paciente WHERE id_psicologo = ? AND id_paciente = ?");
 			pstm.setInt(1, idPsicologo);
 			pstm.setInt(2, idPaciente);
-			
+
 			rs = pstm.executeQuery();
-			
+
 			if (rs.next()) {
 				return rs.getInt(1) > 0;
 			}
 			return false;
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(pstm);
 		}
-		catch (SQLException e) {
-	        throw new DbException(e.getMessage());
-	    } finally {
-	        DB.closeResultSet(rs);
-	        DB.closeStatement(pstm);
-	    }
 	}
 
 	@Override
 	public void associarPsicologoPaciente(int idPsicologo, int idPaciente) {
 		PreparedStatement pstm = null;
-		
+
 		try {
-			pstm = conn.prepareStatement(
-					"INSERT INTO psicologo_paciente (id_psicologo, id_paciente) VALUES (?, ?)");
+			pstm = conn.prepareStatement("INSERT INTO psicologo_paciente (id_psicologo, id_paciente) VALUES (?, ?)");
 			pstm.setInt(1, idPsicologo);
 			pstm.setInt(2, idPaciente);
-			
-			pstm.executeUpdate();			
+
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(pstm);
 		}
-		catch (SQLException e) {
-	        throw new DbException(e.getMessage());
-	    } finally {
-	        DB.closeStatement(pstm);
-	    }
 	}
 
 	@Override
@@ -141,7 +132,7 @@ public class PacienteDaoJDBC implements PacienteDAO{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		List<Paciente> listaPaciente = new ArrayList<>();
-		
+
 		try {
 			pstm = conn.prepareStatement("""
 					SELECT paci.id, paci.nome, paci.cpf, paci.email, paci.telefone, paci.data_nascimento
@@ -149,9 +140,10 @@ public class PacienteDaoJDBC implements PacienteDAO{
 					INNER JOIN psicologo_paciente psi_paci ON paci.id = psi_paci.id_paciente
 					WHERE psi_paci.id_psicologo = ?
 					""");
-			
-			pstm.setInt(1, idPsicologo);rs = pstm.executeQuery();
-			
+
+			pstm.setInt(1, idPsicologo);
+			rs = pstm.executeQuery();
+
 			while (rs.next()) {
 				Paciente paciente = new Paciente();
 				paciente.setIdPaciente(rs.getInt("id"));
@@ -163,64 +155,73 @@ public class PacienteDaoJDBC implements PacienteDAO{
 				listaPaciente.add(paciente);
 			}
 			return listaPaciente;
+		} catch (SQLException e) {
+			throw new DbException("Erro ao buscar pacientes do psicólogo: " + e.getMessage());
+		} finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(pstm);
 		}
-		catch (SQLException e) {
-	        throw new DbException("Erro ao buscar pacientes do psicólogo: " + e.getMessage());
-	    } finally {
-	        DB.closeResultSet(rs);
-	        DB.closeStatement(pstm);
-	    }
 	}
 
 	@Override
 	public void deletarPorId(Paciente paciente) {
-		PreparedStatement pstm = null;
-		PreparedStatement pstmVinculo = null;
-		
+		Statement pstm = null;
+
 		try {
-			// Exclui os vínculos da tabela associativa
-			pstmVinculo = conn.prepareStatement("DELETE FROM psicologo_paciente WHERE id_paciente = ?");
-			pstmVinculo.setInt(1, paciente.getIdPaciente());
-			pstmVinculo.executeUpdate();
-			
-			// Exclui o paciente
-			pstm = conn.prepareStatement("DELETE FROM paciente WHERE id = ?");
-			pstm.setInt(1, paciente.getIdPaciente());
-			
-			pstm.executeUpdate();
-		}
-		catch (SQLException e) {
-			throw new DbException(e.getMessage());
-		}	
-		finally {
-		        DB.closeStatement(pstm);
+			conn.setAutoCommit(false);
+
+			pstm = conn.createStatement();
+
+			int id = paciente.getIdPaciente();
+
+			pstm.addBatch("DELETE FROM psicologo_paciente WHERE id_paciente = " + id);
+			pstm.addBatch("DELETE FROM financeiro WHERE id_paciente = " + id);
+			pstm.addBatch("DELETE FROM prontuario WHERE id_paciente = " + id);
+			pstm.addBatch("DELETE FROM agenda WHERE id_paciente = " + id);
+			pstm.addBatch("DELETE FROM paciente WHERE id = " + id);
+
+			pstm.executeBatch();
+
+			conn.commit();
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+			} catch (SQLException rollbackEx) {
+				throw new DbException("Erro ao tentar rollback: " + rollbackEx.getMessage());
+			}
+			throw new DbException("Erro ao deletar paciente: " + e.getMessage());
+		} finally {
+			try {
+				conn.setAutoCommit(true); // Restaura o estado padrão
+			} catch (SQLException e) {
+				throw new DbException("Erro ao restaurar autoCommit: " + e.getMessage());
+			}
+			DB.closeStatement(pstm);
 		}
 	}
 
 	@Override
 	public void atualizarPaciente(Paciente paciente) {
 		PreparedStatement pstm = null;
-		
+
 		try {
 			pstm = conn.prepareStatement("""
-					UPDATE paciente SET cpf = ?, nome = ?, email = ?, 
+					UPDATE paciente SET cpf = ?, nome = ?, email = ?,
 					data_nascimento = ?, telefone = ? WHERE id = ?
 					""");
-			
+
 			pstm.setString(1, paciente.getCpf());
 			pstm.setString(2, paciente.getNomePaciente());
 			pstm.setString(3, paciente.getEmailPaciente());
 			pstm.setDate(4, new java.sql.Date(paciente.getDataNascimento().getTime()));
 			pstm.setString(5, paciente.getTelefone());
 			pstm.setInt(6, paciente.getIdPaciente());
-			
+
 			pstm.executeUpdate();
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		}	
-		finally {
-		        DB.closeStatement(pstm);
-		}		
-	}	
+		} finally {
+			DB.closeStatement(pstm);
+		}
+	}
 }

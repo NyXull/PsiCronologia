@@ -157,7 +157,7 @@ public class Alerts {
 				
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Exclusão de paciente");
-		alert.setHeaderText("Essa ação é definitiva \n\n Tem certeza que deseja excluir o paciente: "
+		alert.setHeaderText("Essa ação é definitiva! \n\n Tem certeza que deseja excluir o paciente: "
 		+ paciente.getNomePaciente() + "?");
 		alert.setContentText("");
 

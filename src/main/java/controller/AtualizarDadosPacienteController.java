@@ -33,6 +33,9 @@ public class AtualizarDadosPacienteController implements Initializable{
 	private VBox vBox2AtualizarDadosPaciente;
 	
 	@FXML
+	private Button btVoltar;
+	
+	@FXML
 	private Button btHome;
 	
 	@FXML
@@ -70,6 +73,11 @@ public class AtualizarDadosPacienteController implements Initializable{
 	private boolean emailValido = true;
 	
 	private boolean dataValida = true;
+		
+	@FXML
+	private void onBtVoltarAction() {
+		ViewLoader.loadView("/fxml/dados-paciente.fxml", "/css/dados-paciente.css");
+	}
 	
 	@FXML
 	private void onBtHomeAction() {
