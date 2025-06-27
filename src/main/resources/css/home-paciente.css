@@ -1,0 +1,91 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1HomePaciente {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER; 
+}
+
+/* Fundo do VBox da direita */
+#vBox2HomePaciente {    
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+#btInicio {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 100px;              
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btInicio:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#btNomeDoPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.btEstilos{
+	-fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #182052;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+.btEstilos:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#gridPaneCabeca{
+	-fx-background-color: transparent;
+    -fx-background-image: url("../img/cabeca.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: contain;  
+    -fx-pref-width: 350px; 
+    -fx-pref-height: 400px; 
+    -fx-alignment: CENTER;
+}
+
+#hBoxCabeca{
+	-fx-alignment: CENTER;
+}
+
+#hboxLinha, #hBoxNomeDoPacienteAqui{
+	-fx-alignment: TOP_CENTER;
+}

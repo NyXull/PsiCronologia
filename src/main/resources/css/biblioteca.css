@@ -1,0 +1,201 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Biblioteca {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2Biblioteca {     
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER; 
+}
+
+#btInicio {
+    -fx-background-image: url("../img/botao_home2.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 50px;              
+    -fx-pref-height: 50px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btInicio:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btSair{
+	-fx-background-color: rgba(188, 24, 35, 0.7);
+    -fx-border-color: #d9d9d9;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;	
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btAgenda{
+	-fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSair:hover, #btFinanceiro:hover, 
+#btBiblioteca:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAgenda{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 22px;
+    -fx-fill: #d9d9d9;
+}
+
+#btMesAnterior {
+	-fx-background-image: url("../img/botao_mes_anterior.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btMesAnterior:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btAdicionar {
+	-fx-background-image: url("../img/botao_adicionar.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 80px;              
+    -fx-pref-height: 80px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btAdicionar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#lblAdicionar {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+    -fx-alignment: center;
+}
+
+#btSalvar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSalvar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#scrollPaneArquivos .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px;
+}
+
+#scrollPaneArquivos .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 10px;
+}
+
+#scrollPaneArquivos .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 10px;
+}
+
+#scrollPaneArquivos .scroll-bar .increment-button,
+#scrollPaneArquivos .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+/* Opcional: ocultar o scroll horizontal se não for necessário */
+#scrollPaneArquivos .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+}
+
+#scrollPaneArquivos {
+    -fx-background-color: transparent;
+}
+
+#scrollPaneArquivos .viewport {
+    -fx-background-color: transparent;
+}
+
+.context-menu .menu-item:focused {
+    -fx-background-color: #182052;
+}
+
+.context-menu .menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.context-menu .menu-item .label {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 20px;
+}
+
+.label {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #182052;
+}

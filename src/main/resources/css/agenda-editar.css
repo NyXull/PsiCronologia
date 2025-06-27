@@ -1,0 +1,265 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1AgendaEditar {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2AgendaEditar {     
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER; 
+}
+
+#btInicio {
+    -fx-background-image: url("../img/botao_home2.png");
+    -fx-background-position: center;
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 50px;              
+    -fx-pref-height: 50px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btInicio:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: #d9d9d9;
+    -fx-alignment: center;
+}
+
+#btNomeDoPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomeDoPaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btFinanceiro, #btRelatorios, #btBiblioteca{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btProntuario:hover, #btFinanceiro:hover, 
+#btRelatorios:hover, #btBiblioteca:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAgenda{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 28px;
+    -fx-fill: #182052;
+}
+
+#hBoxAzul{
+	-fx-background-color: rgba(24, 32, 82, 0.8);
+    -fx-background-radius: 10px 10px 0px 0px;
+}
+
+#hBoxCinzaClaro1{
+	-fx-background-color: rgba(140, 129, 204, 0.2);	
+	-fx-background-radius: 0px;
+}
+
+#hBoxCinzaClaro2 {
+	-fx-background-color: rgba(140, 129, 204, 0.2);	
+	-fx-background-radius: 0px 0px 10px 10px;
+}
+
+#hBoxCinzaClaro3 {
+	-fx-background-color: rgba(140, 129, 204, 0.2);	
+	-fx-background-radius: 10px 10px 10px 10px;
+}
+
+#txtMesAtual{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 18px;
+    -fx-fill: #d9d9d9;    
+}
+
+#btMesAnterior {
+	-fx-background-image: url("../img/botao_mes_anterior.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btMesAnterior:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btMesSeguinte {
+	-fx-background-image: url("../img/botao_mes_seguinte.png");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: center center;     
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0; 
+    -fx-padding: 0;                     
+    -fx-pref-width: 40px;              
+    -fx-pref-height: 40px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btMesSeguinte:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.lblDiasSemana {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 10px;
+    -fx-text-fill: #182052;
+    -fx-font-weight: bold;
+}
+
+.btDiaMes {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-fill: #182052;
+    -fx-background-color: rgba(230, 230, 250, 0.2);
+    -fx-background-radius: 5;
+    -fx-padding: 5px 15px 5px 15px;
+    -fx-font-weight: bold;    
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 3, 0.1, 0, 1);
+}
+
+.btDiaMes:hover {
+    -fx-background-color: rgba(24, 32, 82, 0.15);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 5, 0.2, 0, 2);
+    -fx-text-fill: #182052;
+}
+
+.btDiaAtual {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+    -fx-background-color: rgba(24, 32, 82, 0.25);
+    -fx-background-radius: 5;
+    -fx-padding: 5px 15px 5px 15px;
+    -fx-font-weight: bold;    
+    -fx-alignment: center;
+    -fx-text-alignment: center;    
+	-fx-text-alignment: center;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 4, 0.15, 0, 2);
+}
+
+.btDiaAtual:hover {
+    -fx-background-color: rgba(24, 32, 82, 0.4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 6, 0.3, 0, 3);
+}
+
+.btDiaClicado {
+    -fx-background-color: #9E3AFC;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.btHorario {
+	-fx-font-family: "Nunito";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
+.btHorario:hover {    
+    -fx-text-fill: white;
+}
+
+.btHorarioSelecionado {
+    -fx-effect: dropshadow(gaussian, #9E3AFC, 10, 0.3, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.btHorarioDisponivel {
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btHorarioDisponivel:hover {
+    -fx-background-color: #34b07d;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.btHorarioOcupado {
+    -fx-background-color: #C0392B;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btHorarioOcupado:hover {
+    -fx-background-color: #d13a56;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.btHorarioInativo {    
+    -fx-cursor: default;
+}

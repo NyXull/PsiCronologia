@@ -1,0 +1,97 @@
+/* Fundo e imagem do VBox da esquerda */
+#vbox1Login {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psicronologia.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vbox2Login {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
+}
+
+#txtLogin {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#txtEmail, #txtSenha {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 13px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #182052 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;
+    -fx-prompt-text-fill: #5F3AFC;
+}
+
+#txtEmail:focused, #txtSenha:focused {
+    -fx-border-color: transparent transparent #9E3AFC transparent;
+}
+
+#btCadastro, #btEsqueceuSenha {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3A91FC;
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 12px;
+    -fx-underline: true;
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btCadastro:hover, #btEsqueceuSenha:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btEntrar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btEntrar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#hBoxLogin {
+    -fx-alignment: CENTER;
+    -fx-padding: 80px 0 10px 0;
+}
+
+#hBoxEmail {
+    -fx-alignment: CENTER;
+    -fx-padding: 20 0 0 0px;
+}
+
+#hBoxSenha {
+    -fx-alignment: CENTER;
+    -fx-padding: 5 0 0 0;
+    -fx-pref-height: -1;
+}
+
+#hBoxCadastro {
+    -fx-alignment: CENTER;
+    -fx-padding: 5 0 5 0;
+    -fx-pref-height: 5px;
+}
+
+#hBoxEntrar {
+    -fx-alignment: CENTER;
+    -fx-padding: 30 0 0 0; 
+    -fx-pref-height: 2px;
+}

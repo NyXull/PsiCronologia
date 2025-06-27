@@ -1,0 +1,276 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1FinanceiroStatus {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2FinanceiroStatus {
+    -fx-background-color: #C5BAF4;
+    -fx-alignment: CENTER;
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: white;
+}
+
+#btNomeDoPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomeDoPaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btRelatorios, #btAgenda{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btProntuario:hover, #btRelatorios:hover, #btAgenda:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtFinanceiro {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+.txtInformacoes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 18px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+.hBoxRosa{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 10px 10px;
+}
+
+.lblMeses, .lblAlterarOuExcluir{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 11px;
+    -fx-fill: #182052;
+    -fx-font-weight: bold;
+}
+
+.comboBoxAlterarOuExcluir {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+.comboBoxAlterarOuExcluir .list-cell {
+    -fx-text-fill: #182052;
+}
+
+.comboBoxAlterarOuExcluir .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#btExcluir {
+    -fx-background-color: #C0392B;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btExcluir:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btAlterar {
+    -fx-background-color: rgba(39, 174, 96, 0.8);
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btAlterar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.hBoxBordaInferior {
+	-fx-border-color: rgba(24, 32, 82, 0.7);
+	-fx-border-width: 1px 1px 1px 1px;
+}
+
+.hBoxBordaEsquerda {
+	-fx-border-color: rgba(24, 32, 82, 0.7);
+	-fx-border-width: 1px 1px 1px 0px;
+}
+
+#comboBoxStatus .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+#comboBoxStatus .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05);
+    -fx-underline: true;
+}
+
+#comboBoxMesParaAlterar .list-cell, #comboBoxMesParaExcluir .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+#comboBoxMesParaAlterar .list-cell:hover, #comboBoxMesParaExcluir .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05);
+    -fx-underline: true;
+}
+
+#comboBoxMesParaAlterar .scroll-bar:vertical, #comboBoxMesParaExcluir .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px;
+}
+
+#comboBoxMesParaAlterar .scroll-bar:vertical .thumb, #comboBoxMesParaExcluir .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC;
+    -fx-background-radius: 10px;
+}
+
+#comboBoxMesParaAlterar .scroll-bar:vertical .track, #comboBoxMesParaExcluir .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 10px;
+}
+
+#comboBoxMesParaAlterar .scroll-bar .increment-button, #comboBoxMesParaExcluir .scroll-bar .increment-button,
+#comboBoxMesParaAlterar .scroll-bar .decrement-button, #comboBoxMesParaExcluir .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+.hbox-pago {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/botao_check.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-alignment: CENTER;
+}
+
+.hbox-aberto {
+    -fx-background-color: transparent;
+    -fx-background-image: url("../img/botao_exclamacao.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-alignment: CENTER;
+}
+
+.hbox-excluido {
+    -fx-background-color: transparent;
+    -fx-background-image: none;
+}
+
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+#hBoxRosa2 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px;
+}
+
+#hBoxRosa3 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+#lblVencimento, #txtDataDeVencimentoAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+}
+
+#txtDataDeVencimentoAqui {
+    -fx-fill: #182052;
+}

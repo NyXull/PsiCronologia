@@ -1,0 +1,86 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Cadastro {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/logo_psicronologia.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2Cadastro {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
+}
+
+#btVoltar {
+    -fx-background-image: url("../img/botao_voltar.png");
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btVoltar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtCadastro {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#txtNome, #txtEmail, #txtSenha {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-pref-width: 400px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #182052 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;    
+    -fx-prompt-text-fill: #5F3AFC;
+}
+
+#txtNome:focused, #txtEmail:focused, #txtSenha:focused {
+    -fx-border-color: transparent transparent #9E3AFC transparent;
+}
+
+#lblErroEmail, #lblErroSenha {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #D23636;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#btCadastrar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btCadastrar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#vBoxTextFieldsBt, #hBoxCadastro {
+    -fx-alignment: CENTER;
+}

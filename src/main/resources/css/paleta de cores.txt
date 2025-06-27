@@ -1,0 +1,17 @@
+#182052 Roxo não tão forte nos subtitulos e fundo mais escuro
+#9E3AFC Cor do botão
+#5F3AFC Cor das palavras que fazem links
+#3A91FC Azul mais encorpado
+#DE3AFC Rosa um pouco roxo
+#A38EFC Roxo forte
+#C5BAF4 Cor do fundo mais claro
+#000000 Preto
+#c38ebc Cor do popup
+#c60003 Vermelho presente no botão de excluir
+
+FONTES:
+Títulos ou elementos de destaque:
+Comfortaa
+
+Corpo do texto:
+Nunito

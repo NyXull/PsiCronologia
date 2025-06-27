@@ -1,0 +1,448 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1Relatorios {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2Relatorios {
+    -fx-background-color: #C5BAF4;
+    -fx-alignment: CENTER;
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: white;
+}
+
+#btNomeDoPaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomeDoPaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btRelatorios, #btAgenda{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btProntuario:hover, #btRelatorios:hover, #btAgenda:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#hBoxRosa1, #hBoxRosa4 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+#hBoxRosa2, #hBoxRosa5 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px;
+}
+
+#hBoxRosa3, #hBoxRosa6 {
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+#lblModelo {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #182052;    
+}
+
+#lblNomeDocumento {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #182052;
+}
+
+#txtRelatorios {
+	-fx-font-family: "Comfortaa";
+    -fx-fill: #182052;
+    -fx-font-size: 23px;
+}
+
+#txtDetalhesDoRelatorio {
+    -fx-font-family: "Nunito";
+    -fx-fill: #182052;
+    -fx-font-size: 20px;
+}
+
+#hBoxTxtArea{
+	-fx-background-color: rgba(140, 129, 204, 0.4);	
+	 -fx-background-radius: 0px 0px 10px 10px;
+}
+
+#btSalvar, #btBaixarPdf {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSalvar:hover, #btBaixarPdf:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btExcluirModelo {
+    -fx-background-color: #C0392B;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btExcluirModelo:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtAreaProntuario {
+    -fx-background-color: transparent;
+}
+
+#txtAreaProntuario .content {
+    -fx-background-color: transparent;
+}
+
+#txtAreaProntuario .viewport {
+    -fx-background-color: transparent;
+}
+
+#txtAreaProntuario .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#txtAreaProntuario .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#txtAreaProntuario .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#txtAreaProntuario .scroll-bar .increment-button,
+#txtAreaProntuario .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+#txtAreaProntuario .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#cbFonte, #cbTamanho {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#cbFonte .list-cell, #cbTamanho .list-cell {
+    -fx-text-fill: #000000;
+}
+
+#cbFonte .combo-box-popup .list-view, #cbTamanho .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-border-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#btNomeDoPacienteAqui {
+    -fx-background-color: transparent;
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-underline: true;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#listView {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+#listView .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+.list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#listView .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#listView .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#listView .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#listView .scroll-bar .increment-button,
+#listView .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+/* Opcional: ocultar o scroll horizontal se não for necessário */
+#listView .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+}
+
+ToolBar {
+    -fx-background-color: rgba(195, 142, 188, 0.6);
+}
+
+Separator {
+    -fx-opacity: 0;
+}
+
+#htmlEditor .combo-box-base {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor .toggle-button, #htmlEditor .button {
+    -fx-background-color: transparent;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5;
+}
+
+#htmlEditor {
+    -fx-background-color: transparent;
+}
+
+#htmlEditor .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#htmlEditor .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#htmlEditor .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#htmlEditor .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#htmlEditor .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#htmlEditor .scroll-bar .increment-button,
+#htmlEditor .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}
+
+#textFieldNomeDocumento {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+	-fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(24, 32, 82, 0.3);
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-radius: 5px;
+    -fx-prompt-text-fill: #182052;
+}
+
+#comboBoxModelo {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#comboBoxModelo .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#comboBoxModelo .list-cell {
+    -fx-text-fill: #182052;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#comboBoxModelo .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#comboBoxModelo .list-cell {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 10pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-transition: all 0.2s ease-in-out; /* essa linha é decorativa, mas boa prática */
+}
+
+#comboBoxModelo .list-cell:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-background-color: rgba(24, 32, 82, 0.05); /* cor de fundo sutil no hover */
+    -fx-underline: true;
+}
+
+#comboBoxModelo .scroll-bar:vertical {
+    -fx-background-color: #DE3AFC;
+    -fx-padding: 0;
+    -fx-pref-width: 8px; /* Largura da barra de rolagem */
+}
+
+#comboBoxModelo .scroll-bar:vertical .thumb {
+    -fx-background-color: #9E3AFC; /* Cor da alça (thumb) */
+    -fx-background-radius: 10px;
+}
+
+#comboBoxModelo .scroll-bar:vertical .track {
+    -fx-background-color: #C5BAF4; /* Cor de fundo do trilho */
+    -fx-background-radius: 10px;
+}
+
+#comboBoxModelo .scroll-bar .increment-button,
+#comboBoxModelo .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-background-color: transparent;
+}

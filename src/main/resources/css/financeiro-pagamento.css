@@ -1,0 +1,186 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1FinanceiroPagamento {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2FinanceiroPagamento {
+    -fx-background-color: #C5BAF4;
+    -fx-alignment: CENTER;
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-fill: white;
+}
+
+#btNomeDoPacienteAqui {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomeDoPacienteAqui:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btProntuario, #btRelatorios, #btAgenda{
+	 -fx-background-color: transparent;
+    -fx-border-color: #DE3AFC;
+    -fx-text-fill: #d9d9d9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 150px; 
+    -fx-pref-height: 10px; 
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btProntuario:hover, #btRelatorios:hover, #btAgenda:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtFinanceiro {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#txtInformacoes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 18px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+#hBoxRosa1{
+	-fx-background-color: rgba(195, 142, 188, 0.6);
+    -fx-background-radius: 10px 10px 10px 10px;
+}
+
+.lblInformacoes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 11px;
+    -fx-fill: #182052;
+    -fx-font-weight: bold;
+}
+
+.textFieldInformacoes {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+	-fx-text-fill: #182052;
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(24, 32, 82, 0.3);
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-style: solid;
+    -fx-border-radius: 5px;
+}
+
+.comboBoxInformacoes {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+.comboBoxInformacoes .list-cell {
+    -fx-text-fill: #182052;
+}
+
+.comboBoxInformacoes .combo-box-popup .list-view {
+    -fx-background-color: #C5BAF4;
+    -fx-background-radius: 5px;
+    -fx-border-color: rgba(24, 32, 82, 0.7);
+    -fx-border-radius: 5px;
+}
+
+#lblStatusDoMes{
+	-fx-font-family: "Nunito";
+    -fx-font-size: 15px;
+    -fx-pref-width: 200px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #182052;
+}
+
+#btSalvar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btSalvar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btStatusMensal {
+	-fx-background-image: url("../img/botao_status_mensal.png");
+    -fx-background-size: cover;    
+    -fx-pref-width: 100px;              
+    -fx-pref-height: 100px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#lblSucessoSalvar {
+    -fx-font-family: 'Nunito';
+    -fx-font-size: 11px;
+    -fx-text-fill: #28a745;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}

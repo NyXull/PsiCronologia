@@ -1,0 +1,119 @@
+/* Fundo e imagem do VBox da esquerda */
+#vBox1DadosPaciente {
+    -fx-background-color: #182052;
+    -fx-background-image: url("../img/fundo_pontos.png"), url("../img/cadastro.png");
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: contain, contain;
+}
+
+/* Fundo do VBox da direita */
+#vBox2DadosPaciente {
+    -fx-background-color: #C5BAF4;  
+    -fx-alignment: CENTER;  
+}
+
+#btHome {
+    -fx-background-image: url("../img/botao_home.png");
+    -fx-background-size: cover;         
+    -fx-background-color: transparent;  
+    -fx-background-radius: 0;           
+    -fx-border-color: transparent;      
+    -fx-padding: 0;                     
+    -fx-pref-width: 100px;              
+    -fx-pref-height: 100px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btHome:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#lblPaciente{
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-alignment: center;
+}
+
+#btNomePaciente {
+	-fx-font-family: "Comfortaa";
+    -fx-font-size: 15px;
+    -fx-text-fill: #d9d9d9;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+
+#btNomePaciente:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#txtDadosPaciente {
+    -fx-font-family: "Comfortaa";
+    -fx-font-size: 34px;
+    -fx-fill: #182052;
+    -fx-text-alignment: CENTER;
+}
+
+.lblDadosEstilo1 {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+    -fx-padding: 4px;
+}
+
+.txtDadosEstilo {
+    -fx-font-family: "Nunito";
+    -fx-font-size: 14px;
+    -fx-text-fill: #182052;
+    -fx-background-color: rgba(58, 145, 252, 0.15);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(58, 145, 252, 0.9); 
+    -fx-border-width: 1px; 
+    -fx-border-radius: 5px;
+    -fx-border-style: solid;
+    -fx-padding: 4px;
+}
+
+#btEditar {
+    -fx-background-color: #9E3AFC;
+    -fx-font-weight: bold;
+    -fx-text-fill: #182052;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;    
+	-fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btEditar:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+#btExcluir {
+    -fx-background-color: #C0392B;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-font-family: "Comfortaa";
+    -fx-background-radius: 12;
+    -fx-padding: 8px 16px;
+    -fx-alignment: CENTER;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+}
+
+#btExcluir:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
